@@ -1,0 +1,25 @@
+# Data — datasets, generated outputs, model predictions (large, regenerable
+# from the pipeline). See README.md for how to populate this locally.
+data/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Claude Code local settings (machine-specific, not project config)
+.claude/settings.local.json
+.claude
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# scratch
+_scratch/

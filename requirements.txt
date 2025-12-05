@@ -1,0 +1,20 @@
+# Core data pipeline (src/convert, src/translate, src/formalize,
+# src/mutation_informalize, src/merge, src/analysis, src/evaluate)
+datasets
+google-generativeai
+openai
+langchain-core
+langgraph
+langchain-openai
+z3-solver
+sympy
+pandas
+numpy
+matplotlib
+seaborn
+tqdm
+python-dotenv
+
+# notebooks/ (SFT + Online DPO on Kaggle) pin heavier ML deps inline via
+# `!pip install` cells — see each script's header comment. Roughly:
+#   unsloth, trl, peft, accelerate, bitsandbytes, transformers, torch
