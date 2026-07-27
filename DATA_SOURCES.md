@@ -34,9 +34,9 @@ When publishing original, translated, normalized, or augmented records:
 8. Keep train/evaluation provenance fields where practical so downstream users
    can identify the source and applicable terms of each record.
 
-The repository's source-code license, if one is added, governs only original
-project code and documentation unless it explicitly says otherwise. It does not
-override dataset licenses or third-party service terms.
+The repository's MIT License governs only original project code and
+documentation unless a file explicitly says otherwise. It does not override
+dataset licenses or third-party service terms.
 
 ## Citations
 

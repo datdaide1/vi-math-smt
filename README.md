@@ -7,6 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![SMT-LIB](https://img.shields.io/badge/Formalization-SMT--LIB-5B4B8A)](https://smt-lib.org/)
 [![Solvers](https://img.shields.io/badge/Validation-Z3%20%7C%20CVC5-2F855A)](https://github.com/Z3Prover/z3)
+[![License](https://img.shields.io/badge/Code%20License-MIT-2563EB)](LICENSE)
 [![Research](https://img.shields.io/badge/Status-Research%20Code-D97706)](#project-status)
 
 Vi-Math-SMT builds Vietnamese mathematical reasoning data from GSM8K and
@@ -44,12 +45,35 @@ with the corresponding processing code.
 | Data-processing result | Verified value | Evidence |
 | --- | ---: | --- |
 | GSM8K records formalized and accepted | 7,473 / 7,473 (100.0%) | [`gsm8k_formalize_evaluate.outputs.md`](src/formalize/gsm8k/gsm8k_formalize_evaluate.outputs.md) |
+| MATH records retained after formalization and filtering | 7,397 / 7,500 (98.63%) | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) and the 7,500-record source definition in [`download_datasets.py`](src/convert/download_datasets.py) |
 | Verified Vietnamese base corpus | 14,870 records | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
 | Base-corpus composition | 7,473 GSM8K + 7,397 MATH | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
 | Base records containing verified SMT-LIB | 14,870 / 14,870 (100.0%) | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
+| Augmented candidates evaluated | 27,024 records | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
 | Consistent augmented records accepted | 19,750 / 27,024 (73.1%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
+| Augmented candidates rejected | 7,274 / 27,024 (26.9%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
+| Initially failed candidates rescued during cleanup | 255 records | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
 | Source problems with at least one accepted mutation | 5,670 / 6,817 (83.2%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
 | Final base-plus-augmentation training corpus | 34,620 records | Derived from 14,870 verified base records + 19,750 accepted augmented records |
+
+### Augmentation validation breakdown
+
+| Validation view | Recorded result |
+| --- | --- |
+| Rescue methods | 148 numeric matches, 83 normalized string matches, 24 symbolic SymPy matches |
+| Consistency by subject | 63.3% to 79.5% across the seven MATH subjects |
+| Consistency by difficulty | Level 1: 70.3%; Level 2: 72.5%; Level 3: 73.2%; Level 4: 74.5%; Level 5: 73.0% |
+| Consistency by mutation strategy | M0: 73.0%; M1: 72.6%; M2: 73.0%; M3: 73.2%; M4: 73.9% |
+| Accepted mutations per covered source | 593 sources produced 1; 1,306 produced 2; 795 produced 3; 720 produced 4; 2,256 produced 5 |
+| Final-corpus composition | 42.95% verified base records and 57.05% accepted augmented records |
+| Accepted problem length | Mean 343 characters; median 291; range 21 to 3,143 |
+| Accepted solution length | Mean 904 characters; median 808; range 156 to 6,005 |
+
+Subject-level consistency was 67.9% for algebra, 63.3% for counting and
+probability, 73.9% for geometry, 76.6% for intermediate algebra, 74.2% for
+number theory, 79.5% for prealgebra, and 76.6% for precalculus. All values in
+this breakdown come from
+[`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md).
 
 These results establish record counts, solver coverage, and augmentation
 consistency only. Fine-tuning and model-evaluation results are intentionally not
@@ -59,25 +83,25 @@ reported in this README.
 
 ```mermaid
 flowchart TD
-    A[English GSM8K and MATH] --> B[Dataset preparation]
-    B --> C[SMT-LIB formalization]
-    B --> D[Vietnamese translation]
-    C --> E[Z3 / CVC5 verification]
-    E --> F[Verified symbolic records]
-    D --> G[Vietnamese problems and solutions]
-    F --> H[Base-dataset assembly]
+    A["English GSM8K and MATH"] --> B["Dataset preparation"]
+    B --> C["SMT-LIB formalization"]
+    B --> D["Vietnamese translation"]
+    C --> E["Z3 and CVC5 verification"]
+    E --> F["Verified symbolic records"]
+    D --> G["Vietnamese problems and solutions"]
+    F --> H["Base dataset assembly"]
     G --> H
-    H --> I[Verified Vietnamese base corpus]
-    I --> J[Phase 1: validate and classify]
-    J --> K[Phase 2: symbolic mutation]
-    K --> L[Phase 3: informalize and check consistency]
-    L --> M[Phase 4: merge and balance]
-    M --> N[Augmented training corpus]
-    I --> O[Base SFT]
-    N --> P[Augmented SFT and online DPO]
-    O --> Q[Inference and evaluation]
+    H --> I["Verified Vietnamese base corpus"]
+    I --> J["Phase 1 - Validate and classify"]
+    J --> K["Phase 2 - Symbolic mutation"]
+    K --> L["Phase 3 - Informalize and check consistency"]
+    L --> M["Phase 4 - Merge and balance"]
+    M --> N["Augmented training corpus"]
+    I --> O["Base SFT"]
+    N --> P["Augmented SFT and online DPO"]
+    O --> Q["Inference and evaluation"]
     P --> Q
-    Q --> R[In-distribution and OOD reports]
+    Q --> R["In-distribution and OOD reports"]
 ```
 
 The formalization and translation branches intentionally originate from the
@@ -346,6 +370,17 @@ This is research code organized around an experimental thesis pipeline. It is
 provided for inspection, reproduction, and further experimentation rather than
 as a production service or a packaged Python library. Model checkpoints and
 generated datasets are not bundled with the repository.
+
+## License
+
+Original source code and documentation in this repository are available under
+the [MIT License](LICENSE), unless a file states otherwise. This license does
+not relicense or override third-party datasets, model weights, generated records
+derived from those datasets, or external API/service terms.
+
+In particular, ASDiv and ASDiv-derived records remain subject to CC BY-NC 4.0
+and its non-commercial restriction. See [`DATA_SOURCES.md`](DATA_SOURCES.md)
+before redistributing any dataset artifact.
 
 ## Contributing
 
