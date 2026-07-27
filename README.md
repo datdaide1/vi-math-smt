@@ -35,6 +35,26 @@ evaluating Vietnamese math language models with SFT and online DPO.
 - **Reproducible intermediate evidence** - selected `*.outputs.md` files retain
   captured execution output for inspection alongside the corresponding code.
 
+## Verified Data-Construction Results
+
+The following figures describe the data pipeline, not model fine-tuning or
+model quality. They are taken from the recorded execution outputs committed
+with the corresponding processing code.
+
+| Data-processing result | Verified value | Evidence |
+| --- | ---: | --- |
+| GSM8K records formalized and accepted | 7,473 / 7,473 (100.0%) | [`gsm8k_formalize_evaluate.outputs.md`](src/formalize/gsm8k/gsm8k_formalize_evaluate.outputs.md) |
+| Verified Vietnamese base corpus | 14,870 records | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
+| Base-corpus composition | 7,473 GSM8K + 7,397 MATH | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
+| Base records containing verified SMT-LIB | 14,870 / 14,870 (100.0%) | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
+| Consistent augmented records accepted | 19,750 / 27,024 (73.1%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
+| Source problems with at least one accepted mutation | 5,670 / 6,817 (83.2%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
+| Final base-plus-augmentation training corpus | 34,620 records | Derived from 14,870 verified base records + 19,750 accepted augmented records |
+
+These results establish record counts, solver coverage, and augmentation
+consistency only. Fine-tuning and model-evaluation results are intentionally not
+reported in this README.
+
 ## System Architecture
 
 ```mermaid
@@ -177,6 +197,15 @@ Populate only the services required by the stages you plan to run:
 
 Never commit `.env` or any file containing real credentials.
 
+API keys are access credentials, not redistributable project assets. Every user
+must provide their own authorized keys and comply with the relevant provider's
+terms, data-handling policy, rate limits, and billing rules. Prompts and dataset
+records sent to an external API leave the local environment; review provider
+retention and training policies before processing restricted or confidential
+data. Use least-privilege tokens where supported, rotate any exposed key
+immediately, and keep production credentials out of notebooks and captured
+output files.
+
 ### 3. Populate local data
 
 Run each script from its own directory. The codebase uses relative paths that
@@ -272,6 +301,30 @@ data/
 Paths may be created incrementally as the relevant scripts run. Review the
 configuration block at the top of a script before launching an expensive API or
 GPU job.
+
+## Dataset Sources and Licensing
+
+This project uses four externally published benchmarks. Their licenses apply to
+the original records and to translated or otherwise adapted versions; they are
+not replaced by any license chosen for this repository's source code.
+
+| Dataset | Source used by the downloader | Upstream license | Required handling |
+| --- | --- | --- | --- |
+| GSM8K | [`openai/gsm8k`](https://huggingface.co/datasets/openai/gsm8k) | MIT | Preserve the upstream notice and cite Cobbe et al. (2021). |
+| MATH | [`hendrycks/competition_math`](https://huggingface.co/datasets/hendrycks/competition_math) | MIT | Preserve the upstream notice and cite Hendrycks et al. (2021). |
+| SVAMP | [`ChilleD/SVAMP`](https://huggingface.co/datasets/ChilleD/SVAMP) | MIT | Cite Patel et al. (2021); prefer the official repository for provenance. |
+| ASDiv | [`EleutherAI/asdiv`](https://huggingface.co/datasets/EleutherAI/asdiv) | CC BY-NC 4.0 | Attribution is required; reuse and derived translations must remain non-commercial. |
+
+See [`DATA_SOURCES.md`](DATA_SOURCES.md) for official project links, paper
+citations, license links, and redistribution guidance.
+
+Because ASDiv is licensed under CC BY-NC 4.0, a combined release containing
+ASDiv-derived records must not be labeled as wholly MIT or presented as
+commercially reusable. If processed datasets are published on Hugging Face,
+identify the source of each subset, describe translation and filtering as
+modifications, retain all attribution notices, and expose the applicable
+per-source license restrictions in the dataset card. This repository currently
+does not redistribute the source or derived datasets through Git.
 
 ## Reproducibility Notes
 
