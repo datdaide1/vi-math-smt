@@ -1,148 +1,312 @@
-# vi-math-smt
+# Vi-Math-SMT
 
-Xây dựng dữ liệu suy luận toán học tiếng Việt có kiểm chứng hình thức (SMT-LIB
-+ Z3/CVC5), và pipeline tinh chỉnh mô hình ngôn ngữ lớn (SFT + Online DPO) trên
-bộ dữ liệu đó.
+> A formally verified data pipeline for Vietnamese mathematical reasoning,
+> combining SMT-LIB generation, Z3/CVC5 validation, symbolic augmentation,
+> supervised fine-tuning, and online preference optimization.
 
-> Repo này tập trung trình bày **kiến trúc và phương pháp** của pipeline. Các
-> notebook huấn luyện/đánh giá mô hình (`notebooks/`, `src/evaluate/`) là
-> triển khai tham khảo theo đúng thiết kế được mô tả — không kèm theo số liệu
-> kết quả cụ thể nào trong tài liệu này.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![SMT-LIB](https://img.shields.io/badge/Formalization-SMT--LIB-5B4B8A)](https://smt-lib.org/)
+[![Solvers](https://img.shields.io/badge/Validation-Z3%20%7C%20CVC5-2F855A)](https://github.com/Z3Prover/z3)
+[![Research](https://img.shields.io/badge/Status-Research%20Code-D97706)](#project-status)
 
-## Kiến trúc tổng quan
+Vi-Math-SMT builds Vietnamese mathematical reasoning data from GSM8K and
+MATH while preserving a machine-checkable representation of each problem.
+The project formalizes English source problems as SMT-LIB, validates them with
+SMT solvers, translates the natural-language content into Vietnamese, and
+merges both branches into a unified training corpus. A four-phase augmentation
+pipeline then generates new verified problems through symbolic mutation and
+LLM-based informalization.
 
+The repository also contains the complete experiment workflow for training and
+evaluating Vietnamese math language models with SFT and online DPO.
+
+## Highlights
+
+- **Formally verified reasoning data** - generated SMT-LIB is checked against
+  the reference answer with Z3, with CVC5 support in the MATH workflow.
+- **Parallel construction pipeline** - formalization and Vietnamese
+  translation run independently before being joined by sample index.
+- **Solver-guided augmentation** - symbolic mutations are validated before an
+  LLM converts them back into natural Vietnamese problems and solutions.
+- **Consistency filtering** - informalized answers are compared with solver
+  outputs before augmented samples enter the final corpus.
+- **End-to-end experiments** - numbered notebooks cover preparation, SFT,
+  online DPO, inference, in-distribution evaluation, and OOD evaluation.
+- **Reproducible intermediate evidence** - selected `*.outputs.md` files retain
+  captured execution output for inspection alongside the corresponding code.
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    A[English GSM8K and MATH] --> B[Dataset preparation]
+    B --> C[SMT-LIB formalization]
+    B --> D[Vietnamese translation]
+    C --> E[Z3 / CVC5 verification]
+    E --> F[Verified symbolic records]
+    D --> G[Vietnamese problems and solutions]
+    F --> H[Base-dataset assembly]
+    G --> H
+    H --> I[Verified Vietnamese base corpus]
+    I --> J[Phase 1: validate and classify]
+    J --> K[Phase 2: symbolic mutation]
+    K --> L[Phase 3: informalize and check consistency]
+    L --> M[Phase 4: merge and balance]
+    M --> N[Augmented training corpus]
+    I --> O[Base SFT]
+    N --> P[Augmented SFT and online DPO]
+    O --> Q[Inference and evaluation]
+    P --> Q
+    Q --> R[In-distribution and OOD reports]
 ```
-GSM8K + MATH (tiếng Anh)
-        │
-        ├──► Hình thức hóa SMT-LIB (LLM sinh, Z3/CVC5 kiểm chứng) ──┐
-        │                                                            ├─► Tập dữ liệu cơ sở
-        └──► Dịch sang tiếng Việt (Gemini) ─────────────────────────┘         │
-                                                                                ▼
-                                                          Biến đổi SMT (5 chiến lược)
-                                                                                │
-                                                                                ▼
-                                                          Phi hình thức hóa ngược (LLM)
-                                                          + xác minh nhất quán bằng Z3
-                                                                                │
-                                                                                ▼
-                                                              Tập dữ liệu huấn luyện
-                                                              tăng cường (SFT + DPO)
-```
 
-Quy trình gồm hai nhánh song song hội tụ về một tập dữ liệu cơ sở, sau đó qua
-giai đoạn tăng cường dữ liệu:
+The formalization and translation branches intentionally originate from the
+same source records. Formalization is performed on English text to reduce
+language-induced ambiguity in symbolic generation; verified SMT-LIB is joined
+with the Vietnamese translation only after both branches complete.
 
-1. **Hình thức hóa SMT-LIB** — mô hình ngôn ngữ lớn (`openai/gpt-oss-120b` qua
-   NVIDIA NIM) sinh mã SMT-LIB 2.6 mô tả cấu trúc toán học của từng bài, được
-   kiểm chứng tự động bằng Z3 (và CVC5 cho MATH). Vòng lặp sinh — kiểm chứng —
-   sửa lỗi cho phép mô hình tự sửa khi kiểm chứng thất bại.
-2. **Dịch thuật** — Gemini 2.5 Flash dịch đề bài và lời giải sang tiếng Việt,
-   giữ nguyên công thức toán, LaTeX và các ký hiệu tính toán trung gian.
-3. **Hợp nhất tập cơ sở** — ghép mã SMT-LIB đã kiểm chứng với bản dịch tiếng
-   Việt theo `index`, chuẩn hóa thành một schema thống nhất.
-4. **Tăng cường dữ liệu** (chỉ áp dụng cho MATH):
-   - *Biến đổi SMT* — 5 chiến lược biến đổi thuật toán thuần túy trên mã
-     SMT-LIB (thay hằng số, biến đổi cấu trúc/biểu thức, kết hợp ràng buộc,
-     biến đổi độ khó), mỗi biến thể được kiểm chứng lại bằng Z3.
-   - *Phi hình thức hóa ngược* — LLM chuyển mỗi mã SMT-LIB đã biến đổi thành
-     bài toán + lời giải tiếng Việt mới, kèm bước xác minh: LLM giải lại bằng
-     suy luận từng bước và so khớp với nghiệm Z3.
-5. **Xây dựng bộ kiểm thử** — dịch các bộ test gốc (GSM8K, MATH) và hai bộ
-   ngoài miền phân phối (SVAMP, ASDiv) sang tiếng Việt theo cùng quy trình.
-6. **Tinh chỉnh mô hình** — SFT (LoRA/RSLoRA trên Mistral-7B-Instruct-v0.2,
-   qua Unsloth) trên tập cơ sở và tập tăng cường, sau đó Online DPO với một
-   rule-based math judge (ưu tiên: đáp án đúng → tuân thủ định dạng `\boxed{}`
-   → lời giải ngắn hơn) để tinh chỉnh thêm trên tập tăng cường.
+## Pipeline
 
-## Cấu trúc thư mục
+| Stage | Purpose | Main implementation |
+| --- | --- | --- |
+| 1. Acquire and normalize | Download benchmark data and standardize source formats | `src/convert/`, `src/analysis/` |
+| 2. Formalize | Generate SMT-LIB and run generate–verify–repair loops | `src/formalize/gsm8k/`, `src/formalize/math/` |
+| 3. Translate | Translate problems and solutions while preserving math and LaTeX | `src/translate/gsm8k/`, `src/translate/math/` |
+| 4. Assemble | Join verified symbolic data with Vietnamese records and normalize the schema | `src/merge/` |
+| 5. Augment | Validate, mutate, informalize, verify, merge, and balance MATH-derived samples | `src/mutation_informalize/` |
+| 6. Train | Prepare data, run base/augmented SFT, then online DPO | `notebooks/00_*.py` to `notebooks/03_*.py` |
+| 7. Evaluate | Run inference, in-distribution analysis, OOD tests, and final aggregation | `notebooks/04_*.py` to `notebooks/06_*.py`, `src/evaluate/` |
 
-```
+### Formalization strategies
+
+- **GSM8K:** a LangGraph-based agent generates SMT-LIB, validates it with Z3,
+  and retries with solver feedback when parsing, satisfiability, or answer
+  checks fail.
+- **MATH:** a sequential repair loop normalizes symbolic answers, generates
+  SMT-LIB, and validates difficult mathematical expressions with Z3/CVC5-aware
+  checks.
+
+### Four-phase augmentation
+
+1. **Validate and classify** the base SMT records and select eligible sources.
+2. **Mutate symbolically** using constant, structural, expression, constraint,
+   and difficulty transformations; validate every candidate with Z3.
+3. **Informalize** each accepted symbolic variant into a Vietnamese problem and
+   solution, then compare the generated answer with the solver result.
+4. **Merge and balance** consistent augmented records with the original corpus.
+
+Augmentation is focused on MATH because its richer algebraic and symbolic
+structures provide more useful mutation space than the predominantly linear
+arithmetic problems in GSM8K.
+
+## Repository Layout
+
+```text
 vi-math-smt/
-├── notebooks/                 Pipeline SFT + Online DPO (Kaggle T4, numbered 00-06)
+├── notebooks/                     # Ordered training and evaluation workflow
+│   ├── 00_prepare_data.py
+│   ├── 01_sft_train_base.py
+│   ├── 02_sft_train_augmented.py
+│   ├── 03_dpo_train_augmented.py
+│   ├── 04_inference_base.py
+│   ├── 05_inference_augmented.py
+│   └── 06_final_evaluation.py
 ├── src/
-│   ├── convert/                Tải dataset gốc từ HuggingFace, chuyển định dạng
-│   ├── translate/
-│   │   ├── gsm8k/                Dịch GSM8K sang tiếng Việt
-│   │   ├── math/                 Dịch MATH sang tiếng Việt
-│   │   └── test_dataset/         Dịch bộ test OOD (SVAMP, ASDiv)
+│   ├── analysis/                  # Source-data normalization utilities
+│   ├── convert/                   # Dataset download and format conversion
 │   ├── formalize/
-│   │   ├── gsm8k/                 Sinh + kiểm chứng SMT-LIB cho GSM8K (ReAct agent)
-│   │   └── math/                  Sinh + kiểm chứng SMT-LIB cho MATH (repair loop)
-│   ├── mutation_informalize/    Biến đổi SMT + phi hình thức hóa (4 pha)
-│   │   ├── tools/                  Script QC/sửa dữ liệu một lần (đứng độc lập)
-│   │   ├── analysis/               Thống kê tỷ lệ nhất quán sau tăng cường
-│   │   └── reference/              Ghi chú/snippet tham khảo khi viết prompt
-│   ├── merge/
-│   │   ├── gsm8k/                 Hợp nhất + thống kê phân phối GSM8K
-│   │   └── math/                  Hợp nhất + thống kê phân phối MATH
-│   ├── analysis/                Tiện ích xử lý/kiểm tra dữ liệu MATH
-│   └── evaluate/                Đánh giá bằng Z3 (`z3_evaluate.py`), và so
-│       ├── base/                  sánh model theo 3 nhóm: Vi-MathLM-Base,
-│       ├── aug/                   Vi-MathLM-Aug (kèm đánh giá OOD), và
-│       └── wizardmath/             baseline WizardMATH
-├── data/                       (gitignored) toàn bộ dataset/output sinh ra
-├── _scratch/                   (gitignored) script debug/patch cũ, giữ làm lịch sử dev
-├── .env.example                Danh sách biến môi trường cần thiết
-└── requirements.txt
+│   │   ├── gsm8k/                 # Agentic GSM8K formalization
+│   │   └── math/                  # MATH formalization and repair
+│   ├── translate/
+│   │   ├── gsm8k/                 # GSM8K Vietnamese translation
+│   │   ├── math/                  # MATH Vietnamese translation
+│   │   └── test_dataset/          # SVAMP/ASDiv OOD preparation
+│   ├── merge/                     # Base-corpus assembly and statistics
+│   ├── mutation_informalize/      # Four-phase augmentation pipeline
+│   │   ├── analysis/              # Augmentation-quality analysis
+│   │   ├── reference/             # Prompt-development references
+│   │   └── tools/                 # QC and one-off repair utilities
+│   └── evaluate/                  # Base, augmented, OOD, and baseline analysis
+├── data/                          # Local datasets/artifacts; not tracked by Git
+├── .env.example                   # Required environment variables
+├── requirements.txt               # Core pipeline dependencies
+└── README.md
 ```
 
-Mỗi file trong `src/` và `notebooks/` giả định được chạy **từ chính thư mục
-chứa nó** (đường dẫn tương đối trỏ ngược về `data/` ở gốc repo — số lượng
-`../` tùy theo độ sâu thư mục). Một số file đi kèm `*.outputs.md` — log kết
-quả thực thi thật đã ghi lại trước khi chuyển từ Jupyter notebook sang `.py`,
-giữ làm tài liệu tham khảo.
+## Quick Start
 
-Trong `src/mutation_informalize/`, các file ở thư mục gốc (`config.py`,
-`phase1_validate.py` … `phase4_merge.py`, `run_pipeline.py`, v.v.) import lẫn
-nhau qua same-directory import (`from config import ...`) nên **phải ở cùng
-cấp**, không tách thêm — đây là lý do thư mục này vẫn còn khá nhiều file so
-với các thư mục khác.
-
-## Cài đặt
+### 1. Clone and create an environment
 
 ```bash
+git clone https://github.com/datdaide1/vi-math-smt.git
+cd vi-math-smt
+
+python -m venv .venv
+source .venv/bin/activate        # Linux/macOS
+# .venv\Scripts\activate         # Windows PowerShell
+
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-cp .env.example .env   # rồi điền các API key của bạn
 ```
 
-Xem `.env.example` để biết đầy đủ biến môi trường cần thiết (HuggingFace,
-Gemini, NVIDIA NIM, và một LLM proxy tùy chọn dùng trong một số script cũ).
+The training notebooks install their heavier ML stack separately because the
+exact versions depend on the Kaggle/CUDA runtime. See the installation cell at
+the top of each notebook source before running it.
 
-## Chạy pipeline
+### 2. Configure credentials
 
 ```bash
-# 1. Tải dữ liệu gốc từ HuggingFace
-cd src/convert && python download_datasets.py
-
-# 2. Hình thức hóa SMT-LIB (GSM8K: ReAct agent, MATH: sequential repair loop)
-cd ../formalize/gsm8k && python formalize_gsm8k_nvidia_langgraph.py
-cd ../math && python formalize_math_nvidia.py
-
-# 3. Dịch sang tiếng Việt
-cd ../../translate/gsm8k && python translate_gsm8k.py
-cd ../math && python translate_math.py
-
-# 4. Hợp nhất tập cơ sở
-cd ../../merge/gsm8k && python gsm8k_complete.py
-cd ../math && python math_complete.py
-cd .. && python merge_all.py
-
-# 5. Tăng cường dữ liệu (mutation + informalize)
-cd ../mutation_informalize && python run_pipeline.py
-
-# 6. Tinh chỉnh mô hình — dán từng file trong notebooks/ vào một Kaggle
-#    notebook mới (thứ tự 00 → 06), theo hướng dẫn ghi trong docstring mỗi file
+cp .env.example .env
 ```
 
-Mỗi bước có thể chạy độc lập nếu bạn đã có dữ liệu đầu vào tương ứng (ví dụ
-chỉ muốn chạy lại bước dịch thuật trên dữ liệu đã hình thức hóa sẵn).
+On Windows PowerShell:
 
-## Ghi chú
+```powershell
+Copy-Item .env.example .env
+```
 
-- Bộ dữ liệu tiếng Việt gồm 4 phần: GSM8K, MATH (trong miền phân phối) và
-  SVAMP, ASDiv (ngoài miền phân phối, dùng để đánh giá khả năng tổng quát hóa).
-- `src/mutation_informalize/config.py` hỗ trợ xoay vòng nhiều API key qua biến
-  môi trường `NVIDIA_API_KEYS` (danh sách phân tách bởi dấu phẩy) để tăng
-  throughput khi gọi LLM song song.
-- `_scratch/` chứa các script vá lỗi/thử nghiệm trong quá trình phát triển,
-  không thuộc pipeline chính thức — giữ lại để tham khảo lịch sử phát triển.
+Populate only the services required by the stages you plan to run:
+
+| Variable | Used for |
+| --- | --- |
+| `HF_TOKEN` | Hugging Face dataset/model access |
+| `GEMINI_API_KEY` | Vietnamese translation with Gemini |
+| `NVIDIA_API_KEY` | Single-key NVIDIA NIM access |
+| `NVIDIA_API_KEYS` | Comma-separated key rotation for concurrent generation |
+| `BEEKNOEE_API_KEY` | Optional compatibility with legacy proxy-based scripts |
+
+Never commit `.env` or any file containing real credentials.
+
+### 3. Populate local data
+
+Run each script from its own directory. The codebase uses relative paths that
+resolve back to the repository-level `data/` directory.
+
+```bash
+cd src/convert
+python download_datasets.py
+python preprocess_gsm8k.py
+```
+
+## Running the Core Pipeline
+
+The following commands show the intended execution order. Formalization and
+translation can run in parallel once source preparation is complete.
+
+```bash
+# From the repository root
+
+# A. Formalize GSM8K
+cd src/formalize/gsm8k
+python formalize_gsm8k_nvidia_langgraph.py
+
+# B. Formalize MATH
+cd ../math
+python formalize_math_nvidia.py
+
+# C. Translate GSM8K
+cd ../../translate/gsm8k
+python translate_gsm8k.py
+
+# D. Translate MATH
+cd ../math
+python translate_math.py
+
+# E. Assemble the verified Vietnamese base corpus
+cd ../../merge/gsm8k
+python gsm8k_complete.py
+cd ../math
+python math_complete.py
+cd ..
+python merge_all.py
+
+# F. Run the four-phase augmentation workflow
+cd ../mutation_informalize
+python run_pipeline.py
+```
+
+Each stage supports partial reruns when its expected input files already exist.
+Several long-running scripts also use append-only output or checkpoint files to
+resume interrupted generation.
+
+## Training and Evaluation
+
+The files under `notebooks/` are Python exports of ordered Kaggle notebook
+cells. Run them in numerical order:
+
+| Order | Experiment |
+| --- | --- |
+| `00` | Clean and validate the final training records |
+| `01` | Train the base SFT model |
+| `02` | Train the augmented SFT model |
+| `03` | Apply online DPO with a rule-based mathematical judge |
+| `04` | Run base-model inference |
+| `05` | Run augmented-model inference, including OOD inputs |
+| `06` | Aggregate metrics, analyses, plots, and final reports |
+
+The DPO judge ranks candidate solutions by mathematical correctness first,
+format compliance second, and concision third. Evaluation utilities cover final
+answer accuracy, formatting behavior, reasoning similarity, performance by
+subject and difficulty, and OOD generalization on Vietnamese SVAMP and ASDiv.
+
+## Data and Artifact Policy
+
+The `data/` directory is intentionally excluded from Git because it contains
+large, generated, or externally sourced datasets, predictions, plots, and model
+artifacts. This repository publishes the pipeline and research implementation,
+not a duplicate distribution of those assets.
+
+Expected local data categories include:
+
+```text
+data/
+├── raw/                 # Downloaded source datasets
+├── generate/            # Normalized GSM8K/MATH inputs
+├── translation/         # Vietnamese training translations
+├── formalize_output/    # Verified SMT-LIB records
+├── finetune/            # Base and augmented training corpora
+├── result/              # Model predictions
+└── evaluate/            # Metrics, reports, and visualizations
+```
+
+Paths may be created incrementally as the relevant scripts run. Review the
+configuration block at the top of a script before launching an expensive API or
+GPU job.
+
+## Reproducibility Notes
+
+- Scripts in `src/` generally expect to run from the directory containing the
+  script because their data paths are relative.
+- The modules in `src/mutation_informalize/` intentionally remain at the same
+  directory level because they use same-directory imports such as
+  `from config import ...`.
+- `*.outputs.md` files are execution records, not executable source files.
+- Stochastic LLM generation and symbolic mutation may produce different
+  candidates across runs; solver checks and consistency filters define the
+  acceptance criteria.
+- API usage can incur cost. Start with a small input subset and verify the
+  resulting schema before launching a full run.
+
+## Project Status
+
+This is research code organized around an experimental thesis pipeline. It is
+provided for inspection, reproduction, and further experimentation rather than
+as a production service or a packaged Python library. Model checkpoints and
+generated datasets are not bundled with the repository.
+
+## Contributing
+
+Contributions that improve validation, portability, documentation, or
+reproducibility are welcome. Before opening a pull request:
+
+1. Keep credentials and generated data outside Git.
+2. Preserve the expected input/output schema of the affected pipeline stage.
+3. Run `python -m compileall -q src notebooks`.
+4. Document new environment variables and generated artifact paths.
+5. Include a focused description of the change and how it was validated.
+
+## Acknowledgements
+
+This project builds on GSM8K, MATH, SVAMP, ASDiv, SMT-LIB, Z3, CVC5,
+LangGraph, Gemini, NVIDIA NIM, Hugging Face, Unsloth, and the broader open-source
+mathematical reasoning ecosystem.
