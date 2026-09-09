@@ -36,6 +36,7 @@ vi-math-verified-aug/            # new top-level package (can live inside this r
   symbolic_aug/  constant_sub.py  structural.py   # S1 operators
   llm_aug/       clients.py  generate.py          # S2/S3 generation
   informalize/   generate.py  leakage_filter.py
+  vi_exam/       scrape.py  segment.py  verify.py       # C1 benchmark build (scrape-first, no OCR)
   verify/        z3_utils.py  uniqueness.py  round_trip.py
   eval/          math_verify.py  run_eval.py  data_quality.py  decontam.py
   scripts/       sft.py  build_s0.py … build_s6.py  run_grid.py
@@ -56,9 +57,9 @@ RESULTS_PROVENANCE.md
 - **Researcher is the bottleneck for:** API keys, obtaining exam PDFs, recruiting/managing human
   annotators (MOS + benchmark QA), advisor coordination, judgment calls at [GATE]s.
 - **Wall-clock critical path:** API keys → LLM generation of all arms → data-quality panel → training
-  grid → analysis. In parallel: exam collection → OCR → verification → human QA → Vi-ExamMath.
+  grid → analysis. In parallel: exam scrape → normalize/segment → solver-verify → human QA → Vi-ExamMath.
 - **Plan to ~75% capacity.** Expect iteration on Sprint 1–2 (the symbolic pipeline fixes and the
-  benchmark OCR are the least predictable).
+  benchmark scrape/segment are the least predictable).
 
 **Sprint calendar (2 weeks each; ~3 months; GPU spend confined to Sprint 4's billing month):**
 
@@ -66,8 +67,8 @@ RESULTS_PROVENANCE.md
 |---|---|---|
 | S0 | Foundation | harness + templates + keys work; anchor numbers logged |
 | S1 | Symbolic pipeline (S1 arm) + exam-source survey | S1 pipeline runs end-to-end on 100 problems |
-| S2 | All 7 arms built + benchmark OCR/verify | `data/arms/s{0..6}.jsonl` exist; `data/vi_exam/verified.jsonl` exists |
-| S3 | Data-quality panel + human eval + benchmark QA | quality panel done; Vi-ExamMath `final.jsonl` (≥400) |
+| S2 | All 7 arms built + benchmark segment/verify | `data/arms/s{0..6}.jsonl` exist; `data/vi_exam/verified.jsonl` exists |
+| S3 | Data-quality panel + human eval + benchmark QA | quality panel done; Vi-ExamMath Core `final.jsonl` (≥300) |
 | S4 | Training grid + inference | `results/master_results.csv` complete |
 | S5 | Analysis + C1 resource paper | RQ-A…E answered; C1 draft; advisor review #1 |
 | S6 | Full paper + submit | paper submitted to an ARR cycle; artifacts released |
@@ -229,18 +230,22 @@ RESULTS_PROVENANCE.md
 - **Output:** script + `data/arms/s1.jsonl` (small, N≈500 for now) + `results/s1_build_report.json`.
 - **Acceptance:** end-to-end run completes; report shows per-stage retention.
 
-### T1.8 — Exam-source survey — **[HUMAN]**
-- **Goal:** identify public archives of grade-10 entrance exams (`đề thi tuyển sinh lớp 10`),
-  free-response math, 2023–2025, with official answer keys. OCR 20 exams (MathPix free tier). Ask the
-  advisor about official channels (Sở GD-ĐT).
+### T1.8 — Exam scraper + source survey  *(prototype: `_scratch/vi_exam/scrape_loigiaihay.py` + `sample_core_triples.md`)*
+- **Goal:** `vi_exam/scrape.py` — per-source adapters (loigiaihay HTML+LaTeX; toanmath Word→LaTeX via
+  pandoc; VnExpress/VietnamNet dated articles; hanoi.edu.vn official PDFs). Output raw
+  `(exam, source, year, province, exam_name, url, license, raw_latex)`. **No OCR** — flag scanned PDFs
+  for a MathPix fallback pass. Hà Nội grade-10 2017–2026 first, then ~10–15 provinces, then HSG/chuyên.
 - **Depends-on:** —
-- **Output:** `data/vi_exam/SOURCES.md` (per source: URL, coverage, license note) + 20 sample
-  `(problem, solution, answer)` triples + the measured triple-extraction success rate.
-- **Acceptance:** ≥3 usable sources; extraction rate documented; advisor consulted.
+- **[HUMAN]:** ask the advisor about official Sở GD-ĐT Hà Nội channels; confirm the license line for
+  public release.
+- **Output:** `vi_exam/scrape.py` + `data/vi_exam/raw.jsonl` (≥60 exams) + `data/vi_exam/SOURCES.md`
+  (per source: URL, coverage, format, license) + `results/scrape_yield.md`.
+- **Acceptance:** ≥5 sources; ≥60 exams scraped; figure-free segment yield reported (prototype: ~62%);
+  30 hand-checked triples are faithful.
 
 ---
 
-## SPRINT 2 — All arms + benchmark OCR/verify
+## SPRINT 2 — All arms + benchmark segment/verify
 
 ### T2.1 — **[GATE]** Validate S1 quality on 100 problems
 - **Goal:** run T1.7 on 100 seeds; compute answer-type distribution, leakage %, and hand-read 30.
@@ -287,19 +292,23 @@ RESULTS_PROVENANCE.md
   mutation + LLM informalization + double check.
 - **Depends-on:** T0.8 (S0); T1.6, T2.3 (S6) → `data/arms/s0.jsonl`, `data/arms/s6.jsonl`.
 
-### T2.9 — Vi-ExamMath OCR + segmentation — **[HUMAN-assisted]**
-- **Goal:** collect ~800 raw exam items → OCR → LaTeX normalize → segment into triples → filter to
-  algebra/arithmetic with a numeric final answer → structural dedup (across years/provinces and vs the
-  arm training pools).
+### T2.9 — Vi-ExamMath segmentation + scope filter
+- **Goal:** `vi_exam/segment.py` — from `raw.jsonl`: normalize LaTeX; split to **sub-part** granularity
+  (`Câu II.3`); extract `(problem, reference_solution, final_answer)`; classify grade band + topic +
+  answer type; flag figure-dependent items. **Core filter:** numeric answer, arithmetic/algebra/
+  functions, figure-free. **Hard bucket:** competition / expression-answer / figure. Structural dedup
+  across years/provinces and vs the S1/S2/S5 training pools.
 - **Depends-on:** T1.8
-- **Output:** `data/vi_exam/raw.jsonl` (~800) with per-item `{source, year, province}`.
+- **Output:** `data/vi_exam/segmented.jsonl` + `data/vi_exam/core_candidates.jsonl` (≥500) +
+  `data/vi_exam/hard_candidates.jsonl`.
+- **Acceptance:** ≥500 Core candidates; final-answer extracted for ≥90% of Core; 30 hand-checked.
 
-### T2.10 — Vi-ExamMath solver verification
-- **Goal:** `scripts/verify_exam.py` — EN round-trip → formalize (SMT/SymPy) → check the official
-  answer. Label `verified` / `unverified`, and flag likely OCR errors.
+### T2.10 — Vi-ExamMath Core solver verification
+- **Goal:** `vi_exam/verify.py` — EN round-trip → formalize (SMT/SymPy) → check the official answer +
+  uniqueness gate (T1.1). Label `verified` / `unverified`; flag likely scrape/OCR errors.
 - **Depends-on:** T2.9, T1.1
 - **Output:** `data/vi_exam/verified.jsonl` + `results/exam_verify_report.md` (rate + error taxonomy —
-  this is a C1 result).
+  a C1 result).
 
 ---
 
@@ -322,13 +331,14 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** α reported (target ≥ 0.4 after calibration); per-arm means with CIs.
 
 ### T3.3 — Vi-ExamMath human QA — **[HUMAN: 2 annotators]**
-- **Goal:** 2 annotators independently check each item's answer + well-posedness; report Cohen κ;
-  adjudicate disagreements.
+- **Goal:** 2 annotators independently re-derive each item's answer + rate well-posedness; report
+  Cohen κ; adjudicate disagreements. Core (solver + human) first; Hard (human only) if time.
 - **Depends-on:** T2.10
-- **Output:** `data/vi_exam/final.jsonl` (**target 600, minimum 400**), splits `verified` /
-  `human-only`; `data/vi_exam/DATACARD.md` (sources, per-item license, stratification, contamination
-  argument).
-- **Acceptance:** κ reported; no item structurally duplicates a training item; datacard complete.
+- **Output:** `data/vi_exam/final.jsonl` — **Core target 400 (min 300)**, splits `verified` (solver+human)
+  / `human-only`; **Hard target 200 (optional)**; `data/vi_exam/DATACARD.md` (sources, per-item license,
+  grade-band/topic/answer-type stratification, contamination argument).
+- **Acceptance:** κ reported; no item structurally duplicates a training item; datacard complete;
+  discriminativeness gate checked after T4.5 leaderboard.
 
 ### T3.4 — Template-perturbable subset  *(if time)*
 - **Goal:** ~50 GSM-Symbolic-style templates (typed slots + constraints) from Vi-ExamMath items;
@@ -444,9 +454,9 @@ RESULTS_PROVENANCE.md
 | ID | What | When |
 |---|---|---|
 | T0.6 | Provide **free** `.env` keys: NVIDIA_API_KEY (generator) + DEEPSEEK_API_KEY (fallback+solver) + optional GROQ_API_KEY (3rd solver) | Sprint 0 |
-| T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
+| T1.8 | Ask advisor re official Sở GD-ĐT Hà Nội channels; confirm public-release license line | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
-| T2.9 | Assist exam collection / OCR review | Sprint 2 |
+| T2.9 | Spot-check segmented triples (30) for fidelity | Sprint 2 |
 | T3.2 | Recruit + manage ≥3 MOS raters | Sprint 3 |
 | T3.3 | Serve as 1 of 2 Vi-ExamMath QA annotators; recruit the other | Sprint 3 |
 | T3.1 | **[GATE]** Does the S1-vs-S2 finding hold on the S2-alt (weaker-generator) subset? If it flips, the finding is generator-dependent — report that. | Sprint 3 |
@@ -466,7 +476,8 @@ RESULTS_PROVENANCE.md
 | Risk | Mitigation |
 |---|---|
 | Symbolic pipeline fixes (Sprint 1) take longer than 2 weeks | T2.1 gate; O1/O2 are optional for v1 — `constant_sub` + leakage filter + round-trip alone give a valid S1 |
-| Exam OCR quality too low | T2.10 verification is the filter; report the rate; fall back to fewer, hand-transcribed items to hit the 400 minimum |
+| Scrape/segment quality too low | most sources are text/LaTeX/Word (prototype: ~62% figure-free, clean LaTeX); T2.10 solver-verify + T3.3 human QA are the filters; hand-transcribe a residual to hit the Core-300 minimum |
+| Vi-ExamMath Core not discriminative | discriminativeness gate after T4.5; rebalance grade-band mix; lean paper on C1 + C3 |
 | Can't recruit 3 MOS raters | drop to 2 + report κ with the caveat; MOS is one panel metric among many |
 | Generation volume vs 40 RPM | ~15–30k items ≈ 1–3 h wall-clock at 40 RPM; resumable checkpoint; optional 5–10-item batching; fallback DeepSeek direct → Groq |
 | Grid exceeds one Modal cycle | the ~30 0.6B runs are free on the laptop; only ~25 1.7B runs hit L4 (~$6–10); cut English control to 2 arms, non-primary seeds to 2, drop S6 |

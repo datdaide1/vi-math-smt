@@ -27,12 +27,15 @@ augmentation strategies cleanly for that setting.
 
 | # | Contribution | Publication floor | Risk |
 |---|---|---|---|
-| **C1** | **Vi-ExamMath** — a contamination-controlled Vietnamese math-reasoning benchmark built from *real* recent entrance-exam problems (human-authored, solver-verified, human-QA'd), plus a baseline leaderboard of existing models. | **Q3 (cannot fail):** if the benchmark is built, it is publishable as a resource paper (VLSP / LREC / RIVF / KSE). | low |
-| **C2** | **A controlled comparison** of symbolic-verified vs. strong-LLM vs. unverified data augmentation for supervised fine-tuning of small models, evaluated on the contamination-controlled benchmark. | **Q2 upside (Findings/COLING)** if the finding is clear or surprising. | medium — depends on results |
-| **C3** | **A failure analysis** of the naive symbolic-mutation approach (answer-expression perturbation), diagnosing why it degrades data quality, plus the fixes used in C2's symbolic arm. | supporting section | low |
+| **C1** | **Vi-ExamMath** — a contamination-controlled Vietnamese math benchmark from *real* school + competition exams (grade-10 entrance / HSG / chuyên), human-authored, solver-verified, human-QA'd, spanning primary → competition; plus a baseline leaderboard. Two splits: **Core** (numeric, solver+human, the required deliverable) and **Hard** (competition, human-only, optional). | **Q3 (high probability, conditional):** publishable as a resource paper (VLSP / LREC / RIVF / KSE) **if** Core ≥ 300, the solver-verification rate + error taxonomy is a reportable finding, and related work differentiates from V-Math / Vi-S1K. | low–medium |
+| **C2** | **A controlled comparison** of symbolic-verified vs. strong-LLM vs. unverified data augmentation for supervised fine-tuning of small models, evaluated on the contamination-controlled benchmark. | **Q2 upside (Findings/COLING)** if the finding is clear or surprising. Downstream signal is fragile at sub-2B — the size-independent **data-quality panel + cost comparison** are the fallback headline. | medium — depends on results |
+| **C3** | **A failure analysis** of the naive symbolic-mutation approach (answer-expression perturbation), diagnosing why it degrades data quality, plus the fixes used in C2's symbolic arm. | **The most robust piece** — all data in hand, zero new compute, no benchmark/training dependency. C1 + C3 alone is a coherent Findings-tier submission if C2 underdelivers. | low |
 
-**Everything is free.** Data collection is OCR + human QA. The augmentation generator is
-**`DeepSeek V4-Pro`** (`seed=42`) on **NVIDIA NIM's free tier** — the researcher's account is
+**Everything is free.** Data collection is web-scraping + normalization + human QA (OCR only as a
+fallback for scanned PDFs). The augmentation generator is **`deepseek-ai/deepseek-v4-pro-0813`**
+(pinned model + access date recorded in the datacard; `seed=42` + fixed sampling params — note hosted
+endpoints are not bit-reproducible, so the **released dataset + prompts + commit hash** are the unit of
+reproducibility, not the API call) on **NVIDIA NIM's free tier** — the researcher's account is
 **rate-limit-only (40 RPM, no credit cap)**. The whole ~15–30k-item corpus is ~1–2 hours of wall-clock.
 Fine-tuning is Qwen3-0.6B-Base on the researcher's own laptop (4 GB RTX 3050 Ti, QLoRA) + Qwen3-1.7B-Base
 on Modal L4 for ~$6 of the free $30/month credit. No Kaggle.
@@ -107,12 +110,27 @@ arXiv:2505.13903).
 
 There is **no** verified/symbolic math-data-augmentation study for any low-resource language.
 Multilingual math work (MathOctopus / MSVAMP, arXiv:2310.20246; African-languages math, arXiv:2505.19848)
-is **translate-train** only. MGSM (arXiv:2210.03057) has **no Vietnamese split**. The closest Vietnamese
-neighbor, Vi-S1K / Vi-Elementary-Bench (arXiv:2604.17794, VNU-UET), is a **translation** of s1K.
+is **translate-train** only. MGSM (arXiv:2210.03057) has **no Vietnamese split**.
 
-Vietnamese also has **no native, free-form, contamination-controlled math benchmark**: VNHSGE
-(arXiv:2305.12199) is multiple-choice and static; V-Math / NHSGMEs (arXiv:2509.12251) is exam-format;
-VMLU is multiple-choice under a data agreement.
+**Vietnamese math benchmarks that already exist** — the space is no longer empty, so C1 must be positioned
+against them, not claimed as "the first":
+
+| Benchmark | Level / format | Gap it leaves |
+|---|---|---|
+| **VNHSGE** (arXiv:2305.12199) | national high-school-graduation (THPT QG), 9 subjects, ~19k **MCQ**, 2019–2023 | multiple-choice, static, **now contaminated** (3+ years old) |
+| **V-Math / NHSGMEs** (arXiv:2509.12251, Sep 2025) | THPT QG math, MCQ + free-response, human worked solutions, agentic solver | THPT-only; **no solver certificate**; no per-item contamination provenance |
+| **Vi-S1K / Vi-Elementary-Bench** (arXiv:2604.17794, VNU) | **elementary** math, 1,010 items, Qwen3-1.7B test-time-scaling | translation-derived reasoning traces; elementary-only; same group + same base model as this thesis (**scoop risk — monitor**) |
+| **THPT-Ladder / "Partial-Credit Gap"** (arXiv:2608.18336, 2026) | 632 items, 21 official THPT exams, 11 subjects, graded on the 2025 marking scheme | true/false format, THPT-only |
+| **VMLU**, **VMMU/ViExam** (arXiv:2508.13680) | MCQ under data agreement / multimodal exam QA | MCQ or multimodal, not free-form numeric math |
+
+**What no Vietnamese benchmark does, and Vi-ExamMath will:** (i) build from **grade-10 entrance exams
+(`đề thi vào 10`) and competition papers (HSG / trường chuyên)** — nobody has turned these into an LLM
+benchmark; (ii) span **primary → lower-secondary → grade-10 → competition** in one difficulty ladder,
+filling the gap *between* Vi-Elementary-Bench (primary) and V-Math (THPT); (iii) attach a **solver
+verification certificate** and **per-item provenance** (year / province / exam / license) to argue
+against pretraining inclusion. It stays **math-only** — "diversity" means topic and grade band, not
+extra school subjects (physics/chemistry break solver verification and have no link to the augmentation
+study).
 
 ### 1.5 The evaluation problem
 
@@ -200,55 +218,107 @@ the training data" (the SMT is dropped before training).
 
 ### 4.1 Design goals
 
-A **native**, **free-form**, **solver-verified**, **contamination-controlled** Vietnamese math benchmark.
-"Contamination-controlled" = problems are human-authored, recent (2023–2025), from specific provincial
-exams, and each item records enough provenance to argue it is unlikely to be in a model's pretraining.
+A **native**, **free-form**, **solver-verified**, **contamination-controlled** Vietnamese math benchmark
+built from real Vietnamese school and competition exams. "Contamination-controlled" = every problem is
+human-authored, drawn from a dated public exam, and carries provenance (year / province / exam / license)
+sufficient to argue it post-dates or is absent from a given model's pretraining. It is **math-only**;
+"diversity" = topic (arithmetic, algebra, functions, number theory, combinatorics/probability,
+computational geometry) and **grade band** (primary → lower-secondary → grade-10 entrance → competition).
 
-### 4.2 Sources (priority order)
+### 4.2 Two tiers
 
-1. **Grade-10 entrance exams (`đề thi tuyển sinh lớp 10`), free-response, algebra/arithmetic sections**,
-   years 2023–2025, specific provinces. Official answer keys + scoring rubrics are published by
-   provincial Departments of Education (state documents — usable for research with attribution).
-2. National high-school exam (`THPT QG`) algebra items, 2024–2025; specialized-school (`chuyên`) entrance
-   exams.
+The benchmark has two splits with **different verification standards and different roles**:
 
-### 4.3 Construction pipeline (free)
+| Split | Content | Answer type | Verification | Role |
+|---|---|---|---|---|
+| **Core** | primary + lower-secondary + grade-10 entrance (`đề thi vào 10`), computational items | **numeric** (integer / clean fraction / short radical / decimal-with-unit) | **solver (Z3 / SymPy) + 2 human annotators** | the **C2 downstream instrument** + the guaranteed resource; scope matches the augmentation study (§5.2) |
+| **Hard** *(stretch)* | HSG (`học sinh giỏi` grade 9), `trường chuyên` entrance, selected THPT items | numeric **or** closed-form expression | **2 human annotators** (no solver) | difficulty ceiling; leaderboard only; **not** in any C2 statistic |
 
-1. Collect PDFs from public provincial-department repositories. → normalize.
-2. **OCR** (MathPix free tier, or an open Vietnamese math-OCR model) → LaTeX normalization.
-3. Segment into `(problem, reference_solution, final_answer)` triples. Filter to: numeric final answer,
-   algebra/arithmetic scope.
-4. **Structural de-duplication** (across provinces/years, and against the S1/S2 training pool).
-5. **Solver verification of a core subset**: translate the Vietnamese problem to English for the formal
-   layer only (LLMs are more stable formalizing from English; the *content* stays Vietnamese-authored),
-   formalize to SMT/SymPy, check the official answer. This simultaneously catches OCR errors and yields
-   a `solver-verified` label. Report the verification rate and an error taxonomy.
-6. **Human QA of the entire benchmark**: two annotators (researcher + one other — classmate or advisor),
-   independent answer + well-posedness check, report inter-annotator agreement (Cohen's κ).
-7. *(if time)* a **template-perturbable subset** (~50 GSM-Symbolic-style templates with typed slots and
-   constraints) for a robustness slice.
+Only **Core** is required for the paper. Hard is built if the schedule allows and strengthens C1 as a
+standalone resource.
 
-### 4.4 Deliverable
+### 4.3 Sources — web-first, OCR only as fallback
 
-Target **600 items** (minimum viable **400**), stratified by grade band / topic / difficulty. Splits:
-`verified` (solver-checked) and `human-only`; plus the optional `template` subset. Per-item metadata:
-source, year, province, license.
+Vietnamese exam content is published as **selectable text with MathJax `\(…\)` LaTeX** (news outlets,
+`loigiaihay.com`) or as **Word/LaTeX files** (`toanmath.com`), so the pipeline is a **scraper +
+normalizer**, not OCR. OCR (MathPix free tier / an open Vietnamese math-OCR model) runs only on
+scanned-PDF sources with no text layer.
 
-**Baseline leaderboard** (every row labeled with parameter count — this is a leaderboard, not a
-controlled comparison, so mixed sizes are fine; all scored through the unified `math_verify` harness):
+Priority order (Hà Nội first — the Hà Nội Department of Education publishes clean official
+exam + answer-key + rubric PDFs every year and the press covers them densely, giving the sharpest
+contamination timeline; other provinces are added for the cross-province de-duplication story and for
+volume):
+
+1. **Grade-10 entrance exams (`đề thi tuyển sinh lớp 10`)**, Hà Nội 2017–2026, then ~10–15 other
+   provinces (TP.HCM, Đà Nẵng, Hải Phòng, Nam Định, Nghệ An, …), recent years. Official answer keys +
+   rubrics from the provincial Departments of Education (state documents, usable with attribution).
+2. **Competition papers** (Hard split): Hà Nội city-level HSG grade 9; `chuyên` entrance (Hà Nội –
+   Amsterdam, Chuyên KHTN, Chuyên Sư phạm, Chuyên Nguyễn Huệ); selected THPT QG items.
+3. **Primary / lower-secondary** computational items (Core, easy band): Violympic / provincial primary
+   exams, textbook end-of-chapter problems with published solutions.
+
+Concrete channels: `hanoi.edu.vn` (official); VnExpress / VietnamNet / Tuổi Trẻ exam+solution articles
+(dated, HTML+LaTeX); `loigiaihay.com` (HTML+LaTeX, ~10 yr Hà Nội + ~40 provinces, free, no paywall);
+`thcs.toanmath.com` / `toanmath.com` (PDF **+ Word**, hundreds of exams); `diendantoanhoc.org`
+(community LaTeX of HSG/olympiad). See `data/vi_exam/SOURCES.md` for per-source coverage + license
+notes.
+
+### 4.4 Construction pipeline
+
+1. **Scrape** each source → raw `(exam_html_or_docx, source, year, province, exam_name, url, license)`.
+2. **Normalize** → text with LaTeX preserved; Word→LaTeX via `pandoc` / MathType export; flag every
+   item whose statement contains a figure (`<img>`) — those go to a `figure` bucket (Hard, or dropped).
+3. **Segment** into `(problem, reference_solution, final_answer)` triples at the **sub-part** level
+   (`Câu II.3`, `Bài 3b`), not the `Câu` level.
+4. **Scope filter** for Core: numeric final answer; arithmetic / algebra / functions; no figure
+   dependency. (Geometry-with-figure, "chứng minh", open-ended → Hard or out.)
+5. **Structural de-duplication**: across provinces/years, and against the S1/S2/S5 training pools
+   (n-gram + embedding; §6.4).
+6. **Solver verification** (Core): EN round-trip for the formal layer only (LLMs formalize more stably
+   from English; the *content* stays Vietnamese-authored) → SMT/SymPy → check the official answer +
+   the uniqueness gate (§6.1). This simultaneously catches scrape/OCR errors and yields the
+   `solver-verified` label. Report the verification rate and an error taxonomy (**a C1 result**).
+7. **Human QA** (both splits): 2 annotators (researcher + 1 other) independently re-derive the answer
+   and rate well-posedness; report Cohen's κ; adjudicate disagreements.
+8. *(if time)* **template-perturbable subset**: ~50 GSM-Symbolic-style templates (typed slots +
+   constraints) built from Core items, for a robustness slice.
+
+### 4.5 Measured feasibility (prototype, Sept 2026)
+
+A prototype scraper over `loigiaihay.com` (one listing page) pulled **13 exams** (Hà Nội grade-10
+2017–2026 + 4 provinces): **96** `Câu`-level segments, **72** with full solution text, **60** figure-free,
+**58** with a regex-extractable final answer. At sub-part granularity that is ≈ 3× more items. One Hà Nội
+grade-10 exam ≈ 5 `Câu` ≈ 15–20 sub-items ≈ 8–12 figure-free numeric ones; **10 years of Hà Nội alone
+≈ 80–120 Core items**, and `loigiaihay.com` covers ~40 provinces. **Reaching the Core-400 target
+requires the multi-province + multi-level spread — a single exam family is not enough.** Extraction
+quality is high (LaTeX intact; word problems and linear systems — e.g. "ba lô + máy tính, tổng 885
+nghìn, giảm 20%/25%, phải trả 682 nghìn" — come out solver-ready).
+
+### 4.6 Deliverable
+
+**Core: target 400 items** (minimum 300); **Hard: target 200** (optional). Core stratified by grade band
+/ topic / answer type; splits `verified` (solver + human) and `human-only`. Per-item metadata: source,
+year, province, exam name, URL, license, grade band, topic, answer type, solver-status, κ-status.
+`data/vi_exam/DATACARD.md` records the full contamination argument.
+
+**Baseline leaderboard** (every row labeled with parameter count — a leaderboard, not a controlled
+comparison, so mixed sizes are fine; all scored through the unified `eval/math_verify.py`):
 - *≤1.7B — we run these ourselves (0.6B on the laptop, ≥1B on Modal L4 / a free endpoint, vLLM):*
   **Qwen3-0.6B**, **Qwen3-1.7B**, **Qwen2.5-1.5B**, **Qwen2.5-Math-1.5B**,
-  **DeepSeek-R1-Distill-Qwen-1.5B** (the meaningful strong small reference), **Sailor2-1B** (SEA-adapted,
-  Vietnamese in pretraining).
-- *larger open (>1.7B) — NOT run locally:* SeaLLMs-v3-7B, Vistral-7B, Qwen3-4B/8B, Qwen2.5-Math-7B —
-  obtained via a **free hosted endpoint** (OpenRouter free tier, HF Inference Providers free tier, the
-  model's own free API) or, failing that, a **published number** on a comparable Vietnamese benchmark
-  with an explicit caveat. Optional and non-blocking for the paper.
+  **DeepSeek-R1-Distill-Qwen-1.5B** (the meaningful strong small reference), **Sailor2-1B** (SEA-adapted).
+- *larger open (>1.7B) — NOT run locally:* SeaLLMs-v3-7B, Vistral-7B, Qwen3-4B/8B, Qwen2.5-Math-7B — via
+  a **free hosted endpoint** (OpenRouter / HF Inference Providers free tier / the model's own free API)
+  or a **published number** with an explicit caveat. Optional, non-blocking.
 - *API (free):* `deepseek-v4-pro` via NVIDIA NIM.
-- *historical, optional, no GPU:* WizardMath-7B — re-score the **existing** prediction files in
-  `data/result/wizardMATH/` through `math_verify` (CPU). Not re-run.
+- *historical, optional, no GPU:* WizardMath-7B — re-score the **existing** `data/result/wizardMATH/`
+  predictions through `math_verify` (CPU). Not re-run.
 
-**Vi-ExamMath on its own is a submittable Q3 resource paper.**
+**Discriminativeness gate:** after the leaderboard, check that Core actually separates models — if every
+≤1.7B model clusters within ~5 points, or the frontier API model scores > 90%, Core is too easy/hard to
+serve as the C2 instrument → rebalance the grade-band mix before the training grid, and lean the paper
+on C1 + C3.
+
+**Vi-ExamMath Core on its own is a submittable Q3 resource paper.**
 
 ---
 
@@ -289,8 +359,10 @@ faithful there — see N2). This also matches Vi-ExamMath's scope.
   good); contamination overlap (n-gram + embedding) against every test set; for symbolic arms, the
   "genuinely derived" fraction from the uniqueness gate.
 - **Downstream utility:** SFT Qwen3-1.7B-Base and Qwen3-0.6B-Base (see §6.3) → evaluate on
-  **Vi-ExamMath** (primary), Vi-GSM8K (secondary, links to literature), a GSM-Plus-style Vietnamese
-  robustness slice, and the Vi-ExamMath `template` subset.
+  **Vi-ExamMath Core** and **Vi-GSM8K** (co-primary — Vi-GSM8K is where sub-2B models are most likely to
+  show separable signal and it links to the literature; Vi-ExamMath Core is the contamination-clean
+  instrument), a GSM-Plus-style Vietnamese robustness slice, and the Vi-ExamMath `template` subset. The
+  `Hard` split is leaderboard-only, never a C2 number.
 
 ### 5.5 Analysis
 
@@ -495,7 +567,7 @@ API for frozen inference; Modal L4 for the 1.7B fine-tunes only).
 
 | Task | Where | Cost |
 |---|---|---|
-| C1 OCR + normalization | MathPix free tier / open OCR model + laptop | $0 |
+| C1 scrape + normalize (Word/HTML→LaTeX) — OCR only for scanned PDFs | laptop + MathPix free tier (fallback) | $0 |
 | Solver verification (Z3 / SymPy) + the whole data-quality panel + all analysis | **laptop CPU** | $0 |
 | Generation (S1 informalization + S2/S3) — **one fixed model** | **`deepseek-v4-pro-0813`** (`seed=42`) via NVIDIA NIM — 40 RPM, **no credit cap**; N ≈ 8–10k/arm; ~1–3 h total | $0 |
 | Round-trip / self-consistency solver check | **SymPy (laptop)** + `deepseek-v4-pro` (NIM) + `llama-3.1-8b-instruct` (NIM); low volume | $0 |
@@ -539,7 +611,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | Phase | Duration | Work |
 |---|---|---|
 | **P0** | ~1 week | New repo structure; `math_verify` + eval harness; Unsloth-SFT + vLLM templates; **wire the DeepSeek-V4-Pro / NIM generation client** (`seed=42`, 40 RPM limiter, resumable); anchor numbers: zero-shot Qwen3-1.7B-Base + DeepSeek-R1-Distill-Qwen-1.5B on Vi-GSM8K (+ free re-score of existing WizardMath predictions). |
-| **P1** | 3–4 weeks *(parallel from P0)* | **C1: collect, OCR, verify, human-QA Vi-ExamMath.** |
+| **P1** | 3–4 weeks *(parallel from P0)* | **C1: scrape + normalize + segment + scope-filter + solver-verify + human-QA Vi-ExamMath Core (Hà Nội-first, multi-province, multi-level); Hard split if time.** |
 | **P2** | 1.5–2 weeks | Fix the symbolic pipeline (§6.1); build the S1 dataset. |
 | **P3** | 1–1.5 weeks | Build S2/S3/S4 datasets (LLM generation, paced against rate limits); run the full data-quality panel. |
 | **P4** | 1.5–2 weeks | Training grid (~55 runs): 0.6B half on the laptop, 1.7B half on Modal L4 (~$6–10, one cycle) + vLLM inference. |
@@ -554,12 +626,14 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 |---|---|
 | Method novelty is thin (symbolic synthesis is a crowded space in EN) | The paper is framed as a **comparison + resource + analysis**, not a new method. C1 is a standalone contribution. The 2026 question ("is symbolic still worth it") is timely and unaddressed. |
 | C2's finding is boring ("LLM wins, as expected") | Still publishable as the first clean measurement; sharpen with cost/coverage/robustness axes where symbolic may still win. And C1 carries the submission regardless. |
-| OCR of Vietnamese math is error-prone | The solver-verification step is the filter; report the OCR error rate as a finding. Human QA covers the benchmark. |
-| Sub-2B bases → noisy downstream signal | The regime (sub-2B, low-resource, free compute) is stated as deliberate scope, not a limitation. Headline results are the **data-quality panel** (measured directly, size-independent) and the **cost comparison**; downstream is one axis, reported with CIs, across **two sizes** (0.6B + 1.7B) so the arm ranking's size-stability is itself a result. |
+| Scrape/normalization errors in Vietnamese math (LaTeX, MathType, figure loss) | Most sources are text/LaTeX/Word, not scans → OCR is the fallback, not the path. Solver verification + human QA are the filters; report the error rate as a C1 finding. |
+| A neighbouring group (V-Math THPT, Vi-S1K elementary — **same VNU dept, same Qwen3-1.7B base**) publishes something overlapping | Vi-ExamMath's niche (grade-10 entrance + HSG, solver-verified, contamination provenance, primary→competition ladder) is distinct from both. Monitor arXiv weekly; differentiate explicitly in related work; the symbolic-vs-LLM comparison (C2) is theirs to lose, not ours. |
+| Vi-ExamMath Core too small (single exam family ≈ 80–120 items) | Multi-province (~40 available on `loigiaihay.com`) + multi-level (primary → grade-10) spread; prototype confirms ~62% figure-free yield. Minimum 300; hand-transcribe a residual if needed. |
+| Vi-ExamMath Core not discriminative (models cluster / saturate) | Discriminativeness gate after the leaderboard (§4.6); rebalance grade-band mix; fall back to C1 + C3. |
+| Sub-2B bases → noisy downstream signal | The regime (sub-2B, low-resource, free compute) is stated as deliberate scope, not a limitation. Headline results are the **data-quality panel** (measured directly, size-independent) and the **cost comparison**; downstream is one axis (co-primary Vi-GSM8K + Vi-ExamMath Core), reported with CIs, across **two sizes** (0.6B + 1.7B) so the arm ranking's size-stability is itself a result. If all downstream CIs overlap, the paper leans on C1 + C3 + the panel. |
 | $30/month Modal is not enough | The 0.6B half of the grid runs on the laptop for free; only the ~25 1.7B runs need L4 (~$6–10). Cut the English control to 2 arms and non-primary seeds to 2 if the cycle is tight. |
 | NVIDIA changes the NIM free tier mid-project | run generation **early** (Sprint 1); fallback chain NIM → DeepSeek direct API (5M-token grant) → Groq (free). All hosted — no GPU fallback needed. |
 | Exam-source licensing for the public release | Release only items from official public exams, with per-item provenance and a conservative non-commercial license; textbook-sourced items (if any) stay out of the release. |
-| A nearby group (e.g. VNU-UET Vi-S1K authors) publishes something overlapping | The contamination-controlled *native-exam* benchmark and the symbolic-vs-LLM comparison are distinct from their translation-based work; monitor arXiv; differentiate explicitly in related work. |
 
 ---
 
@@ -572,9 +646,12 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 3. **"Strong LLM" for S2/S3:** `deepseek-v4-pro-0813` via NVIDIA NIM (`seed=42`, 40 RPM, no credit cap).
    Fallback → DeepSeek direct → Groq (all hosted). S2-alt *weaker-generator* subset =
    `meta/llama-3.1-8b-instruct` via NIM (§6.2).
-4. **Reference arms:** S5 = translate-train (`metaMathQA-vi`) is a first-class arm (existing best
-   practice); DeepSeek-R1-Distill-Qwen-1.5B is a zero-shot reference on the leaderboard.
-5. **Vi-ExamMath size:** target 600, minimum 400.
+4. **Reference arms:** S5 = translate-train is a **baseline band, not a controlled arm** (its seed
+   coverage + transformation family differ from S0–S4 — match by N only, report separately). Primary
+   source `metaMathQA-vi` (already have); optional S5b = `OpenMathInstruct-1-50k-vi` (5CD-AI on HF,
+   different solution family). DeepSeek-R1-Distill-Qwen-1.5B is a zero-shot leaderboard reference.
+5. **Vi-ExamMath size:** Core target 400 (min 300); Hard target 200 (optional). Math-only; multi-level
+   (primary → grade-10 → competition); Hà Nội-first, ~10–15 provinces.
 6. **Venue:** submit **C1 alone** to a Q3 venue early (VLSP 2026, deadline ~Aug–Sep; or LREC / RIVF /
    KSE 2027). Submit the **full paper (C1+C2+C3)** to an ARR cycle in Q1–Q2 2027 → COLING / EMNLP
    Findings. Two outputs reduce risk. Do not use TACL unless it is the sole first submission (9-month
@@ -608,6 +685,18 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 - The advisor (Dr. Ha My Linh) is aware of the true state and this direction.
 - Whether C2 concludes "symbolic no longer earns its keep" or "symbolic still wins for X", both are
   reported faithfully.
+- **Publication-tier realism.** The "Q3 cannot fail" of the original framing is now "Q3 high
+  probability, conditional" — V-Math (arXiv:2509.12251) and Vi-S1K (arXiv:2604.17794) have narrowed the
+  gap. What still clears a Vietnamese resource venue: the **solver-verification certificate** (no VN
+  benchmark has one), the **grade-10-entrance / HSG sources** (untouched), and **per-item contamination
+  provenance**. The N2 problem applies to the benchmark too — grade-10 exam sub-parts are ~40–50%
+  solver-numeric-friendly (rút gọn biểu thức, chứng minh, GTNN, hình học are not) → the `verified` split
+  may be 200–300 and the rest `human-only`; that is acceptable for a resource paper but the
+  solver-verified headline covers only part of Core. **Decision gate (P4/T5.5):** if the sub-2B training
+  grid returns overlapping CIs, submit **C1 + C3** (benchmark + failure analysis + data-quality panel)
+  as the paper and demote C2 to a measured sub-result — do not stretch a null C2 into a headline.
+- **Speed is a risk mitigation.** The neighbouring VNU group could publish a grade-10 or entrance-exam
+  benchmark. Submit C1 to VLSP 2026 as early as the benchmark allows.
 
 ---
 
@@ -629,9 +718,10 @@ evaluation, analysis, and writing do not compress. Phases overlap.
    hand.
 5. Prototype the uniqueness gate on 500 base SMT programs; measure the genuinely-derived rate by
    subject.
-6. Survey grade-10 entrance-exam sources (public provincial-department archives, recent years); OCR 20
-   exams; measure the triple-extraction rate and LaTeX quality. Ask the advisor about official channels
-   for obtaining exam sets.
+6. **C1 prototype (done Sept 2026):** scraper over `loigiaihay.com` → 13 exams, 96 `Câu`-level segments,
+   72 with solutions, 60 figure-free, 58 with regex final-answer; LaTeX extraction clean. Next: extend
+   to sub-part granularity + Word sources (`toanmath.com`) + HSG/chuyên; wire `data/vi_exam/SOURCES.md`;
+   ask the advisor about official Sở GD-ĐT Hà Nội channels; hand-check 30 extracted triples.
 
 ---
 
@@ -647,7 +737,8 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 - *VeriGeo* — 2026 — arXiv:2606.14176 (non-trivial verification)
 - Shi et al., *MGSM* — ICLR 2023 — arXiv:2210.03057 · Chen et al., *MathOctopus / MSVAMP* — EMNLP Findings 2024 — arXiv:2310.20246 (multilingual math)
 - *Improving Multilingual Math Reasoning for African Languages* — 2025 — arXiv:2505.19848 (low-resource precedent, translate-train)
-- Dao et al., *VNHSGE* — arXiv:2305.12199 · *V-Math / NHSGMEs* — arXiv:2509.12251 · Bui et al., *Vi-S1K / Vi-Elementary-Bench* — arXiv:2604.17794 (Vietnamese neighbors)
+- **Vietnamese benchmark neighbours (differentiate in related work):** Dao et al., *VNHSGE* — arXiv:2305.12199 (THPT QG, 9-subject MCQ) · *V-Math / NHSGMEs* — arXiv:2509.12251 (THPT QG math, MCQ+free-response, human solutions, agentic) · *Vi-S1K / Vi-Elementary-Bench* — arXiv:2604.17794 (VNU; elementary; Qwen3-1.7B test-time-scaling — closest competitor) · *Partial-Credit Gap / THPT-Ladder* — arXiv:2608.18336 (632 items, 21 official exams, 2025 marking scheme) · *VMMU / ViExam* — arXiv:2508.13680 (multimodal exam QA)
+- **Vietnamese math corpora (seed / S5):** 5CD-AI HF datasets — `Vietnamese-395k-meta-math-MetaMathQA`, `Vietnamese-nvidia-OpenMathInstruct-1-50k`, `Vietnamese-microsoft-orca-math-200k` (all machine-translated) · Zalo AI 2023 Elementary Math · `hllj/vi_grade_school_math_mcq`
 - *VLSP 2025 Numerical Reasoning QA (ViNumQA)* — ACL Anthology 2025.vlsp-1.25 (Plan B venue)
 - Yang et al., *Qwen2.5-Math* — 2024 — arXiv:2409.12122 · Dettmers et al., *QLoRA* — NeurIPS 2023 — arXiv:2305.14314
 - *Qwen3 Technical Report* — 2025 — arXiv:2505.09388 (Qwen3-0.6B / 1.7B base models, 119 languages incl. Vietnamese) · *DeepSeek-R1* — Nature 2025 / arXiv:2501.12948 (R1-Distill-Qwen-1.5B)
