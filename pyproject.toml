@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vi-math-verified-aug"
+version = "0.0.1"
+description = "Symbolic vs. LLM math-data augmentation for small models + the Vi-ExamMath benchmark"
+requires-python = ">=3.11"
+dependencies = [
+    "z3-solver",
+    "sympy",
+    "requests",
+    "beautifulsoup4",
+    "lxml",
+    "openai",
+    "python-dotenv",
+    "numpy",
+    "pandas",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+# heavy ML stack (SFT / inference) is installed separately per RESEARCH_PLAN §6.3:
+#   unsloth, trl, peft, accelerate, bitsandbytes, transformers, torch, vllm, lighteval
+
+[tool.setuptools.packages.find]
+include = ["vi_math_verified_aug*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

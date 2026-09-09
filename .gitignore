@@ -2,6 +2,12 @@
 # from the pipeline). See README.md for how to populate this locally.
 data/
 
+# Results — run artifacts, predictions, plots (regenerable). Tracked prose
+# deliverables live under docs/ and results/*.md instead.
+results/**
+!results/**/
+!results/**/*.md
+
 # Secrets
 .env
 .env.*
@@ -16,6 +22,10 @@ __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
+.venv/
+*.egg-info/
+.pytest_cache/
+.coverage
 
 # OS
 .DS_Store

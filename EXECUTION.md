@@ -49,6 +49,23 @@ RESULTS_PROVENANCE.md
 
 ---
 
+## Progress tracker
+
+Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
+
+| | Sprint 0 | | Sprint 1 |
+|---|---|---|---|
+| `[x]` | T0.1 repo skeleton | `[ ]` | T1.1 uniqueness gate + audit |
+| `[x]` | T0.2 `eval/math_verify.py` | `[ ]` | T1.2 M0 constant substitution |
+| `[ ]` | T0.3 `eval/run_eval.py` | `[ ]` | T1.3 leakage-free informalization |
+| `[ ]` | T0.4 `scripts/sft.py` | `[ ]` | T1.4 leakage filter |
+| `[ ]` | T0.5 `modal_app.py` | `[ ]` | T1.5 round-trip gate |
+| `[~]` | T0.6 LLM clients (key in `.env`, smoke-tested; full bench pending) | `[ ]` | T1.6 O1 + O2 operators |
+| `[ ]` | T0.7 anchor numbers | `[ ]` | T1.7 S1 pipeline runner |
+| `[ ]` | T0.8 data inventory | `[~]` | T1.8 exam scraper (prototype done) |
+
+---
+
 ## Capacity & critical path
 
 - **Team:** 1 researcher + AI coding assistants.
@@ -77,12 +94,18 @@ RESULTS_PROVENANCE.md
 
 ## SPRINT 0 — Foundation
 
-### T0.1 — Repo skeleton
+### T0.1 — Repo skeleton  ✅ done (feat/sprint0, 2026-09-09)
 - **Goal:** create the package layout above with a stub in each module and a top `README` linking
   `RESEARCH_PLAN.md` + this file.
 - **Depends-on:** —
 - **Output:** committed skeleton.
 - **Acceptance:** `python -c "import vi_math_verified_aug"` works; `pytest` collects 0 tests without error.
+- **Done:** `vi_math_verified_aug/` package (34 stub modules, subpackage `__init__`s), `pyproject.toml`
+  (editable install + `[dev]`), `.venv` (py 3.11), `tests/conftest.py`, `RESULTS_PROVENANCE.md`,
+  `docs/` for tracked prose. `.gitignore` += `.venv/ results/** *.egg-info .pytest_cache`. Verified:
+  `import vi_math_verified_aug` → 0.0.1; `pytest` → "no tests ran", exit 0. **Layout note:** generated
+  artifacts go to gitignored `/data/` + `/results/`; tracked prose deliverables (INVENTORY, SOURCES,
+  DATACARD) go to `docs/` (repo-root `data/` is fully gitignored).
 
 ### T0.2 — `eval/math_verify.py`
 - **Goal:** one function `is_correct(pred: str, gold: str) -> bool` = answer normalization + SymPy
