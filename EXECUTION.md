@@ -13,8 +13,8 @@
    - **Generation = `deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM (`seed=42`, 40 RPM, no credit
      cap), nothing else.** One fixed model. Optional batching for speed.
    - **Fine-tuning = `Qwen3-0.6B-Base` / `Qwen3-1.7B-Base` only.** No model >1.7B is ever fine-tuned.
-     Frozen larger models are run *for inference only*: the S2-alt subset (Gemini / `Qwen3-8B` on
-     Kaggle free T4), the leaderboard (free endpoints / published numbers).
+     Frozen larger models are run *for inference only*: the S2-alt subset (`Qwen3-8B` on Kaggle free
+     T4), the leaderboard (free endpoints / published numbers).
    - No DPO / RL. SFT only.
    - **No paid services.** Modal $30/month is **training-only** — generation never touches it.
    - No `model.generate` loops for evaluation — always vLLM batched.
@@ -114,9 +114,8 @@ RESULTS_PROVENANCE.md
 
 ### T0.5 — `modal_app.py`
 - **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
-  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (Optional, for the S2-alt subset (weaker generator) /
-  Gemini fallback only: a vLLM server for a frozen `Qwen3-8B/14B` — but prefer running that on Kaggle
-  free T4, not Modal.) Region default, preemptible.
+  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (The S2-alt weaker-generator subset runs
+  a frozen `Qwen3-8B` — on Kaggle free T4, not Modal.) Region default, preemptible.
 - **Depends-on:** T0.4
 - **Output:** `modal_app.py` + `docs/MODAL.md` (setup; **do not add a payment method**; usage-limit
   stays $30; **Modal is training-only** — generation never touches it).
@@ -126,14 +125,14 @@ RESULTS_PROVENANCE.md
 - **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
   - `generate(...)` / `informalize(...)` → **`deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM only**
     (`integrate.api.nvidia.com`, OpenAI-compatible), `seed=42` + pinned `temperature`/`top_p`, a 40 RPM
-    limiter, resumable checkpoint. One fixed model. Fallback: DeepSeek direct API → Gemini Flash Lite
-    → local vLLM `Qwen3-8B` on Kaggle T4.
-  - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), Gemini Flash Lite (free),
-    a small local model} independently, for the round-trip self-consistency check. Backoff per provider.
+    limiter, resumable checkpoint. One fixed model. Fallback: DeepSeek direct API → local vLLM
+    `Qwen3-8B` on Kaggle T4.
+  - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), self-hosted
+    Qwen2.5-Math-1.5B, optional Groq Llama-3.3-70B (free)} independently, for the round-trip check.
 - **[HUMAN] first:** the NIM account (`@hus.edu.vn`) is already rate-limit-only (40 RPM, no credit
   cap) — just generate an `NVIDIA_API_KEY`. Optionally request a 200 RPM increase. Also register a
-  DeepSeek direct API key (fallback).
-- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: `NVIDIA_API_KEY` + `DEEPSEEK_API_KEY` (direct) + `GEMINI_API_KEYS` (comma-sep
+  DeepSeek direct API key (fallback) and optionally a Groq key (3rd solver).
+- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: `NVIDIA_API_KEY` + `DEEPSEEK_API_KEY` + optional `GROQ_API_KEY
   or `GEMINI_API_KEYS`) + `DEEPSEEK_API_KEY`. No paid keys.
 - **Output:** `llm_aug/clients.py` + `results/api_bench.json` (generation quality on 20 seeds; per
   solver accuracy/latency; **measured per-key RPD**).
@@ -256,7 +255,7 @@ RESULTS_PROVENANCE.md
 - **Goal:** `llm_aug/generate.py` — **`deepseek-v4-pro-0813` via NIM** (`seed=42`, 40 RPM, client from
   T0.6) generates, per seed, structurally-varied variants + step-by-step solutions + `\boxed{}`
   answers; diversity sampling; resumable checkpoint. Also generates the **S2-alt** subset (~1–2k) with
-  a weaker generator (Gemini / self-hosted Qwen3-8B).
+  a weaker generator (self-hosted Qwen3-8B).
 - **Depends-on:** T0.6
 - **Output:** module + `data/arms/_llm_raw.jsonl` (+ `_llm_raw_strong.jsonl`).
 - **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness; RPD budget check for the
@@ -441,7 +440,7 @@ RESULTS_PROVENANCE.md
 
 | ID | What | When |
 |---|---|---|
-| T0.6 | Provide **free** `.env` keys: NVIDIA_API_KEY (generator, 40 RPM) + DEEPSEEK_API_KEY (fallback+solver) + GEMINI_API_KEYS | Sprint 0 |
+| T0.6 | Provide **free** `.env` keys: NVIDIA_API_KEY (generator) + DEEPSEEK_API_KEY (fallback+solver) + optional GROQ_API_KEY (3rd solver) | Sprint 0 |
 | T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |

@@ -241,7 +241,7 @@ controlled comparison, so mixed sizes are fine; all scored through the unified `
   obtained via a **free hosted endpoint** (OpenRouter free tier, HF Inference Providers free tier, the
   model's own free API) or, failing that, a **published number** on a comparable Vietnamese benchmark
   with an explicit caveat. Optional and non-blocking for the paper.
-- *API (free):* Gemini 2.5 Flash, DeepSeek V4.
+- *API (free):* `deepseek-v4-pro` via NVIDIA NIM.
 - *historical, optional, no GPU:* WizardMath-7B — re-score the **existing** prediction files in
   `data/result/wizardMATH/` through `math_verify` (CPU). Not re-run.
 
@@ -310,13 +310,13 @@ robustness or hard items" / "both underperform no-aug at 1.5B" — each is a tim
 
 | # | Role | Model | Notes |
 |---|---|---|---|
-| **A** | **Generation** — S1 informalization (symbolic → Vietnamese text) + S2/S3 variant+solution generation | **`deepseek-ai/deepseek-v4-pro-0813`** via **NVIDIA NIM**, `seed=42` — researcher's account is **40 RPM, no credit cap** (confirmed). | **The one fixed generator** — a frontier model, reproducible. Optional: batch 5–10 items/call for speed. Fallback chain: NIM → DeepSeek direct API (5M-token grant) → Gemini Flash Lite → self-hosted Qwen3-8B (Kaggle T4). |
+| **A** | **Generation** — S1 informalization (symbolic → Vietnamese text) + S2/S3 variant+solution generation | **`deepseek-ai/deepseek-v4-pro-0813`** via **NVIDIA NIM**, `seed=42` — researcher's account is **40 RPM, no credit cap** (confirmed). | **The one fixed generator** — a frontier model, reproducible. Optional: batch 5–10 items/call for speed. Fallback chain: NIM → DeepSeek direct API (5M-token grant) → self-hosted Qwen3-8B (Kaggle T4). |
 | **B** | **New formalization** — verify Vi-ExamMath, re-formalize the MATH algebra subset (write SMT/SymPy from a problem) | `deepseek-v4-pro` via NIM (same as A) | Z3 / SymPy + the uniqueness gate do the actual *verification*; the LLM only drafts the formal code. |
-| **C** | **S2-alt subset** (~1–2k) — generator-strength robustness check: does the S1-vs-S2 finding hold with a *weaker* generator? | `Gemini 3.1 Flash Lite` (free) and/or self-hosted `Qwen3-8B` on **Kaggle free T4** | Inference only — not fine-tuned. |
-| **D** | **Round-trip solver check** — independently re-solve a generated problem (3 models, majority vote vs the symbolic answer) | `deepseek-v4-pro` (NIM) + `Gemini Flash Lite` (free) + `Qwen2.5-Math-1.5B` self-hosted | Multiple *independent* solvers is the point here. |
+| **C** | **S2-alt subset** (~1–2k) — generator-strength robustness check: does the S1-vs-S2 finding hold with a *weaker* generator? | self-hosted `Qwen3-8B` on **Kaggle free T4** (vLLM, frozen) | Inference only — not fine-tuned. |
+| **D** | **Round-trip solver check** — independently re-solve a generated problem, majority vote vs the symbolic answer | `deepseek-v4-pro` (NIM) + `Qwen2.5-Math-1.5B` self-hosted + optional `Groq` Llama-3.3-70B (free) — different model families | SymPy exact check is primary; ≥2 independent LLM solvers back it up. |
 | **E** | **SFT base models** (fine-tuned — the C2 grid) | **`Qwen3-1.7B-Base`** + **`Qwen3-0.6B-Base`** (optional `Sailor2-1B-Base`) | `-Base`, not `-Instruct`. **Only ≤1.7B is ever fine-tuned.** |
 | **F** | **C1 leaderboard — small models we run ourselves** (zero-shot / few-shot) | `Qwen3-0.6B/1.7B`, `Qwen2.5-1.5B`, `Qwen2.5-Math-1.5B`, `DeepSeek-R1-Distill-Qwen-1.5B`, `Sailor2-1B` | Kaggle T4 + vLLM. |
-| **G** | **C1 leaderboard — larger models, NOT run locally** | `SeaLLMs-v3-7B`, `Vistral-7B`, `Qwen3-4B`, Gemini / DeepSeek API, `WizardMath-7B` (re-score existing predictions, CPU) | free hosted endpoints / published numbers. |
+| **G** | **C1 leaderboard — larger models, NOT run locally** | `SeaLLMs-v3-7B`, `Vistral-7B`, `Qwen3-4B/8B`, `deepseek-v4-pro` (NIM), `WizardMath-7B` (re-score existing predictions, CPU) | free hosted endpoints / published numbers. |
 | **H** | **Anchor sanity numbers** | `Qwen3-1.7B-Base` + `DeepSeek-R1-Distill-Qwen-1.5B` | zero-shot Vi-GSM8K — checks the harness. |
 | **I** | **Difficulty-metric reference solver** (data-quality panel) | `Qwen2.5-Math-1.5B` (frozen, one fixed model) | its solve-rate on an item = that item's difficulty label. |
 | **J** | **Embeddings** — diversity dispersion, contamination overlap, real-vs-synthetic discriminator | one multilingual sentence-embedding model | not generative. |
@@ -388,28 +388,30 @@ answer term). None touches the answer expression.**
 strong-LLM arm": a single, named frontier model, `seed=42`, pinned `temperature`/`top_p`. The
 researcher's NIM account is **rate-limit-only: 40 RPM, no credit cap** (can request 200 RPM). Endpoints,
 in priority order:
-1. **NVIDIA NIM** (`integrate.api.nvidia.com`, `deepseek-ai/deepseek-v4-pro-0813`) — free, **40 RPM,
-   no credit cap** (confirmed on the researcher's `@hus.edu.vn` account; 200 RPM available on request).
-2. **DeepSeek direct API** (`api.deepseek.com`) — 5M free tokens on signup, 60 RPM — fallback / a
-   parallel endpoint if more throughput is wanted.
+1. **NVIDIA NIM** (`integrate.api.nvidia.com`, model `deepseek-ai/deepseek-v4-pro-0813`, key
+   `nvapi-…`) — free, **40 RPM, no credit cap** (confirmed on the researcher's `@hus.edu.vn` account;
+   200 RPM on request). **This is the only key needed** — NIM *hosts* DeepSeek's model.
+2. **DeepSeek's own API** (`api.deepseek.com`, a *separate company*, key `sk-…` from a separate signup
+   at platform.deepseek.com) — 5M free tokens on signup, 60 RPM. **Optional**, only as a fallback if
+   NIM is ever unavailable, or a parallel endpoint for extra throughput.
 
 **Volume fit.** 40 RPM = ~2,400 calls/hour. Headline N ≈ **8–10k per arm**; total corpus (all arms +
 gate rejections) ≈ 15–30k items ≈ **1–3 hours of wall-clock**, or a batched job spread over a day.
 Optional 5–10-item batching just makes it faster. The data-efficiency curve runs at 2k/5k/10k.
 
-- **Fallback chain** (documented switchover point): DeepSeek direct → NIM → `Gemini 3.1 Flash Lite`
-  (multi-key, free) → self-hosted `Qwen3-8B` on **Kaggle free T4**.
+- **Fallback chain** (documented switchover point): NIM → DeepSeek direct API (5M-token grant) →
+  self-hosted `Qwen3-8B` on **Kaggle free T4**.
 - Prompt: generate a variant of the seed at a specified difficulty + step-by-step solution + boxed
   answer. Encourage structural (not just numeric) variation; sample with diversity.
 - **S2-alt — generator-dependence check:** a small-N arm (~1–2k) generated with a **weaker** model
-  (Gemini Flash Lite or self-hosted `Qwen3-8B`). Show whether the S1-vs-S2 ranking holds when the LLM
-  is weaker — if it flips, the finding is generator-dependent and we say so.
-- **S2 check** — multiple *independent* solvers by design: an **independent** SymPy evaluation of the
-  answer, plus LLM self-consistency across {DeepSeek V4-Pro, Gemini Flash Lite, self-hosted
-  `Qwen2.5-Math-1.5B`} — majority vote. Solver-check volume is low, so free tiers suffice.
+  (self-hosted `Qwen3-8B` on Kaggle T4). Show whether the S1-vs-S2 ranking holds when the LLM is
+  weaker — if it flips, the finding is generator-dependent and we say so.
+- **S2 check** — an **independent** SymPy evaluation of the answer (primary), backed by LLM
+  self-consistency across {DeepSeek V4-Pro (NIM), self-hosted `Qwen2.5-Math-1.5B`, optional Groq
+  Llama-3.3-70B (free)} — majority vote. Solver-check volume is low.
 - S3: keep everything (no check).
 
-**No paid services.** DeepSeek 5M grant + NIM free tier + Gemini free tier + free Kaggle compute + the
+**No paid services.** NIM free tier (no credit cap) + DeepSeek 5M grant + free Kaggle compute + the
 $30/month Modal credit (training only).
 
 ### 6.3 Fine-tuning protocol (fixes N3; identical across all arms)
@@ -536,7 +538,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | OCR of Vietnamese math is error-prone | The solver-verification step is the filter; report the OCR error rate as a finding. Human QA covers the benchmark. |
 | Weak Vietnamese base → noisy downstream signal | Headline results are the **data-quality panel** (measured directly) and the **cost comparison**; downstream is one axis among several, reported with CIs. |
 | $30/month Modal is not enough | The grid fits Kaggle's free weekly quota; Modal is an accelerator, not a requirement. Keep runs at 1.5B; cut the English control to 2 arms and non-primary seeds to 2 if needed. |
-| NVIDIA changes the NIM free tier mid-project | run generation **early** (Sprint 1); fallback chain NIM → DeepSeek direct API (5M-token grant) → Gemini Flash Lite multi-key → self-hosted Qwen3-8B (Kaggle free T4). |
+| NVIDIA changes the NIM free tier mid-project | run generation **early** (Sprint 1); fallback chain NIM → DeepSeek direct API (5M-token grant) → self-hosted Qwen3-8B (Kaggle free T4). |
 | Exam-source licensing for the public release | Release only items from official public exams, with per-item provenance and a conservative non-commercial license; textbook-sourced items (if any) stay out of the release. |
 | A nearby group (e.g. VNU-UET Vi-S1K authors) publishes something overlapping | The contamination-controlled *native-exam* benchmark and the symbolic-vs-LLM comparison are distinct from their translation-based work; monitor arXiv; differentiate explicitly in related work. |
 
@@ -548,8 +550,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
    and/or Qwen2.5-Math-1.5B. Use `-Base`, not `-Instruct`. No Mistral-7B, no WizardMath re-run, no DPO.
 2. **Seed scope:** GSM8K + algebra/prealgebra MATH only; other subjects out of scope (justified by N2).
 3. **"Strong LLM" for S2/S3:** `deepseek-v4-pro-0813` via NVIDIA NIM (`seed=42`, 40 RPM, no credit cap).
-   Fallback chain → DeepSeek direct → Gemini Flash Lite → self-hosted Qwen3-8B. Plus an S2-alt
-   *weaker-generator* subset (§6.2).
+   Fallback → DeepSeek direct → self-hosted Qwen3-8B. Plus an S2-alt *weaker-generator* subset (§6.2).
 4. **Reference arms:** S5 = translate-train (`metaMathQA-vi`) is a first-class arm (existing best
    practice); DeepSeek-R1-Distill-Qwen-1.5B is a zero-shot reference on the leaderboard.
 5. **Vi-ExamMath size:** target 600, minimum 400.
@@ -593,9 +594,9 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 1. **Modal:** install the client, run `get_started.py`, write one LoRA-SFT function (Unsloth) and one
    vLLM-inference function. Do **not** add a payment method.
-2. `.env`: **`NVIDIA_API_KEY`** (NIM — the generator, 40 RPM, no credit cap) + `DEEPSEEK_API_KEY`
-   (direct API — fallback + a solver) + `GEMINI_API_KEYS` (fallback + a solver). Benchmark generation
-   quality + all three solvers on 20 Vietnamese problems.
+2. `.env` — **only `NVIDIA_API_KEY` is required** (the generator; NIM hosts DeepSeek V4-Pro). Optional:
+   `DEEPSEEK_API_KEY` (separate signup, fallback), `GROQ_API_KEY` (independent 3rd solver — SymPy + 2
+   LLM solvers is already enough). Benchmark generation quality + solvers on 20 Vietnamese problems.
 3. New repo skeleton separating: IR / symbolic-mutation / LLM-augmentation / informalization /
    verification / eval-harness. Stand up `math_verify`. Anchor numbers on Vi-GSM8K: zero-shot
    Qwen3-1.7B-Base (few-shot) + DeepSeek-R1-Distill-Qwen-1.5B; free re-score of the existing WizardMath
