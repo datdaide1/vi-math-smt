@@ -236,8 +236,11 @@ RESULTS_PROVENANCE.md
   `(exam, source, year, province, exam_name, url, license, raw_latex)`. **No OCR** — flag scanned PDFs
   for a MathPix fallback pass. Hà Nội grade-10 2017–2026 first, then ~10–15 provinces, then HSG/chuyên.
 - **Depends-on:** —
-- **[HUMAN]:** ask the advisor about official Sở GD-ĐT Hà Nội channels; confirm the license line for
-  public release.
+- **No official-channel request** — checked Sept 2026: no open dataset of VN grade-10/HSG exams **with
+  solutions** exists (GitHub has exam *scores*; `roshansk23/Vietnam_HighSchool_Exam_Dataset` is 6.6k
+  THPT MCQ, no solutions — optional leaderboard supplement only). Public education sites already publish
+  đề + đáp án + lời giải; scraping them is the path. Advisor confirms only the **release license line**
+  (async, non-blocking).
 - **Output:** `vi_exam/scrape.py` + `data/vi_exam/raw.jsonl` (≥60 exams) + `data/vi_exam/SOURCES.md`
   (per source: URL, coverage, format, license) + `results/scrape_yield.md`.
 - **Acceptance:** ≥5 sources; ≥60 exams scraped; figure-free segment yield reported (prototype: ~62%);
@@ -454,7 +457,7 @@ RESULTS_PROVENANCE.md
 | ID | What | When |
 |---|---|---|
 | T0.6 | Provide **free** `.env` keys: NVIDIA_API_KEY (generator) + DEEPSEEK_API_KEY (fallback+solver) + optional GROQ_API_KEY (3rd solver) | Sprint 0 |
-| T1.8 | Ask advisor re official Sở GD-ĐT Hà Nội channels; confirm public-release license line | Sprint 1 |
+| T1.8 | Confirm public-release license line with advisor (async, non-blocking — no file requests) | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Spot-check segmented triples (30) for fidelity | Sprint 2 |
 | T3.2 | Recruit + manage ≥3 MOS raters | Sprint 3 |

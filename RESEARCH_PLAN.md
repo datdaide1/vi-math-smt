@@ -472,9 +472,14 @@ in priority order:
    at platform.deepseek.com) — 5M free tokens on signup, 60 RPM. **Optional**, only as a fallback if
    NIM is ever unavailable, or a parallel endpoint for extra throughput.
 
-**Volume fit.** 40 RPM = ~2,400 calls/hour. Headline N ≈ **8–10k per arm**; total corpus (all arms +
-gate rejections) ≈ 15–30k items ≈ **1–3 hours of wall-clock**, or a batched job spread over a day.
-Optional 5–10-item batching just makes it faster. The data-efficiency curve runs at 2k/5k/10k.
+**Volume fit.** Smoke-tested Sept 2026 (`_scratch/nim_smoke.py`): the key works, `deepseek-ai/
+deepseek-v4-pro-0813` resolves and is in the model list, `seed=42`+`temp=0` gave byte-identical output
+across repeats, and it solves a Vietnamese grade-10 word problem correctly. **But latency is ~35 s /
+call** (~350-token reasoning output) — so throughput is latency-bound, not RPM-bound: at 40 concurrent
+requests, 10k items ≈ 2.5 h; serial it would be days. **Batching 5–10 items/call is mandatory, not
+optional**, and concurrency must be pushed to the 40-RPM ceiling. `deepseek-v4-flash-0731` (also on NIM)
+is the faster fallback for high-volume solver/round-trip checks. The data-efficiency curve runs at
+2k/5k/10k.
 
 - **Fallback chain** (documented switchover point): NIM (DeepSeek V4-Pro) → DeepSeek direct API
   (5M-token grant) → Groq (free). All hosted — no local GPU in the chain.
@@ -706,9 +711,10 @@ evaluation, analysis, and writing do not compress. Phases overlap.
    the 4 GB RTX 3050 Ti — 200 steps on a Vi-GSM8K slice, watch VRAM. Then **Modal:** install the client,
    run `get_started.py`, write one L4 LoRA-SFT function (Unsloth) + one vLLM-inference function for the
    1.7B runs. Do **not** add a payment method.
-2. `.env` — **only `NVIDIA_API_KEY` is required** (the generator; NIM hosts DeepSeek V4-Pro). Optional:
-   `DEEPSEEK_API_KEY` (separate signup, fallback), `GROQ_API_KEY` (independent 3rd solver — SymPy + 2
-   LLM solvers is already enough). Benchmark generation quality + solvers on 20 Vietnamese problems.
+2. **DONE (Sept 2026):** `NVIDIA_API_KEY` is in `.env` and smoke-tested — model resolves, seed
+   deterministic, VN math correct, **~35 s/call → batching + concurrency mandatory** (§6.2). Optional
+   `DEEPSEEK_API_KEY` / `GROQ_API_KEY` not needed yet. Still to do: full 20-seed generation-quality +
+   solver bench (T0.6).
 3. New repo skeleton separating: IR / symbolic-mutation / LLM-augmentation / informalization /
    verification / eval-harness. Stand up `math_verify`. Anchor numbers on Vi-GSM8K: zero-shot
    Qwen3-1.7B-Base (few-shot) + DeepSeek-R1-Distill-Qwen-1.5B; free re-score of the existing WizardMath
