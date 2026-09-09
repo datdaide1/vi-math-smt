@@ -162,6 +162,9 @@ def normalize_answer(s) -> str:
     if s is None:
         return ""
     s = str(s).strip()
+    unwrapped = _last_boxed(s)
+    if unwrapped is not None:
+        s = unwrapped.strip()
     s = s.replace("$", "").replace("\\$", "")
     # drop an "x =" / "S =" prefix, keep the RHS
     if "=" in s:
@@ -224,34 +227,46 @@ def _split_tuple(s: str) -> list[str]:
     return parts if len(parts) > 1 else [s]
 
 
-def is_correct(pred, gold, *, rel_tol: float = 1e-6, abs_tol: float = 1e-6) -> bool:
-    """True iff ``pred`` matches ``gold`` as a math answer.
+_INT_RE = re.compile(r"^-?\d+$")
 
-    ``pred`` / ``gold`` may be a raw model output or an already-extracted answer;
-    :func:`extract_answer` is applied when the string still looks like prose.
-    """
-    if pred is None or gold is None:
-        return False
-    p_raw, g_raw = str(pred), str(gold)
-    if len(p_raw) > 40 or "\\boxed" in p_raw or "####" in p_raw:
-        p_raw = extract_answer(p_raw) or p_raw
-    if len(g_raw) > 40 or "\\boxed" in g_raw or "####" in g_raw:
-        g_raw = extract_answer(g_raw) or g_raw
 
-    p, g = normalize_answer(p_raw), normalize_answer(g_raw)
+def _atoms_equal(p: str, g: str, rel_tol: float, abs_tol: float) -> bool:
     if p == "" or g == "":
         return False
     if p == g:
         return True
-
     pt, gt = _split_tuple(p), _split_tuple(g)
     if len(pt) != len(gt):
         return False
     if len(pt) > 1:
-        return all(is_correct(x, y, rel_tol=rel_tol, abs_tol=abs_tol) for x, y in zip(pt, gt))
-
+        return all(_atoms_equal(x, y, rel_tol, abs_tol) for x, y in zip(pt, gt))
+    if _INT_RE.match(p) and _INT_RE.match(g):        # exact for integers (rel_tol lies on big ints)
+        return int(p) == int(g)
     fp, fg = _to_float(p), _to_float(g)
     if fp is not None and fg is not None:
         return math.isclose(fp, fg, rel_tol=rel_tol, abs_tol=abs_tol)
-
     return _sympy_equal(p, g)
+
+
+def is_correct(pred, gold, *, rel_tol: float = 1e-6, abs_tol: float = 1e-6) -> bool:
+    """True iff ``pred`` matches ``gold`` as a math answer.
+
+    Each side is reduced to a small candidate set — the raw string and the
+    :func:`extract_answer` result — and a match on any (pred, gold) pair counts.
+    """
+    if pred is None or gold is None:
+        return False
+
+    def candidates(x: str) -> list[str]:
+        out, seen = [], set()
+        for c in (x, extract_answer(x)):
+            if c is None:
+                continue
+            n = normalize_answer(c)
+            if n and n not in seen:
+                seen.add(n)
+                out.append(n)
+        return out
+
+    ps, gs = candidates(str(pred)), candidates(str(gold))
+    return any(_atoms_equal(p, g, rel_tol, abs_tol) for p in ps for g in gs)

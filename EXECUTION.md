@@ -107,7 +107,7 @@ Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
   artifacts go to gitignored `/data/` + `/results/`; tracked prose deliverables (INVENTORY, SOURCES,
   DATACARD) go to `docs/` (repo-root `data/` is fully gitignored).
 
-### T0.2 — `eval/math_verify.py`
+### T0.2 — `eval/math_verify.py`  ✅ done (feat/sprint0, 2026-09-09)
 - **Goal:** one function `is_correct(pred: str, gold: str) -> bool` = answer normalization + SymPy
   equivalence + numeric tolerance (abs 1e-6 or rel). Also `extract_answer(text) -> str` (`\boxed{}`,
   `Đáp án…`, `####`, last number — priority-ordered).
@@ -118,6 +118,11 @@ Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
 - **Acceptance:** ≥30 hand-labelled `(pred, gold, expected)` cases pass, covering integers, decimals,
   simple fractions, `\frac`, radicals, tuples/coords, `\boxed` vs bare, LaTeX noise, unit suffixes
   ("51 đô la").
+- **Done:** written fresh (old regexes NOT copied — several were broken). `extract_answer` (boxed >
+  `####` > VI/EN cue > last number), `normalize_answer` (strips `\text{}`/units/`%`/°, `\frac`→`/`,
+  `\sqrt`, unwraps `\boxed{}`), `is_correct` (candidate-set match: raw ∪ extracted, per side; integer
+  exact + float tol + tuple split + SymPy fallback). **VI specifics handled:** decimal comma `3,14`,
+  thousands dot `1.000.000`, unit words `nghìn đồng`/`km`/`đô la`. **44 cases pass** (`pytest -q`).
 
 ### T0.3 — `eval/run_eval.py` (harness)
 - **Goal:** config-driven eval. Input: `{model: hf_path|api_spec, test_set: path.jsonl, n_shot,
