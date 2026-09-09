@@ -166,7 +166,7 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** reproduces the ~40% derived / 15.9% hardcoded ballpark from `RESEARCH_PLAN.md` §2.2
   N2; a hand check of 20 flagged "hardcoded" agrees.
 
-### T1.2 — Constrained constant substitution
+### T1.2 — M0: constrained constant substitution (algorithm: RESEARCH_PLAN.md §6.1)
 - **Goal:** `symbolic_aug/constant_sub.py` — replace the constants in a verified problem (not the
   answer term); constrain sampling so every intermediate value **and** the final answer stay
   integer / clean-fraction; recompute with Z3; reject physically nonsensical results. Delete the old
@@ -203,7 +203,7 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** on 100 items, retention rate is reported; 20 rejected items hand-checked are indeed
   wrong/ill-posed.
 
-### T1.6 — Structural operators O1 + O2
+### T1.6 — O1 + O2 structural operators (algorithm: RESEARCH_PLAN.md §6.1)
 - **Goal:** `ir/typed_dag.py` (parse a verified problem into typed quantities + a reduced operation
   DAG with a query node) and `symbolic_aug/structural.py`:
   - **O1 step insertion:** add `op(v, w) -> v'` with divisibility/domain guards keeping `v'`'s type;
@@ -438,13 +438,13 @@ RESULTS_PROVENANCE.md
 
 | ID | What | When |
 |---|---|---|
-| T0.6 | Provide **free** `.env` keys: GEMINI_API_KEY + DEEPSEEK_API_KEY (both solver-check only; generator is self-hosted) | Sprint 0 |
+| T0.6 | Provide **free** `.env` keys: **4–5 × GEMINI_API_KEY** (generation, round-robin) + DEEPSEEK_API_KEY (solver check) | Sprint 0 |
 | T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |
 | T3.2 | Recruit + manage ≥3 MOS raters | Sprint 3 |
 | T3.3 | Serve as 1 of 2 Vi-ExamMath QA annotators; recruit the other | Sprint 3 |
-| T3.1 | **[GATE]** Is the `Qwen3-14B` generator's output quality good enough, or step up to `Qwen3-32B` on an A100 (~$12–18 credit)? | Sprint 3 |
+| T3.1 | **[GATE]** Is Gemini Flash Lite's generation quality good enough for S2? (Compare against the S2-strong `Qwen3-14B` subset; if Flash Lite is much worse, the S2 finding needs the caveat / stronger generator.) | Sprint 3 |
 | T5.5 | **[GATE]** Advisor review #1 → venue decision | Sprint 5 |
 | §10.6 | Pick the exact Q3 venue + deadline for C1 | Sprint 5 |
 | T6.4 | **[GATE]** Advisor review #2 → submit | Sprint 6 |

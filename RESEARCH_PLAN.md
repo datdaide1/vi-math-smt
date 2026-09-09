@@ -324,28 +324,62 @@ robustness or hard items" / "both underperform no-aug at 1.5B" — each is a tim
 **Three things to remember:** (1) generation = Gemini Flash Lite, nothing else; (2) fine-tuning = Qwen3
 `-Base` ≤1.7B only; (3) everything else is frozen inference / evaluation.
 
-### 6.1 The fixed symbolic pipeline (arm S1) — targeted changes, `src/mutation_informalize/`
+### 6.1 The fixed symbolic pipeline (arm S1) — the mutation algorithm, `src/mutation_informalize/`
 
-- **`mutation_engine.py` — replace the three answer-term operators with:**
-  - **Constrained constant substitution:** change the numeric constants in the problem (not the answer
-    term); constrain the sampling so every intermediate value *and* the final answer stay
-    integer/clean; recompute with Z3. Reject variants that become physically nonsensical.
-  - **O1 — type-safe step insertion:** add one reasoning step `op(v, w) → v'` with domain/divisibility
-    guards so `v'` keeps `v`'s type; rewire downstream; re-verify SAT **and** answer uniqueness.
-  - **O2 — backward / FOBAR:** promote a clean input leaf to the query node, demote the old query to a
-    given with its verified value; the new answer is a former input ⇒ clean by construction; Z3 checks
-    unique solvability.
-  - A lightweight intermediate representation is needed for O1/O2: `{typed quantities}` + a reduced
-    operation DAG. Not a full IR.
-- **`phase3_informalize.py::GENERATOR_PROMPT` — informalize from a semantic description, never from the
-  raw `(assert ...)` list.** The LLM must not see variable names, constraints, or the answer.
-- **New leakage-filter pass** after Phase 3: reject/repair outputs containing `h_\d+`-style tokens,
-  `sum_exponents`, SMT keywords, or the answer verbatim in the problem body.
-- **Round-trip gate:** for each retained variant, re-formalize the generated Vietnamese problem and
-  check the answer with Z3; and/or re-solve with 1–2 independent LLM solvers under self-consistency.
-- **Uniqueness gate (also a measurement instrument for N2/C3):** remove the `answer` assertion; if Z3
-  still yields a unique solution, the item is "derived"; otherwise it is "hard-coded" and does not count
-  as verified. For non-linear items, use `QF_NRA` / `QF_NIA` or fall back to SymPy.
+**Per-seed setup.** Vietnamese text `q`, solution `s`, answer `a`; a Z3-verified SMT-LIB form `φ` (GSM8K
+exists; the MATH algebra/prealgebra subset is re-formalized — B in §6.0). Parse `φ` → typed variables,
+the `assert` set, the `answer` definition; for O1/O2 also a **lightweight typed DAG** (quantities = nodes,
+ops = edges, one query node). Record the seed's **answer-type class** `T` (integer / clean fraction /
+small radical / …). Logic: `QF_LRA` for linear (GSM8K + most algebra); `QF_NIA`/`QF_NRA` or SymPy for
+the non-linear remainder.
+
+**The three operators replace the old `mutate_structure/expression/difficulty` (which only wrapped the
+answer term). None touches the answer expression.**
+
+**M0 — constrained constant substitution** *(the bulk operator)*
+1. Identify the free numeric *givens* `C = {c₁…cₖ}` in `φ` (leaf/input values, not derived vars; exclude
+   structural 0/1).
+2. Per `cᵢ`, derive an admissible range `Rᵢ` from its role (count → positive integers near `cᵢ`;
+   divisor → constrained to preserve divisibility; rate/price → same-magnitude positive; …).
+3. Sample `c′ ∈ ∏ Rᵢ` (Latin-hypercube / random).
+4. Substitute → `φ′`; run Z3: must be **SAT**; extract `a′ = model(answer)`; require
+   `a′ ∈ T`; require **every derived variable's model value** ∈ its clean class (no `7/3` mid-solution);
+   require `a′ ≠ a` and `a′ ∉` already-emitted variants.
+5. Fail → resample (≤ 30 attempts). Pass → `(φ′, a′)`.
+6. Recompute the step-by-step solution `s′` **deterministically from the DAG + Z3's variable values**
+   (not from an LLM): each step is `name = expr = value`.
+
+**O1 — type-safe step insertion** *(adds one reasoning step)*
+1. Pick a node `v` in the DAG (given or intermediate), type `τ(v)`.
+2. Introduce a fresh quantity `w` with a sampled clean value.
+3. Pick `op ∈ {+,−,×,÷}` such that `op(value(v), value(w)) ∈ T`: `÷` only if `value(w) | value(v)`; `−`
+   only if the result stays positive (for counts); etc.
+4. Replace `v → v′ = op(v, w)` downstream; add `w` as a new given.
+5. Compile the DAG → `φ′`; Z3 must be **SAT**, the query value **unique** (uniqueness gate), `a′ ∈ T`.
+6. Assert `depth(query)` increased by exactly 1 (a genuine extra step); recompute `s′`.
+
+**O2 — backward / FOBAR** *(reverses an input ↔ the output)*
+1. Pick a clean input leaf `c`; promote `c` to the query, demote the old query `v*` to a given with its
+   verified value `a`.
+2. New answer `= value(c)` — a former clean input ⇒ **clean by construction**, no decimal blow-up.
+3. Compile → `φ′`; Z3 must show the system has a **unique** solution for `c` (reject if under-determined).
+4. Recompute `s′` (now a backward derivation).
+
+**Gates — applied to every candidate from M0/O1/O2 (S4 skips gates 1 and 4 — that is the ablation):**
+1. **Uniqueness gate** *(also the N2/C3 measurement instrument)* — remove the `answer` assert from `φ′`;
+   if Z3 still yields a unique model → "derived" ✓; else reject (would be hard-coded).
+2. **Informalization** — `phase3_informalize.py::GENERATOR_PROMPT` rewritten to generate from a
+   **semantic description / template** (entities, quantities with surface nouns, the query), never the
+   raw `(assert …)` list. The generator (Gemini Flash Lite) never sees variable names, constraints, or
+   `a′`.
+3. **Leakage filter** — reject/repair outputs containing `h_\d+`-style tokens, `sum_exponents`, SMT
+   keywords (`assert`, `declare-`, `(check-sat)`), or `a′` verbatim in the problem body; NER for
+   entities absent from the template.
+4. **Round-trip gate** — re-formalize the generated Vietnamese text → Z3 answer must equal `a′` within
+   tolerance; **and/or** 3 independent LLM solves (Gemini + DeepSeek + `Qwen2.5-Math-1.5B`), majority
+   must equal `a′`.
+5. **Difficulty guard** — the reference solver (`Qwen2.5-Math-1.5B`, I in §6.0) solve-rate must not
+   collapse to ~0 (i.e. not accidentally unsolvable); spot-check flags.
 
 ### 6.2 The LLM augmentation arms (S2/S3)
 
