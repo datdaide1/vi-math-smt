@@ -11,7 +11,7 @@
 1. Read `RESEARCH_PLAN.md` fully. The spine is the research question in §0; everything serves it.
 2. **Hard rules (never violate):**
    - No model larger than **1.7B** is ever **fine-tuned**. SFT bases are `Qwen3-0.6B-Base` and
-     `Qwen3-1.7B-Base` only. (A *frozen* larger model IS run for inference — the self-hosted 8B
+     `Qwen3-1.7B-Base` only. (A *frozen* larger model IS run for inference — the self-hosted 14B
      generator; and leaderboard rows >1.7B come from free hosted endpoints / published numbers.)
    - No DPO / RL. SFT only.
    - **No paid services.** The generator is self-hosted (free compute); free API keys (Gemini,
@@ -114,7 +114,7 @@ RESULTS_PROVENANCE.md
 ### T0.5 — `modal_app.py`
 - **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
   vLLM eval-inference function for ≤1.7B adapters on a T4/L4, (c) **a vLLM server for the frozen
-  generator** (`Qwen3-8B-Instruct`, 4-bit on T4 / bf16 on L4) exposing an OpenAI-compatible endpoint.
+  generator** (`Qwen3-14B`, 4-bit on T4 / bf16 on L4) exposing an OpenAI-compatible endpoint.
   Region default, preemptible.
 - **Depends-on:** T0.4
 - **Output:** `modal_app.py` + `docs/MODAL.md` (setup; **do not add a payment method**; usage-limit
@@ -124,10 +124,10 @@ RESULTS_PROVENANCE.md
 
 ### T0.6 — LLM clients + smoke test — **[HUMAN provides free keys]**
 - **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
-  - `generate(...)` / `informalize(...)` → **the self-hosted `Qwen3-8B-Instruct` only** (via the vLLM
+  - `generate(...)` / `informalize(...)` → **the self-hosted `Qwen3-14B` only** (via the vLLM
     endpoint from T0.5, or a local vLLM on Kaggle). One fixed model ⇒ each augmentation arm is a
     well-defined condition. No rate limit, no cost, fully reproducible.
-  - `solve(problem)` → callable against **each** of {self-hosted 8B, Gemini 2.5 Flash (free API),
+  - `solve(problem)` → callable against **each** of {self-hosted 14B, Gemini 2.5 Flash (free API),
     DeepSeek (free API)} independently, for the round-trip self-consistency check. Backoff per provider.
 - **Depends-on:** T0.1, T0.5; researcher puts **free** keys in `.env`: `GEMINI_API_KEY`,
   `DEEPSEEK_API_KEY`. No paid keys.
@@ -249,7 +249,7 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** 20k rows, schema-valid, dedup'd against test sets.
 
 ### T2.3 — LLM augmentation generator
-- **Goal:** `llm_aug/generate.py` — the **self-hosted `Qwen3-8B-Instruct`** (the one fixed generation
+- **Goal:** `llm_aug/generate.py` — the **self-hosted `Qwen3-14B`** (the one fixed generation
   model) generates, per seed, a structurally-varied variant at a target difficulty + step-by-step
   solution + `\boxed{}` answer; diversity sampling; vLLM batched (no rate limit).
 - **Depends-on:** T0.6
@@ -441,7 +441,7 @@ RESULTS_PROVENANCE.md
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |
 | T3.2 | Recruit + manage ≥3 MOS raters | Sprint 3 |
 | T3.3 | Serve as 1 of 2 Vi-ExamMath QA annotators; recruit the other | Sprint 3 |
-| §10.3 | Decide: add a paid frontier-LLM arm ($20–40)? | before Sprint 2 |
+| T3.1 | **[GATE]** Is the `Qwen3-14B` generator's output quality good enough, or step up to `Qwen3-32B` on an A100 (~$12–18 credit)? | Sprint 3 |
 | T5.5 | **[GATE]** Advisor review #1 → venue decision | Sprint 5 |
 | §10.6 | Pick the exact Q3 venue + deadline for C1 | Sprint 5 |
 | T6.4 | **[GATE]** Advisor review #2 → submit | Sprint 6 |
@@ -460,5 +460,5 @@ RESULTS_PROVENANCE.md
 | Symbolic pipeline fixes (Sprint 1) take longer than 2 weeks | T2.1 gate; O1/O2 are optional for v1 — `constant_sub` + leakage filter + round-trip alone give a valid S1 |
 | Exam OCR quality too low | T2.10 verification is the filter; report the rate; fall back to fewer, hand-transcribed items to hit the 400 minimum |
 | Can't recruit 3 MOS raters | drop to 2 + report κ with the caveat; MOS is one panel metric among many |
-| Generation volume | generator is self-hosted (Qwen3-8B via vLLM) — no rate limit; the whole corpus is a few L4-hours, run once |
+| Generation volume | generator is self-hosted (`Qwen3-14B` via vLLM) — no rate limit; the whole corpus is a few L4-hours, run once |
 | Grid exceeds one Modal month | it fits Kaggle's free quota alone (~2 weeks); cut English control to 2 arms, non-primary seeds to 2, drop S6 |

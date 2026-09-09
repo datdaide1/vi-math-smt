@@ -4,7 +4,8 @@
 **Owner:** Tran Hoang Dat (VNU University of Science). Advisor: Dr. Ha My Linh.
 **Working paper title:** *Does Symbolic Verification Still Earn Its Keep? A 2026 Comparison of Symbolic
 and LLM-based Math-Data Augmentation for Small Models in a Low-Resource Language.*
-**Constraints:** single researcher, free compute only (Kaggle + Modal $30/month free tier), free LLM APIs.
+**Constraints:** single researcher; free compute only (Kaggle + Modal $30/month free tier); no paid
+services — the generator is self-hosted, free API keys are used only for the low-volume solver check.
 **Targets:** a guaranteed Q3-tier resource paper (Contribution 1 alone) + an upside Q2-tier
 (Findings/COLING) full paper (Contributions 1+2+3).
 
@@ -29,15 +30,17 @@ augmentation strategies cleanly for that setting.
 | **C2** | **A controlled comparison** of symbolic-verified vs. strong-LLM vs. unverified data augmentation for supervised fine-tuning of small models, evaluated on the contamination-controlled benchmark. | **Q2 upside (Findings/COLING)** if the finding is clear or surprising. | medium — depends on results |
 | **C3** | **A failure analysis** of the naive symbolic-mutation approach (answer-expression perturbation), diagnosing why it degrades data quality, plus the fixes used in C2's symbolic arm. | supporting section | low |
 
-**Everything is free.** Data collection is OCR + human QA. Augmentation uses free LLM API tiers.
-Training uses free Kaggle GPUs + Modal's $30/month free credit, on ≤1.7B models, with heavy optimization
-so the entire experiment grid fits in one month's credit (or ~2 weeks of Kaggle's free weekly quota).
+**Everything is free.** Data collection is OCR + human QA. The augmentation generator is a **self-hosted
+`Qwen3-14B` (4-bit)** run once via vLLM on the Modal free credit (~$3–6 one-time); free API keys (Gemini,
+DeepSeek) are used only for the low-volume solver check. Training uses free Kaggle GPUs + Modal's
+$30/month free credit, on ≤1.7B models, with heavy optimization so the whole grid fits one month's
+credit (or ~2 weeks of Kaggle's free weekly quota).
 
-> **HARD RULE — no model larger than 1.7B is ever fine-tuned, and none is run on our GPUs.** The 7B
-> Mistral + Online DPO + slow `model.generate` loop is exactly what broke the previous attempt's compute
-> budget. Every SFT arm is Qwen3-0.6B-Base or Qwen3-1.7B-Base. Every inference we run ourselves is a
-> ≤1.7B model under vLLM. Larger models appear **only** on the C1 leaderboard, and only via their free
-> API / free hosted endpoints or published numbers — never trained, never run locally (§4.4).
+> **HARD RULE — no model larger than 1.7B is ever *fine-tuned*.** The 7B Mistral + Online DPO + slow
+> `model.generate` loop is exactly what broke the previous attempt's compute budget. Every SFT arm is
+> Qwen3-0.6B-Base or Qwen3-1.7B-Base; every eval sweep is a ≤1.7B adapter under vLLM. A larger model is
+> run *frozen, for inference only* in exactly one place — the `Qwen3-14B` generator (§6.2), a one-time
+> batched job. Leaderboard rows >1.7B come from free hosted endpoints / published numbers (§4.4).
 
 **This is not a pivot.** The subject is unchanged — math-data augmentation for Vietnamese. The existing
 project pipeline becomes one experimental arm (S1). The existing Vietnamese translations become a seed
@@ -86,8 +89,10 @@ diversity that free-form LLM rewriting does not.
 
 ### 1.3 Why 2026 challenges the assumption
 
-- Strong **open** models (DeepSeek V4, GLM, Qwen3) are math-frontier-class and have **free API tiers**.
-  Generating 40K problem variants + solutions costs a few million tokens — effectively free.
+- Strong **open** models (DeepSeek V4, GLM, Qwen3-14B/32B) are math-frontier-class and **self-hostable
+  on a single consumer/cloud GPU**. Generating 40K problem variants + solutions is a one-time batched
+  job of a few GPU-hours — no proprietary API needed (free API tiers were sharply cut in Dec 2025, but
+  that no longer matters).
 - Their Vietnamese generation is fluent.
 - A final-answer check with SymPy (or LLM self-consistency) catches most errors.
 - So the *marginal* value of an SMT pipeline over "strong LLM + light check" is now unclear —
@@ -266,7 +271,7 @@ faithful there — see N2). This also matches Vi-ExamMath's scope.
 |---|---|
 | **S0** | no augmentation — seed only (floor) |
 | **S1** | **symbolic-verified** — the project pipeline, fixed (§6.1): constrained mutation that preserves answer type + informalization that never sees SMT + a leakage filter + the uniqueness gate |
-| **S2** | **strong-LLM augmentation + independent answer check** — DeepSeek V4 generates a variant problem + solution; kept only if an *independent* SymPy check (and/or LLM self-consistency) confirms the answer. This is "the obvious 2026 approach." |
+| **S2** | **strong-LLM augmentation + independent answer check** — the self-hosted `Qwen3-14B` (§6.2) generates a variant problem + solution; kept only if an *independent* SymPy check (and/or LLM self-consistency) confirms the answer. "The obvious 2026 approach, done for free on a consumer GPU." |
 | **S3** | strong-LLM augmentation, **no check** — baseline |
 | **S4** | S1 **without the solver verification step** — isolates the value of verification in the symbolic branch |
 | **S5** | **translate-train** — SFT on a Vietnamese-translated slice of a known-good English augmentation corpus (`metaMathQA-395K_json_vi`, which we already have), at matched N. The "existing best practice" reference — 2026 papers that touch low-resource math default to this. |
@@ -328,26 +333,33 @@ robustness or hard items" / "both underperform no-aug at 1.5B" — each is a tim
 
 ### 6.2 The LLM augmentation arms (S2/S3)
 
-**One fixed generative model, self-hosted, free.** S2 is "the strong-LLM arm" — it must be a single,
-named model, or the condition is not well-defined. Rather than a rate-limited free API, **self-host one
-open model** and use it for *both* S1 informalization and S2/S3 generation:
+**One fixed generative model, self-hosted.** S2 is "the strong-LLM arm" — it must be a single, named
+model, or the condition is not well-defined. Free frontier APIs cannot sustain tens of thousands of
+generation calls (Gemini's free tier was cut to ~20–250 req/day in Dec 2025). So **self-host one open
+model** and use it for *both* S1 informalization and S2/S3 generation. The generator runs **once** to
+build the corpus — a one-time job, not a recurring cost.
 
-- **Generator = `Qwen3-8B-Instruct`** (or `DeepSeek-R1-Distill-Qwen-14B` if it fits) served with **vLLM
-  on Modal L4 / Kaggle T4** (4-bit on T4, bf16 on L4). This is *inference only* — the "no fine-tuning
-  above 1.7B" rule is unaffected. Cost: free (within the compute budget). No rate limits. Perfectly
-  reproducible — exactly one model identity for every arm.
-- **This reframes S2** from "frontier-API augmentation" to **"a strong open LLM you can run for free on
-  a consumer GPU"** — which is the more on-thesis comparison: the honest 2026 "easy way" for someone in
-  a low-resource setting (who also has no budget) is an 8B model on a T4, not a paid API.
-- Prompt: generate a variant of the seed problem at a specified difficulty + a step-by-step solution +
-  a boxed answer. Encourage structural (not just numeric) variation; sample with diversity.
-- **S2 check** — here multiple *independent* solvers are intended: an **independent** SymPy evaluation
-  of the final answer, plus LLM self-consistency across the self-hosted 8B **+ Gemini 2.5 Flash (free)
-  + DeepSeek (free API)** — majority vote. Solver-check volume is low, so free tiers suffice.
+- **Generator = `Qwen3-14B` (4-bit)** served with **vLLM on Modal L4** (bf16 on A100 if preferred).
+  *Inference only* — the "no fine-tuning above 1.7B" rule is unaffected. One-time cost ≈ $3–6 of the
+  $30/month Modal credit for the whole ~40–60k-sample corpus (~10–20 L4-hours, unattended). No rate
+  limits, perfectly reproducible, exactly one model identity for every arm. Dials: `Qwen3-8B` (≈free,
+  slightly weaker) or `Qwen3-32B` on an A100 (≈$12–18, near-frontier for grade-10 algebra) if the 14B
+  output quality is not enough at T3.1.
+- **Framing:** S2 is **"a strong open LLM you can run for free on a consumer GPU"** — the honest 2026
+  "easy way" for a low-resource, no-budget setting.
+- Prompt: generate a variant of the seed at a specified difficulty + step-by-step solution + boxed
+  answer. Encourage structural (not just numeric) variation; sample with diversity.
+- **Gemini reference subset:** spend the small free Gemini quota (~250/day over a few days) generating
+  a **~500-sample S2′** with Gemini 2.5 Flash. Compare its data-quality panel against the self-hosted
+  generator's. Either "the self-hosted generator matches frontier quality" or a characterized gap —
+  both are reportable, and it uses the free quota well.
+- **S2 check** — multiple *independent* solvers by design: an **independent** SymPy evaluation of the
+  answer, plus LLM self-consistency across {self-hosted generator, Gemini free, DeepSeek free} —
+  majority vote. Solver-check volume is low, so the free tiers suffice.
 - S3: keep everything (no check).
 
-**No paid services anywhere in the pipeline.** Free API keys (Gemini, DeepSeek) are used only for the
-low-volume solver check.
+**No paid services.** Everything runs on free Kaggle compute + the $30/month Modal credit + free API
+keys (Gemini, DeepSeek) used only for the low-volume solver check and the reference subset.
 
 ### 6.3 Fine-tuning protocol (fixes N3; identical across all arms)
 
@@ -414,8 +426,8 @@ quota. Beyond that, do not spend design effort here — spend it on the research
 |---|---|---|
 | C1 OCR + normalization | MathPix free tier / open OCR model + local | $0 |
 | Solver verification (Z3 / SymPy) + all data-quality metrics | Kaggle CPU / local | $0 |
-| Generation (S1 informalization + S2/S3) — **one fixed self-hosted model** | `Qwen3-8B-Instruct` via vLLM on Modal L4 / Kaggle T4 (inference only) | $0 (compute budget) |
-| Round-trip / self-consistency solver check — **multiple independent models by design** | self-hosted 8B + Gemini 2.5 Flash (free) + DeepSeek (free API); low volume | $0 |
+| Generation (S1 informalization + S2/S3) — **one fixed self-hosted model** | `Qwen3-14B` via vLLM on Modal L4 / Kaggle T4 (inference only) | $0 (compute budget) |
+| Round-trip / self-consistency solver check — **multiple independent models by design** | self-hosted 14B + Gemini 2.5 Flash (free) + DeepSeek (free API); low volume | $0 |
 | **Training** (SFT LoRA, **≤1.7B only** — this is the hard rule; *inference* of a larger frozen model is fine) | **Kaggle free 2×T4** (Unsloth) by default; **Modal L4** ($0.80/h) to burst | $0 – ~$16 |
 | **Eval inference** (≤1.7B adapters on our GPUs) | **Kaggle T4 + vLLM** | $0 |
 | **Generator hosting** (frozen 8B, inference only) | vLLM on Modal L4 / Kaggle T4, batched | $0 (compute budget) |
@@ -424,7 +436,7 @@ quota. Beyond that, do not spend design effort here — spend it on the research
 **Concrete feasibility check.** A Qwen3-1.7B LoRA SFT with `packing=True` on ~20k short math examples on
 one T4 ≈ 30–40 min (≈15–25 min on Modal L4). A 1.7B model in bf16 fits a 16 GB T4 with room to spare —
 there is no memory pressure, unlike the previous 7B + DPO setup. A vLLM inference sweep of a 1.7B model
-over ~2k problems ≈ 10–20 min. **Generator:** an 8B model 4-bit under vLLM on a T4 batches ~1–3k
+over ~2k problems ≈ 10–20 min. **Generator:** the `Qwen3-14B` generator 4-bit under vLLM on an L4 batches ~1–3k
 completions/hour; the whole ~40–60k-sample corpus is a handful of L4-hours, done once. Nothing here
 approaches the T4's limits or the Modal budget.
 
@@ -454,7 +466,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 | Phase | Duration | Work |
 |---|---|---|
-| **P0** | ~1 week | New repo structure; evaluation harness + `math_verify`; Unsloth-SFT and vLLM-inference templates; register DeepSeek / GLM / Gemini keys; anchor numbers: zero-shot Qwen3-1.7B-Base + DeepSeek-R1-Distill-Qwen-1.5B on Vi-GSM8K (+ free re-score of the existing WizardMath predictions). |
+| **P0** | ~1 week | New repo structure; `math_verify` + eval harness; Unsloth-SFT + vLLM templates; **stand up the self-hosted `Qwen3-14B` generator**; free Gemini + DeepSeek keys for the solver check; anchor numbers: zero-shot Qwen3-1.7B-Base + DeepSeek-R1-Distill-Qwen-1.5B on Vi-GSM8K (+ free re-score of existing WizardMath predictions). |
 | **P1** | 3–4 weeks *(parallel from P0)* | **C1: collect, OCR, verify, human-QA Vi-ExamMath.** |
 | **P2** | 1.5–2 weeks | Fix the symbolic pipeline (§6.1); build the S1 dataset. |
 | **P3** | 1–1.5 weeks | Build S2/S3/S4 datasets (LLM generation, paced against rate limits); run the full data-quality panel. |
@@ -473,7 +485,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | OCR of Vietnamese math is error-prone | The solver-verification step is the filter; report the OCR error rate as a finding. Human QA covers the benchmark. |
 | Weak Vietnamese base → noisy downstream signal | Headline results are the **data-quality panel** (measured directly) and the **cost comparison**; downstream is one axis among several, reported with CIs. |
 | $30/month Modal is not enough | The grid fits Kaggle's free weekly quota; Modal is an accelerator, not a requirement. Keep runs at 1.5B; cut the English control to 2 arms and non-primary seeds to 2 if needed. |
-| Generation volume (40K+ samples across arms) | The generator is **self-hosted** (Qwen3-8B via vLLM) — no rate limit, no cost beyond GPU time. Batch generation is fast; the whole corpus is a few L4-hours. |
+| Generation volume (40K+ samples across arms) | The generator is **self-hosted** (`Qwen3-14B` via vLLM) — no rate limit, no cost beyond GPU time. Batch generation is fast; the whole corpus is a few L4-hours. |
 | Exam-source licensing for the public release | Release only items from official public exams, with per-item provenance and a conservative non-commercial license; textbook-sourced items (if any) stay out of the release. |
 | A nearby group (e.g. VNU-UET Vi-S1K authors) publishes something overlapping | The contamination-controlled *native-exam* benchmark and the symbolic-vs-LLM comparison are distinct from their translation-based work; monitor arXiv; differentiate explicitly in related work. |
 
@@ -484,7 +496,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 1. **Base models:** Qwen3-1.7B-Base (primary) + Qwen3-0.6B-Base (secondary); optionally Sailor2-1B-Base
    and/or Qwen2.5-Math-1.5B. Use `-Base`, not `-Instruct`. No Mistral-7B, no WizardMath re-run, no DPO.
 2. **Seed scope:** GSM8K + algebra/prealgebra MATH only; other subjects out of scope (justified by N2).
-3. **"Strong LLM" for S2/S3:** a **self-hosted** open model (Qwen3-8B-Instruct via vLLM) — free,
+3. **"Strong LLM" for S2/S3:** a **self-hosted** open model (Qwen3-14B via vLLM) — free,
    unlimited, reproducible. No paid API anywhere. Framed as "a strong open LLM runnable for free on a
    consumer GPU".
 4. **Reference arms:** S5 = translate-train (`metaMathQA-vi`) is a first-class arm (existing best
@@ -530,7 +542,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 1. **Modal:** install the client, run `get_started.py`, write one LoRA-SFT function (Unsloth) and one
    vLLM-inference function. Do **not** add a payment method.
-2. Stand up the **self-hosted generator**: `Qwen3-8B-Instruct` on vLLM (Modal L4 / Kaggle T4), a
+2. Stand up the **self-hosted generator**: `Qwen3-14B` on vLLM (Modal L4 / Kaggle T4), a
    `generate()` / `informalize()` client. Free API keys needed only for the solver check:
    **`GEMINI_API_KEY`** (have an account) + free **`DEEPSEEK_API_KEY`**. Benchmark all three solvers on
    20 Vietnamese problems.
