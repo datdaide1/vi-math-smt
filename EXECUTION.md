@@ -9,13 +9,13 @@
 ## For the executing agent — start here
 
 1. Read `RESEARCH_PLAN.md` fully. The spine is the research question in §0; everything serves it.
-2. **Hard rules (never violate):**
-   - No model larger than **1.7B** is ever **fine-tuned**. SFT bases are `Qwen3-0.6B-Base` and
-     `Qwen3-1.7B-Base` only. (A *frozen* larger model IS run for inference — the self-hosted 14B
-     generator; and leaderboard rows >1.7B come from free hosted endpoints / published numbers.)
+2. **Hard rules (never violate):** — see `RESEARCH_PLAN.md` §6.0 for the full model table.
+   - **Generation = `Gemini 3.1 Flash Lite` (free tier, 4–5 keys), nothing else.** One fixed model.
+   - **Fine-tuning = `Qwen3-0.6B-Base` / `Qwen3-1.7B-Base` only.** No model >1.7B is ever fine-tuned.
+     Frozen larger models are run *for inference only*: the S2-strong subset (`Qwen3-14B` on Kaggle
+     free T4), the leaderboard (free endpoints / published numbers).
    - No DPO / RL. SFT only.
-   - **No paid services.** The generator is self-hosted (free compute); free API keys (Gemini,
-     DeepSeek) are used only for the low-volume solver check.
+   - **No paid services.** Modal $30/month is **training-only** — generation never touches it.
    - No `model.generate` loops for evaluation — always vLLM batched.
    - One accuracy definition everywhere: `eval/math_verify.py`.
    - Every result traces to a prediction file + run id in `RESULTS_PROVENANCE.md`.
@@ -113,28 +113,28 @@ RESULTS_PROVENANCE.md
 
 ### T0.5 — `modal_app.py`
 - **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
-  vLLM eval-inference function for ≤1.7B adapters on a T4/L4, (c) **a vLLM server for the frozen
-  generator** (`Qwen3-14B`, 4-bit on T4 / bf16 on L4) exposing an OpenAI-compatible endpoint.
-  Region default, preemptible.
+  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (Optional, for the S2-strong subset /
+  Gemini fallback only: a vLLM server for a frozen `Qwen3-8B/14B` — but prefer running that on Kaggle
+  free T4, not Modal.) Region default, preemptible.
 - **Depends-on:** T0.4
 - **Output:** `modal_app.py` + `docs/MODAL.md` (setup; **do not add a payment method**; usage-limit
-  stays $30).
-- **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30; the
-  generator server answers a test prompt.
+  stays $30; **Modal is training-only** — generation never touches it).
+- **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30.
 
 ### T0.6 — LLM clients + smoke test — **[HUMAN provides free keys]**
 - **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
-  - `generate(...)` / `informalize(...)` → **the self-hosted `Qwen3-14B` only** (via the vLLM
-    endpoint from T0.5, or a local vLLM on Kaggle). One fixed model ⇒ each augmentation arm is a
-    well-defined condition. No rate limit, no cost, fully reproducible.
-  - `solve(problem)` → callable against **each** of {self-hosted 14B, Gemini 2.5 Flash (free API),
-    DeepSeek (free API)} independently, for the round-trip self-consistency check. Backoff per provider.
-- **Depends-on:** T0.1, T0.5; researcher puts **free** keys in `.env`: `GEMINI_API_KEY`,
-  `DEEPSEEK_API_KEY`. No paid keys.
-- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (per solver: accuracy on 20 Vietnamese
-  problems, latency, rate limit).
-- **Acceptance:** the self-hosted generator produces well-formed Vietnamese problems on 20 seeds;
-  each free solver answers ≥17/20.
+  - `generate(...)` / `informalize(...)` → **`Gemini 3.1 Flash Lite` only** (free tier), with
+    **round-robin rotation across 4–5 API keys**, per-key RPD tracking, backoff, and a pinned
+    `model_version` + decode config. One fixed model ⇒ each augmentation arm is a well-defined
+    condition. Fallback path: a local vLLM `Qwen3-8B` on Kaggle T4 if Gemini access degrades.
+  - `solve(problem)` → callable against **each** of {Gemini Flash Lite, DeepSeek (free API), a small
+    local model} independently, for the round-trip self-consistency check. Backoff per provider.
+- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: **4–5 × `GEMINI_API_KEY`** (comma-sep
+  or `GEMINI_API_KEYS`) + `DEEPSEEK_API_KEY`. No paid keys.
+- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (generation quality on 20 seeds; per
+  solver accuracy/latency; **measured per-key RPD**).
+- **Acceptance:** the generator produces well-formed Vietnamese problems on 20 seeds; each solver
+  answers ≥17/20; total usable RPD ≈ 1.5–2k confirmed.
 
 ### T0.7 — Anchor numbers
 - **Goal:** establish reference points under the unified harness. Run zero-shot `Qwen3-1.7B-Base`
@@ -249,12 +249,15 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** 20k rows, schema-valid, dedup'd against test sets.
 
 ### T2.3 — LLM augmentation generator
-- **Goal:** `llm_aug/generate.py` — the **self-hosted `Qwen3-14B`** (the one fixed generation
-  model) generates, per seed, a structurally-varied variant at a target difficulty + step-by-step
-  solution + `\boxed{}` answer; diversity sampling; vLLM batched (no rate limit).
+- **Goal:** `llm_aug/generate.py` — **`Gemini 3.1 Flash Lite`** (the one fixed generation model, via the
+  4–5-key client from T0.6) generates, per seed, a structurally-varied variant at a target difficulty +
+  step-by-step solution + `\boxed{}` answer; diversity sampling; paced against the per-key RPD; resumable
+  checkpoint. Also generates the **S2-strong** subset (~1–2k) via the self-hosted `Qwen3-14B` on Kaggle
+  T4.
 - **Depends-on:** T0.6
-- **Output:** module + `data/arms/_llm_raw.jsonl`.
-- **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness.
+- **Output:** module + `data/arms/_llm_raw.jsonl` (+ `_llm_raw_strong.jsonl`).
+- **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness; RPD budget check for the
+  full run.
 
 ### T2.4 — Build S2 (LLM aug + independent check)
 - **Goal:** `scripts/build_s2.py` — keep a candidate only if an **independent** SymPy evaluation of the
