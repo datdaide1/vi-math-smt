@@ -387,10 +387,13 @@ answer term). None touches the answer expression.**
 is "the strong-LLM arm": a single, named frontier model, `seed=42`, pinned `temperature`/`top_p`. The
 same weights are reachable free from two endpoints — use both, and log which served each item
 (provenance):
-1. **DeepSeek direct API** (`api.deepseek.com`) — 5M free tokens on signup (~30 days, no card), 60 RPM.
-   ≈ 1,400 calls.
-2. **NVIDIA NIM** (`integrate.api.nvidia.com`, `deepseek-ai/deepseek-v4-pro-0813`) — free, 40 RPM,
-   ~1,000 credits/month per key (the researcher has **1 key** → ~1,000/month, recurring).
+1. **NVIDIA NIM** (`integrate.api.nvidia.com`, `deepseek-ai/deepseek-v4-pro-0813`) — free, 40 RPM,
+   `seed` supported. Signup grants **1,000 credits** (1 credit ≈ 1 call); a **university/business email
+   (`@vnu.edu.vn` etc.) unlocks a free 90-day NVIDIA AI Enterprise license → +4,000 credits** (5,000
+   total); "Request More" in the profile for still more. (Some accounts are now rate-limit-only with
+   no credit cap — check the live balance in T0.6.)
+2. **DeepSeek direct API** (`api.deepseek.com`) — 5M free tokens on signup (~30 days), 60 RPM. ≈ 1,400
+   calls — a top-up if the NIM budget runs low.
 
 **Volume fit.** Two levers make ~1 key enough: **(a) batching** — one call informalizes / generates
 **10–20 items** (the old translation pipeline already did "20 per request"); **(b) modest N** —

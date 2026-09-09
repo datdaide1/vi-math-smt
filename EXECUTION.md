@@ -131,7 +131,10 @@ RESULTS_PROVENANCE.md
     `Qwen3-8B` on Kaggle T4.
   - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), Gemini Flash Lite (free),
     a small local model} independently, for the round-trip self-consistency check. Backoff per provider.
-- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: `DEEPSEEK_API_KEY` (direct) + `NVIDIA_API_KEY` (1) + `GEMINI_API_KEYS` (comma-sep
+- **[HUMAN] first:** log in to build.nvidia.com → check the credit balance; **activate the free 90-day
+  NVIDIA AI Enterprise license with a `@vnu.edu.vn` / `@hus.edu.vn` email (+4,000 credits)**; "Request
+  More" if available. Record the number. Also register a DeepSeek direct API key (5M-token grant).
+- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: `NVIDIA_API_KEY` + `DEEPSEEK_API_KEY` (direct) + `GEMINI_API_KEYS` (comma-sep
   or `GEMINI_API_KEYS`) + `DEEPSEEK_API_KEY`. No paid keys.
 - **Output:** `llm_aug/clients.py` + `results/api_bench.json` (generation quality on 20 seeds; per
   solver accuracy/latency; **measured per-key RPD**).
