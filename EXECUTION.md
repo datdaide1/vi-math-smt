@@ -10,7 +10,8 @@
 
 1. Read `RESEARCH_PLAN.md` fully. The spine is the research question in §0; everything serves it.
 2. **Hard rules (never violate):** — see `RESEARCH_PLAN.md` §6.0 for the full model table.
-   - **Generation = `deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM (free, `seed=42`), nothing else.** One fixed model; rotate `NVIDIA_API_KEYS`.
+   - **Generation = `DeepSeek V4-Pro` (`seed=42`), nothing else.** Free via DeepSeek direct API (5M
+     signup grant) + NVIDIA NIM (1 key). **Batch 10–20 items per call.** One fixed model identity.
    - **Fine-tuning = `Qwen3-0.6B-Base` / `Qwen3-1.7B-Base` only.** No model >1.7B is ever fine-tuned.
      Frozen larger models are run *for inference only*: the S2-alt subset (Gemini / `Qwen3-8B` on
      Kaggle free T4), the leaderboard (free endpoints / published numbers).
@@ -113,7 +114,7 @@ RESULTS_PROVENANCE.md
 
 ### T0.5 — `modal_app.py`
 - **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
-  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (Optional, for the S2-strong subset /
+  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (Optional, for the S2-alt subset (weaker generator) /
   Gemini fallback only: a vLLM server for a frozen `Qwen3-8B/14B` — but prefer running that on Kaggle
   free T4, not Modal.) Region default, preemptible.
 - **Depends-on:** T0.4
@@ -123,18 +124,19 @@ RESULTS_PROVENANCE.md
 
 ### T0.6 — LLM clients + smoke test — **[HUMAN provides free keys]**
 - **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
-  - `generate(...)` / `informalize(...)` → **`deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM only**
-    (`integrate.api.nvidia.com`, OpenAI-compatible), `seed=42` + pinned `temperature`/`top_p`,
-    round-robin over several `NVIDIA_API_KEYS`, per-key monthly-credit tracking, backoff. One fixed
-    model. Fallback: Gemini Flash Lite multi-key → local vLLM `Qwen3-8B` on Kaggle T4.
+  - `generate(...)` / `informalize(...)` → **`DeepSeek V4-Pro` only**, `seed=42` + pinned
+    `temperature`/`top_p`. Endpoints (OpenAI-compatible, try in order, track remaining budget each):
+    `api.deepseek.com` (5M-token grant) → `integrate.api.nvidia.com` (`deepseek-ai/deepseek-v4-pro-0813`,
+    1 key). **Every request batches 10–20 items.** Fallback: Gemini Flash Lite multi-key → local vLLM
+    `Qwen3-8B` on Kaggle T4.
   - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), Gemini Flash Lite (free),
     a small local model} independently, for the round-trip self-consistency check. Backoff per provider.
-- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: **`NVIDIA_API_KEYS`** (several, comma-sep) + `GEMINI_API_KEYS` (comma-sep
+- **Depends-on:** T0.1; researcher puts **free** keys in `.env`: `DEEPSEEK_API_KEY` (direct) + `NVIDIA_API_KEY` (1) + `GEMINI_API_KEYS` (comma-sep
   or `GEMINI_API_KEYS`) + `DEEPSEEK_API_KEY`. No paid keys.
 - **Output:** `llm_aug/clients.py` + `results/api_bench.json` (generation quality on 20 seeds; per
   solver accuracy/latency; **measured per-key RPD**).
-- **Acceptance:** the generator produces well-formed Vietnamese problems on 20 seeds; each solver
-  answers ≥17/20; the real per-key monthly NIM credit allowance is measured and recorded.
+- **Acceptance:** the generator produces well-formed Vietnamese problems on a **batch of 15** seeds in
+  one call; each solver answers ≥17/20; remaining budget on each endpoint recorded.
 
 ### T0.7 — Anchor numbers
 - **Goal:** establish reference points under the unified harness. Run zero-shot `Qwen3-1.7B-Base`
@@ -249,11 +251,11 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** 20k rows, schema-valid, dedup'd against test sets.
 
 ### T2.3 — LLM augmentation generator
-- **Goal:** `llm_aug/generate.py` — **`deepseek-v4-pro-0813` via NIM** (the one fixed generation model,
-  `seed=42`, via the key-rotating client from T0.6) generates, per seed, a structurally-varied variant
-  at a target difficulty + step-by-step solution + `\boxed{}` answer; diversity sampling; paced against
-  the monthly credit budget; resumable checkpoint. Also generates the **S2-alt** subset (~1–2k) with a
-  weaker generator (Gemini / self-hosted Qwen3-8B).
+- **Goal:** `llm_aug/generate.py` — **`DeepSeek V4-Pro`** (`seed=42`, endpoint-failover client from
+  T0.6) generates, **10–20 seeds per call**, structurally-varied variants + step-by-step solutions +
+  `\boxed{}` answers; diversity sampling; resumable checkpoint; stops when the endpoint budget is
+  exhausted and reports progress. Also generates the **S2-alt** subset (~1–2k) with a weaker generator
+  (Gemini / self-hosted Qwen3-8B).
 - **Depends-on:** T0.6
 - **Output:** module + `data/arms/_llm_raw.jsonl` (+ `_llm_raw_strong.jsonl`).
 - **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness; RPD budget check for the
@@ -438,7 +440,7 @@ RESULTS_PROVENANCE.md
 
 | ID | What | When |
 |---|---|---|
-| T0.6 | Provide **free** `.env` keys: **NVIDIA_API_KEYS** (several, generation) + GEMINI_API_KEYS (fallback+solver) + DEEPSEEK_API_KEY | Sprint 0 |
+| T0.6 | Provide **free** `.env` keys: DEEPSEEK_API_KEY (direct, 5M grant) + NVIDIA_API_KEY (1) + GEMINI_API_KEYS (fallback+solver) | Sprint 0 |
 | T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |
