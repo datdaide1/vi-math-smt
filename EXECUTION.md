@@ -10,10 +10,12 @@
 
 1. Read `RESEARCH_PLAN.md` fully. The spine is the research question in §0; everything serves it.
 2. **Hard rules (never violate):**
-   - No model larger than **1.7B** is ever fine-tuned or run on our GPUs. SFT bases are
-     `Qwen3-0.6B-Base` and `Qwen3-1.7B-Base` only. Larger models = leaderboard only, via free hosted
-     endpoints or published numbers.
+   - No model larger than **1.7B** is ever **fine-tuned**. SFT bases are `Qwen3-0.6B-Base` and
+     `Qwen3-1.7B-Base` only. (A *frozen* larger model IS run for inference — the self-hosted 8B
+     generator; and leaderboard rows >1.7B come from free hosted endpoints / published numbers.)
    - No DPO / RL. SFT only.
+   - **No paid services.** The generator is self-hosted (free compute); free API keys (Gemini,
+     DeepSeek) are used only for the low-volume solver check.
    - No `model.generate` loops for evaluation — always vLLM batched.
    - One accuracy definition everywhere: `eval/math_verify.py`.
    - Every result traces to a prediction file + run id in `RESULTS_PROVENANCE.md`.
@@ -111,25 +113,28 @@ RESULTS_PROVENANCE.md
 
 ### T0.5 — `modal_app.py`
 - **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
-  vLLM-inference function on a T4/L4. Region default, preemptible.
+  vLLM eval-inference function for ≤1.7B adapters on a T4/L4, (c) **a vLLM server for the frozen
+  generator** (`Qwen3-8B-Instruct`, 4-bit on T4 / bf16 on L4) exposing an OpenAI-compatible endpoint.
+  Region default, preemptible.
 - **Depends-on:** T0.4
 - **Output:** `modal_app.py` + `docs/MODAL.md` (setup; **do not add a payment method**; usage-limit
   stays $30).
-- **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30 of credit.
+- **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30; the
+  generator server answers a test prompt.
 
-### T0.6 — API clients + smoke test — **[HUMAN provides keys]**
-- **Goal:** `llm_aug/clients.py` — OpenAI-compatible wrapper with two distinct roles:
-  - `generate(...)` / `informalize(...)` → **DeepSeek V4 only**, rotating across multiple DeepSeek keys
-    for rate limits. One model = each augmentation arm is a well-defined condition.
-  - `solve(problem)` → callable against **each** of DeepSeek / Gemini 2.5 Flash / (optional) GLM
-    independently, for the round-trip self-consistency check where multiple independent solvers is the
-    point.
-  Backoff + key rotation within a provider.
-- **Depends-on:** T0.1; researcher puts keys in `.env` (see `.env.example`): `DEEPSEEK_API_KEYS`
-  (2–3 keys), `GEMINI_API_KEY`, optional `GLM_API_KEY`.
-- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (per model: solve accuracy on 20
-  Vietnamese problems, latency, observed rate limit).
-- **Acceptance:** DeepSeek answers ≥18/20; each solver's rate limit documented.
+### T0.6 — LLM clients + smoke test — **[HUMAN provides free keys]**
+- **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
+  - `generate(...)` / `informalize(...)` → **the self-hosted `Qwen3-8B-Instruct` only** (via the vLLM
+    endpoint from T0.5, or a local vLLM on Kaggle). One fixed model ⇒ each augmentation arm is a
+    well-defined condition. No rate limit, no cost, fully reproducible.
+  - `solve(problem)` → callable against **each** of {self-hosted 8B, Gemini 2.5 Flash (free API),
+    DeepSeek (free API)} independently, for the round-trip self-consistency check. Backoff per provider.
+- **Depends-on:** T0.1, T0.5; researcher puts **free** keys in `.env`: `GEMINI_API_KEY`,
+  `DEEPSEEK_API_KEY`. No paid keys.
+- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (per solver: accuracy on 20 Vietnamese
+  problems, latency, rate limit).
+- **Acceptance:** the self-hosted generator produces well-formed Vietnamese problems on 20 seeds;
+  each free solver answers ≥17/20.
 
 ### T0.7 — Anchor numbers
 - **Goal:** establish reference points under the unified harness. Run zero-shot `Qwen3-1.7B-Base`
@@ -244,9 +249,9 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** 20k rows, schema-valid, dedup'd against test sets.
 
 ### T2.3 — LLM augmentation generator
-- **Goal:** `llm_aug/generate.py` — **DeepSeek V4** (the one fixed generation model) generates, per
-  seed, a structurally-varied variant at a target difficulty + step-by-step solution + `\boxed{}`
-  answer; diversity sampling; batch with **DeepSeek-key** rotation (never another provider).
+- **Goal:** `llm_aug/generate.py` — the **self-hosted `Qwen3-8B-Instruct`** (the one fixed generation
+  model) generates, per seed, a structurally-varied variant at a target difficulty + step-by-step
+  solution + `\boxed{}` answer; diversity sampling; vLLM batched (no rate limit).
 - **Depends-on:** T0.6
 - **Output:** module + `data/arms/_llm_raw.jsonl`.
 - **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness.
@@ -430,7 +435,7 @@ RESULTS_PROVENANCE.md
 
 | ID | What | When |
 |---|---|---|
-| T0.6 | Provide `.env` keys: DEEPSEEK_API_KEYS (2–3, generation), GEMINI_API_KEY (solver), optional GLM_API_KEY | Sprint 0 |
+| T0.6 | Provide **free** `.env` keys: GEMINI_API_KEY + DEEPSEEK_API_KEY (both solver-check only; generator is self-hosted) | Sprint 0 |
 | T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |
@@ -455,5 +460,5 @@ RESULTS_PROVENANCE.md
 | Symbolic pipeline fixes (Sprint 1) take longer than 2 weeks | T2.1 gate; O1/O2 are optional for v1 — `constant_sub` + leakage filter + round-trip alone give a valid S1 |
 | Exam OCR quality too low | T2.10 verification is the filter; report the rate; fall back to fewer, hand-transcribed items to hit the 400 minimum |
 | Can't recruit 3 MOS raters | drop to 2 + report κ with the caveat; MOS is one panel metric among many |
-| DeepSeek rate limits stall arm generation | rotate 2–3 DeepSeek keys; pace over Sprint 2; DeepSeek paid tier (~$5–20) as fallback — do not swap in another provider for a generative task |
+| Generation volume | generator is self-hosted (Qwen3-8B via vLLM) — no rate limit; the whole corpus is a few L4-hours, run once |
 | Grid exceeds one Modal month | it fits Kaggle's free quota alone (~2 weeks); cut English control to 2 arms, non-primary seeds to 2, drop S6 |
