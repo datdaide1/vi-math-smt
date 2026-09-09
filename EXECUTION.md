@@ -12,11 +12,13 @@
 2. **Hard rules (never violate):** — see `RESEARCH_PLAN.md` §6.0 for the full model table.
    - **Generation = `deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM (`seed=42`, 40 RPM, no credit
      cap), nothing else.** One fixed model. Optional batching for speed.
-   - **Fine-tuning = `Qwen3-0.6B-Base` / `Qwen3-1.7B-Base` only.** No model >1.7B is ever fine-tuned.
-     Frozen larger models are run *for inference only*: the S2-alt subset (`Qwen3-8B` on Kaggle free
-     T4), the leaderboard (free endpoints / published numbers).
-   - No DPO / RL. SFT only.
-   - **No paid services.** Modal $30/month is **training-only** — generation never touches it.
+   - **Fine-tuning = `Qwen3-0.6B-Base` (local, 4 GB RTX 3050 Ti, QLoRA) / `Qwen3-1.7B-Base` (Modal L4,
+     ~$6/month) only.** No model >1.7B is ever fine-tuned. **Nothing is self-hosted on a GPU.** Every
+     frozen larger model is reached through a hosted API: S2-alt weaker generator + round-trip solver +
+     difficulty reference = `meta/llama-3.1-8b-instruct` via NIM; leaderboard = free endpoints / published numbers.
+   - No DPO / RL. SFT only. No Kaggle.
+   - **No paid services.** Modal $30/month is **1.7B-fine-tuning-only** (~$6–10/cycle) — generation and
+     the 0.6B grid never touch it.
    - No `model.generate` loops for evaluation — always vLLM batched.
    - One accuracy definition everywhere: `eval/math_verify.py`.
    - Every result traces to a prediction file + run id in `RESULTS_PROVENANCE.md`.
@@ -105,30 +107,31 @@ RESULTS_PROVENANCE.md
 
 ### T0.4 — `scripts/sft.py` (training template)
 - **Goal:** Unsloth LoRA SFT. Config: `{base_model, train_jsonl, N, seed, max_seq_len(auto=p99),
-  lora_r=16, epochs=1, packing=True, completion_only=True, output_dir}`. No literal `<s>` in text.
-  Works on Kaggle T4 and Modal L4.
+  lora_r=16, epochs=1, packing=True, completion_only=True, load_in_4bit, output_dir}`. No literal `<s>`
+  in text. Runs locally for 0.6B (4-bit QLoRA on the 4 GB RTX 3050 Ti) and on Modal L4 for 1.7B.
 - **Depends-on:** T0.1
 - **Output:** `scripts/sft.py` + `configs/sft.example.yaml`.
-- **Acceptance:** a 300-example smoke run on Qwen3-0.6B-Base finishes < 10 min on a T4 and produces a
-  loadable adapter; loss decreases.
+- **Acceptance:** a 300-example smoke run on Qwen3-0.6B-Base finishes < 15 min **on the local laptop
+  GPU** (peak VRAM < 4 GB) and produces a loadable adapter; loss decreases.
 
 ### T0.5 — `modal_app.py`
-- **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4, (b) a
-  vLLM eval-inference function for ≤1.7B adapters on a T4/L4. (The S2-alt weaker-generator subset runs
-  a frozen `Qwen3-8B` — on Kaggle free T4, not Modal.) Region default, preemptible.
+- **Goal:** a Modal app exposing (a) an SFT function wrapping `scripts/sft.py` on an L4 — **used for the
+  ~25 Qwen3-1.7B-Base runs only** (0.6B trains locally), (b) a vLLM eval-inference function for ≤1.7B
+  adapters on an L4. No self-hosted generator anywhere. Region default, preemptible.
 - **Depends-on:** T0.4
 - **Output:** `modal_app.py` + `docs/MODAL.md` (setup; **do not add a payment method**; usage-limit
-  stays $30; **Modal is training-only** — generation never touches it).
+  stays $30; **Modal is 1.7B-fine-tuning-only** — generation never touches it).
 - **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30.
 
 ### T0.6 — LLM clients + smoke test — **[HUMAN provides free keys]**
 - **Goal:** `llm_aug/clients.py` — one wrapper, two roles:
   - `generate(...)` / `informalize(...)` → **`deepseek-ai/deepseek-v4-pro-0813` via NVIDIA NIM only**
     (`integrate.api.nvidia.com`, OpenAI-compatible), `seed=42` + pinned `temperature`/`top_p`, a 40 RPM
-    limiter, resumable checkpoint. One fixed model. Fallback: DeepSeek direct API → local vLLM
-    `Qwen3-8B` on Kaggle T4.
-  - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), self-hosted
-    Qwen2.5-Math-1.5B, optional Groq Llama-3.3-70B (free)} independently, for the round-trip check.
+    limiter, resumable checkpoint. One fixed model. Fallback: DeepSeek direct API → Groq (all hosted).
+  - `generate_weak(...)` → **`meta/llama-3.1-8b-instruct` via NIM** (same key), `seed=42` — the S2-alt
+    weaker generator.
+  - `solve(problem)` → callable against **each** of {deepseek-v4-pro (NIM), `meta/llama-3.1-8b-instruct`
+    (NIM), optional Groq Llama-3.3-70B (free)} independently, plus SymPy, for the round-trip check.
 - **[HUMAN] first:** the NIM account (`@hus.edu.vn`) is already rate-limit-only (40 RPM, no credit
   cap) — just generate an `NVIDIA_API_KEY`. Optionally request a 200 RPM increase. Also register a
   DeepSeek direct API key (fallback) and optionally a Groq key (3rd solver).
@@ -255,7 +258,7 @@ RESULTS_PROVENANCE.md
 - **Goal:** `llm_aug/generate.py` — **`deepseek-v4-pro-0813` via NIM** (`seed=42`, 40 RPM, client from
   T0.6) generates, per seed, structurally-varied variants + step-by-step solutions + `\boxed{}`
   answers; diversity sampling; resumable checkpoint. Also generates the **S2-alt** subset (~1–2k) with
-  a weaker generator (self-hosted Qwen3-8B).
+  a weaker generator (`meta/llama-3.1-8b-instruct` via NIM).
 - **Depends-on:** T0.6
 - **Output:** module + `data/arms/_llm_raw.jsonl` (+ `_llm_raw_strong.jsonl`).
 - **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness; RPD budget check for the
@@ -344,24 +347,24 @@ RESULTS_PROVENANCE.md
 
 ---
 
-## SPRINT 4 — Training grid + inference  *(GPU spend confined to this billing month)*
+## SPRINT 4 — Training grid + inference  *(1.7B GPU spend confined to one Modal billing cycle)*
 
 ### T4.1 — Grid config
-- **Goal:** `configs/grid.yaml` enumerating every run: `{arm, base, seed, N, testsets}`.
-  Core: S0/S1/S2/S5 × {Qwen3-1.7B-Base, Qwen3-0.6B-Base} × 3 seeds.
+- **Goal:** `configs/grid.yaml` enumerating every run: `{arm, base, seed, N, testsets, where}`.
+  Core: S0/S1/S2/S5 × {Qwen3-0.6B-Base (local), Qwen3-1.7B-Base (Modal L4)} × 3 seeds.
   Diagnostic: S3/S4/S6 × Qwen3-1.7B-Base × 2 seeds.
   Data-efficiency: S0/S1/S2 × N∈{2k,5k,10k} × Qwen3-1.7B-Base × 2 seeds.
   English control: S0/S1/S2/S3 × Qwen3-1.7B-Base × 2 seeds (English GSM8K).
-  ≈ 55 runs.
+  ≈ 55 runs (~30 local 0.6B, ~25 Modal L4 1.7B).
 - **Depends-on:** T2.2–T2.8, T3.1
 - **Output:** `configs/grid.yaml`.
 
 ### T4.2 — Run training grid
 - **Goal:** `scripts/run_grid.py` — for each run: 20-sample smoke test (`format_ok` > 80%, no
   repetition) → full SFT → save adapter + `results/runs/<run_id>/` (config, loss curve, metadata).
-  Kaggle 2×T4 by default; Modal L4 to burst. Resumable.
+  0.6B runs on the local laptop GPU; 1.7B runs on Modal L4. Resumable.
 - **Depends-on:** T4.1, T0.4, T0.5
-- **Acceptance:** all runs complete; total Modal spend < $20; each run logged.
+- **Acceptance:** all runs complete; total Modal spend < $12; each run logged.
 
 ### T4.3 — Inference sweeps
 - **Goal:** merge each adapter → vLLM → predictions on Vi-ExamMath + Vi-GSM8K + robustness + template.
@@ -465,5 +468,6 @@ RESULTS_PROVENANCE.md
 | Symbolic pipeline fixes (Sprint 1) take longer than 2 weeks | T2.1 gate; O1/O2 are optional for v1 — `constant_sub` + leakage filter + round-trip alone give a valid S1 |
 | Exam OCR quality too low | T2.10 verification is the filter; report the rate; fall back to fewer, hand-transcribed items to hit the 400 minimum |
 | Can't recruit 3 MOS raters | drop to 2 + report κ with the caveat; MOS is one panel metric among many |
-| Generation volume | generator is self-hosted (`Qwen3-14B` via vLLM) — no rate limit; the whole corpus is a few L4-hours, run once |
-| Grid exceeds one Modal month | it fits Kaggle's free quota alone (~2 weeks); cut English control to 2 arms, non-primary seeds to 2, drop S6 |
+| Generation volume vs 40 RPM | ~15–30k items ≈ 1–3 h wall-clock at 40 RPM; resumable checkpoint; optional 5–10-item batching; fallback DeepSeek direct → Groq |
+| Grid exceeds one Modal cycle | the ~30 0.6B runs are free on the laptop; only ~25 1.7B runs hit L4 (~$6–10); cut English control to 2 arms, non-primary seeds to 2, drop S6 |
+| 0.6B QLoRA OOMs on 4 GB | drop `lora_r` to 8, `max_seq_len` to p95, batch 1 + grad-accum; last resort move that base to Modal L4 too (~$4 more) |

@@ -4,8 +4,9 @@
 **Owner:** Tran Hoang Dat (VNU University of Science). Advisor: Dr. Ha My Linh.
 **Working paper title:** *Does Symbolic Verification Still Earn Its Keep? A 2026 Comparison of Symbolic
 and LLM-based Math-Data Augmentation for Small Models in a Low-Resource Language.*
-**Constraints:** single researcher; free compute only (Kaggle + Modal $30/month free tier); **no paid
-services** — generator = DeepSeek V4-Pro on NVIDIA NIM (free, 40 RPM, no credit cap); Modal = training only.
+**Constraints:** single researcher; laptop (4 GB RTX 3050 Ti) + hosted API + Modal $30/month free tier;
+**no paid services, no self-hosted GPU** — generator = DeepSeek V4-Pro on NVIDIA NIM (free, 40 RPM, no
+credit cap); Modal ≈ $6/month for the 1.7B fine-tunes only.
 **Targets:** a guaranteed Q3-tier resource paper (Contribution 1 alone) + an upside Q2-tier
 (Findings/COLING) full paper (Contributions 1+2+3).
 
@@ -33,14 +34,15 @@ augmentation strategies cleanly for that setting.
 **Everything is free.** Data collection is OCR + human QA. The augmentation generator is
 **`DeepSeek V4-Pro`** (`seed=42`) on **NVIDIA NIM's free tier** — the researcher's account is
 **rate-limit-only (40 RPM, no credit cap)**. The whole ~15–30k-item corpus is ~1–2 hours of wall-clock.
-Training uses free Kaggle GPUs + Modal's $30/month credit, on ≤1.7B models, so the whole grid fits one
-month's credit (or ~2 weeks of Kaggle quota).
+Fine-tuning is Qwen3-0.6B-Base on the researcher's own laptop (4 GB RTX 3050 Ti, QLoRA) + Qwen3-1.7B-Base
+on Modal L4 for ~$6 of the free $30/month credit. No Kaggle.
 
-> **HARD RULE — no model larger than 1.7B is ever *fine-tuned*.** The 7B Mistral + Online DPO + slow
-> `model.generate` loop is exactly what broke the previous attempt's compute budget. Every SFT arm is
-> Qwen3-0.6B-Base or Qwen3-1.7B-Base; every eval sweep is a ≤1.7B adapter under vLLM. Larger models are
-> used only *frozen, for inference*: the NIM API generator (§6.2), the S2-alt / solver models on Kaggle
-> free T4, and leaderboard rows via free endpoints / published numbers.
+> **HARD RULE — no model larger than 1.7B is ever *fine-tuned*, and nothing is self-hosted on a GPU.**
+> The 7B Mistral + Online DPO + slow `model.generate` loop is exactly what broke the previous attempt's
+> compute budget. Every SFT arm is Qwen3-0.6B-Base (laptop) or Qwen3-1.7B-Base (Modal L4); every eval
+> sweep is a ≤1.7B adapter under vLLM. Every larger model is *frozen* and reached through a **hosted
+> API**: the NIM generator + weaker-generator + solver + difficulty-reference models (§6.0 rows A/B/C/D/I),
+> and leaderboard rows via free endpoints / published numbers.
 
 **This is not a pivot.** The subject is unchanged — math-data augmentation for Vietnamese. The existing
 project pipeline becomes one experimental arm (S1). The existing Vietnamese translations become a seed
@@ -234,9 +236,10 @@ source, year, province, license.
 
 **Baseline leaderboard** (every row labeled with parameter count — this is a leaderboard, not a
 controlled comparison, so mixed sizes are fine; all scored through the unified `math_verify` harness):
-- *≤1.7B — we run these ourselves on Kaggle T4 + vLLM (cheap, part of the plan):* **Qwen3-0.6B**,
-  **Qwen3-1.7B**, **Qwen2.5-1.5B**, **Qwen2.5-Math-1.5B**, **DeepSeek-R1-Distill-Qwen-1.5B** (the
-  meaningful strong small reference), **Sailor2-1B** (SEA-adapted, Vietnamese in pretraining).
+- *≤1.7B — we run these ourselves (0.6B on the laptop, ≥1B on Modal L4 / a free endpoint, vLLM):*
+  **Qwen3-0.6B**, **Qwen3-1.7B**, **Qwen2.5-1.5B**, **Qwen2.5-Math-1.5B**,
+  **DeepSeek-R1-Distill-Qwen-1.5B** (the meaningful strong small reference), **Sailor2-1B** (SEA-adapted,
+  Vietnamese in pretraining).
 - *larger open (>1.7B) — NOT run locally:* SeaLLMs-v3-7B, Vistral-7B, Qwen3-4B/8B, Qwen2.5-Math-7B —
   obtained via a **free hosted endpoint** (OpenRouter free tier, HF Inference Providers free tier, the
   model's own free API) or, failing that, a **published number** on a comparable Vietnamese benchmark
@@ -310,20 +313,22 @@ robustness or hard items" / "both underperform no-aug at 1.5B" — each is a tim
 
 | # | Role | Model | Notes |
 |---|---|---|---|
-| **A** | **Generation** — S1 informalization (symbolic → Vietnamese text) + S2/S3 variant+solution generation | **`deepseek-ai/deepseek-v4-pro-0813`** via **NVIDIA NIM**, `seed=42` — researcher's account is **40 RPM, no credit cap** (confirmed). | **The one fixed generator** — a frontier model, reproducible. Optional: batch 5–10 items/call for speed. Fallback chain: NIM → DeepSeek direct API (5M-token grant) → self-hosted Qwen3-8B (Kaggle T4). |
+| **A** | **Generation** — S1 informalization (symbolic → Vietnamese text) + S2/S3 variant+solution generation | **`deepseek-ai/deepseek-v4-pro-0813`** via **NVIDIA NIM**, `seed=42` — researcher's account is **40 RPM, no credit cap** (confirmed). | **The one fixed generator** — a frontier model, reproducible. Optional: batch 5–10 items/call for speed. Fallback chain: NIM → DeepSeek direct API (5M-token grant) → Groq (free). **All hosted API — no local GPU.** |
 | **B** | **New formalization** — verify Vi-ExamMath, re-formalize the MATH algebra subset (write SMT/SymPy from a problem) | `deepseek-v4-pro` via NIM (same as A) | Z3 / SymPy + the uniqueness gate do the actual *verification*; the LLM only drafts the formal code. |
-| **C** | **S2-alt subset** (~1–2k) — generator-strength robustness check: does the S1-vs-S2 finding hold with a *weaker* generator? | self-hosted `Qwen3-8B` on **Kaggle free T4** (vLLM, frozen) | Inference only — not fine-tuned. |
-| **D** | **Round-trip solver check** — independently re-solve a generated problem, majority vote vs the symbolic answer | `deepseek-v4-pro` (NIM) + `Qwen2.5-Math-1.5B` self-hosted + optional `Groq` Llama-3.3-70B (free) — different model families | SymPy exact check is primary; ≥2 independent LLM solvers back it up. |
-| **E** | **SFT base models** (fine-tuned — the C2 grid) | **`Qwen3-1.7B-Base`** + **`Qwen3-0.6B-Base`** (optional `Sailor2-1B-Base`) | `-Base`, not `-Instruct`. **Only ≤1.7B is ever fine-tuned.** |
-| **F** | **C1 leaderboard — small models we run ourselves** (zero-shot / few-shot) | `Qwen3-0.6B/1.7B`, `Qwen2.5-1.5B`, `Qwen2.5-Math-1.5B`, `DeepSeek-R1-Distill-Qwen-1.5B`, `Sailor2-1B` | Kaggle T4 + vLLM. |
-| **G** | **C1 leaderboard — larger models, NOT run locally** | `SeaLLMs-v3-7B`, `Vistral-7B`, `Qwen3-4B/8B`, `deepseek-v4-pro` (NIM), `WizardMath-7B` (re-score existing predictions, CPU) | free hosted endpoints / published numbers. |
+| **C** | **S2-alt subset** (~1–2k) — generator-strength robustness check: does the S1-vs-S2 finding hold with a *weaker* generator? | **`meta/llama-3.1-8b-instruct`** via **NVIDIA NIM** (free, same key as A), `seed=42`, frozen | A deliberately weaker hosted model. Any weaker LLM serves the design — no local GPU, no self-hosting. |
+| **D** | **Round-trip solver check** — independently re-solve a generated problem, majority vote vs the symbolic answer | **SymPy exact** (primary) + `deepseek-v4-pro` (NIM) + `meta/llama-3.1-8b-instruct` (NIM) — different families, all hosted | SymPy is the real check; 2 independent hosted LLM solvers back it up. Optional 3rd: Groq Llama-3.3-70B (free). |
+| **E** | **SFT base models** (fine-tuned — the C2 grid) | **`Qwen3-0.6B-Base`** (runs on the local 4 GB RTX 3050 Ti) + **`Qwen3-1.7B-Base`** (Modal L4, ~$6 of the free monthly credit) — optional `Sailor2-1B-Base` | `-Base`, not `-Instruct`. **Only ≤1.7B is ever fine-tuned. Two sizes are required for the C2 headline.** |
+| **F** | **C1 leaderboard — small models we run ourselves** (zero-shot / few-shot) | `Qwen3-0.6B/1.7B`, `Qwen2.5-1.5B`, `Qwen2.5-Math-1.5B`, `DeepSeek-R1-Distill-Qwen-1.5B`, `Sailor2-1B` | local 0.6B; ≥1B on Modal L4 or a free hosted endpoint, vLLM. |
+| **G** | **C1 leaderboard — larger models, NOT fine-tuned** | `SeaLLMs-v3-7B`, `Vistral-7B`, `Qwen3-4B/8B`, `deepseek-v4-pro` (NIM), `WizardMath-7B` (re-score existing predictions, CPU) | free hosted endpoints / published numbers. |
 | **H** | **Anchor sanity numbers** | `Qwen3-1.7B-Base` + `DeepSeek-R1-Distill-Qwen-1.5B` | zero-shot Vi-GSM8K — checks the harness. |
-| **I** | **Difficulty-metric reference solver** (data-quality panel) | `Qwen2.5-Math-1.5B` (frozen, one fixed model) | its solve-rate on an item = that item's difficulty label. |
+| **I** | **Difficulty-metric reference solver** (data-quality panel) | **`meta/llama-3.1-8b-instruct`** via **NVIDIA NIM** (frozen, one fixed hosted model) | its solve-rate on an item = that item's difficulty label. Hosted — no local GPU. |
 | **J** | **Embeddings** — diversity dispersion, contamination overlap, real-vs-synthetic discriminator | one multilingual sentence-embedding model | not generative. |
 
 **Three things to remember:** (1) generation = `deepseek-v4-pro-0813` via NVIDIA NIM (40 RPM, no credit
-cap), one fixed model, `seed=42`; (2) fine-tuning = Qwen3 `-Base` ≤1.7B only; (3) everything else is
-frozen inference / evaluation.
+cap), one fixed model, `seed=42`; (2) fine-tuning = Qwen3 `-Base` ≤1.7B only — 0.6B local on the 4 GB
+RTX 3050 Ti, 1.7B on Modal L4 (~$6/month); (3) everything else is either a **hosted NIM API call** (no
+local GPU: rows A/B/C/D/I) or CPU-only analysis. **Nothing is self-hosted on a GPU** — that constraint,
+plus "no 7B fine-tuned," is what keeps this runnable on the researcher's laptop.
 
 ### 6.1 The fixed symbolic pipeline (arm S1) — the mutation algorithm, `src/mutation_informalize/`
 
@@ -377,9 +382,9 @@ answer term). None touches the answer expression.**
    keywords (`assert`, `declare-`, `(check-sat)`), or `a′` verbatim in the problem body; NER for
    entities absent from the template.
 4. **Round-trip gate** — re-formalize the generated Vietnamese text → Z3 answer must equal `a′` within
-   tolerance; **and/or** 3 independent LLM solves (Gemini + DeepSeek + `Qwen2.5-Math-1.5B`), majority
-   must equal `a′`.
-5. **Difficulty guard** — the reference solver (`Qwen2.5-Math-1.5B`, I in §6.0) solve-rate must not
+   tolerance; **and/or** SymPy + 2 independent hosted LLM solves (DeepSeek V4-Pro + `llama-3.1-8b-instruct`,
+   both via NIM), majority must equal `a′`.
+5. **Difficulty guard** — the reference solver (`llama-3.1-8b-instruct` via NIM, I in §6.0) solve-rate must not
    collapse to ~0 (i.e. not accidentally unsolvable); spot-check flags.
 
 ### 6.2 The LLM augmentation arms (S2/S3)
@@ -399,20 +404,21 @@ in priority order:
 gate rejections) ≈ 15–30k items ≈ **1–3 hours of wall-clock**, or a batched job spread over a day.
 Optional 5–10-item batching just makes it faster. The data-efficiency curve runs at 2k/5k/10k.
 
-- **Fallback chain** (documented switchover point): NIM → DeepSeek direct API (5M-token grant) →
-  self-hosted `Qwen3-8B` on **Kaggle free T4**.
+- **Fallback chain** (documented switchover point): NIM (DeepSeek V4-Pro) → DeepSeek direct API
+  (5M-token grant) → Groq (free). All hosted — no local GPU in the chain.
 - Prompt: generate a variant of the seed at a specified difficulty + step-by-step solution + boxed
   answer. Encourage structural (not just numeric) variation; sample with diversity.
-- **S2-alt — generator-dependence check:** a small-N arm (~1–2k) generated with a **weaker** model
-  (self-hosted `Qwen3-8B` on Kaggle T4). Show whether the S1-vs-S2 ranking holds when the LLM is
-  weaker — if it flips, the finding is generator-dependent and we say so.
+- **S2-alt — generator-dependence check:** a small-N arm (~1–2k) generated with a deliberately
+  **weaker** model — **`meta/llama-3.1-8b-instruct` via NVIDIA NIM** (free, same key, `seed=42`). Show
+  whether the S1-vs-S2 ranking holds when the LLM is weaker — if it flips, the finding is
+  generator-dependent and we say so. The design only needs "a weaker LLM"; any weaker hosted model works.
 - **S2 check** — an **independent** SymPy evaluation of the answer (primary), backed by LLM
-  self-consistency across {DeepSeek V4-Pro (NIM), self-hosted `Qwen2.5-Math-1.5B`, optional Groq
+  self-consistency across {DeepSeek V4-Pro (NIM), `meta/llama-3.1-8b-instruct` (NIM), optional Groq
   Llama-3.3-70B (free)} — majority vote. Solver-check volume is low.
 - S3: keep everything (no check).
 
-**No paid services.** NIM free tier (no credit cap) + DeepSeek 5M grant + free Kaggle compute + the
-$30/month Modal credit (training only).
+**No paid services, no self-hosted GPU.** NIM free tier (no credit cap) + DeepSeek 5M grant + Groq free
+tier + the $30/month Modal credit (fine-tuning only — 0.6B is local).
 
 ### 6.3 Fine-tuning protocol (fixes N3; identical across all arms)
 
@@ -422,14 +428,21 @@ $30/month Modal credit (training only).
   answer marker).
 - **Completion-only loss** (mask the instruction/problem tokens).
 - No literal `<s>` in the text field (let the tokenizer add BOS once).
-- 1 epoch, cosine schedule, effective batch 16–32, bf16 on L4 / fp16 on T4, seed logged.
+- 1 epoch, cosine schedule, effective batch 16–32, bf16 on L4 / 4-bit QLoRA locally, seed logged.
+- **Where each base trains:** **Qwen3-0.6B-Base** runs *locally* on the researcher's 4 GB RTX 3050 Ti
+  (QLoRA r=16, `packing=True`, ~30–50 min/run — the whole 0.6B grid is a few laptop-nights).
+  **Qwen3-1.7B-Base** does not fit 4 GB → its ~25 grid runs go to **Modal L4** (~20 min/run ≈ 8 GPU-h ≈
+  **$6 of the free $30/month**). No Kaggle. Everything else (generation, verification, mutation, the
+  data-quality panel, analysis) is laptop CPU + hosted API.
 - **Base models — use `-Base` (not `-Instruct`)**: the SFT arm *is* the instruction tuning, so a base
   model removes the instruction-data confound; 2026 augmentation papers (e.g. AgentMath, ICLR 2026) do
   the same.
-  - **Primary: Qwen3-1.7B-Base** (April 2025, 36T-token pretrain, 119 languages incl. Vietnamese —
-    current standard for small-model math papers).
-  - **Secondary: Qwen3-0.6B-Base** (same family, smaller — tests whether the findings hold when the
-    base is weak; the realistic low-resource case). Same-family size pair is clean for the paper.
+  - **Two sizes, same family (required for the C2 headline):** **Qwen3-0.6B-Base** and
+    **Qwen3-1.7B-Base** (April 2025, 36T-token pretrain, 119 languages incl. Vietnamese). The pair lets
+    the paper report whether the arm ranking is size-stable; a single size would not convince reviewers.
+    The sub-2B / free-compute / low-resource regime is stated as the deliberate scope — the setting
+    where the practical stakes are highest (precedent: *Can A Gamer Train A Math Reasoning Model?*,
+    arXiv:2506.08935, 1.5B on one consumer GPU).
   - *Optional 3rd:* **Sailor2-1B-Base** (Qwen2.5-based, continually pretrained on SEA languages incl.
     Vietnamese) — "does a Vietnamese-adapted base change the arm ranking?"
   - *Optional robustness check:* Qwen2.5-Math-1.5B — a math-saturated base has less headroom for
@@ -466,49 +479,55 @@ arm S1 is "the symbolic pipeline (Li et al. lineage)."
 
 ---
 
-## 7. Compute & tooling (entirely free)
+## 7. Compute & tooling (entirely free — laptop + hosted API + ~$6 Modal)
 
-*This section is purely instrumental — it exists to confirm the study in §§3–6 is runnable on free
-resources. It is not a contribution, does not belong in the abstract, and no results section is
-organized around it. The previous attempt failed on compute (Mistral-7B + Online DPO + a per-example
-`model.generate` loop exceeded free quotas), so the plan removes every part of that: no 7B, no DPO/RL,
-vLLM batched inference, sequence packing, a grid that fits one Modal month or ~2 weeks of Kaggle
-quota. Beyond that, do not spend design effort here — spend it on the research questions.*
+*This section is purely instrumental — it exists to confirm the study in §§3–6 is runnable on the
+researcher's own hardware. It is not a contribution, does not belong in the abstract, and no results
+section is organized around it. The previous attempt failed on compute (Mistral-7B + Online DPO + a
+per-example `model.generate` loop exceeded free quotas), so the plan removes every part of that: **no
+model above 1.7B is fine-tuned, nothing is self-hosted on a GPU, and there is no Kaggle dependency.**
+Beyond that, do not spend design effort here — spend it on the research questions.*
+
+**The researcher's machine:** a laptop with an **NVIDIA RTX 3050 Ti, 4 GB VRAM** (verified). This fits a
+0.6B model under 4-bit QLoRA + `packing`, and vLLM inference for a 0.6B adapter. It does **not** fit a
+1.7B fine-tune or any 7B/8B model — those are the reason for the two escape hatches below (hosted NIM
+API for frozen inference; Modal L4 for the 1.7B fine-tunes only).
 
 | Task | Where | Cost |
 |---|---|---|
-| C1 OCR + normalization | MathPix free tier / open OCR model + local | $0 |
-| Solver verification (Z3 / SymPy) + all data-quality metrics | Kaggle CPU / local | $0 |
+| C1 OCR + normalization | MathPix free tier / open OCR model + laptop | $0 |
+| Solver verification (Z3 / SymPy) + the whole data-quality panel + all analysis | **laptop CPU** | $0 |
 | Generation (S1 informalization + S2/S3) — **one fixed model** | **`deepseek-v4-pro-0813`** (`seed=42`) via NVIDIA NIM — 40 RPM, **no credit cap**; N ≈ 8–10k/arm; ~1–3 h total | $0 |
-| Round-trip / self-consistency solver check — **multiple independent models by design** | deepseek-v4-pro (NIM) + Gemini Flash Lite (free) + Qwen2.5-Math-1.5B self-hosted; low volume | $0 |
-| S2-alt robustness subset (~1–2k, *weaker* generator) + fallback | Gemini Flash Lite (free) and/or self-host `Qwen3-8B` on **Kaggle free T4** | $0 |
-| **Training** (SFT LoRA, **≤1.7B only**) | **Kaggle free 2×T4** (Unsloth) by default; **Modal L4** ($0.80/h) to burst | $0 – ~$16 |
-| **Eval inference** (≤1.7B adapters on our GPUs) | **Kaggle T4 + vLLM** | $0 |
+| Round-trip / self-consistency solver check | **SymPy (laptop)** + `deepseek-v4-pro` (NIM) + `llama-3.1-8b-instruct` (NIM); low volume | $0 |
+| S2-alt robustness subset (~1–2k, *weaker* generator) | `meta/llama-3.1-8b-instruct` via **NIM** (free) | $0 |
+| Difficulty-reference solver (I) | `meta/llama-3.1-8b-instruct` via **NIM** (free) | $0 |
+| **SFT — Qwen3-0.6B-Base** (~30 grid runs) | **laptop RTX 3050 Ti**, 4-bit QLoRA + `packing` | $0 |
+| **SFT — Qwen3-1.7B-Base** (~25 grid runs) | **Modal L4** ($0.80/h), ~20 min/run ≈ 8 GPU-h | **~$6** (of the free $30/month) |
+| Eval inference — 0.6B adapters | **laptop**, vLLM | $0 |
+| Eval inference — 1.7B adapters + ≥1B leaderboard rows | **Modal L4** (bundled with the SFT runs) or a free hosted endpoint | ~$1 |
 | Larger-model leaderboard rows (>1.7B) | free hosted endpoints / published numbers | $0 |
 
-**Concrete feasibility check.** A Qwen3-1.7B LoRA SFT with `packing=True` on ~20k short math examples on
-one T4 ≈ 30–40 min (≈15–25 min on Modal L4). A 1.7B model in bf16 fits a 16 GB T4 with room to spare —
-there is no memory pressure, unlike the previous 7B + DPO setup. A vLLM inference sweep of a 1.7B model
-over ~2k problems ≈ 10–20 min. **Generation:** DeepSeek V4-Pro on NIM at 40 RPM (no credit cap) — the
-full ~15–30k-item corpus is ~1–3 hours of wall-clock. Zero GPU cost — the Modal $30 is never touched
-by generation.
+**Concrete feasibility check.** *0.6B, local:* Qwen3-0.6B-Base QLoRA r=16 with `packing=True` on ~20k
+short math examples on a 4 GB card ≈ 30–50 min; a 0.6B vLLM sweep over ~1k problems ≈ 5–10 min. The
+~30-run 0.6B grid is a few laptop-nights. *1.7B, Modal L4:* ≈ 15–25 min per SFT run, ≈ 10 min per
+inference sweep; ~25 runs ≈ 8 GPU-h ≈ **$6**. *Generation:* DeepSeek V4-Pro on NIM at 40 RPM (no credit
+cap) — the full ~15–30k-item corpus is ~1–3 h wall-clock, zero GPU.
 
 **Modal account** `tran-hoang-dat-2312`, Starter plan: **$30 credit per month, resets each cycle, does
 not roll over.** Keep the usage limit at $30 and **do not add a payment method** — this hard-caps spend
-so the card can never be charged. L4 $0.80/h, A100-40GB $2.10/h. Use the default region and preemptible
-execution to avoid the 1.5–3× multipliers.
+so the card can never be charged. L4 $0.80/h. Use the default region and preemptible execution. The 1.7B
+grid uses ~$6–10 of one month's credit; it must fit a single cycle (do not spread across months).
 
 **Optimization levers (apply all):** `packing=True` (up to 5× for short sequences) · Unsloth kernels
-(≈2×) · **≤1.7B, never 7B** (the 7B + DPO + generate-loop combo is what broke the previous budget) · 1
-epoch · LoRA r=16 · **vLLM** for inference with the adapter merged (10–20× vs. a `model.generate` loop) ·
-`max_new_tokens` 512–640 · evaluate on a stratified 1k subset during the grid, full sets only for
-finalists · Kaggle 2×T4 in parallel.
-→ One ≤1.7B SFT run ≈ 15–40 min; one inference sweep ≈ 10–20 min.
+(≈2×) · **4-bit QLoRA** (fits 0.6B in 4 GB) · **≤1.7B, never 7B** · 1 epoch · LoRA r=16 · **vLLM** for
+inference with the adapter merged (10–20× vs. a `model.generate` loop) · `max_new_tokens` 512–640 ·
+evaluate on a stratified 1k subset during the grid, full sets only for finalists.
+→ One 0.6B SFT run ≈ 30–50 min (laptop); one 1.7B SFT run ≈ 15–25 min (L4); one inference sweep ≈ 5–15 min.
 
-**Grid size (~55 runs):** S0/S1/S2/S5 × 2 bases (Qwen3-1.7B-Base, Qwen3-0.6B-Base) × 3 seeds = 24 ·
+**Grid size (~55 runs):** S0/S1/S2/S5 × 2 bases (0.6B-Base local, 1.7B-Base on L4) × 3 seeds = 24 ·
 S3/S4/S6 × 1 base × 2 seeds = 6 · data-efficiency (S0/S1/S2 × {2k,5k,10k} × 1 base × 2 seeds) = 18 ·
-English control (S0/S1/S2/S3 × 1 base × 2 seeds) = 8. ≈ 15–22 GPU-hours ≈ **free on Kaggle (~1.5–2
-weeks of quota)** or ~$12–18 on Modal L4. **Fits one month; do not spread across months.**
+English control (S0/S1/S2/S3 × 1 base × 2 seeds) = 8. The 0.6B half runs on the laptop for free; the
+1.7B half is ~8–12 L4 GPU-hours ≈ **$6–10, one Modal cycle**.
 
 ---
 
@@ -523,7 +542,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | **P1** | 3–4 weeks *(parallel from P0)* | **C1: collect, OCR, verify, human-QA Vi-ExamMath.** |
 | **P2** | 1.5–2 weeks | Fix the symbolic pipeline (§6.1); build the S1 dataset. |
 | **P3** | 1–1.5 weeks | Build S2/S3/S4 datasets (LLM generation, paced against rate limits); run the full data-quality panel. |
-| **P4** | 1.5–2 weeks | Training grid (~50 runs) + vLLM inference. |
+| **P4** | 1.5–2 weeks | Training grid (~55 runs): 0.6B half on the laptop, 1.7B half on Modal L4 (~$6–10, one cycle) + vLLM inference. |
 | **P5** | ~1 week | Analysis (RQ-A … RQ-E). |
 | **P6** | 2–3 weeks | Write; regenerate all figures from real numbers; `RESULTS_PROVENANCE.md`; advisor review; release artifacts; submit. |
 
@@ -536,9 +555,9 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | Method novelty is thin (symbolic synthesis is a crowded space in EN) | The paper is framed as a **comparison + resource + analysis**, not a new method. C1 is a standalone contribution. The 2026 question ("is symbolic still worth it") is timely and unaddressed. |
 | C2's finding is boring ("LLM wins, as expected") | Still publishable as the first clean measurement; sharpen with cost/coverage/robustness axes where symbolic may still win. And C1 carries the submission regardless. |
 | OCR of Vietnamese math is error-prone | The solver-verification step is the filter; report the OCR error rate as a finding. Human QA covers the benchmark. |
-| Weak Vietnamese base → noisy downstream signal | Headline results are the **data-quality panel** (measured directly) and the **cost comparison**; downstream is one axis among several, reported with CIs. |
-| $30/month Modal is not enough | The grid fits Kaggle's free weekly quota; Modal is an accelerator, not a requirement. Keep runs at 1.5B; cut the English control to 2 arms and non-primary seeds to 2 if needed. |
-| NVIDIA changes the NIM free tier mid-project | run generation **early** (Sprint 1); fallback chain NIM → DeepSeek direct API (5M-token grant) → self-hosted Qwen3-8B (Kaggle free T4). |
+| Sub-2B bases → noisy downstream signal | The regime (sub-2B, low-resource, free compute) is stated as deliberate scope, not a limitation. Headline results are the **data-quality panel** (measured directly, size-independent) and the **cost comparison**; downstream is one axis, reported with CIs, across **two sizes** (0.6B + 1.7B) so the arm ranking's size-stability is itself a result. |
+| $30/month Modal is not enough | The 0.6B half of the grid runs on the laptop for free; only the ~25 1.7B runs need L4 (~$6–10). Cut the English control to 2 arms and non-primary seeds to 2 if the cycle is tight. |
+| NVIDIA changes the NIM free tier mid-project | run generation **early** (Sprint 1); fallback chain NIM → DeepSeek direct API (5M-token grant) → Groq (free). All hosted — no GPU fallback needed. |
 | Exam-source licensing for the public release | Release only items from official public exams, with per-item provenance and a conservative non-commercial license; textbook-sourced items (if any) stay out of the release. |
 | A nearby group (e.g. VNU-UET Vi-S1K authors) publishes something overlapping | The contamination-controlled *native-exam* benchmark and the symbolic-vs-LLM comparison are distinct from their translation-based work; monitor arXiv; differentiate explicitly in related work. |
 
@@ -546,11 +565,13 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 ## 10. Decisions (recommended — confirm or override)
 
-1. **Base models:** Qwen3-1.7B-Base (primary) + Qwen3-0.6B-Base (secondary); optionally Sailor2-1B-Base
-   and/or Qwen2.5-Math-1.5B. Use `-Base`, not `-Instruct`. No Mistral-7B, no WizardMath re-run, no DPO.
+1. **Base models:** Qwen3-0.6B-Base (laptop) + Qwen3-1.7B-Base (Modal L4, ~$6) — both required, same
+   family, two sizes. Optionally Sailor2-1B-Base and/or Qwen2.5-Math-1.5B. Use `-Base`, not `-Instruct`.
+   No Mistral-7B, no WizardMath re-run, no DPO, no self-hosted GPU.
 2. **Seed scope:** GSM8K + algebra/prealgebra MATH only; other subjects out of scope (justified by N2).
 3. **"Strong LLM" for S2/S3:** `deepseek-v4-pro-0813` via NVIDIA NIM (`seed=42`, 40 RPM, no credit cap).
-   Fallback → DeepSeek direct → self-hosted Qwen3-8B. Plus an S2-alt *weaker-generator* subset (§6.2).
+   Fallback → DeepSeek direct → Groq (all hosted). S2-alt *weaker-generator* subset =
+   `meta/llama-3.1-8b-instruct` via NIM (§6.2).
 4. **Reference arms:** S5 = translate-train (`metaMathQA-vi`) is a first-class arm (existing best
    practice); DeepSeek-R1-Distill-Qwen-1.5B is a zero-shot reference on the leaderboard.
 5. **Vi-ExamMath size:** target 600, minimum 400.
@@ -592,8 +613,10 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 ## 13. Immediate next steps (Phase P0)
 
-1. **Modal:** install the client, run `get_started.py`, write one LoRA-SFT function (Unsloth) and one
-   vLLM-inference function. Do **not** add a payment method.
+1. **Local SFT smoke test first:** confirm Qwen3-0.6B-Base QLoRA (r=16, `packing=True`, 4-bit) trains on
+   the 4 GB RTX 3050 Ti — 200 steps on a Vi-GSM8K slice, watch VRAM. Then **Modal:** install the client,
+   run `get_started.py`, write one L4 LoRA-SFT function (Unsloth) + one vLLM-inference function for the
+   1.7B runs. Do **not** add a payment method.
 2. `.env` — **only `NVIDIA_API_KEY` is required** (the generator; NIM hosts DeepSeek V4-Pro). Optional:
    `DEEPSEEK_API_KEY` (separate signup, fallback), `GROQ_API_KEY` (independent 3rd solver — SymPy + 2
    LLM solvers is already enough). Benchmark generation quality + solvers on 20 Vietnamese problems.
