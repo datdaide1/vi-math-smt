@@ -328,14 +328,21 @@ robustness or hard items" / "both underperform no-aug at 1.5B" — each is a tim
 
 ### 6.2 The LLM augmentation arms (S2/S3)
 
-- Generator: **DeepSeek V4** (free tier, math-frontier-class), with GLM (100M free tokens in month 1)
-  and Gemini 2.5 Flash as rotation/backup. Optionally, a small budget ($20–40) for a true
-  frontier-proprietary generator as an extra arm — left open, not required.
+**One fixed generative model.** S2 is "the strong-LLM arm" — it must be a single, named model, or the
+condition is not well-defined. Use **DeepSeek V4** for *both* S1 informalization and S2/S3 generation, so
+every arm's text comes from one identity. Do **not** rotate providers for a generative task — the
+teacher-style / diversity-collapse analysis (RQ-C) depends on each arm having a single teacher. For rate
+limits, rotate **multiple DeepSeek keys**; if the free tier still can't sustain the volume, spend a few
+dollars on DeepSeek's paid tier (it is very cheap). A true frontier-proprietary generator as an *extra*
+arm ($20–40) is left open, not required.
+
 - Prompt: generate a variant of the seed problem at a specified difficulty + a step-by-step solution +
   a boxed answer. Encourage structural (not just numeric) variation; sample with diversity.
-- S2 check: an **independent** SymPy evaluation of the final answer, plus optional LLM self-consistency
-  (majority of 3 independent solves). Keep only matches. Report retention rate.
-- S3: keep everything.
+- **S2 check** — this is where multiple models are *intended*: an **independent** SymPy evaluation of
+  the final answer, plus LLM self-consistency using **different** independent solvers (DeepSeek +
+  Gemini 2.5 Flash + optionally GLM), majority vote. Independence across solvers makes the check more
+  robust. Keep only matches; report retention rate.
+- S3: keep everything (no check).
 
 ### 6.3 Fine-tuning protocol (fixes N3; identical across all arms)
 
@@ -402,7 +409,8 @@ quota. Beyond that, do not spend design effort here — spend it on the research
 |---|---|---|
 | C1 OCR + normalization | MathPix free tier / open OCR model + local | $0 |
 | Solver verification (Z3 / SymPy) + all data-quality metrics | Kaggle CPU / local | $0 |
-| Augmentation generation (S2/S3 + S1 informalization + round-trip solving) | **DeepSeek V4** (primary) + **GLM** (100M tokens month 1) + **Gemini 2.5 Flash** (backup); rotate keys | $0 |
+| Generation (S1 informalization + S2/S3) — **one fixed model** | **DeepSeek V4** only; rotate multiple DeepSeek keys for rate limits | $0 (few $ paid tier if needed) |
+| Round-trip / self-consistency solver check — **multiple independent models by design** | DeepSeek + Gemini 2.5 Flash (+ optional GLM) | $0 |
 | **Training** (SFT LoRA, **≤1.7B only**) | **Kaggle free 2×T4** (Unsloth) by default; **Modal L4** ($0.80/h) to burst | $0 – ~$16 |
 | **Inference** (**≤1.7B only** on our GPUs) | **Kaggle T4 + vLLM** | $0 |
 | Larger-model leaderboard rows (>1.7B) | free hosted endpoints / published numbers | $0 |
@@ -457,7 +465,7 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 | OCR of Vietnamese math is error-prone | The solver-verification step is the filter; report the OCR error rate as a finding. Human QA covers the benchmark. |
 | Weak Vietnamese base → noisy downstream signal | Headline results are the **data-quality panel** (measured directly) and the **cost comparison**; downstream is one axis among several, reported with CIs. |
 | $30/month Modal is not enough | The grid fits Kaggle's free weekly quota; Modal is an accelerator, not a requirement. Keep runs at 1.5B; cut the English control to 2 arms and non-primary seeds to 2 if needed. |
-| Free LLM API rate limits during 40K-sample generation | Rotate DeepSeek + GLM + Gemini; use GLM's 100M first-month allowance for the bulk; pace generation over the P3 window. |
+| DeepSeek free-tier rate limits during 40K-sample generation | Rotate multiple **DeepSeek** keys (same model); pace generation over the P3 window; if still short, use DeepSeek's cheap paid tier (~$5–20). Do not substitute another provider for a generative task. |
 | Exam-source licensing for the public release | Release only items from official public exams, with per-item provenance and a conservative non-commercial license; textbook-sourced items (if any) stay out of the release. |
 | A nearby group (e.g. VNU-UET Vi-S1K authors) publishes something overlapping | The contamination-controlled *native-exam* benchmark and the symbolic-vs-LLM comparison are distinct from their translation-based work; monitor arXiv; differentiate explicitly in related work. |
 
@@ -513,8 +521,9 @@ evaluation, analysis, and writing do not compress. Phases overlap.
 
 1. **Modal:** install the client, run `get_started.py`, write one LoRA-SFT function (Unsloth) and one
    vLLM-inference function. Do **not** add a payment method.
-2. Register API keys: DeepSeek, GLM (Zhipu), Gemini. Benchmark each on 20 Vietnamese problems
-   (informalize + solve): quality, latency, real rate limits.
+2. API keys: **DeepSeek** (the generation model — get 2–3 keys for rate-limit rotation), **Gemini**
+   (already have an account; second solver), GLM (optional third solver). Benchmark each on 20
+   Vietnamese problems for quality / latency / real rate limits.
 3. New repo skeleton separating: IR / symbolic-mutation / LLM-augmentation / informalization /
    verification / eval-harness. Stand up `math_verify`. Anchor numbers on Vi-GSM8K: zero-shot
    Qwen3-1.7B-Base (few-shot) + DeepSeek-R1-Distill-Qwen-1.5B; free re-score of the existing WizardMath

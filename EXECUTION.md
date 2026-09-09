@@ -118,12 +118,18 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** `modal run modal_app.py::smoke` trains the 300-example smoke run for < $0.30 of credit.
 
 ### T0.6 — API clients + smoke test — **[HUMAN provides keys]**
-- **Goal:** `llm_aug/clients.py` — OpenAI-compatible wrapper for DeepSeek V4, GLM (Zhipu), Gemini 2.5
-  Flash, with round-robin key rotation and backoff. A `solve(problem)` and `paraphrase(spec)` helper.
-- **Depends-on:** T0.1; researcher registers keys and puts them in `.env` (see `.env.example`).
-- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (per provider: quality on 20 Vietnamese
-  problems, latency, observed rate limit).
-- **Acceptance:** each provider answers ≥18/20 correctly; rate limits documented.
+- **Goal:** `llm_aug/clients.py` — OpenAI-compatible wrapper with two distinct roles:
+  - `generate(...)` / `informalize(...)` → **DeepSeek V4 only**, rotating across multiple DeepSeek keys
+    for rate limits. One model = each augmentation arm is a well-defined condition.
+  - `solve(problem)` → callable against **each** of DeepSeek / Gemini 2.5 Flash / (optional) GLM
+    independently, for the round-trip self-consistency check where multiple independent solvers is the
+    point.
+  Backoff + key rotation within a provider.
+- **Depends-on:** T0.1; researcher puts keys in `.env` (see `.env.example`): `DEEPSEEK_API_KEYS`
+  (2–3 keys), `GEMINI_API_KEY`, optional `GLM_API_KEY`.
+- **Output:** `llm_aug/clients.py` + `results/api_bench.json` (per model: solve accuracy on 20
+  Vietnamese problems, latency, observed rate limit).
+- **Acceptance:** DeepSeek answers ≥18/20; each solver's rate limit documented.
 
 ### T0.7 — Anchor numbers
 - **Goal:** establish reference points under the unified harness. Run zero-shot `Qwen3-1.7B-Base`
@@ -238,9 +244,9 @@ RESULTS_PROVENANCE.md
 - **Acceptance:** 20k rows, schema-valid, dedup'd against test sets.
 
 ### T2.3 — LLM augmentation generator
-- **Goal:** `llm_aug/generate.py` — DeepSeek V4 generates, per seed, a structurally-varied variant at a
-  target difficulty + step-by-step solution + `\boxed{}` answer; diversity sampling; batch with key
-  rotation.
+- **Goal:** `llm_aug/generate.py` — **DeepSeek V4** (the one fixed generation model) generates, per
+  seed, a structurally-varied variant at a target difficulty + step-by-step solution + `\boxed{}`
+  answer; diversity sampling; batch with **DeepSeek-key** rotation (never another provider).
 - **Depends-on:** T0.6
 - **Output:** module + `data/arms/_llm_raw.jsonl`.
 - **Acceptance:** 200-seed dry run; hand-read 20 for variety and correctness.
@@ -424,7 +430,7 @@ RESULTS_PROVENANCE.md
 
 | ID | What | When |
 |---|---|---|
-| T0.6 | Register + provide DeepSeek / GLM / Gemini API keys | Sprint 0 |
+| T0.6 | Provide `.env` keys: DEEPSEEK_API_KEYS (2–3, generation), GEMINI_API_KEY (solver), optional GLM_API_KEY | Sprint 0 |
 | T1.8 | Obtain grade-10 exam PDFs; ask advisor re official channels | Sprint 1 |
 | T2.1 | **[GATE]** Is fixed-S1 data quality good enough to build the grid? | Sprint 2 |
 | T2.9 | Assist exam collection / OCR review | Sprint 2 |
@@ -449,5 +455,5 @@ RESULTS_PROVENANCE.md
 | Symbolic pipeline fixes (Sprint 1) take longer than 2 weeks | T2.1 gate; O1/O2 are optional for v1 — `constant_sub` + leakage filter + round-trip alone give a valid S1 |
 | Exam OCR quality too low | T2.10 verification is the filter; report the rate; fall back to fewer, hand-transcribed items to hit the 400 minimum |
 | Can't recruit 3 MOS raters | drop to 2 + report κ with the caveat; MOS is one panel metric among many |
-| Free API rate limits stall arm generation | GLM's 100M first-month tokens for the bulk; rotate; pace over Sprint 2 |
+| DeepSeek rate limits stall arm generation | rotate 2–3 DeepSeek keys; pace over Sprint 2; DeepSeek paid tier (~$5–20) as fallback — do not swap in another provider for a generative task |
 | Grid exceeds one Modal month | it fits Kaggle's free quota alone (~2 weeks); cut English control to 2 arms, non-primary seeds to 2, drop S6 |
