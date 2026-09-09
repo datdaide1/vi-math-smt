@@ -2,11 +2,14 @@
 # from the pipeline). See README.md for how to populate this locally.
 data/
 
-# Results — run artifacts, predictions, plots (regenerable). Tracked prose
-# deliverables live under docs/ and results/*.md instead.
-results/**
-!results/**/
-!results/**/*.md
+# Results — heavy run artifacts (regenerable). Small audit reports / summaries
+# under results/ ARE tracked (*.md, one-off *.json deliverables).
+results/runs/
+results/predictions/
+results/data_quality/
+results/analysis/
+results/_*
+*.egg-info/
 
 # Secrets
 .env

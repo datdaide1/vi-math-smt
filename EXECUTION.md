@@ -55,7 +55,7 @@ Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
 
 | | Sprint 0 | | Sprint 1 |
 |---|---|---|---|
-| `[x]` | T0.1 repo skeleton | `[ ]` | T1.1 uniqueness gate + audit |
+| `[x]` | T0.1 repo skeleton | `[x]` | T1.1 uniqueness gate + audit |
 | `[x]` | T0.2 `eval/math_verify.py` | `[ ]` | T1.2 M0 constant substitution |
 | `[ ]` | T0.3 `eval/run_eval.py` | `[ ]` | T1.3 leakage-free informalization |
 | `[ ]` | T0.4 `scripts/sft.py` | `[ ]` | T1.4 leakage filter |
@@ -191,7 +191,7 @@ Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
 
 ## SPRINT 1 — Symbolic pipeline (S1) + exam-source survey
 
-### T1.1 — Uniqueness gate + audit  *(also a C3 result)*
+### T1.1 — Uniqueness gate + audit  *(also a C3 result)*  ✅ done (feat/sprint0, 2026-09-09)
 - **Goal:** `verify/uniqueness.py::classify(smt) -> {"derived"|"hardcoded"|"unknown"}` — drop the
   `answer` assertion, ask Z3 whether the system still has a unique solution (block the first model, ask
   for a second; `unsat` ⇒ unique). For non-linear, try `QF_NRA`/`QF_NIA` then SymPy.
@@ -200,6 +200,14 @@ Tick on Acceptance-pass + commit. `~` = in progress, `!` = blocked.
   GSM8K + MATH SMT).
 - **Acceptance:** reproduces the ~40% derived / 15.9% hardcoded ballpark from `RESEARCH_PLAN.md` §2.2
   N2; a hand check of 20 flagged "hardcoded" agrees.
+- **Done:** `verify/z3_utils.py` (parse / solve_value / `is_unique` via z3 term API — exact rationals,
+  no float round-trip) + `verify/uniqueness.py` (`classify`, `classify_verbose`, `audit`). Ran on the
+  **full 14,870** base SMT (`results/uniqueness_audit.{json,md}`): **derived 71.3%** (≥1 relational) /
+  **derived_strict 42.2%** (≥2 relational — N2's definition, matches "~40%") / **hardcoded 9.4%** /
+  unknown 19.2%. By subject: GSM8K 73%/8% (healthy); precalculus 60%/25%, geometry & intermediate_algebra
+  ~62%/17% (QF_LRA can't do √/π/digits — N2 confirmed). Hand-checked 15 hardcoded flags → all defensible
+  (0 false positives; the π-decimal-approx cases are correctly "not a faithful certificate").
+  `tests/test_uniqueness.py` (10 cases). **S1 seed scope = GSM8K + algebra/prealgebra stands.**
 
 ### T1.2 — M0: constrained constant substitution (algorithm: RESEARCH_PLAN.md §6.1)
 - **Goal:** `symbolic_aug/constant_sub.py` — replace the constants in a verified problem (not the
