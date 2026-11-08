@@ -59,9 +59,7 @@ MATH; greedy for Vi-ExamMath. Mean (SD across seeds).
 - Language × verification (H1) is provisional (one English training seed);
   the certifiable-item contrast (H4) is underpowered.
 
-Full results, decision rules and caveats:
-[`docs/research_2026-11/exec/R1_results.md`](docs/research_2026-11/exec/R1_results.md).
-Paper (Vietnamese and English LaTeX) is maintained separately.
+Full results, decision rules and caveats are reported in the accompanying paper.
 
 ## Pipeline
 
@@ -85,21 +83,20 @@ flowchart TD
     XB --> E
 ```
 
-| Stage | What it does | Module | Report |
-|---|---|---|---|
-| Seeds | clean, repair translations, typed gold, decontaminate, split dev | `vi_math_verified_aug/seeds/` | [S3](docs/research_2026-11/exec/S3_seed_pool.md) |
-| Benchmark | crawl, segment, multi-key answer QA, audit → `core_v1.1` | `vi_exam/`, `vi_exam_qa/` | [X2](docs/research_2026-11/exec/X2_benchmark.md), [Q1](docs/research_2026-11/exec/Q1_benchmark_qa.md) |
-| Eval sets | frozen VI/EN primary sets (GSM8K-Platinum + MATH) | `eval_sets/` | [X3](docs/research_2026-11/exec/X3_eval_sets.md) |
-| Grader | typed, locale-aware answer checking | `eval/math_verify.py` | [X1](docs/research_2026-11/exec/X1_grader.md) |
-| Symbolic library | typed IR, operators, answer-tail rule | `symbolic/` | [X4](docs/research_2026-11/exec/X4_symbolic.md) |
-| Arm Y | formalize, mutate, render, cycle check, export (VI + EN from one IR) | `arm_y/` | [G4](docs/research_2026-11/exec/G4_symbolic_v2.md), [G5](docs/research_2026-11/exec/G5_Y_scale.md) |
-| Arm N | direct generation, shared solution writer, common screen | `scale_gen/` | [D1](docs/research_2026-11/exec/D1_N_scale.md) |
-| Selection | matched S+/S− sets, strata, diversity | `analysis/select_v1.py` | [D5 selection](docs/research_2026-11/exec/D5_selection.md) |
-| Training | LoRA SFT, GRPO, fail-fast guards, launcher | `train/`, `evalrun/` | [T2](docs/research_2026-11/exec/T2_training_tranche.md) |
-| Analysis | GLMM export, bootstrap, Holm/BH/TOST, error attribution, gate audit | `analysis/` | [R1](docs/research_2026-11/exec/R1_results.md), [C3](docs/research_2026-11/exec/C3_attribution.md), [audit](docs/research_2026-11/exec/D5_gate_audit.md) |
+| Stage | What it does | Module |
+|---|---|---|
+| Seeds | clean, repair translations, typed gold, decontaminate, split dev | `vi_math_verified_aug/seeds/` |
+| Benchmark | crawl, segment, multi-key answer QA, audit → `core_v1.1` | `vi_exam/`, `vi_exam_qa/` |
+| Eval sets | frozen VI/EN primary sets (GSM8K-Platinum + MATH) | `eval_sets/` |
+| Grader | typed, locale-aware answer checking | `eval/math_verify.py` |
+| Symbolic library | typed IR, operators, answer-tail rule | `symbolic/` |
+| Arm Y | formalize, mutate, render, cycle check, export (VI + EN from one IR) | `arm_y/` |
+| Arm N | direct generation, shared solution writer, common screen | `scale_gen/` |
+| Selection | matched S+/S− sets, strata, diversity | `analysis/select_v1.py` |
+| Training | LoRA SFT, GRPO, fail-fast guards, launcher | `train/`, `evalrun/` |
+| Analysis | GLMM export, bootstrap, Holm/BH/TOST, error attribution, gate audit | `analysis/` |
 
-Exact commands for every stage: [`handoff/README.md`](handoff/README.md) §4.
-Operating the training queue: [`handoff/RUNBOOK.md`](handoff/RUNBOOK.md).
+Stages run as `python -m vi_math_verified_aug.<package>.<module>` (e.g. `seeds.build`, `arm_y.pipeline`, `scale_gen.run`, `train.launcher`, `analysis.c3_r1_results`).
 
 ## Repository Layout
 
@@ -110,11 +107,9 @@ vi-math-smt/
 │   ├── seeds/  symbolic/  arm_y/  scale_gen/
 │   ├── vi_exam/  vi_exam_qa/  eval/  eval_sets/
 │   ├── train/  evalrun/  analysis/  qa/  infra/
-├── prompts/                   # versioned prompts (catalog: handoff/PROMPTS.md)
+├── prompts/                   # versioned prompts
 ├── tests/                     # unit tests
 ├── jobs/                      # kernel specs, launcher queue, run manifests and metrics
-├── docs/research_2026-11/     # design, technical notes, per-workstream reports (exec/)
-├── handoff/                   # datasheets, model cards, runbook, ledger, bundle manifest
 ├── bench/                     # throughput and GPU benchmarks
 ├── src/, notebooks/           # SMT-LIB formalization and translation utilities (not used by the pipeline above)
 └── data/                      # git-ignored; delivered as a separate bundle
@@ -130,15 +125,13 @@ cp .env.example .env         # fill in the API keys you need
 python -m pytest tests -q    # light unit tests
 ```
 
-Environment details (local, Kaggle and Modal images): [`handoff/ENV.md`](handoff/ENV.md).
+Pinned environments: `uv.lock` (local) and `requirements.lock.txt`.
 
 ## Data and Artifacts
 
 Datasets, evaluation predictions and the 25 trained LoRA adapters are not stored
-in Git. They are distributed as a bundle described in
-[`handoff/BUNDLE.md`](handoff/BUNDLE.md), with a SHA-256 manifest. Each dataset
-has a datasheet in [`handoff/DATASHEETS/`](handoff/DATASHEETS/), and each
-adapter a model card in [`handoff/MODEL_CARDS/`](handoff/MODEL_CARDS/).
+in Git; they are distributed separately as a data bundle with a SHA-256 manifest,
+with a datasheet per dataset and a model card per adapter.
 
 The generated training sets were written by LLMs (generator, renderer, solution
 writer and screen); the model ids, prompt versions and call logs for every
@@ -169,11 +162,9 @@ Details and citations: [`DATA_SOURCES.md`](DATA_SOURCES.md).
 ## Project Status
 
 Research code. The 0.6B tranche (Vietnamese seeds 0–3, English seed 0) is
-complete. The prioritized queue of remaining runs (more English seeds, 4-shot
-evaluation of the adapters, length-matched training sets, 1.7B and a second
-model family, RLVR) with per-run costs is in
-[`handoff/RUNBOOK.md`](handoff/RUNBOOK.md) §5 and
-[`handoff/KNOWN_ISSUES.md`](handoff/KNOWN_ISSUES.md).
+complete. Planned next steps: more English training seeds, 4-shot evaluation of the
+adapters, length-matched training sets, 1.7B and a second model family, and an
+RLVR stage.
 
 ## License
 

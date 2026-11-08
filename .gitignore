@@ -83,3 +83,11 @@ jobs/t2/devtest/*.jsonl
 jobs/outputs/t2-rep/*.jsonl
 jobs/outputs/t2-costprobe-exam200.jsonl
 jobs/outputs/t2-det/*.jsonl
+
+# Internal documents (kept locally, not published)
+docs/
+handoff/
+RESEARCH_PLAN.md
+EXECUTION.md
+RESULTS_PROVENANCE.md
+tests/test_handoff_tools.py
