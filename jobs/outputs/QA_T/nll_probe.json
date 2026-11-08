@@ -1,0 +1,117 @@
+{
+ "gpu": "Tesla T4",
+ "Qwen/Qwen3-0.6B-Base": {
+  "S0_vi_400": {
+   "n_items": 400,
+   "nll_token_mean": 0.7948,
+   "batch_nll_min_max": [
+    0.5763,
+    0.9903
+   ],
+   "completion_tokens_mean": 115.1,
+   "completion_tokens_p99": 280,
+   "drop_rate_1024": 0.0
+  },
+  "S0_en_400": {
+   "n_items": 400,
+   "nll_token_mean": 0.7938,
+   "batch_nll_min_max": [
+    0.6261,
+    0.9898
+   ],
+   "completion_tokens_mean": 99.0,
+   "completion_tokens_p99": 246,
+   "drop_rate_1024": 0.0
+  },
+  "dev300_vi": {
+   "n_items": 300,
+   "nll_token_mean": 0.7522,
+   "batch_nll_min_max": [
+    0.5226,
+    0.9433
+   ],
+   "completion_tokens_mean": 111.0,
+   "completion_tokens_p99": 248,
+   "drop_rate_1024": 0.0
+  },
+  "dev300_en": {
+   "n_items": 300,
+   "nll_token_mean": 0.7456,
+   "batch_nll_min_max": [
+    0.5554,
+    1.0183
+   ],
+   "completion_tokens_mean": 95.4,
+   "completion_tokens_p99": 216,
+   "drop_rate_1024": 0.0
+  },
+  "N_pilot_vi": {
+   "n_items": 179,
+   "nll_token_mean": 0.7465,
+   "batch_nll_min_max": [
+    0.6229,
+    0.9402
+   ],
+   "completion_tokens_mean": 189.9,
+   "completion_tokens_p99": 394,
+   "drop_rate_1024": 0.0
+  }
+ },
+ "Qwen/Qwen3-1.7B-Base": {
+  "S0_vi_400": {
+   "n_items": 400,
+   "nll_token_mean": 0.7013,
+   "batch_nll_min_max": [
+    0.5073,
+    0.8836
+   ],
+   "completion_tokens_mean": 115.1,
+   "completion_tokens_p99": 280,
+   "drop_rate_1024": 0.0
+  },
+  "S0_en_400": {
+   "n_items": 400,
+   "nll_token_mean": 0.6905,
+   "batch_nll_min_max": [
+    0.5254,
+    0.8649
+   ],
+   "completion_tokens_mean": 99.0,
+   "completion_tokens_p99": 246,
+   "drop_rate_1024": 0.0
+  },
+  "dev300_vi": {
+   "n_items": 300,
+   "nll_token_mean": 0.6554,
+   "batch_nll_min_max": [
+    0.4827,
+    0.7973
+   ],
+   "completion_tokens_mean": 111.0,
+   "completion_tokens_p99": 248,
+   "drop_rate_1024": 0.0
+  },
+  "dev300_en": {
+   "n_items": 300,
+   "nll_token_mean": 0.6404,
+   "batch_nll_min_max": [
+    0.4925,
+    0.8821
+   ],
+   "completion_tokens_mean": 95.4,
+   "completion_tokens_p99": 216,
+   "drop_rate_1024": 0.0
+  },
+  "N_pilot_vi": {
+   "n_items": 179,
+   "nll_token_mean": 0.6188,
+   "batch_nll_min_max": [
+    0.5081,
+    0.7721
+   ],
+   "completion_tokens_mean": 189.9,
+   "completion_tokens_p99": 394,
+   "drop_rate_1024": 0.0
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "variant": "pack_flex",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "fp16",
+ "gpu": "Tesla T4",
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "flex_attention",
+ "grad_ckpt": true,
+ "micro_batch": 8,
+ "packed": true,
+ "length_group": true,
+ "load_s": 3.3,
+ "ok": false,
+ "error": "InductorError('OutOfMemoryError: out of resource: triton_tem_fused_flex_attention_0 Required: 65536 Hardware limit:65536 Reducing block sizes or `num_stages` may help.\\n\\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\\n')",
+ "tb": "b/python3.12/site-packages/torch/_inductor/compile_fx.py\", line 1749, in codegen_and_compile\n    compiled_module = graph.compile_to_module()\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/graph.py\", line 3060, in compile_to_module\n    return self._compile_to_module()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/graph.py\", line 3070, in _compile_to_module\n    mod = self._compile_to_module_lines(wrapper_code)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/graph.py\", line 3146, in _compile_to_module_lines\n    mod = PyCodeCache.load_by_key_path(\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/codecache.py\", line 4820, in load_by_key_path\n    mod = _reload_python_module(key, path, set_sys_modules=set_sys_modules)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/compile_tasks.py\", line 37, in _reload_python_module\n    exec(code, mod.__dict__, mod.__dict__)\n  File \"/tmp/torchinductor_root/ur/curn6hp4nmtiqpiwha6y56mnf6g6kwngojwofaapuxu2u557fmh3.py\", line 55, in <module>\n    triton_tem_fused_flex_attention_0 = async_compile.triton('triton_tem_fused_flex_attention_0', '''\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/async_compile.py\", line 584, in triton\n    kernel.precompile(\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py\", line 807, in precompile\n    self._make_launchers()\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py\", line 1090, in _make_launchers\n    self.launchers = [self.compile_by_disabling_pipelining(config)]\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py\", line 1040, in compile_by_disabling_pipelining\n    return result.make_launcher()\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py\", line 3056, in make_launcher\n    self.kernel.load_kernel(device)\n  File \"/usr/local/lib/python3.12/site-packages/torch/_inductor/runtime/static_triton_launcher.py\", line 202, in load_kernel\n    self.C_impl._load_kernel(self.cubin_path, self.name, self.shared, device)\ntorch._inductor.exc.InductorError: OutOfMemoryError: out of resource: triton_tem_fused_flex_attention_0 Required: 65536 Hardware limit:65536 Reducing block sizes or `num_stages` may help.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n\n"
+}

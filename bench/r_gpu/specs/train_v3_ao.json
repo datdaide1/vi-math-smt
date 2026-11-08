@@ -1,0 +1,65 @@
+{
+ "jobs": [
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "hf_bf16_p16",
+     "env": {
+      "RGPU_PAD16": "1"
+     },
+     "steps": 50,
+     "dev": false,
+     "engine": "hf",
+     "ver": "v3"
+    },
+    {
+     "name": "hf_aofp8_p16",
+     "variant": "ao_fp8",
+     "env": {
+      "RGPU_PAD16": "1"
+     },
+     "steps": 50,
+     "dev": false,
+     "engine": "hf",
+     "ver": "v3"
+    },
+    {
+     "name": "hf_aofp8row_p16",
+     "variant": "ao_fp8",
+     "env": {
+      "RGPU_PAD16": "1",
+      "RGPU_AO_RECIPE": "rowwise"
+     },
+     "steps": 50,
+     "dev": false,
+     "engine": "hf",
+     "ver": "v3"
+    },
+    {
+     "name": "hf_compile_p16",
+     "variant": "hf_compile",
+     "env": {
+      "RGPU_PAD16": "1"
+     },
+     "steps": 50,
+     "dev": false,
+     "engine": "hf",
+     "ver": "v3"
+    },
+    {
+     "name": "hf_aofp8c_p16",
+     "variant": "ao_fp8_compile",
+     "env": {
+      "RGPU_PAD16": "1"
+     },
+     "steps": 50,
+     "dev": false,
+     "engine": "hf",
+     "ver": "v3"
+    }
+   ]
+  }
+ ],
+ "wait_s": 3000
+}

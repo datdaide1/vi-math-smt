@@ -1,0 +1,11 @@
+backend sympy-fallback
+FAIL H01 want True got False cue 'tập nghiệm của phương trình là $S = \\left\\{1; \\dfrac{3}{2}\\right\\}$' arity 1!=2 vi?
+FAIL H02 want True got False cue 'hệ phương trình có nghiệm duy nhất $(x; y) = (2; -1)$' arity 1!=2 vi?
+FAIL H04 want True got False cue 'tập nghiệm là $S = (1; 3)$' unparsed-interval vi?
+FAIL H08 want True got False last-number '9' None vi?
+FAIL H13 want True got False cue '12,36 triệu đồng' None vi
+FAIL H15 want True got False last-number '1' None vi?
+FAIL H16 want True got False last-line '\\dfrac{5\\pi}{6} + k2\\pi$ $(k \\in \\mathbb{Z})$' arity 1!=2 vi?
+FAIL H19 want True got False boxed '1,234' ambiguous-locale vi?
+FAIL H29 want True got False last-number '-2' arity 1!=2 vi?
+31 / 40

@@ -1,0 +1,43 @@
+{
+ "version": "0.1",
+ "source": "docs/research_2026-11/tech/T4_crosslingual.md §4 (seed entries; SGK-[UNVERIFIED] terms still need a teacher check before v1.0)",
+ "entries": [
+  {"id": "G1", "en": "\\bdozens?\\b", "req": "tá", "forbid": "\\bchục\\b", "line": "dozen → tá (1 tá = 12), KHÔNG dùng 'chục'"},
+  {"id": "G3", "en": "\\bmedian\\b(?!.{0,40}\\b(triangle|vertex|side)\\b)", "req": "trung vị", "forbid": "(?<!số )\\btrung bình\\b", "line": "median (thống kê) → số trung vị, KHÔNG dùng 'trung bình'"},
+  {"id": "G4", "en": "\\bmedian\\b.{0,40}\\b(triangle|vertex|side)\\b", "req": "trung tuyến", "forbid": null, "line": "median (tam giác) → đường trung tuyến"},
+  {"id": "G5", "en": "\\b(mean|average)\\b", "req": null, "forbid": null, "line": "mean/average → trung bình cộng"},
+  {"id": "G6", "en": "\\bmode\\b", "req": null, "forbid": "\\bchế độ\\b", "line": "mode (thống kê) → mốt"},
+  {"id": "G9", "en": "(?<!non-)(?<!non)\\bcongruent\\b(?!\\s+(modulo|mod|to\\s+\\S+\\s+mod))", "req": null, "forbid": "(?<!không )đồng dạng", "line": "congruent (hình) → bằng nhau, KHÔNG dùng 'đồng dạng' (= similar)"},
+  {"id": "G10", "en": "non-?congruent", "req": null, "forbid": "không đồng dạng", "line": "non-congruent → không bằng nhau"},
+  {"id": "G12", "en": "congruent\\s+(modulo|mod|to\\s+\\S+\\s+mod)|\\\\equiv|\\\\pmod", "req": null, "forbid": "đồng dạng", "line": "congruent (modulo) → đồng dư"},
+  {"id": "G13", "en": "common ratio", "req": "công bội", "forbid": "tỉ số chung|tỷ số chung", "line": "common ratio → công bội"},
+  {"id": "G14", "en": "geometric (sequence|progression|series)", "req": "cấp số nhân", "forbid": "dãy hình học", "line": "geometric sequence → cấp số nhân"},
+  {"id": "G15", "en": "arithmetic (sequence|progression|series)", "req": "cấp số cộng", "forbid": "dãy số học", "line": "arithmetic sequence → cấp số cộng"},
+  {"id": "G16", "en": "common difference", "req": "công sai", "forbid": "hiệu chung", "line": "common difference → công sai"},
+  {"id": "G17", "en": "relatively prime|coprime", "req": "nguyên tố cùng nhau", "forbid": "tương đối nguyên tố", "line": "relatively prime → nguyên tố cùng nhau"},
+  {"id": "G20", "en": "\\bmonic\\b", "req": null, "forbid": "đơn thức", "line": "monic → (đa thức) monic / có hệ số cao nhất bằng 1, KHÔNG dùng 'đơn thức'"},
+  {"id": "G22", "en": "degree of (the|a|this) polynomial|polynomial of degree", "req": "bậc", "forbid": null, "line": "degree (đa thức) → bậc"},
+  {"id": "G26", "en": "leading coefficient", "req": "hệ số cao nhất", "forbid": "hệ số dẫn đầu", "line": "leading coefficient → hệ số cao nhất"},
+  {"id": "G28", "en": "\\bslope\\b", "req": "hệ số góc", "forbid": "độ dốc", "line": "slope → hệ số góc"},
+  {"id": "G30", "en": "\\bkite\\b", "req": null, "forbid": "hình thoi", "line": "kite → hình diều (KHÔNG phải hình thoi)"},
+  {"id": "G33", "en": "counter-?clockwise", "req": "ngược chiều kim đồng hồ", "forbid": "(?<!ngược )chiều kim đồng hồ", "line": "counterclockwise → ngược chiều kim đồng hồ"},
+  {"id": "G35", "en": "improper fraction", "req": "phân số không thực sự", "forbid": "không đúng quy cách", "line": "improper fraction → phân số không thực sự"},
+  {"id": "G36", "en": "\\bremainder\\b", "req": null, "forbid": null, "line": "remainder (phép chia) → số dư"},
+  {"id": "G40", "en": "cross product", "req": "tích có hướng", "forbid": "tích chéo", "line": "cross product → tích có hướng"},
+  {"id": "G54", "en": "\\byards?\\b", "req": "yard", "forbid": "\\bmét\\b|\\bthước\\b(?! Anh)", "line": "yard / square yard → yard / yard vuông (KHÔNG đổi sang mét, KHÔNG dùng 'thước')"},
+  {"id": "G55a", "en": "\\b(feet|foot)\\b", "req": null, "forbid": "\\bmét\\b", "line": "foot/feet → foot (KHÔNG đổi sang mét)"},
+  {"id": "G55b", "en": "\\bmiles?\\b", "req": "dặm", "forbid": "\\bkm\\b|ki-?lô-?mét|\\bmiles?\\b", "line": "mile → dặm"},
+  {"id": "G56a", "en": "\\bgallons?\\b", "req": "gallon", "forbid": "\\blít\\b", "line": "gallon → gallon (KHÔNG đổi sang lít)"},
+  {"id": "G56b", "en": "\\bquarts?\\b", "req": "quart", "forbid": "\\blít\\b", "line": "quart → quart (KHÔNG đổi sang lít)"},
+  {"id": "G56c", "en": "\\bpounds?\\b", "req": "pound", "forbid": "\\bkg\\b|ki-?lô-?gam", "line": "pound → pound (KHÔNG đổi sang kg)"},
+  {"id": "G57", "en": "\\b(penny|pennies|nickels?|dimes?|quarters)\\b", "req": null, "forbid": null, "line": "penny/nickel/dime/quarter → đồng 1 xu / 5 xu / 10 xu / 25 xu"}
+ ],
+ "rules": [
+  {"id": "CR-1", "en": "\\b(\\d+(?:\\.\\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty) (more|fewer|less) (?:[\\w$-]+ ){1,3}than\\b", "vi_forbid": "(nhiều|ít) hơn \\$?\\d[\\d.,]*(?![^.,;:?]{0,40}so với)", "line": "'A có N X nhiều hơn B' → 'A có nhiều hơn B N X' (hoặc '... nhiều hơn số X của B là N'). KHÔNG viết 'A có nhiều hơn N X' mà thiếu đối tượng so sánh (sẽ thành 'hơn N')."},
+  {"id": "CR-2", "en": "(?<![/\\d])\\b(\\d+|one|two|three|four|five|six|seven|eight|nine|ten) of the remaining\\b", "vi_require": "trong số", "line": "'N of the remaining X' → 'N trong số X còn lại'. KHÔNG viết 'N X còn lại' (= 'N X cuối cùng')."},
+  {"id": "CR-3", "en": "\\b(\\d+|\\w+) (more|less|fewer) than (twice|double|triple|half|\\w+ times|\\d+ times)\\b", "vi_forbid": "(nhiều|ít) hơn \\d+ lần", "line": "'N more than twice/k times Y' → 'nhiều hơn k lần Y là N' (= kY + N). KHÔNG viết 'nhiều hơn N lần'."},
+  {"id": "CR-4", "en": "subtracted from|\\bdivides\\b|\\blighter\\b|\\bheavier\\b|\\b\\w+ less than\\b", "line": "Giữ đúng chiều: 'b subtracted from a' → 'lấy a trừ đi b'; 'a divides b' → 'a là ước của b' / 'b chia hết cho a'; 'nhẹ hơn' ≠ 'nặng hơn'."},
+  {"id": "CR-5", "en": "\\bstrictly\\b|\\bat least\\b|\\bat most\\b|\\bno more than\\b", "vi_forbid": "đáng kể", "line": "'strictly less/cheaper' → '(thực sự) nhỏ hơn / rẻ hơn'; 'at least' → 'ít nhất'; 'at most / no more than' → 'nhiều nhất / không vượt quá'. KHÔNG dùng 'đáng kể'."},
+  {"id": "CR-6", "en": "\\b\\d+/\\d+ times (more|as|less)\\b", "line": "'k/m times as many' → 'bằng k/m lần'. Giữ nguyên phép nhân."}
+ ]
+}

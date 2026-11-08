@@ -1,0 +1,26 @@
+{
+ "variant": "pack_fa2",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "bf16",
+ "gpu": "NVIDIA L4",
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "kernels-community/flash-attn2",
+ "grad_ckpt": true,
+ "micro_batch": 8,
+ "packed": true,
+ "length_group": true,
+ "ok": false,
+ "error": "ImportError('`kernels` is either not installed or uses an incompatible version. Please install a compatible version (0.17.2 <= version < 0.18.0), e.g. `pip install kernels==0.17.2`')",
+ "tb": "Traceback (most recent call last):\n  File \"/app/sft_worker.py\", line 86, in <module>\n    model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=dtype, attn_implementation=attn).to(\"cuda\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py\", line 411, in from_pretrained\n    return model_class.from_pretrained(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py\", line 4300, in from_pretrained\n    model = cls(config, *model_args, **model_kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py\", line 430, in __init__\n    super().__init__(config)\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py\", line 1258, in __init__\n    self.config._attn_implementation_internal = self._check_and_adjust_attn_implementation(\n                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py\", line 1819, in _check_and_adjust_attn_implementation\n    raise e\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py\", line 1804, in _check_and_adjust_attn_implementation\n    lazy_import_flash_attention(applicable_attn_implementation, allow_all_kernels=allow_all_kernels)\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_flash_attention_utils.py\", line 287, in lazy_import_flash_attention\n    _flash_fn, _flash_varlen_fn, _flash_with_kvcache_fn, _pad_fn, _unpad_fn = _lazy_imports(\n                                                                              ^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/modeling_flash_attention_utils.py\", line 213, in _lazy_imports\n    kernel = load_and_register_attn_kernel(kernel_repo, attention_wrapper, allow_all_kernels)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/transformers/integrations/hub_kernels.py\", line 847, in load_and_register_attn_kernel\n    raise ImportError(_MISSING_KERNELS_MESSAGE)\nImportError: `kernels` is either not installed or uses an incompatible version. Please install a compatible version (0.17.2 <= version < 0.18.0), e.g. `pip install kernels==0.17.2`\n"
+}

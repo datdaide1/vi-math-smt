@@ -1,0 +1,31 @@
+{
+ "label_frac_min": 0.255,
+ "label_frac_mean": 0.5635,
+ "label_frac_max": 0.8305,
+ "decoded": [
+  {
+   "id": "vi_gsm8k_train/0",
+   "prompt_tail": "ố kẹp tóc bằng một nửa số đó vào tháng 5. Natalia đã bán tổng cộng bao nhiêu kẹp tóc vào tháng 4 và tháng 5?\n\nLời giải:\n",
+   "trained_text": "Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}",
+   "n_trained": 64,
+   "n_total": 138,
+   "eos_trained": true
+  },
+  {
+   "id": "vi_gsm8k_train/1",
+   "prompt_tail": "ược 12 đô la mỗi giờ khi trông trẻ. Hôm qua, cô ấy chỉ trông trẻ 50 phút. Cô ấy đã kiếm được bao nhiêu tiền?\n\nLời giải:\n",
+   "trained_text": "Weng kiếm được 12/60 = $0.2 mỗi phút.\nLàm việc 50 phút, cô ấy kiếm được 0.2 x 50 = $10.\nĐáp số: \\boxed{10}",
+   "n_trained": 55,
+   "n_total": 101,
+   "eos_trained": true
+  },
+  {
+   "id": "vi_gsm8k_train/2",
+   "prompt_tail": " đó, và ông bà cô ấy cho gấp đôi số tiền bố mẹ cô ấy cho. Betty cần thêm bao nhiêu tiền nữa để mua chiếc ví?\n\nLời giải:\n",
+   "trained_text": "Ban đầu, Betty chỉ có 100 / 2 = $50.\nÔng bà của Betty đã cho cô ấy 15 * 2 = $30.\nĐiều này có nghĩa là Betty cần thêm 100 - 50 - 30 - 15 = $5 nữa.\nĐáp số: \\boxed{5}",
+   "n_trained": 79,
+   "n_total": 170,
+   "eos_trained": true
+  }
+ ]
+}

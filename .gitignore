@@ -2,10 +2,34 @@
 # from the pipeline). See README.md for how to populate this locally.
 data/
 
-# Secrets
-.env
-.env.*
+# Results — heavy run artifacts (regenerable). Small audit reports / summaries
+# under results/ ARE tracked (*.md, one-off *.json deliverables).
+results/runs/
+results/predictions/
+results/data_quality/
+results/analysis/
+results/_*
+*.egg-info/
+
+# Secrets (.env, .env.local, .envrc, ...); only the names-only template is tracked
+.env*
 !.env.example
+
+# API ledger (prompts + responses; released on HF, not in git) and run logs
+logs/api/
+logs/**/*.log
+
+# Caches and local state (LLM response cache, spend accounting, job ledger, tool caches)
+.cache/
+state/
+.uv-cache/
+.ruff_cache/
+.mypy_cache/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.lock
+!uv.lock
 
 # Claude Code local settings (machine-specific, not project config)
 .claude/settings.local.json
@@ -16,6 +40,10 @@ __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
+.venv/
+*.egg-info/
+.pytest_cache/
+.coverage
 
 # OS
 .DS_Store
@@ -23,3 +51,35 @@ Thumbs.db
 
 # scratch
 _scratch/
+
+# Third-party paper text (not ours; kept locally, untracked — user decision 2026-11-07)
+src/mutation_informalize/reference/paper_text.txt
+
+# Heavy run artifacts (delivered via the data/model bundle, not git): checkpoints, adapters, predictions,
+# built inputs and local copies of eval items
+jobs/outputs/**/ckpt/
+jobs/outputs/**/adapters/
+jobs/outputs/**/preds*.jsonl
+jobs/build/
+jobs/t1r/eval_data/
+*.pt
+*.safetensors
+*.bin
+
+# Secret-shaped files (D4 suggestion)
+*.bak
+*.pem
+*.key
+kaggle.json
+.modal.toml
+
+# Large eval prediction dumps (bundle only, not git)
+jobs/outputs/t2-eval/
+jobs/outputs/t2-g6-eval/
+bench/r_gpu/results/preds/
+
+# Local copies of dev/eval items (bundle only)
+jobs/t2/devtest/*.jsonl
+jobs/outputs/t2-rep/*.jsonl
+jobs/outputs/t2-costprobe-exam200.jsonl
+jobs/outputs/t2-det/*.jsonl

@@ -1,0 +1,4 @@
+{"step": 0, "dev_loss": 0.75214, "n_items": 300, "n_tokens": 33296, "s": 4.84}
+{"step": 150, "dev_loss": 0.477188, "n_items": 300, "n_tokens": 33296, "s": 5.07}
+{"step": 300, "dev_loss": 0.457824, "n_items": 300, "n_tokens": 33296, "s": 5.05}
+{"step": 446, "dev_loss": 0.4441, "n_items": 300, "n_tokens": 33296, "s": 5.07}

@@ -1,0 +1,14 @@
+{
+ "plan": "tput_l4_4b",
+ "gpu": "NVIDIA A10, 610.57.04, 23028 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-4B-Base",
+   "rc": 0,
+   "s": 667.1
+  }
+ ],
+ "wall_s": 668.3
+}

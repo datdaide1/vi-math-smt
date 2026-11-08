@@ -1,0 +1,22 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-rDjKzUBd9yTVKAjFDSqdvh
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:eval_l40s', 'fc-01M6VCCV2V1A8M5NX30SQKAB2Z'), ('1:eval_l4', 'fc-01M6VCCVM5FD3516DAH8C6N7R9')]
+l40s-dev-bf16 0 114.2 {'dev-l40s-uns_bf16_mb8': ({'dev300': {'gen_tokens': 182926, 's': 23.4, 'gen_tok_per_s': 7804.1}}, 23.6), 'dev-h100-uns_bf16_mb8': ({'dev300': {'gen_tokens': 182908, 's': 23.9, 'gen_tok_per_s': 7662.6}}, 23.9), 'dev-h100-uns_fp8_mb8': ({'dev300': {'gen_tokens': 189697, 's': 28.6, 'gen_tok_per_s': 6626.0}}, 28.7), 'dev-l40s-uns_bf16_mb32': ({'dev300': {'gen_tokens': 186327, 's': 24.7, 'gen_tok_per_s': 7555.4}}, 24.7)}
+l40s-vip-bf16 0 63.5 {'vip-l40s-uns_bf16_mb8': ({'vi_primary_1000': {'gen_tokens': 951156, 's': 108.2, 'gen_tok_per_s': 8793.8}}, 108.4)}
+l40s-vip-fp8 0 121.4 {'vip-l40s-uns_bf16_mb8': ({'vi_primary_1000': {'gen_tokens': 965597, 's': 112.4, 'gen_tok_per_s': 8591.9}}, 112.6)}
+0:eval_l40s done
+l40s-dev-fp8 0 41.1 {'dev-l40s-uns_bf16_mb8': ({'dev300': {'gen_tokens': 184110, 's': 22.6, 'gen_tok_per_s': 8142.6}}, 22.7), 'dev-h100-uns_bf16_mb8': ({'dev300': {'gen_tokens': 183634, 's': 22.1, 'gen_tok_per_s': 8320.4}}, 22.1), 'dev-h100-uns_fp8_mb8': ({'dev300': {'gen_tokens': 187837, 's': 22.3, 'gen_tok_per_s': 8424.9}}, 22.3), 'dev-l40s-uns_bf16_mb32': ({'dev300': {'gen_tokens': 180866, 's': 19.1, 'gen_tok_per_s': 9454.2}}, 19.2)}
+l4-vip-bf16 0 117.8 {'vip-l40s-uns_bf16_mb8': ({'vi_primary_1000': {'gen_tokens': 957263, 's': 269.4, 'gen_tok_per_s': 3553.1}}, 269.7)}
+1:eval_l4 done
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-rDjKzUBd9yTVKAjFDSqdvh

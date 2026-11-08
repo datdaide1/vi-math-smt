@@ -1,0 +1,39 @@
+[
+ [
+  {
+   "run_id": "t2-sft-S0-vi-0p6B-s0",
+   "rc": 0,
+   "s": 191.1,
+   "gpu": "NVIDIA L40S, 46068 MiB",
+   "tail": ""
+  },
+  {
+   "run_id": "t2-sft-Yp-vi-0p6B-s0",
+   "rc": 7,
+   "s": 191.2,
+   "gpu": "NVIDIA L40S, 46068 MiB",
+   "tail": ""
+  },
+  {
+   "run_id": "t2-sft-Ym-vi-0p6B-s0",
+   "rc": 9,
+   "s": 191.2,
+   "gpu": "NVIDIA L40S, 46068 MiB",
+   "tail": ""
+  },
+  {
+   "run_id": "t2-sft-Np-vi-0p6B-s0",
+   "rc": 9,
+   "s": 191.2,
+   "gpu": "NVIDIA L40S, 46068 MiB",
+   "tail": ""
+  },
+  {
+   "run_id": "t2-sft-Nm-vi-0p6B-s0",
+   "rc": 9,
+   "s": 191.2,
+   "gpu": "NVIDIA L40S, 46068 MiB",
+   "tail": "ggingface.co/docs/transformers/main/en/main_classes/text_generation)\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\n[sft] quick-eval step 0: {'correct': 0.3594, 'no_answer': 0.0938, 'repetition': 0.0781, 'truncated': 0.1719, 'n': 64, 'step': 0, 's': 13.6, 'path': 'generate'}\n[sft] step 0/168 loss 0.5867 lr 2.00e-05 gn 0.81351 skip 0\n[sft] step 10/168 loss 0.4133 lr 1.00e-04 gn 0.42618 skip 0\n[sft] step 20/168 loss 0.3295 lr 1.00e-04 gn 0.33418 skip 0\n[sft] step 30/168 loss 0.3448 lr 1.00e-04 gn 0.29937 skip 0\n[sft] step 40/168 loss 0.3190 lr 1.00e-04 gn 0.27707 skip 0\n[sft] dev step 42: 0.89564\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\nBoth `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)\n[sft] quick-eval step 42: {'correct': 0.5156, 'no_answer': 0.0, 'repetition': 0.0156, 'truncated': 0.0156, 'n': 64, 'step': 42, 's': 9.6, 'path': 'generate'}\n[sft] ABORTED_DEV_DIVERGED: DEV_DIVERGED: DEV_DIVERGED dev 0.8956 > 2.0 x train 0.3155\n[cell] STOPPED after t2-sft-Yp-vi-0p6B-s0 rc=7\nCELL {\"t2-sft-S0-vi-0p6B-s0\": 0, \"t2-sft-Yp-vi-0p6B-s0\": 7, \"t2-sft-Ym-vi-0p6B-s0\": 9, \"t2-sft-Np-vi-0p6B-s0\": 9, \"t2-sft-Nm-vi-0p6B-s0\": 9}\n"
+  }
+ ]
+]

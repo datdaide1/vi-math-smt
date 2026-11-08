@@ -1,0 +1,8 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<02:15,  2.28it/s]
+Loading weights:  61%|██████▏   | 190/310 [00:00<00:00, 466.26it/s]
+Loading weights:  97%|█████████▋| 302/310 [00:00<00:00, 468.07it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 397.77it/s]
+[W1107 10:59:02.211282266 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 513802240 bytes (free: 425132032, total: 15645278208).
+RESULT {"variant": "pad_group_mb2", "ok": true, "tok_per_s": 1030.6, "peak_mem_gb": 6.93, "packing_correct": null, "logit_check_max_nll_diff": null, "error": null}

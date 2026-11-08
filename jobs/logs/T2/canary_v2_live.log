@@ -1,0 +1,32 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 16:06:06.649000 4 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 16:06:06.650000 4 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 16:06:06.651000 4 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[preflight] vi_gsm8k_train/0 trained 64/138: 'Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}'
+[preflight] vi_gsm8k_train/1 trained 55/101: 'Weng kiếm được 12/60 = $0.2 mỗi phút.\nLàm việc 50 phút, cô ấy kiếm được 0.2 x 50 = $10.\nĐáp số: \\boxed{10}'
+[preflight] vi_gsm8k_train/2 trained 79/170: 'Ban đầu, Betty chỉ có 100 / 2 = $50.\nÔng bà của Betty đã cho cô ấy 15 * 2 = $30.\nĐiều này có nghĩa là Betty cần thêm 100 - 50 - 30 - 15 = $5 nữa.\nĐáp số: \\boxed{5}'
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 7157
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[0.000274, 0.000305, 0.000628, 9e-06] fused=3.97e-05
+[sft] dev step 0: 0.75214
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 0: {'correct': 0.375, 'no_answer': 0.0312, 'repetition': 0.0938, 'truncated': 0.1562, 'n': 64, 'step': 0, 's': 43.1, 'path': 'generate'}
+[sft] step 0/80 loss 0.8213 lr 1.54e-05 gn 0.79194 skip 0
+[sft] step 10/80 loss 0.5971 lr 1.69e-04 gn 0.39515 skip 0
+[sft] dev step 20: 0.54057
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)

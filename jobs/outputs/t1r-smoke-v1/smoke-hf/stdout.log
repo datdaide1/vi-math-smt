@@ -1,0 +1,7 @@
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 256
+[sft] dev step 0: 0.76427
+[sft] step 0/6 loss 0.7334 lr 2.00e-04 gn 0.76122 skip 0
+[sft] dev step 3: 0.61241
+[sft] skip rule not applicable: only 6 steps (< 50)
+[sft] dev step 6: 0.59024
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

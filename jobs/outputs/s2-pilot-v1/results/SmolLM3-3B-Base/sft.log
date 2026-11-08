@@ -1,0 +1,14 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/326 [00:00<?, ?it/s]Loading weights:   0%|          | 1/326 [00:00<04:38,  1.17it/s]Loading weights:  26%|██▌       | 84/326 [00:00<00:02, 115.32it/s]Loading weights:  38%|███▊      | 123/326 [00:01<00:01, 107.99it/s]Loading weights:  46%|████▌     | 149/326 [00:01<00:01, 107.43it/s]Loading weights:  52%|█████▏    | 169/326 [00:01<00:01, 106.86it/s]Loading weights:  57%|█████▋    | 186/326 [00:02<00:01, 101.78it/s]Loading weights:  62%|██████▏   | 201/326 [00:02<00:01, 100.73it/s]Loading weights:  66%|██████▌   | 214/326 [00:02<00:01, 104.84it/s]Loading weights:  70%|██████▉   | 228/326 [00:02<00:00, 106.64it/s]Loading weights:  74%|███████▍  | 241/326 [00:02<00:00, 110.36it/s]Loading weights:  78%|███████▊  | 254/326 [00:02<00:00, 112.94it/s]Loading weights:  82%|████████▏ | 267/326 [00:02<00:00, 94.87it/s] Loading weights:  87%|████████▋ | 282/326 [00:02<00:00, 97.60it/s]Loading weights:  92%|█████████▏| 300/326 [00:03<00:00, 102.59it/s]Loading weights:  95%|█████████▌| 311/326 [00:03<00:00, 98.62it/s] Loading weights: 100%|██████████| 326/326 [00:03<00:00, 99.27it/s]
+SFT SmolLM3-3B-Base padded step 0 loss 0.9696 gn 0.518 9.95s amax 591.0
+SFT SmolLM3-3B-Base padded step 10 loss 0.6932 gn 0.308 8.75s amax None
+SFT SmolLM3-3B-Base padded step 20 loss 0.5698 gn 0.272 10.89s amax 558.0
+SFT SmolLM3-3B-Base padded step 30 loss 0.6365 gn 0.268 10.08s amax None
+SFT SmolLM3-3B-Base padded step 40 loss 0.4939 gn 0.227 10.34s amax 545.0
+SFT SmolLM3-3B-Base padded step 50 loss 0.5658 gn 0.240 9.23s amax None
+SFT SmolLM3-3B-Base padded step 60 loss 0.5153 gn 0.254 8.86s amax 551.5
+SFT SmolLM3-3B-Base padded step 70 loss 0.5347 gn 0.266 9.94s amax None
+SFT SmolLM3-3B-Base padded step 80 loss 0.5366 gn 0.243 9.90s amax 550.0
+SFT SmolLM3-3B-Base padded step 90 loss 0.5373 gn 0.256 9.23s amax None
+SFT SmolLM3-3B-Base padded step 99 loss 0.5564 gn 0.300 7.97s amax None
+SFT_DONE HuggingFaceTB/SmolLM3-3B-Base padded_length_grouped 598.8 0.8359 0.5473 0 593.0

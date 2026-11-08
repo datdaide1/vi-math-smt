@@ -1,0 +1,15 @@
+
+=== 2026-11-07T16:03:45Z /usr/bin/python3 -m vi_math_verified_aug.train.cli sft --config /kaggle/working/configs/t1r-lfm2.5-2.6B-smoke.json --budget-s 2400
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 3200
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[sft] step 0/100 loss 0.9503 lr 6.67e-05 gn 1.54003 skip 0
+[sft] step 10/100 loss 0.5985 lr 2.00e-04 gn 0.29289 skip 0
+[sft] step 20/100 loss 0.5191 lr 2.00e-04 gn 0.23074 skip 0
+[sft] step 30/100 loss 0.5465 lr 2.00e-04 gn 0.28747 skip 0
+[sft] step 40/100 loss 0.5086 lr 2.00e-04 gn 0.23548 skip 0
+[sft] step 50/100 loss 0.5342 lr 2.00e-04 gn 0.21946 skip 0
+[sft] step 60/100 loss 0.4688 lr 2.00e-04 gn 0.22966 skip 0
+[sft] step 70/100 loss 0.5653 lr 2.00e-04 gn 0.23143 skip 0
+[sft] step 80/100 loss 0.5079 lr 2.00e-04 gn 0.23817 skip 0
+[sft] step 90/100 loss 0.6242 lr 1.82e-04 gn 0.25168 skip 0

@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "c0def46f4c1ed67cde47f6f6f0711a9a11fcd4f555747b86aa94efb9f2cb833d",
+  "rows": 1808
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3133,
+  "label_frac_mean": 0.5442,
+  "label_frac_max": 0.8647,
+  "decoded": [
+   {
+    "id": "Y/en/ae83b2342df6:1",
+    "prompt_tail": "fter paying for these supplies. How many cups of lemonade does Maya need to sell in total to reach her goal?\n\nSolution:\n",
+    "trained_text": "Maya needs total revenue equal to her costs plus her desired profit.\n\nCosts: 36 dollars\nDesired profit: 80 dollars\nTotal revenue needed: 36 + 80 = 116 dollars\n\nEach cup sells for 1 dollar, so she must sell 116 cups.\nFinal answer: \\boxed{116}",
+    "n_trained": 78,
+    "n_total": 152,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/en/92755f2cc0d9:1",
+    "prompt_tail": "g them away, she had 23 strawberry plants left. How many strawberry plants did Maria plant at the beginning?\n\nSolution:\n",
+    "trained_text": "Let the initial number of plants be x.\n\nAfter 3 months of tripling each month: 27x plants.\n\nShe dug up some and gave 4 to her friend, leaving 23 plants. Interpreting this as: the plants at the end of 3 months were 27x, then she gave away 4 and had 23 left, so the \"dug up some\" amount is accounted for by the total being reduced by 4 and then 23 remaining.\n\nSo 27x − 4 = 23 → 27x = 27 → x = 1.\n\nCheck: 1 plant → 3 → 9 → 27 after 3 months. Give away 4 → 23 left. ✓\nFinal answer: \\boxed{1}",
+    "n_trained": 172,
+    "n_total": 260,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/en/6bb9857b981e:1",
+    "prompt_tail": "ting on a tree branch. In total, Jemma found 27 grasshoppers. How many grasshoppers did she see on the tree?\n\nSolution:\n",
+    "trained_text": "Two dozen is 2 × 12 = 24 baby grasshoppers in the grass.\n\nTotal grasshoppers found: 27.\n\nGrasshoppers on the tree: 27 − 24 = 3.\nFinal answer: \\boxed{3}",
+    "n_trained": 59,
+    "n_total": 128,
+    "eos_trained": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "plan": "sft_t4b",
+ "gpu": "Tesla T4, 610.57.04, 15360 MiB",
+ "dtype": "fp16",
+ "tasks": [
+  {
+   "task": "pad_group_mb4",
+   "rc": 0,
+   "s": 94.6
+  },
+  {
+   "task": "pad_group_mb2",
+   "rc": 0,
+   "s": 75.6
+  },
+  {
+   "task": "pack_sdpa_mb16",
+   "rc": 0,
+   "s": 34.3
+  }
+ ],
+ "wall_s": 204.6
+}

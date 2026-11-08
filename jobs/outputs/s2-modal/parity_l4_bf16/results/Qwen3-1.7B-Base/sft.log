@@ -1,0 +1,28 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:  11%|█▏        | 35/310 [00:00<00:01, 253.23it/s]
+Loading weights:  21%|██        | 65/310 [00:00<00:00, 259.62it/s]
+Loading weights:  33%|███▎      | 102/310 [00:00<00:00, 303.73it/s]
+Loading weights:  50%|█████     | 155/310 [00:00<00:00, 384.66it/s]
+Loading weights:  63%|██████▎   | 195/310 [00:00<00:00, 379.57it/s]
+Loading weights:  75%|███████▌  | 234/310 [00:00<00:00, 357.99it/s]
+Loading weights:  91%|█████████ | 282/310 [00:00<00:00, 367.33it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 382.57it/s]
+[W1107 11:22:46.790297616 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 453771264, total: 23684186112).
+[W1107 11:22:46.822559470 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 1462501376, total: 23684186112).
+SFT Qwen3-1.7B-Base padded step 0 loss 0.7130 gn 0.402 2.49s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 10 loss 0.5592 gn 0.231 1.97s amax None
+SFT Qwen3-1.7B-Base padded step 20 loss 0.4833 gn 0.182 2.55s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 30 loss 0.5013 gn 0.169 2.23s amax None
+SFT Qwen3-1.7B-Base padded step 40 loss 0.4130 gn 0.159 2.29s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 50 loss 0.4461 gn 0.162 2.10s amax None
+SFT Qwen3-1.7B-Base padded step 60 loss 0.4270 gn 0.179 2.14s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 70 loss 0.4421 gn 0.173 2.08s amax None
+SFT Qwen3-1.7B-Base padded step 80 loss 0.4624 gn 0.192 2.26s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 90 loss 0.4410 gn 0.172 2.10s amax None
+SFT Qwen3-1.7B-Base padded step 99 loss 0.4521 gn 0.193 1.94s amax None
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:04<00:00,  4.73s/it]
+Writing model shards: 100%|██████████| 1/1 [00:04<00:00,  4.73s/it]
+SFT_DONE Qwen/Qwen3-1.7B-Base padded_length_grouped 3031.6 0.6306 0.4624 0 14400.0

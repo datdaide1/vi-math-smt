@@ -1,0 +1,4 @@
+{"lanes": [["google/gemma-4-E2B", "Qwen/Qwen3.5-0.8B-Base", "Qwen/Qwen3-0.6B-Base"], ["Qwen/Qwen3.5-2B-Base", "Qwen/Qwen3-1.7B-Base"]],
+ "tasks": ["eval", "packcheck", "sft"],
+ "install": "pip install -q 'vllm==0.33.0' 'flash-linear-attention==0.6.0'",
+ "sft_steps": 50, "eval_n": 300, "use_vllm": true, "hf_eval_bs": 16, "task_timeout_s": 2700, "kernel_timeout_s": 10800}

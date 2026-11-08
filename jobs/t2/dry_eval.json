@@ -1,0 +1,56 @@
+{
+ "base": "Qwen/Qwen3-0.6B-Base",
+ "tag": "t2-dry-eval",
+ "configs": [
+  {
+   "kind": "eval",
+   "run_id": "ev-dry-t2-sft-Yp-vi-0p6B-s0-primary",
+   "arm": "Y+",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-dry-t2-sft-Yp-vi-0p6B-s0-primary",
+   "eval": {
+    "source_run_id": "dry-t2-sft-Yp-vi-0p6B-s0",
+    "adapter_path": "{vol}/train/dry-t2-sft-Yp-vi-0p6B-s0/adapters/step5",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ],
+    "max_items": 16
+   }
+  },
+  {
+   "kind": "eval",
+   "run_id": "ev-dry-t2-sft-S0-en-0p6B-s0-primary",
+   "arm": "S0",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "lang": "en",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-dry-t2-sft-S0-en-0p6B-s0-primary",
+   "eval": {
+    "source_run_id": "dry-t2-sft-S0-en-0p6B-s0",
+    "adapter_path": "{vol}/train/dry-t2-sft-S0-en-0p6B-s0/adapters/step5",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "sets": [
+     {
+      "name": "en_primary_1000",
+      "path": "{vol}/eval_data/en_primary_1000.jsonl",
+      "lang": "en"
+     }
+    ],
+    "max_items": 16
+   }
+  }
+ ]
+}

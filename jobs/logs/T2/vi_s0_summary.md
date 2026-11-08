@@ -1,0 +1,13 @@
+# VI seed 0 cell: review sheet (auto, launcher 2026-11-08 08:05)
+
+Platform L40S bf16, Unsloth packed mb32, LR 1e-4, 3 epochs; eval L40S, VLLM_BATCH_INVARIANT=1, cap 1,024; primary = K=4 + greedy; Vi-ExamMath VERIFIED = greedy only. CIs: 95 % item bootstrap.
+
+| Arm | status / check | pre-flight | dev_v1 loss start -> end | quick-eval (end) | primary pass@1 [CI] | primary greedy [CI] | Vi-ExamMath greedy [CI] | loss curve |
+|---|---|---|---|---|---|---|---|---|
+| S0 | TRAINED / clean | OK (3 decoded, label frac 0.5662) | 0.7915 -> 0.5339 | acc 0.4531, rep 0.0156, no-ans 0.0156 | gsm8k_platinum: 0.3929 [0.3617, 0.4221]; math_algprealg: 0.2537 [0.2244, 0.285] | gsm8k_platinum: 0.43 [0.39, 0.4667]; math_algprealg: 0.28 [0.2375, 0.325] | vi_exam_core_verified: 0.2516 [0.2304, 0.2751] | jobs/outputs/T2_checks/t2-sft-S0-vi-0p6B-s0/loss.svg |
+| Y+ | TRAINED / clean | OK (3 decoded, label frac 0.5699) | 0.7915 -> 1.0760 | acc 0.4531, rep 0.0, no-ans 0.0 | gsm8k_platinum: 0.4583 [0.4254, 0.4896]; math_algprealg: 0.3719 [0.3331, 0.4106] | gsm8k_platinum: 0.4867 [0.445, 0.5267]; math_algprealg: 0.3775 [0.3325, 0.425] | vi_exam_core_verified: 0.3197 [0.2955, 0.3453] | jobs/outputs/T2_checks/t2-sft-Yp-vi-0p6B-s0/loss.svg |
+| Y- | TRAINED / clean | OK (3 decoded, label frac 0.5805) | 0.7915 -> 1.0643 | acc 0.4375, rep 0.0, no-ans 0.0 | gsm8k_platinum: 0.4392 [0.4079, 0.4717]; math_algprealg: 0.3719 [0.3344, 0.4088] | gsm8k_platinum: 0.4683 [0.4283, 0.5083]; math_algprealg: 0.4125 [0.3625, 0.4625] | vi_exam_core_verified: 0.3211 [0.2955, 0.3467] | jobs/outputs/T2_checks/t2-sft-Ym-vi-0p6B-s0/loss.svg |
+| N+ | TRAINED / clean | OK (3 decoded, label frac 0.597) | 0.7915 -> 1.0892 | acc 0.4531, rep 0.0, no-ans 0.0 | gsm8k_platinum: 0.4808 [0.4479, 0.5133]; math_algprealg: 0.3706 [0.3337, 0.41] | gsm8k_platinum: 0.4933 [0.4533, 0.5333]; math_algprealg: 0.4225 [0.375, 0.47] | vi_exam_core_verified: 0.305 [0.2802, 0.3299] | jobs/outputs/T2_checks/t2-sft-Np-vi-0p6B-s0/loss.svg |
+| N- | TRAINED / clean | OK (3 decoded, label frac 0.6033) | 0.7915 -> 1.0564 | acc 0.4531, rep 0.0, no-ans 0.0 | gsm8k_platinum: 0.4708 [0.4396, 0.5029]; math_algprealg: 0.3875 [0.3488, 0.4256] | gsm8k_platinum: 0.475 [0.4333, 0.5167]; math_algprealg: 0.4125 [0.365, 0.4625] | vi_exam_core_verified: 0.3138 [0.2904, 0.3387] | jobs/outputs/T2_checks/t2-sft-Nm-vi-0p6B-s0/loss.svg |
+
+Base rows (4-shot): ev-base-qwen3-0.6b-4shot-vi-primary: gsm8k_platinum p1 0.3383 g 0.4067, math_algprealg p1 0.3481 g 0.405; ev-base-qwen3-0.6b-4shot-vi-exam-greedy: vi_exam_core_verified p1 None g 0.3424; ev-base-qwen3-0.6b-4shot-en-primary: gsm8k_platinum p1 0.4375 g 0.51, math_algprealg p1 0.4069 g 0.48

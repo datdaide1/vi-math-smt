@@ -1,0 +1,22 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 256
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+[sft] pack gate ok=True items=[0.000312, 0.000224, 0.000814, 0.000369] fused=2.78e-05
+[sft] dev step 0: 0.76426
+[sft] step 0/4 loss 0.7333 lr 2.00e-04 gn 0.75793 skip 0
+[sft] dev step 3: 0.61197
+[sft] skip rule not applicable: only 4 steps (< 50)
+[sft] dev step 4: 0.60609
+W1107 14:56:01.571000 141 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 14:56:01.572000 141 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 14:56:01.572000 141 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.

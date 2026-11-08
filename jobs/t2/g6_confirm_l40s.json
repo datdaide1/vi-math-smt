@@ -1,0 +1,251 @@
+{
+ "groups": [
+  {
+   "gpu": "l40s",
+   "cell": "G6 confirm",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t2-g6c-S0-vi-0p6B-n3k-lr0.0004-ep3-s2",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 2,
+      "lang": "vi",
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 3000,
+       "epochs": 3
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0004,
+       "micro_batch": 32,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+       "dev_every_steps": 50,
+       "ckpt_every_min": 15,
+       "keep_ckpts": 1,
+       "grad_ckpt": false,
+       "branch_epochs": [
+        2
+       ]
+      },
+      "platform": "modal_l40s",
+      "code": {
+       "git_sha": "385029cefb7c537c83dc2ffec9203f935d583132",
+       "dirty": false,
+       "dirty_files": [],
+       "paths": [
+        "vi_math_verified_aug/train",
+        "vi_math_verified_aug/evalrun",
+        "vi_math_verified_aug/eval/math_verify.py",
+        "vi_math_verified_aug/__init__.py"
+       ]
+      },
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+       "expected_rows": 6788,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": 36300
+      },
+      "notes": "T2 G6 LR x epoch sweep (T3 \u00a73.1) on L40S bf16 mb32, n=3000, dev=dev_v1 | G6 confirmation (winner vs runner-up, extra seeds)"
+     },
+     "budget_s": 2400
+    },
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t2-g6c-S0-vi-0p6B-n3k-lr0.0004-ep3-s3",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 3,
+      "lang": "vi",
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 3000,
+       "epochs": 3
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0004,
+       "micro_batch": 32,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+       "dev_every_steps": 50,
+       "ckpt_every_min": 15,
+       "keep_ckpts": 1,
+       "grad_ckpt": false,
+       "branch_epochs": [
+        2
+       ]
+      },
+      "platform": "modal_l40s",
+      "code": {
+       "git_sha": "385029cefb7c537c83dc2ffec9203f935d583132",
+       "dirty": false,
+       "dirty_files": [],
+       "paths": [
+        "vi_math_verified_aug/train",
+        "vi_math_verified_aug/evalrun",
+        "vi_math_verified_aug/eval/math_verify.py",
+        "vi_math_verified_aug/__init__.py"
+       ]
+      },
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+       "expected_rows": 6788,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": 36300
+      },
+      "notes": "T2 G6 LR x epoch sweep (T3 \u00a73.1) on L40S bf16 mb32, n=3000, dev=dev_v1 | G6 confirmation (winner vs runner-up, extra seeds)"
+     },
+     "budget_s": 2400
+    },
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t2-g6c-S0-vi-0p6B-n3k-lr0.0001-ep3-s2",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 2,
+      "lang": "vi",
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 3000,
+       "epochs": 3
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0001,
+       "micro_batch": 32,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+       "dev_every_steps": 50,
+       "ckpt_every_min": 15,
+       "keep_ckpts": 1,
+       "grad_ckpt": false,
+       "branch_epochs": [
+        2
+       ]
+      },
+      "platform": "modal_l40s",
+      "code": {
+       "git_sha": "385029cefb7c537c83dc2ffec9203f935d583132",
+       "dirty": false,
+       "dirty_files": [],
+       "paths": [
+        "vi_math_verified_aug/train",
+        "vi_math_verified_aug/evalrun",
+        "vi_math_verified_aug/eval/math_verify.py",
+        "vi_math_verified_aug/__init__.py"
+       ]
+      },
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+       "expected_rows": 6788,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": 36300
+      },
+      "notes": "T2 G6 LR x epoch sweep (T3 \u00a73.1) on L40S bf16 mb32, n=3000, dev=dev_v1 | G6 confirmation (winner vs runner-up, extra seeds)"
+     },
+     "budget_s": 2400
+    },
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t2-g6c-S0-vi-0p6B-n3k-lr0.0001-ep3-s3",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 3,
+      "lang": "vi",
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 3000,
+       "epochs": 3
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0001,
+       "micro_batch": 32,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+       "dev_every_steps": 50,
+       "ckpt_every_min": 15,
+       "keep_ckpts": 1,
+       "grad_ckpt": false,
+       "branch_epochs": [
+        2
+       ]
+      },
+      "platform": "modal_l40s",
+      "code": {
+       "git_sha": "385029cefb7c537c83dc2ffec9203f935d583132",
+       "dirty": false,
+       "dirty_files": [],
+       "paths": [
+        "vi_math_verified_aug/train",
+        "vi_math_verified_aug/evalrun",
+        "vi_math_verified_aug/eval/math_verify.py",
+        "vi_math_verified_aug/__init__.py"
+       ]
+      },
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+       "expected_rows": 6788,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": 36300
+      },
+      "notes": "T2 G6 LR x epoch sweep (T3 \u00a73.1) on L40S bf16 mb32, n=3000, dev=dev_v1 | G6 confirmation (winner vs runner-up, extra seeds)"
+     },
+     "budget_s": 2400
+    }
+   ]
+  }
+ ],
+ "wait_s": 7200
+}

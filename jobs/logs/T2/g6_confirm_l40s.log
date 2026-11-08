@@ -1,0 +1,43 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-D44h5dG4AHY5AgfzhS7jLc
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function eval_l40s.
+├── ✓ Created Function eval_a10g.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_t4.
+└── ✓ Created Function smoke_t4.
+spawned ['fc-01M6VSGWWK043RYX91W828MN3T']
+t2-g6c-S0-vi-0p6B-n3k-lr0.0004-ep3-s2 0 196.2 NVIDIA L40S, 46068 MiB
+ase refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 279: {'correct': 0.4062, 'no_answer': 0.0156, 'repetition': 0.0156, 'truncated': 0.0156, 'n': 64, 'step': 279, 's': 8.7, 'path': 'generate'}
+
+t2-g6c-S0-vi-0p6B-n3k-lr0.0004-ep3-s3 0 189.3 NVIDIA L40S, 46068 MiB
+lease refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 279: {'correct': 0.3906, 'no_answer': 0.0, 'repetition': 0.0312, 'truncated': 0.0469, 'n': 64, 'step': 279, 's': 10.4, 'path': 'generate'}
+
+t2-g6c-S0-vi-0p6B-n3k-lr0.0001-ep3-s2 0 179.5 NVIDIA L40S, 46068 MiB
+ase refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 279: {'correct': 0.4531, 'no_answer': 0.0156, 'repetition': 0.0156, 'truncated': 0.0156, 'n': 64, 'step': 279, 's': 8.3, 'path': 'generate'}
+
+t2-g6c-S0-vi-0p6B-n3k-lr0.0001-ep3-s3 0 185.4 NVIDIA L40S, 46068 MiB
+ase refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 279: {'correct': 0.4062, 'no_answer': 0.0156, 'repetition': 0.0156, 'truncated': 0.0156, 'n': 64, 'step': 279, 's': 9.6, 'path': 'generate'}
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-D44h5dG4AHY5AgfzhS7jLc
+rc=0

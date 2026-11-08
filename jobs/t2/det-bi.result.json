@@ -1,0 +1,60 @@
+{
+ "gpu": "NVIDIA A10, 23028 MiB",
+ "engine_load_s": 114.1,
+ "env": {
+  "VLLM_BATCH_INVARIANT": "1"
+ },
+ "runs": {
+  "det-bi-c128": {
+   "rc": 0,
+   "s": 9.8,
+   "out_dir": "/vol/det/det-bi-c128",
+   "metrics": {
+    "vi_gsm8k_train_dev": {
+     "n_items": 128,
+     "mean_pass1": null,
+     "maj@0": null,
+     "greedy_acc": 0.375,
+     "truncation_rate_sampled": null,
+     "truncation_rate_greedy": 0.03906,
+     "repetition_loop_rate": 0.03125,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 123.1875
+    }
+   },
+   "throughput": {
+    "dev300": {
+     "gen_tokens": 15768,
+     "s": 9.0,
+     "gen_tok_per_s": 1756.3
+    }
+   }
+  },
+  "det-bi-c16": {
+   "rc": 0,
+   "s": 47.6,
+   "out_dir": "/vol/det/det-bi-c16",
+   "metrics": {
+    "vi_gsm8k_train_dev": {
+     "n_items": 128,
+     "mean_pass1": null,
+     "maj@0": null,
+     "greedy_acc": 0.375,
+     "truncation_rate_sampled": null,
+     "truncation_rate_greedy": 0.03906,
+     "repetition_loop_rate": 0.03125,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 123.1875
+    }
+   },
+   "throughput": {
+    "dev300": {
+     "gen_tokens": 15768,
+     "s": 46.7,
+     "gen_tok_per_s": 337.6
+    }
+   }
+  }
+ },
+ "wall_s": 173.1
+}

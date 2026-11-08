@@ -1,0 +1,33 @@
+{
+ "run_id": "t1r-S0-uns-0p6B-s1",
+ "status": "COMPLETE",
+ "steps": 446,
+ "loss_first5": 0.7701,
+ "loss_last10pct": 0.4286,
+ "dev": [
+  [
+   0,
+   0.75214
+  ],
+  [
+   150,
+   0.477188
+  ],
+  [
+   300,
+   0.457824
+  ],
+  [
+   446,
+   0.4441
+  ]
+ ],
+ "quick": [],
+ "tok_per_s_median": 3833,
+ "platform": "Tesla T4",
+ "flags": {
+  "preflight": "missing"
+ },
+ "warnings": {},
+ "clean": false
+}

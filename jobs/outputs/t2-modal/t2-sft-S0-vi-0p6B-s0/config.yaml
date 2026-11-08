@@ -1,0 +1,160 @@
+kind: sft
+run_id: t2-sft-S0-vi-0p6B-s0
+config_hash: 58905dea
+arm: S0
+model: Qwen/Qwen3-0.6B-Base
+size: 0.6B
+seed: 0
+lang: vi
+precision: bf16
+device: auto
+code:
+  git_sha: 52aca24669c57763bfc2ce278bfa1eeaaaea4826
+  dirty: false
+  dirty_files: []
+  paths:
+  - vi_math_verified_aug/train
+  - vi_math_verified_aug/evalrun
+  - vi_math_verified_aug/eval/math_verify.py
+  - vi_math_verified_aug/__init__.py
+platform: modal_l40s
+attn_implementation: sdpa
+engine: unsloth
+out_dir: /vol/train/t2-sft-S0-vi-0p6B-s0
+resume: auto
+resume_dirs: []
+notes: T2 P1 0.6B VI seed 0 | n_train=1808 (arm-matched per language for Y+-/N+-)
+budget:
+  n_train: 1808
+  epochs: 3
+  max_steps: null
+  wall_s: null
+  reserve_s: 300
+data:
+  train: /vol/train_data/t1r/s0_train.jsonl
+  fields: {}
+  lang_filter: null
+template:
+  name: vi_plain_v1
+  fewshot_path: null
+lora:
+  r: 32
+  alpha: 32
+  dropout: 0.0
+  targets: all-linear
+  init_adapter: null
+sft:
+  lr: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  weight_decay: 0.0
+  seq_per_step: 32
+  micro_batch: 32
+  max_length: 1024
+  warmup_frac: 0.03
+  decay_frac: 0.1
+  branch_epochs:
+  - 1
+  - 2
+  grad_clip: 1.0
+  init_scale: 65536.0
+  max_skip_frac: 0.01
+  skip_check_after: 50
+  grad_ckpt: false
+  ckpt_every_min: 15
+  ckpt_every_steps: null
+  keep_ckpts: 1
+  length_grouping: within_step
+  packing: true
+  pack_gate_max_dnll: 0.02
+  pack_gate_min_argmax: 0.97
+  pack_gate_argmax_margin: 0.02
+  dev_path: /vol/train_data/t1r/dev_seed_vi.jsonl
+  dev_every_steps: 200
+  dev_max_items: 300
+  act_monitor_every: 0
+  log_every: 1
+grpo:
+  sft_model: null
+  reward: math_verify
+  random_reward_p: 0.5
+  loss_type: dr_grpo
+  beta: 0.0
+  scale_rewards: false
+  num_generations: 8
+  prompts_per_step: 32
+  micro_batch: 16
+  max_steps: 200
+  max_prompt_length: 512
+  max_completion_length: 512
+  temperature: 1.0
+  top_p: 1.0
+  lr: 2.0e-05
+  warmup_steps: 10
+  epsilon: 0.2
+  epsilon_high: 0.28
+  num_iterations: 1
+  mask_truncated_completions: true
+  lora_alpha: 64
+  use_vllm: auto
+  vllm_mode: colocate
+  vllm_gpu_memory_utilization: 0.35
+  vllm_max_model_length: 1024
+  save_steps: 25
+  logging_steps: 1
+  dev_eval_every: 25
+guards:
+  enabled: true
+  label_frac_range:
+  - 0.15
+  - 0.95
+  n_decode: 3
+  expected_sha256: 40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825
+  expected_rows: 6788
+  eval_hashes_path: /vol/train_data/t1r/eval_qhashes.json
+  step0_loss_band:
+  - 0.3
+  - 1.6
+  min_progress: 0.03
+  spike_x: 3.0
+  spike_after: 20
+  collapse_below: 0.05
+  expected_tok_per_s: 36300
+  min_tok_frac: 0.5
+  tok_window: 20
+  midrun_fracs:
+  - 0.25
+  - 0.5
+  quick_n: 64
+  quick_max_new_tokens: 384
+  max_acc_drop: 0.1
+  max_repetition: 0.2
+  abort_repetition: 0.5
+  abort_no_answer: 0.5
+  max_shortfall: 0.01
+  max_dev_train_ratio: 2.0
+eval:
+  source_run_id: null
+  model_path: null
+  adapter_path: null
+  sets: []
+  backend: auto
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  min_p: 0.0
+  k_samples: 4
+  greedy: true
+  max_new_tokens: 1024
+  shots: 0
+  batch_size: 64
+  chunk_items: 256
+  save_text: true
+  max_items: null
+  vllm_gpu_memory_utilization: 0.85
+  vllm_max_model_len: 4096
+  vllm_max_lora_rank: 32
+  vllm_enable_prefix_caching: true
+  dataset_from_row: dataset
+  model_tag: null

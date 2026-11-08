@@ -1,0 +1,122 @@
+{
+ "run_id": "t1r-gate-hf-0p6B-s1",
+ "kind": "sft",
+ "arm": "S0",
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "size": "0.6B",
+ "seed": 1,
+ "config_hash": "9e4e0336",
+ "status": "NEEDS_RESUME",
+ "env": {
+  "python": "3.13.16",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "accelerate": "1.15.0",
+  "vllm": "0.33.0",
+  "gpu": "Tesla T4",
+  "gpu_cap": [
+   7,
+   5
+  ],
+  "cuda": "13.0"
+ },
+ "started_utc": "2026-11-07T15:40:23Z",
+ "model_path": "Qwen/Qwen3-0.6B-Base",
+ "n_params": 596049920,
+ "lora": {
+  "n_modules": 196,
+  "suffixes": [
+   "down_proj",
+   "gate_proj",
+   "k_proj",
+   "o_proj",
+   "q_proj",
+   "up_proj",
+   "v_proj"
+  ]
+ },
+ "grad_ckpt": false,
+ "plan": {
+  "total": 300,
+  "warmup": 13,
+  "decay": 30,
+  "steps_per_epoch": 223,
+  "epochs": 2,
+  "branches": []
+ },
+ "data_stats": {
+  "n_pool": 7157,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 7157,
+  "pool_len_p50": 183,
+  "pool_len_p99": 405,
+  "pool_len_max": 560,
+  "n_items": 7157,
+  "completion_tokens_mean": 112.51,
+  "completion_tokens_p99": 266,
+  "completion_tokens_total": 805246,
+  "sequence_tokens_total": 1401828,
+  "sequence_tokens_p99": 405,
+  "fingerprint": "212aebe751b8d721",
+  "arm": "S0",
+  "train_path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/s0_train.jsonl",
+  "dev": {
+   "n_pool": 300,
+   "n_malformed": 0,
+   "n_dropped_too_long": 0,
+   "max_length": 1024,
+   "drop_rate": 0.0,
+   "n_eligible": 300,
+   "pool_len_p50": 179,
+   "pool_len_p99": 375,
+   "pool_len_max": 439,
+   "n_used": 300,
+   "path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/dev300.jsonl"
+  }
+ },
+ "engine": "hf",
+ "packed": false,
+ "tok_check": null,
+ "lora_param_dtypes": [
+  "torch.float32"
+ ],
+ "trainable_params": 20185088,
+ "updated_utc": "2026-11-07T16:15:29Z",
+ "micro_batch": 1,
+ "accum": 32,
+ "oom_probe": [
+  {
+   "micro": 8,
+   "err": "CUDA out of memory. Tried to allocate 1.55 GiB. GPU 0 has a total capacity of 14.56 GiB of which 508.81 MiB is free. Including non-PyTorch memory, this process has 14.06 GiB memory in use. Of the allo"
+  },
+  {
+   "micro": 4,
+   "err": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 10.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allo"
+  },
+  {
+   "micro": 2,
+   "err": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 12.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allo"
+  }
+ ],
+ "reason": "wall-clock budget reached at step 257/300",
+ "counters": {
+  "global_step": 257,
+  "branches_done": [],
+  "exec_steps": 257,
+  "exec_skipped": 0,
+  "exec_skipped_first10": 0,
+  "nonfinite_losses": 0,
+  "real_tokens": 1610314,
+  "padded_tokens": 1610314,
+  "completion_tokens": 925185,
+  "train_s": 1992.815152645111,
+  "resumed_from": [],
+  "outputs": {}
+ }
+}

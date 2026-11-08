@@ -1,0 +1,29 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:02<13:45,  2.08s/it]Loading weights:  34%|███▍      | 135/398 [00:02<00:03, 83.94it/s]Loading weights:  47%|████▋     | 188/398 [00:03<00:03, 57.52it/s]Loading weights:  55%|█████▌    | 219/398 [00:05<00:05, 34.55it/s]Loading weights:  60%|█████▉    | 238/398 [00:07<00:05, 27.99it/s]Loading weights:  68%|██████▊   | 269/398 [00:07<00:03, 37.58it/s]Loading weights:  72%|███████▏  | 288/398 [00:07<00:02, 44.25it/s]Loading weights:  77%|███████▋  | 306/398 [00:07<00:01, 48.65it/s]Loading weights:  81%|████████  | 321/398 [00:07<00:01, 54.32it/s]Loading weights:  84%|████████▍ | 335/398 [00:07<00:01, 54.54it/s]Loading weights:  87%|████████▋ | 346/398 [00:08<00:00, 58.25it/s]Loading weights:  89%|████████▉ | 356/398 [00:08<00:00, 58.13it/s]Loading weights:  92%|█████████▏| 367/398 [00:08<00:00, 60.36it/s]Loading weights:  95%|█████████▌| 379/398 [00:08<00:00, 68.27it/s]Loading weights:  97%|█████████▋| 388/398 [00:08<00:00, 46.53it/s]Loading weights: 100%|██████████| 398/398 [00:08<00:00, 44.63it/s]
+[W1107 10:30:21.703419384 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 416088064, total: 15636037632).
+[W1107 10:30:23.992724404 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2949120, total: 15636037632).
+SFT Qwen3-4B-Base padded step 0 loss 0.6476 gn 0.319 15.80s amax 5256.0
+[W1107 10:30:58.844297525 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 983564288 bytes (free: 921501696, total: 15636037632).
+[W1107 10:31:02.319173036 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2949120, total: 15636037632).
+[W1107 10:31:30.377526198 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 991952896 bytes (free: 556597248, total: 15636037632).
+[W1107 10:31:30.514732253 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1004535808 bytes (free: 449642496, total: 15636037632).
+[W1107 10:32:13.159520937 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1086324736 bytes (free: 426573824, total: 15636037632).
+[W1107 10:32:13.302945245 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1136656384 bytes (free: 164429824, total: 15636037632).
+[W1107 10:32:43.752845265 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 926941184 bytes (free: 126681088, total: 15636037632).
+SFT Qwen3-4B-Base padded step 10 loss 0.4822 gn 0.221 13.92s amax None
+[W1107 10:35:13.595046867 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1113587712 bytes (free: 212664320, total: 15636037632).
+[W1107 10:35:13.643166458 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1203765248 bytes (free: 275578880, total: 15636037632).
+[W1107 10:35:31.939879183 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 960495616 bytes (free: 307036160, total: 15636037632).
+SFT Qwen3-4B-Base padded step 20 loss 0.4213 gn 0.192 18.07s amax 5780.0
+[W1107 10:38:00.686654241 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 968884224 bytes (free: 202178560, total: 15636037632).
+SFT Qwen3-4B-Base padded step 30 loss 0.4430 gn 0.149 15.91s amax None
+[W1107 10:39:01.069581198 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1220542464 bytes (free: 193789952, total: 15636037632).
+SFT Qwen3-4B-Base padded step 40 loss 0.3546 gn 0.146 15.74s amax 5108.0
+[W1107 10:41:20.257943512 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1098907648 bytes (free: 158138368, total: 15636037632).
+SFT Qwen3-4B-Base padded step 50 loss 0.3804 gn 0.142 15.15s amax None
+SFT Qwen3-4B-Base padded step 60 loss 0.3708 gn 0.158 13.76s amax 5172.0
+SFT Qwen3-4B-Base padded step 70 loss 0.3851 gn 0.152 15.04s amax None
+SFT Qwen3-4B-Base padded step 80 loss 0.3830 gn 0.163 14.98s amax 5188.0
+SFT Qwen3-4B-Base padded step 90 loss 0.3846 gn 0.149 14.48s amax None
+SFT Qwen3-4B-Base padded step 99 loss 0.3828 gn 0.181 13.18s amax None
+SFT_DONE Qwen/Qwen3-4B-Base padded_length_grouped 425.7 0.5394 0.3998 0 7112.0

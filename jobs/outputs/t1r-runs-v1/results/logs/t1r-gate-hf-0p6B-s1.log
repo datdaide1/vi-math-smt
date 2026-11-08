@@ -1,0 +1,43 @@
+
+=== 2026-11-07T15:40:20Z /usr/bin/python3 -m vi_math_verified_aug.train.cli sft --config /kaggle/working/configs/t1r-gate-hf-0p6B-s1.json --budget-s 2400
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 7157
+[W1107 15:40:51.475080373 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1665138688 bytes (free: 1290600448, total: 15636037632).
+[W1107 15:40:51.598739578 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1665138688 bytes (free: 533528576, total: 15636037632).
+[W1107 15:40:51.599031994 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1665138688 bytes (free: 533528576, total: 15636037632).
+[W1107 15:40:51.763121793 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11337728, total: 15636037632).
+[W1107 15:40:51.763389013 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11337728, total: 15636037632).
+[W1107 15:40:51.901872472 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2949120, total: 15636037632).
+[W1107 15:40:51.954118928 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 13434880, total: 15636037632).
+[W1107 15:40:51.954406340 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 13434880, total: 15636037632).
+[W1107 15:40:51.174630532 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 125829120 bytes (free: 13434880, total: 15636037632).
+[sft] dev step 0: 0.75213
+[sft] step 0/300 loss 0.8029 lr 1.54e-05 gn 0.79364 skip 0
+[sft] step 10/300 loss 0.5815 lr 1.69e-04 gn 0.47086 skip 0
+[sft] step 20/300 loss 0.6309 lr 2.00e-04 gn 0.33798 skip 0
+[sft] step 30/300 loss 0.5624 lr 2.00e-04 gn 0.31134 skip 0
+[sft] step 40/300 loss 0.5125 lr 2.00e-04 gn 0.31581 skip 0
+[sft] step 50/300 loss 0.5154 lr 2.00e-04 gn 0.30409 skip 0
+[sft] step 60/300 loss 0.5033 lr 2.00e-04 gn 0.27138 skip 0
+[sft] step 70/300 loss 0.5148 lr 2.00e-04 gn 0.2648 skip 0
+[sft] step 80/300 loss 0.5747 lr 2.00e-04 gn 0.30827 skip 0
+[sft] step 90/300 loss 0.5478 lr 2.00e-04 gn 0.30078 skip 0
+[sft] dev step 100: 0.48473
+[sft] step 100/300 loss 0.5197 lr 2.00e-04 gn 0.32453 skip 0
+[sft] step 110/300 loss 0.5284 lr 2.00e-04 gn 0.31519 skip 0
+[sft] step 120/300 loss 0.5565 lr 2.00e-04 gn 0.26909 skip 0
+[sft] step 130/300 loss 0.5299 lr 2.00e-04 gn 0.31541 skip 0
+[sft] step 140/300 loss 0.5521 lr 2.00e-04 gn 0.30362 skip 0
+[sft] step 150/300 loss 0.4848 lr 2.00e-04 gn 0.29082 skip 0
+[sft] step 160/300 loss 0.4886 lr 2.00e-04 gn 0.30289 skip 0
+[sft] step 170/300 loss 0.5282 lr 2.00e-04 gn 0.30865 skip 0
+[sft] step 180/300 loss 0.3972 lr 2.00e-04 gn 0.28197 skip 0
+[sft] step 190/300 loss 0.4800 lr 2.00e-04 gn 0.28606 skip 0
+[sft] dev step 200: 0.46140
+[sft] step 200/300 loss 0.5144 lr 2.00e-04 gn 0.31511 skip 0
+[sft] step 210/300 loss 0.4492 lr 2.00e-04 gn 0.27367 skip 0
+[sft] step 220/300 loss 0.4402 lr 2.00e-04 gn 0.28095 skip 0
+[sft] step 230/300 loss 0.4059 lr 2.00e-04 gn 0.26268 skip 0
+[sft] step 240/300 loss 0.3974 lr 2.00e-04 gn 0.30418 skip 0
+[sft] step 250/300 loss 0.4117 lr 2.00e-04 gn 0.29307 skip 0
+[sft] NEEDS_RESUME: wall-clock budget reached at step 257/300

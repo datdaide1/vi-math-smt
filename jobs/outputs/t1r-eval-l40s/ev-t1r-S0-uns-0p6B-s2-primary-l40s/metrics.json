@@ -1,0 +1,31 @@
+{
+ "run_id": "t1r-S0-uns-0p6B-s2",
+ "arm": "S0",
+ "model": "qwen3-0.6b",
+ "size": "0.6B",
+ "seed": 2,
+ "per_dataset": {
+  "gsm8k_platinum": {
+   "n_items": 600,
+   "mean_pass1": 0.43125,
+   "maj@4": 0.525,
+   "greedy_acc": 0.48167,
+   "truncation_rate_sampled": 0.00625,
+   "truncation_rate_greedy": 0.015,
+   "repetition_loop_rate": 0.00467,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 119.73767
+  },
+  "math_algprealg": {
+   "n_items": 400,
+   "mean_pass1": 0.2375,
+   "maj@4": 0.325,
+   "greedy_acc": 0.27,
+   "truncation_rate_sampled": 0.08063,
+   "truncation_rate_greedy": 0.195,
+   "repetition_loop_rate": 0.071,
+   "no_answer_rate": 0.0055,
+   "tokens_mean": 253.167
+  }
+ }
+}

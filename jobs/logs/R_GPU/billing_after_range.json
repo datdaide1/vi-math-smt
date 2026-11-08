@@ -1,0 +1,282 @@
+[
+  {
+    "object_id": "ap-2WOmJvzYsbQbBilWIoxCR6",
+    "description": "g3-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.01278865"
+  },
+  {
+    "object_id": "ap-3jPatqa1fBul5Xvvm7FEmB",
+    "description": "o1-throughput-bench-eval3",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.05304764"
+  },
+  {
+    "object_id": "ap-9fjZI5SEmtD7QOrF1qMTF9",
+    "description": "s2-student-pilot",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.01283444"
+  },
+  {
+    "object_id": "ap-BKAGWLVHtrRduaMAe0Gk3G",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.10293577"
+  },
+  {
+    "object_id": "ap-C5uIPracYCP7VdMBcth0N9",
+    "description": "qa-t-tokcheck",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.00083913"
+  },
+  {
+    "object_id": "ap-CxlPmWFnASYNbFLwvp4Xlw",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.72626095"
+  },
+  {
+    "object_id": "ap-D3nBCvNKnxykh674nMQouy",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.24733565"
+  },
+  {
+    "object_id": "ap-E9TO9xbrlA4TyuqIosEcUo",
+    "description": "y2-analysis",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.30156181"
+  },
+  {
+    "object_id": "ap-Fv3qBqADT5c9b1oK98HYdk",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.31150426"
+  },
+  {
+    "object_id": "ap-GCduclslZFbFMWz2muV9rd",
+    "description": "s3-seed-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.03458841"
+  },
+  {
+    "object_id": "ap-GPReFXKvrQdS1AkEojFf24",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.07186559"
+  },
+  {
+    "object_id": "ap-GWRzghc5RGAfhtCaraKfEe",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.13700513"
+  },
+  {
+    "object_id": "ap-IDS06JAlm4V40BpB33ckro",
+    "description": "g4-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.01399764"
+  },
+  {
+    "object_id": "ap-JTYObbEokQJ6Rhpy66LcNP",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.04524645"
+  },
+  {
+    "object_id": "ap-K2F3jbGhl7jIhugewdCpRz",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.04236523"
+  },
+  {
+    "object_id": "ap-LXQ0tws8RIXdHj0I8XA0OB",
+    "description": "d1-n-decontam",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.00069920"
+  },
+  {
+    "object_id": "ap-PBQwrdjYMCpSXGLHGFDvG4",
+    "description": "d1-n-decontam",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.02083273"
+  },
+  {
+    "object_id": "ap-PhgedC27S51CAc9rjKi8RF",
+    "description": "s2-student-pilot",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "1.47528832"
+  },
+  {
+    "object_id": "ap-RLkOFOO1EhmB69NFH2UBEM",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.29722972"
+  },
+  {
+    "object_id": "ap-RhRULdnYc4lQD6xI7S2Mgu",
+    "description": "x5-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.04439565"
+  },
+  {
+    "object_id": "ap-RqLhIgBSJhWjKNeA9eLIEN",
+    "description": "s2-student-pilot",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.18639089"
+  },
+  {
+    "object_id": "ap-SPppiSLz7qxOFqLB4lDp6e",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.19948893"
+  },
+  {
+    "object_id": "ap-SSYPbY9Fm4iHq4Gd5vD8EP",
+    "description": "o1-throughput-bench-eval3",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.17007648"
+  },
+  {
+    "object_id": "ap-UH0wf49whs5Xibo7PfFVTH",
+    "description": "y2-analysis",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.77318677"
+  },
+  {
+    "object_id": "ap-YhTJd9j0fHHAUZC6q8wSyo",
+    "description": "o1-throughput-bench-eval2",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.34213309"
+  },
+  {
+    "object_id": "ap-deHhssWQKIFJwgv6r0krxg",
+    "description": "x5-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.11069829"
+  },
+  {
+    "object_id": "ap-eMzvrX9GeBAkw00QhbUgQM",
+    "description": "g3-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.00266696"
+  },
+  {
+    "object_id": "ap-g3l3YbV6O9THclo0wFyECK",
+    "description": "y2-analysis",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.26454382"
+  },
+  {
+    "object_id": "ap-hFC2OzlCJcNiJrLImG4q6C",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.13448343"
+  },
+  {
+    "object_id": "ap-jHIG5uinigZnb6E40hgB7d",
+    "description": "x5-embed",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.11898577"
+  },
+  {
+    "object_id": "ap-lih11gUsOwXIWh0wstdBEZ",
+    "description": "qa-t-nllprobe",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.04280317"
+  },
+  {
+    "object_id": "ap-nZa4cACu58B5tIjUX3mO9w",
+    "description": "d1-n-decontam",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.00069934"
+  },
+  {
+    "object_id": "ap-qJnfQ2TJvZOeZQkvAkferZ",
+    "description": "o1-throughput-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.83836976"
+  },
+  {
+    "object_id": "ap-rDjKzUBd9yTVKAjFDSqdvh",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.84210426"
+  },
+  {
+    "object_id": "ap-rFfLlUqzM6mfpPlCHjo8UO",
+    "description": "y2-analysis",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.00917438"
+  },
+  {
+    "object_id": "ap-rUYbGvn94LBGQMFvNmM15v",
+    "description": "t1r-eval",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.05769973"
+  },
+  {
+    "object_id": "ap-slvQPi9sZgrgiezi8k4xFh",
+    "description": "o1-throughput-bench-eval3",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.17168562"
+  },
+  {
+    "object_id": "ap-v2j6FgQz3A1X4qScEY1TtW",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.33395152"
+  },
+  {
+    "object_id": "ap-yRyQv2SLMcwJKm8k6LZRQ2",
+    "description": "o1-throughput-bench-eval3",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "0.04291961"
+  },
+  {
+    "object_id": "ap-z4cJemtO5rIxFtfxjxesFT",
+    "description": "r-gpu-bench",
+    "environment": "main",
+    "interval_start": "2026-11-07T00:00:00",
+    "cost": "1.92989384"
+  }
+]

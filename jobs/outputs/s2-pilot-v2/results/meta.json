@@ -1,0 +1,122 @@
+{
+ "job": {
+  "lanes": [
+   [
+    [
+     "Qwen/Qwen3-0.6B-Base",
+     [
+      "packcheck",
+      "sft",
+      "sft_packed_hf"
+     ]
+    ],
+    [
+     "Qwen/Qwen3-0.6B-Base",
+     [
+      "unsloth"
+     ]
+    ]
+   ],
+   [
+    [
+     "Qwen/Qwen3-1.7B-Base",
+     [
+      "sft"
+     ]
+    ]
+   ]
+  ],
+  "install": "pip install -q 'vllm==0.33.0'",
+  "env_fix": [
+   "pip uninstall -y -q torchao"
+  ],
+  "python": "3.13",
+  "pins": {
+   "torch": "2.14.0",
+   "transformers": "5.20.2",
+   "peft": "0.21.2",
+   "vllm": "0.33.0",
+   "accelerate": "1.15.0"
+  },
+  "fail_fast": true,
+  "unsloth_install": "pip install -q --no-deps --target /tmp/uns_site unsloth==2026.11.3 unsloth_zoo==2026.11.3 trl==1.17.1 cut_cross_entropy==25.1.1 bitsandbytes",
+  "micro": 8,
+  "gc_above_params": 2500000000.0,
+  "hook_every": 4,
+  "sft_steps": 100,
+  "eval_n": 300,
+  "use_vllm": true,
+  "task_timeout_s": 1500,
+  "unsloth_timeout_s": 1800,
+  "deadline_s": 3000,
+  "deadline_grace_s": 300,
+  "kernel_timeout_s": 4200,
+  "max_queued_s": 3600,
+  "run_id": "s2-pilot-v2-20261107T111006Z"
+ },
+ "t0": 1794050573.596944,
+ "nvidia_smi": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB\n",
+ "install": {
+  "cmd": "pip install -q 'vllm==0.33.0'",
+  "rc": 0,
+  "s": 358.1,
+  "tail": "ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\nydata-profiling 4.18.4 requires numba<0.63,>=0.60, but you have numba 0.65.0 which is incompatible.\nnumba-cuda 0.28.2 requires cuda-core<1.0.0,>=0.5.1, but you have cuda-core 1.2.2 which is incompatible.\ncuml-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.\ncudf-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.\ngradio 6.30.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.\ngoogle-adk 2.7.1 requires opentelemetry-api<=1.42.1,>=1.39, but you have opentelemetry-api 1.45.2 which is incompatible.\ngoogle-adk 2.7.1 requires opentelemetry-sdk<=1.42.1,>=1.39, but you have opentelemetry-sdk 1.45.2 which is incompatible.\n"
+ },
+ "env_fix": [
+  {
+   "cmd": "pip uninstall -y -q torchao",
+   "rc": 0,
+   "tail": ""
+  }
+ ],
+ "envcheck_rc": 0,
+ "pip": "accelerate                               1.15.0\ndatasets                                 4.8.5\npeft                                     0.21.2\ntorch                                    2.14.0\ntransformers                             5.20.2\ntriton                                   3.8.0\nvllm                                     0.33.0\n",
+ "envcheck": {
+  "gpus": [
+   "0, Tesla T4, 580.178.04, 15360 MiB",
+   "1, Tesla T4, 580.178.04, 15360 MiB"
+  ],
+  "python": "3.13.16",
+  "versions": {
+   "torch": "2.14.0",
+   "transformers": "5.20.2",
+   "peft": "0.21.2",
+   "trl": null,
+   "unsloth": null,
+   "unsloth_zoo": null,
+   "vllm": "0.33.0",
+   "accelerate": "1.15.0",
+   "torchao": null,
+   "triton": "3.8.0",
+   "bitsandbytes": null,
+   "flash-linear-attention": null,
+   "causal-conv1d": null,
+   "xformers": null,
+   "datasets": "4.8.5",
+   "cut_cross_entropy": null
+  },
+  "torch_cuda": "2.14.0+cu130 13.0"
+ },
+ "unsloth_install": {
+  "cmd": "pip install -q --no-deps --target /tmp/uns_site unsloth==2026.11.3 unsloth_zoo==2026.11.3 trl==1.17.1 cut_cross_entropy==25.1.1 bitsandbytes",
+  "rc": 0,
+  "tail": ""
+ },
+ "unsloth_site_pkgs": [
+  "bin",
+  "bitsandbytes",
+  "bitsandbytes-0.50.2.dist-info",
+  "cut_cross_entropy",
+  "cut_cross_entropy-25.1.1.dist-info",
+  "studio",
+  "trl",
+  "trl-1.17.1.dist-info",
+  "unsloth",
+  "unsloth-2026.11.3.dist-info",
+  "unsloth_cli",
+  "unsloth_zoo",
+  "unsloth_zoo-2026.11.3.dist-info",
+  "unsloth_zoo_downloads"
+ ],
+ "wall_s": 1618.3
+}

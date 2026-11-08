@@ -1,0 +1,55 @@
+{
+ "gpu": "NVIDIA L4, 23034 MiB, 610.57.04",
+ "blocks": [
+  {
+   "gpu": "NVIDIA L4",
+   "quant": null,
+   "engine_load_s": 117.8,
+   "vllm": "0.33.0",
+   "attn_backend": "auto",
+   "runs": {
+    "vip-l40s-uns_bf16_mb8": {
+     "rc": 0,
+     "s": 269.7,
+     "out_dir": "/rg/eval/l4-vip-bf16/vip-l40s-uns_bf16_mb8",
+     "metrics": {
+      "gsm8k_platinum": {
+       "n_items": 600,
+       "mean_pass1": 0.45042,
+       "maj@4": 0.51833,
+       "greedy_acc": 0.45,
+       "truncation_rate_sampled": 0.00708,
+       "truncation_rate_greedy": 0.03667,
+       "repetition_loop_rate": 0.00833,
+       "no_answer_rate": 0.0,
+       "tokens_mean": 127.816
+      },
+      "math_algprealg": {
+       "n_items": 400,
+       "mean_pass1": 0.27313,
+       "maj@4": 0.36,
+       "greedy_acc": 0.3225,
+       "truncation_rate_sampled": 0.10938,
+       "truncation_rate_greedy": 0.2125,
+       "repetition_loop_rate": 0.097,
+       "no_answer_rate": 0.0035,
+       "tokens_mean": 286.9075
+      }
+     },
+     "throughput": {
+      "vi_primary_1000": {
+       "gen_tokens": 957263,
+       "s": 269.4,
+       "gen_tok_per_s": 3553.1
+      }
+     }
+    }
+   },
+   "quant_method": "None",
+   "tag": "l4-vip-bf16",
+   "rc": 0,
+   "wall_s": 413.8,
+   "tail": "ULL):  83%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e | 58/70 [00:04<00:00, 14.88it/s]\nCapturing CUDA graphs (FULL):  86%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c | 60/70 [00:04<00:00, 14.97it/s]\nCapturing CUDA graphs (FULL):  89%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 62/70 [00:04<00:00, 15.12it/s]\nCapturing CUDA graphs (FULL):  91%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 64/70 [00:04<00:00, 14.25it/s]\nCapturing CUDA graphs (FULL):  94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 66/70 [00:04<00:00, 14.61it/s]\nCapturing CUDA graphs (FULL):  97%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b| 68/70 [00:04<00:00, 14.90it/s]\nCapturing CUDA graphs (FULL): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [00:04<00:00, 15.12it/s]\nCapturing CUDA graphs (FULL): 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 70/70 [00:04<00:00, 14.37it/s]\n"
+  }
+ ]
+}

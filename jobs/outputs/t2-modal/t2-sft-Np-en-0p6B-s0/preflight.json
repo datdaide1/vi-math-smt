@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "242419d25c2dda5d1920ed73b9e90241c49a69c1f4ddc5a83966c7d2a0e58edb",
+  "rows": 1808
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3471,
+  "label_frac_mean": 0.5661,
+  "label_frac_max": 0.8606,
+  "decoded": [
+   {
+    "id": "N/en/ae83b2342df6:1",
+    "prompt_tail": "ent $24 on paper and supplies to make them. How many bookmarks does he need to sell to make a profit of $60?\n\nSolution:\n",
+    "trained_text": "Profit = (number sold × price) − cost.\n\nWe need profit of $60:\n\n3n − 24 = 60\n3n = 84\nn = 28\n\nCheck: 28 × $3 = $84 revenue; $84 − $24 = $60 profit.\nFinal answer: \\boxed{28}",
+    "n_trained": 80,
+    "n_total": 129,
+    "eos_trained": true
+   },
+   {
+    "id": "N/en/92755f2cc0d9:1",
+    "prompt_tail": " he still has 20 strawberry plants, how many strawberry plants did Mark have at the end of the second month?\n\nSolution:\n",
+    "trained_text": "Let x be the number of plants Mark initially planted.\n\nAfter 3 months of doubling: 8x plants.\nMark digs up 4 and has 20 left: 8x − 4 = 20, so 8x = 24, x = 3.\n\nAt the end of the second month, the number of plants is doubled twice: 4x = 4 × 3 = 12.\n\nCheck: Month 1: 6, Month 2: 12, Month 3: 24, minus 4 gives 20. ✓\nFinal answer: \\boxed{12}",
+    "n_trained": 135,
+    "n_total": 201,
+    "eos_trained": true
+   },
+   {
+    "id": "N/en/6bb9857b981e:1",
+    "prompt_tail": " little brother Caleb. Then she used 9 tickets at the ring toss booth. How many tickets does Ella have left?\n\nSolution:\n",
+    "trained_text": "Ella bought 2 dozen tickets: 2 × 12 = 24 tickets.\n\nShe gave 1/4 of them to Caleb: 24 × 1/4 = 6 tickets. She has 24 − 6 = 18 left.\n\nShe then used 9 tickets at the ring toss booth: 18 − 9 = 9 tickets left.\nFinal answer: \\boxed{9}",
+    "n_trained": 91,
+    "n_total": 143,
+    "eos_trained": true
+   }
+  ]
+ }
+}

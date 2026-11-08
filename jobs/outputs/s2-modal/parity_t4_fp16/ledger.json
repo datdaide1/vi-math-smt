@@ -1,0 +1,32 @@
+{
+ "plan": "parity_t4_fp16",
+ "gpu": "Tesla T4, 610.57.04, 15360 MiB",
+ "dtype": "fp16",
+ "tasks": [
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "rc": 0,
+   "s": 753.8
+  },
+  {
+   "task": "eval_dev",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "rc": 0,
+   "s": 162.7
+  },
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "rc": 0,
+   "s": 462.9
+  },
+  {
+   "task": "eval_dev",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "rc": 0,
+   "s": 148.8
+  }
+ ],
+ "wall_s": 1528.2
+}

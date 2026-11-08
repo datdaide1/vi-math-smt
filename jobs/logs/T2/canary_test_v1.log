@@ -1,0 +1,42 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-D3nBCvNKnxykh674nMQouy
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_t4.
+└── ✓ Created Function smoke_t4.
+spawned ['fc-01M6VB9ZJV5K2AA29R42C5ANV1', 'fc-01M6VBA04GEBE5BRJEH64FVFN9']
+canary-t2-sft-S0-vi-0p6B-s0-v1 0 776.6 Tesla T4, 15360 MiB
+0: {'correct': 0.375, 'no_answer': 0.0, 'repetition': 0.125, 'truncated': 0.125, 'n': 16, 'step': 20, 's': 118.6}
+[sft] step 20/80 loss 0.4987 lr 2.00e-04 gn 0.35807 skip 0
+[sft] step 30/80 loss 0.6211 lr 2.00e-04 gn 0.35553 skip 0
+[sft] dev step 40: 0.51248
+[sft] quick-eval step 40: {'correct': 0.4375, 'no_answer': 0.0, 'repetition': 0.0625, 'truncated': 0.125, 'n': 16, 'step': 40, 's': 134.2}
+[sft] step 40/80 loss 0.5895 lr 2.00e-04 gn 0.31718 skip 0
+[sft] step 50/80 loss 0.6132 lr 2.00e-04 gn 0.37964 skip 0
+[sft] step 60/80 loss 0.5492 lr 2.00e-04 gn 0.36173 skip 0
+[sft] step 70/80 loss 0.5038 lr 2.00e-04 gn 0.37003 skip 0
+[sft] dev step 80: 0.49495
+[sft] quick-eval step 80: {'correct': 0.375, 'no_answer': 0.0, 'repetition': 0.0625, 'truncated': 0.0625, 'n': 16, 'step': 80, 's': 116.3}
+
+canary-t2-sft-Yp-vi-0p6B-s0-v1 7 443.7 Tesla T4, 15360 MiB
+g ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[9.6e-05, 0.000372, 0.000328, 0.000452] fused=1.13e-05
+[sft] dev step 0: 0.75214
+[sft] quick-eval step 0: {'correct': 0.4375, 'no_answer': 0.0, 'repetition': 0.125, 'truncated': 0.1875, 'n': 16, 'step': 0, 's': 281.4}
+[sft] step 0/78 loss 0.5604 lr 1.00e-04 gn 0.83412 skip 0
+[sft] step 10/78 loss 0.1395 lr 2.00e-04 gn 0.34219 skip 0
+[sft] ABORTED_LOSS_COLLAPSE: LOSS_COLLAPSE: step 18: loss 0.0427 < 0.05 early (label leak or duplicated data?)
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-D3nBCvNKnxykh674nMQouy
+rc=0

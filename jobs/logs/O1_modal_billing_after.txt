@@ -1,0 +1,11 @@
+Sat Nov  7 11:23:03 UTC 2026
+                                     
+  Metered Cost:                4.77  
+    Ephemeral Apps:            4.62  
+    Network Egress:            0.09  
+    Volumes:                   0.06  
+  Credits:                    -4.62  
+  Free Storage:               -0.06  
+  Network Egress Allowance:   -0.09  
+  Billed Cost:                $0.00  
+                                     

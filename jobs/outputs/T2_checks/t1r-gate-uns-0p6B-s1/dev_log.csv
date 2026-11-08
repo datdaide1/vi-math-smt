@@ -1,0 +1,5 @@
+step,dev_loss,quick_correct,quick_no_answer,quick_repetition,quick_truncated
+0,0.75214,,,,
+100,0.486747,,,,
+200,0.464177,,,,
+300,0.456511,,,,

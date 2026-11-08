@@ -1,0 +1,4 @@
+{"ts": "2026-11-07T11:10:14Z", "epoch": 1794049814.7, "ref": "datuni/s2-pilot-v2", "status": "WAIT_START", "gpu_quota_used_h": 2.07}
+{"ts": "2026-11-07T11:10:16Z", "epoch": 1794049816.6, "ref": "datuni/s2-pilot-v2", "status": "QUEUED", "waited_min": 0.1}
+{"ts": "2026-11-07T11:22:37Z", "epoch": 1794050557.2, "ref": "datuni/s2-pilot-v2", "status": "RUNNING", "waited_min": 12.4, "gpu_quota_used_h": 2.08}
+{"ts": "2026-11-07T11:50:18Z", "epoch": 1794052218.2, "ref": "datuni/s2-pilot-v2", "status": "COMPLETE", "waited_min": 40.1, "gpu_quota_used_h": 2.52}

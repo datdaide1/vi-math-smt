@@ -1,0 +1,107 @@
+{
+ "groups": [
+  {
+   "gpu": "t4",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "canary-t2-sft-S0-vi-0p6B-s0-v2",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 0,
+      "lang": "vi",
+      "precision": "fp16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": 80
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev300.jsonl",
+       "dev_every_steps": 200,
+       "ckpt_every_min": 0,
+       "keep_ckpts": 1
+      },
+      "platform": "modal_t4_canary",
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "67ef4b5d0c1e9d316517bd588673f8cc382cbd155a16049a50676cc3541ada65",
+       "expected_rows": 7157,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": null
+      },
+      "notes": "T2 P1 0.6B VI seed 0"
+     },
+     "budget_s": 1800
+    }
+   ]
+  },
+  {
+   "gpu": "t4",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "canary-t2-sft-S0-vi-0p6B-s0-v2-hf",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 0,
+      "lang": "vi",
+      "precision": "fp16",
+      "engine": "hf",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": 80
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": false,
+       "dev_path": "{vol}/train_data/t1r/dev300.jsonl",
+       "dev_every_steps": 200,
+       "ckpt_every_min": 0,
+       "keep_ckpts": 1
+      },
+      "platform": "modal_t4_canary",
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "67ef4b5d0c1e9d316517bd588673f8cc382cbd155a16049a50676cc3541ada65",
+       "expected_rows": 7157,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": null
+      },
+      "notes": "T2 P1 0.6B VI seed 0"
+     },
+     "budget_s": 1800
+    }
+   ]
+  }
+ ],
+ "wait_s": 3600
+}

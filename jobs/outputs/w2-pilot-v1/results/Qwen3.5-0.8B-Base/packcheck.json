@@ -1,0 +1,54 @@
+{
+ "model": "Qwen/Qwen3.5-0.8B-Base",
+ "loader": "AutoModelForCausalLM",
+ "gdn": null,
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "vllm": "0.33.0",
+  "fla": "0.6.0",
+  "triton": "3.8.0",
+  "accelerate": "1.15.0"
+ },
+ "per_item": [
+  {
+   "len": 332,
+   "packed_vs_sep_max_abs_logit_diff": 0.05859,
+   "packed_vs_sep_mean_abs_logit_diff": 0.003709,
+   "padded_vs_sep_max_abs_logit_diff": 0.04688,
+   "nll_sep": 0.49892,
+   "nll_packed": 0.49869,
+   "argmax_agree_packed": 1.0
+  },
+  {
+   "len": 146,
+   "packed_vs_sep_max_abs_logit_diff": 9.37891,
+   "packed_vs_sep_mean_abs_logit_diff": 0.410859,
+   "padded_vs_sep_max_abs_logit_diff": 0.05859,
+   "nll_sep": 0.95729,
+   "nll_packed": 0.77901,
+   "argmax_agree_packed": 0.8699
+  },
+  {
+   "len": 120,
+   "packed_vs_sep_max_abs_logit_diff": 10.70312,
+   "packed_vs_sep_mean_abs_logit_diff": 0.52999,
+   "padded_vs_sep_max_abs_logit_diff": 0.04688,
+   "nll_sep": 0.92338,
+   "nll_packed": 0.63683,
+   "argmax_agree_packed": 0.875
+  },
+  {
+   "len": 250,
+   "packed_vs_sep_max_abs_logit_diff": 12.61328,
+   "packed_vs_sep_mean_abs_logit_diff": 0.548925,
+   "padded_vs_sep_max_abs_logit_diff": 0.05078,
+   "nll_sep": 0.52736,
+   "nll_packed": 0.36299,
+   "argmax_agree_packed": 0.86
+  }
+ ],
+ "max_diff_items_2_4": 12.61328,
+ "leak_suspected": true
+}

@@ -1,0 +1,68 @@
+{
+ "model": "LiquidAI/LFM2.5-2.6B-Base",
+ "n": 300,
+ "gpu": {
+  "name": "Tesla T4",
+  "cap": [
+   7,
+   5
+  ],
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0"
+ },
+ "libs": {
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "unsloth": null,
+  "unsloth_zoo": null,
+  "vllm": "0.33.0",
+  "accelerate": "1.15.0",
+  "torchao": null,
+  "triton": "3.8.0",
+  "bitsandbytes": null,
+  "flash-linear-attention": null,
+  "causal-conv1d": null,
+  "xformers": null,
+  "datasets": "4.8.5",
+  "cut_cross_entropy": null,
+  "torch_full": "2.14.0+cu130"
+ },
+ "engine": "vllm",
+ "vllm_attempt": 0,
+ "vllm_spec": {},
+ "decoding": {
+  "temperature": 0,
+  "max_tokens": 400,
+  "stop": [
+   "\n\nBài toán",
+   "Bài toán:"
+  ],
+  "shots": 4
+ },
+ "vllm_kwargs": {
+  "dtype": "float16",
+  "max_model_len": 3072,
+  "gpu_memory_utilization": 0.85,
+  "seed": 0,
+  "limit_mm_per_prompt": {
+   "image": 0,
+   "video": 0,
+   "audio": 0
+  }
+ },
+ "load_s": 162.3,
+ "gen_s": 39.35,
+ "prompt_tokens_mean": 681.2,
+ "correct": 181,
+ "accuracy": 0.6033,
+ "ci95_wilson": [
+  0.547,
+  0.6571
+ ],
+ "gen_tokens_total": 37498,
+ "gen_tok_per_s": 952.9,
+ "boxed_rate": 0.973,
+ "hit_max_tokens": 38
+}

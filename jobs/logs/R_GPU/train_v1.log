@@ -1,0 +1,39 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-v2j6FgQz3A1X4qScEY1TtW
+Building image im-HC4KnWQHOOJuwDw1Sb9QEw
+
+=> Step 0: FROM base
+
+=> Step 1: RUN pip install -q --no-deps --target /ao_site torchao
+
+[notice] A new release of pip is available: 25.1.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Saving image...
+Image saved, took 3.77s
+
+Built image im-HC4KnWQHOOJuwDw1Sb9QEw in 6.54s
+
+
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:train_l40s', 'fc-01M6VBREFERPX3YRPG1HZ8R7NS'), ('1:train_l40s', 'fc-01M6VBRF0QD5Y6Y9FEQ0NA2FRK'), ('2:train_h100', 'fc-01M6VBRFJ8M0FRA23AG72Z3M13'), ('3:train_l4', 'fc-01M6VBRFVWGTN28W4VKWT2XXC3')]
+uns_fp8blk_mb8 wall 40.3 [('uns_fp8blk_mb8', 3, None)]
+uns_bf16_mb8 wall 55.3 [('uns_bf16_mb8', 6, None)]
+uns_fp8_mb8 wall 20.1 [('uns_fp8_mb8', 3, None)]
+uns_bf16_mb32 wall 70.4 [('uns_bf16_mb32', 6, None)]
+Stopping app - user stopped from CLI.
+0:train_l40s done
+1:train_l40s done
+2:train_h100 done
+3:train_l4 done
+Runner terminated.
+Runner terminated.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-v2j6FgQz3A1X4qScEY1TtW

@@ -1,0 +1,80 @@
+{
+ "flores": {
+  "n_sent": 1012,
+  "vi_words": 30725,
+  "en_words": 21901,
+  "vi_chars": 138595
+ },
+ "Qwen/Qwen3.5-0.8B-Base": {
+  "vocab": 248066,
+  "vi_tokens": 35999,
+  "vi_fertility_tok_per_word": 1.172,
+  "vi_chars_per_token": 3.85,
+  "en_fertility_tok_per_word": 1.257,
+  "vi_over_en_token_ratio": 1.308,
+  "train_item_tokens_mean": 184.9,
+  "train_item_tokens_p99": 377,
+  "train_completion_tokens_mean": 107.0,
+  "train_total_tokens": 1382048
+ },
+ "Qwen/Qwen3.5-2B-Base": {
+  "vocab": 248066,
+  "vi_tokens": 35999,
+  "vi_fertility_tok_per_word": 1.172,
+  "vi_chars_per_token": 3.85,
+  "en_fertility_tok_per_word": 1.257,
+  "vi_over_en_token_ratio": 1.308,
+  "train_item_tokens_mean": 184.9,
+  "train_item_tokens_p99": 377,
+  "train_completion_tokens_mean": 107.0,
+  "train_total_tokens": 1382048
+ },
+ "Qwen/Qwen3-0.6B-Base": {
+  "vocab": 151665,
+  "vi_tokens": 39643,
+  "vi_fertility_tok_per_word": 1.29,
+  "vi_chars_per_token": 3.496,
+  "en_fertility_tok_per_word": 1.261,
+  "vi_over_en_token_ratio": 1.435,
+  "train_item_tokens_mean": 194.8,
+  "train_item_tokens_p99": 401,
+  "train_completion_tokens_mean": 111.4,
+  "train_total_tokens": 1455804
+ },
+ "Qwen/Qwen3-1.7B-Base": {
+  "vocab": 151665,
+  "vi_tokens": 39643,
+  "vi_fertility_tok_per_word": 1.29,
+  "vi_chars_per_token": 3.496,
+  "en_fertility_tok_per_word": 1.261,
+  "vi_over_en_token_ratio": 1.435,
+  "train_item_tokens_mean": 194.8,
+  "train_item_tokens_p99": 401,
+  "train_completion_tokens_mean": 111.4,
+  "train_total_tokens": 1455804
+ },
+ "google/gemma-4-E2B": {
+  "vocab": 262144,
+  "vi_tokens": 37189,
+  "vi_fertility_tok_per_word": 1.21,
+  "vi_chars_per_token": 3.727,
+  "en_fertility_tok_per_word": 1.238,
+  "vi_over_en_token_ratio": 1.372,
+  "train_item_tokens_mean": 185.8,
+  "train_item_tokens_p99": 380,
+  "train_completion_tokens_mean": 107.3,
+  "train_total_tokens": 1388140
+ },
+ "sail/Sailor2-1B": {
+  "vocab": 151665,
+  "vi_tokens": 39643,
+  "vi_fertility_tok_per_word": 1.29,
+  "vi_chars_per_token": 3.496,
+  "en_fertility_tok_per_word": 1.261,
+  "vi_over_en_token_ratio": 1.435,
+  "train_item_tokens_mean": 194.8,
+  "train_item_tokens_p99": 401,
+  "train_completion_tokens_mean": 111.4,
+  "train_total_tokens": 1455804
+ }
+}

@@ -1,3 +1,7 @@
+# LEGACY — dependencies of the pre-2026 src/ + notebooks/ pipeline only (kept for reference).
+# The current package (vi_math_verified_aug) installs from pyproject.toml, locked in uv.lock
+# (`uv sync --locked --all-extras`); pip users: requirements.lock.txt. See docs/research_2026-11/exec/Y3_common.md.
+#
 # Core data pipeline (src/convert, src/translate, src/formalize,
 # src/mutation_informalize, src/merge, src/analysis, src/evaluate)
 datasets

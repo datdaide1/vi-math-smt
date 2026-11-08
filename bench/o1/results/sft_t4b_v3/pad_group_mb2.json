@@ -1,0 +1,48 @@
+{
+ "variant": "pad_group_mb2",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "fp16",
+ "gpu": "Tesla T4",
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "sdpa",
+ "grad_ckpt": true,
+ "micro_batch": 2,
+ "packed": false,
+ "length_group": true,
+ "load_s": 3.6,
+ "progress_steps": 7,
+ "step_s": [
+  8.72,
+  8.53,
+  7.95,
+  8.27,
+  9.12,
+  9.12,
+  7.31
+ ],
+ "tok_per_s": 1030.6,
+ "pad_frac": 0.036,
+ "losses": [
+  0.8155,
+  0.6261,
+  0.7138,
+  0.6808,
+  0.7178,
+  0.4792,
+  0.6057
+ ],
+ "peak_mem_gb": 6.93,
+ "s_per_step": 8.38,
+ "ok": true
+}

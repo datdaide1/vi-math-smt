@@ -1,0 +1,29 @@
+{
+ "run_id": "smoke-hf",
+ "status": "COMPLETE",
+ "steps": 6,
+ "loss_first5": 0.6291,
+ "loss_last10pct": 0.5756,
+ "dev": [
+  [
+   0,
+   0.764272
+  ],
+  [
+   3,
+   0.612414
+  ],
+  [
+   6,
+   0.590236
+  ]
+ ],
+ "quick": [],
+ "tok_per_s_median": 2916,
+ "platform": "Tesla T4",
+ "flags": {
+  "preflight": "missing"
+ },
+ "clean": false,
+ "plot_error": "ModuleNotFoundError(\"No module named 'matplotlib'\")"
+}

@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+  "rows": 6788
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3011,
+  "label_frac_mean": 0.5634,
+  "label_frac_max": 0.8127,
+  "decoded": [
+   {
+    "id": "vi_gsm8k_train/9",
+    "prompt_tail": "iền lương theo giờ của bạn. Nếu cô ấy làm việc 10 giờ mỗi ngày trong 5 ngày, cô ấy kiếm được bao nhiêu tiền?\n\nLời giải:\n",
+    "trained_text": "Cô ấy làm việc 8 giờ một ngày với 18 đô la mỗi giờ, vậy cô ấy kiếm được 8*18 = $144.00 mỗi ca 8 giờ.\nCô ấy làm việc 10 giờ một ngày và bất kỳ giờ nào vượt quá 8 giờ đều được tính là làm thêm giờ, vậy cô ấy làm thêm 10-8 = 2 giờ.\nLàm thêm giờ được tính là 1.5 lần lương cơ bản, và cô ấy kiếm được 18 đô la/giờ, vậy tiền lương làm thêm giờ của cô ấy là 18*.5 = $9.00.\nTiền lương làm thêm giờ của cô ấy là 18+9 = $27.00.\nLương cơ bản của cô ấy là 144.00 đô la mỗi ca 8 giờ và cô ấy làm việc 5 ngày, vậy cô ấy kiếm được 5 * $144 = $720.00.\nTiền lương làm thêm giờ của cô ấy là 27.00 đô la mỗi giờ và cô ấy làm 2 giờ làm thêm mỗi ngày, vậy cô ấy kiếm được 27*2 = $54.00 tiền làm thêm giờ.\n2 giờ làm thêm mỗi ngày trong 5 ngày có nghĩa là cô ấy kiếm được 54*5 = $270.00.\nTrong 5 ngày, lương cơ bản của cô ấy là 720.00 đô la và cô ấy kiếm được 270.00 đô la tiền làm thêm giờ, vậy cô ấy kiếm được 720 + 270 = $990.00.\nĐáp số: \\boxed{990}",
+    "n_trained": 376,
+    "n_total": 466,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/10",
+    "prompt_tail": "ời gấp đôi con tàu trước. Có bao nhiêu người trên con tàu mà con quái vật đã ăn trong một trăm năm đầu tiên?\n\nLời giải:\n",
+    "trained_text": "Gọi S là số người trên con tàu của một trăm năm đầu tiên.\nCon tàu của một trăm năm thứ hai có số người gấp đôi con tàu đầu tiên, vậy nó có 2S người.\nCon tàu của một trăm năm thứ ba có số người gấp đôi con tàu thứ hai, vậy nó có 2 * 2S = 4S người.\nTất cả các con tàu có S + 2S + 4S = 7S = 847 người.\nDo đó, con tàu mà con quái vật đã ăn trong một trăm năm đầu tiên có S = 847 / 7 = 121 người trên đó.\nĐáp số: \\boxed{121}",
+    "n_trained": 151,
+    "n_total": 263,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/14",
+    "prompt_tail": "Bài toán:\nJoy có thể đọc 8 trang sách trong 20 phút. Cô ấy sẽ mất bao nhiêu giờ để đọc 120 trang?\n\nLời giải:\n",
+    "trained_text": "Trong một giờ, có 3 khoảng thời gian 20 phút.\nVì vậy, Joy có thể đọc 8 x 3 = 24 trang trong một giờ.\nCô ấy sẽ mất 120/24 = 5 giờ để đọc 120 trang.\nĐáp số: \\boxed{5}",
+    "n_trained": 75,
+    "n_total": 115,
+    "eos_trained": true
+   }
+  ]
+ }
+}

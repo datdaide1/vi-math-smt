@@ -1,0 +1,142 @@
+{
+ "P1 0.6B VI seed 0": {
+  "runs": 5,
+  "train_gpu_h": 0.15,
+  "eval_usd": 0.85,
+  "quota_h": 0.0,
+  "train_usd": 0.3
+ },
+ "P2 0.6B EN seed 0": {
+  "runs": 5,
+  "train_gpu_h": 0.15,
+  "eval_usd": 0.4,
+  "quota_h": 0.0,
+  "train_usd": 0.3
+ },
+ "P3 0.6B VI seeds 1-3": {
+  "runs": 15,
+  "train_gpu_h": 0.45,
+  "eval_usd": 2.55,
+  "quota_h": 0.0,
+  "train_usd": 0.9
+ },
+ "P11 HOLD 0.6B EN seed 1 (first successor; H1 needs >= 2 EN seeds)": {
+  "runs": 5,
+  "train_gpu_h": 0.15,
+  "eval_usd": 0.4,
+  "quota_h": 0.0,
+  "train_usd": 0.3
+ },
+ "P12 HOLD 0.6B VI seed 4": {
+  "runs": 5,
+  "train_gpu_h": 0.15,
+  "eval_usd": 0.85,
+  "quota_h": 0.0,
+  "train_usd": 0.3
+ },
+ "P12 HOLD 0.6B EN seeds 2-4": {
+  "runs": 15,
+  "train_gpu_h": 0.45,
+  "eval_usd": 1.2,
+  "quota_h": 0.0,
+  "train_usd": 0.9
+ },
+ "P12 HOLD 0.6B EN recipe check (S0-EN, LR x0.5 / x2)": {
+  "runs": 2,
+  "train_gpu_h": 0.06,
+  "eval_usd": 0.16,
+  "quota_h": 0.0,
+  "train_usd": 0.12
+ },
+ "P4 GRPO 0.6B smoke": {
+  "runs": 2,
+  "train_gpu_h": 0.2,
+  "eval_usd": 0.34,
+  "quota_h": 0.0,
+  "train_usd": 0.16
+ },
+ "P5 1.7B VI seed 0": {
+  "runs": 5,
+  "train_gpu_h": 0.2,
+  "eval_usd": 1.5,
+  "quota_h": 0.0,
+  "train_usd": 0.45
+ },
+ "P6 1.7B VI seeds 1-2 (Y+-N+-, S0)": {
+  "runs": 10,
+  "train_gpu_h": 0.4,
+  "eval_usd": 3.0,
+  "quota_h": 0.0,
+  "train_usd": 0.9
+ },
+ "P7 E1-O3 EN mirror Y+-N+- x5 seeds": {
+  "runs": 20,
+  "train_gpu_h": 0.8,
+  "eval_usd": 2.8,
+  "quota_h": 0.0,
+  "train_usd": 1.8
+ },
+ "P7 E1 S0-EN anchor": {
+  "runs": 3,
+  "train_gpu_h": 0.12,
+  "eval_usd": 0.42,
+  "quota_h": 0.0,
+  "train_usd": 0.27
+ },
+ "P8 E1 EN recipe check (LR x0.5, x2)": {
+  "runs": 2,
+  "train_gpu_h": 0.08,
+  "eval_usd": 0.28,
+  "quota_h": 0.0,
+  "train_usd": 0.18
+ },
+ "P8 VI 1.7B seeds 3-4 (E1 + T5 D3)": {
+  "runs": 8,
+  "train_gpu_h": 0.32,
+  "eval_usd": 2.4,
+  "quota_h": 0.0,
+  "train_usd": 0.72
+ },
+ "P9 T5-D3 T/T-off/M arms": {
+  "runs": 18,
+  "train_gpu_h": 0.63,
+  "eval_usd": 4.23,
+  "quota_h": 0.0,
+  "train_usd": 1.35
+ },
+ "P9 T5-D3 extra 2B seeds (H1-H3 arms)": {
+  "runs": 6,
+  "train_gpu_h": 0.24,
+  "eval_usd": 1.8,
+  "quota_h": 0.0,
+  "train_usd": 0.54
+ },
+ "P10 T5-D3 4B all arms x3": {
+  "runs": 24,
+  "train_gpu_h": 3.12,
+  "eval_usd": 14.4,
+  "quota_h": 0.0,
+  "train_usd": 6.24
+ },
+ "P10 T5-D3 2.6B all arms x3": {
+  "runs": 24,
+  "train_gpu_h": 11.52,
+  "eval_usd": 10.8,
+  "quota_h": 7.44,
+  "train_usd": 0.0
+ },
+ "P11 GRPO 1.7B from SFT ckpts": {
+  "runs": 9,
+  "train_gpu_h": 49.5,
+  "eval_usd": 2.7,
+  "quota_h": 0.0,
+  "train_usd": 39.6
+ },
+ "P11 GRPO 1.7B random-reward control": {
+  "runs": 3,
+  "train_gpu_h": 16.5,
+  "eval_usd": 0.9,
+  "quota_h": 0.0,
+  "train_usd": 13.2
+ }
+}

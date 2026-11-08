@@ -1,0 +1,30 @@
+{
+ "run_id": "t1r-gate-hf-0p6B-s1",
+ "status": "NEEDS_RESUME",
+ "steps": 257,
+ "loss_first5": 0.7702,
+ "loss_last10pct": 0.4262,
+ "dev": [
+  [
+   0,
+   0.75213
+  ],
+  [
+   100,
+   0.484725
+  ],
+  [
+   200,
+   0.461397
+  ]
+ ],
+ "quick": [],
+ "tok_per_s_median": 810,
+ "platform": "Tesla T4",
+ "flags": {
+  "status": "NEEDS_RESUME",
+  "preflight": "missing"
+ },
+ "warnings": {},
+ "clean": false
+}

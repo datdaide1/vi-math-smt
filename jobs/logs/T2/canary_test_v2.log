@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-RLkOFOO1EhmB69NFH2UBEM
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_t4.
+└── ✓ Created Function smoke_t4.
+spawned ['fc-01M6VC40A1YWYABGJEZ61VQ3YA', 'fc-01M6VC42M8T74WVQH95PWAWF03']
+canary-t2-sft-S0-vi-0p6B-s0-v2 0 372.7 Tesla T4, 15360 MiB
+ease refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 80: {'correct': 0.4062, 'no_answer': 0.0469, 'repetition': 0.0781, 'truncated': 0.1094, 'n': 64, 'step': 80, 's': 35.5, 'path': 'generate'}
+
+canary-t2-sft-S0-vi-0p6B-s0-v2-hf 0 1088.0 Tesla T4, 15360 MiB
+0/80 loss 0.6200 lr 2.00e-04 gn 0.35106 skip 0
+[sft] dev step 40: 0.51208
+[sft] quick-eval step 40: {'correct': 0.4688, 'no_answer': 0.0156, 'repetition': 0.0469, 'truncated': 0.0781, 'n': 64, 'step': 40, 's': 101.6, 'path': 'generate'}
+[sft] step 40/80 loss 0.5886 lr 2.00e-04 gn 0.30748 skip 0
+[sft] step 50/80 loss 0.6082 lr 2.00e-04 gn 0.35459 skip 0
+[sft] step 60/80 loss 0.5462 lr 2.00e-04 gn 0.29635 skip 0
+[sft] step 70/80 loss 0.5004 lr 2.00e-04 gn 0.37909 skip 0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[sft] dev step 80: 0.49230
+[sft] quick-eval step 80: {'correct': 0.4688, 'no_answer': 0.0312, 'repetition': 0.0312, 'truncated': 0.0469, 'n': 64, 'step': 80, 's': 99.2, 'path': 'generate'}
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-RLkOFOO1EhmB69NFH2UBEM
+rc=0

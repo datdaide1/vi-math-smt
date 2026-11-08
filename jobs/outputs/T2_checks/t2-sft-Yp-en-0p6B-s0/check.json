@@ -1,0 +1,127 @@
+{
+ "run_id": "t2-sft-Yp-en-0p6B-s0",
+ "status": "COMPLETE",
+ "steps": 210,
+ "loss_first5": 0.791,
+ "loss_last10pct": 0.2756,
+ "dev": [
+  [
+   0,
+   0.783317
+  ],
+  [
+   42,
+   0.969079
+  ],
+  [
+   0,
+   0.783317
+  ],
+  [
+   42,
+   0.969157
+  ],
+  [
+   84,
+   1.023734
+  ],
+  [
+   168,
+   1.112309
+  ]
+ ],
+ "quick": [
+  [
+   0,
+   {
+    "correct": 0.6094,
+    "no_answer": 0.0,
+    "repetition": 0.0156,
+    "truncated": 0.0312,
+    "n": 64,
+    "step": 0,
+    "s": 10.7,
+    "path": "generate"
+   }
+  ],
+  [
+   42,
+   {
+    "correct": 0.625,
+    "no_answer": 0.0,
+    "repetition": 0.0,
+    "truncated": 0.0,
+    "n": 64,
+    "step": 42,
+    "s": 4.1,
+    "path": "generate"
+   }
+  ],
+  [
+   0,
+   {
+    "correct": 0.6094,
+    "no_answer": 0.0,
+    "repetition": 0.0156,
+    "truncated": 0.0312,
+    "n": 64,
+    "step": 0,
+    "s": 11.6,
+    "path": "generate"
+   }
+  ],
+  [
+   42,
+   {
+    "correct": 0.625,
+    "no_answer": 0.0,
+    "repetition": 0.0,
+    "truncated": 0.0,
+    "n": 64,
+    "step": 42,
+    "s": 4.7,
+    "path": "generate"
+   }
+  ],
+  [
+   84,
+   {
+    "correct": 0.6875,
+    "no_answer": 0.0156,
+    "repetition": 0.0156,
+    "truncated": 0.0156,
+    "n": 64,
+    "step": 84,
+    "s": 7.2,
+    "path": "generate"
+   }
+  ],
+  [
+   168,
+   {
+    "correct": 0.6406,
+    "no_answer": 0.0,
+    "repetition": 0.0,
+    "truncated": 0.0312,
+    "n": 64,
+    "step": 168,
+    "s": 9.4,
+    "path": "generate"
+   }
+  ]
+ ],
+ "tok_per_s_median": 33874,
+ "platform": "NVIDIA L40S",
+ "flags": {},
+ "warnings": {
+  "dev_up": [
+   0.783317,
+   1.112309
+  ],
+  "dev_gap": [
+   1.112309,
+   0.2756
+  ]
+ },
+ "clean": true
+}

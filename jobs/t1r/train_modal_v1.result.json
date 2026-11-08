@@ -1,0 +1,45 @@
+[
+ [
+  {
+   "error": "RemoteError('Function call was cancelled by user or a failure.')"
+  }
+ ],
+ [
+  {
+   "error": "RemoteError('Function call was cancelled by user or a failure.')"
+  }
+ ],
+ [
+  {
+   "error": "RemoteError('Function call was cancelled by user or a failure.')"
+  }
+ ],
+ [
+  {
+   "error": "RemoteError('Function call was cancelled by user or a failure.')"
+  }
+ ],
+ [
+  {
+   "run_id": "dry-t2-sft-Yp-vi-0p6B-s0",
+   "rc": 0,
+   "s": 100.4,
+   "gpu": "Tesla T4, 15360 MiB",
+   "tail": "\ud83e\udda5 Unsloth: Will patch your computer to enable 2x faster free finetuning.\nW1107 15:37:08.134000 4 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead\nW1107 15:37:08.135000 4 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead\nW1107 15:37:08.136000 4 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead\n[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.\n\ud83e\udda5 Unsloth Zoo will now patch everything to make training faster!\n[sft] pool 200 eligible 200 dropped>max_len 0 (rate 0.0) -> train 200\n==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.\n   \\\\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.\nO^O/ \\_/ \\    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0\n\\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]\n \"-____-\"     Free license: http://github.com/unslothai/unsloth\nUnsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.\nUnsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with \"unsloth\" earlier.\nUnsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.\nUnsloth: compiling each transformer block as one region (Qwen3DecoderLayer).\nUnsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.\n[sft] pack gate ok=True items=[9.6e-05, 0.000372, 0.000328, 0.000452] fused=1.13e-05\n[sft] dev step 0: 0.76427\n[sft] step 0/5 loss 0.5604 lr 2.00e-04 gn 0.83413 skip 0\n[sft] skip rule not applicable: only 5 steps (< 50)\n[sft] dev step 5: 0.82354\n"
+  },
+  {
+   "run_id": "dry-t2-sft-Nm-en-0p6B-s0",
+   "rc": 0,
+   "s": 79.0,
+   "gpu": "Tesla T4, 15360 MiB",
+   "tail": "\ud83e\udda5 Unsloth: Will patch your computer to enable 2x faster free finetuning.\nW1107 15:38:44.056000 142 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead\nW1107 15:38:44.057000 142 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead\nW1107 15:38:44.058000 142 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead\n[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.\n\ud83e\udda5 Unsloth Zoo will now patch everything to make training faster!\n[sft] pool 200 eligible 200 dropped>max_len 0 (rate 0.0) -> train 200\n==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.\n   \\\\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.\nO^O/ \\_/ \\    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0\n\\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]\n \"-____-\"     Free license: http://github.com/unslothai/unsloth\nUnsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.\nUnsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with \"unsloth\" earlier.\nUnsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.\nUnsloth: compiling each transformer block as one region (Qwen3DecoderLayer).\nUnsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.\n[sft] pack gate ok=True items=[0.000238, 5.7e-05, 9.3e-05, 0.000498] fused=4.59e-05\n[sft] dev step 0: 0.77046\n[sft] step 0/5 loss 0.6745 lr 2.00e-04 gn 1.04663 skip 0\n[sft] skip rule not applicable: only 5 steps (< 50)\n[sft] dev step 5: 0.70885\n"
+  },
+  {
+   "run_id": "dry-t2-sft-S0-en-0p6B-s0",
+   "rc": 0,
+   "s": 75.5,
+   "gpu": "Tesla T4, 15360 MiB",
+   "tail": "\ud83e\udda5 Unsloth: Will patch your computer to enable 2x faster free finetuning.\nW1107 15:40:00.247000 229 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead\nW1107 15:40:00.248000 229 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead\nW1107 15:40:00.249000 229 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead\n[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.\n\ud83e\udda5 Unsloth Zoo will now patch everything to make training faster!\n[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 200\n==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.\n   \\\\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.\nO^O/ \\_/ \\    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0\n\\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]\n \"-____-\"     Free license: http://github.com/unslothai/unsloth\nUnsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.\nUnsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with \"unsloth\" earlier.\nUnsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.\nUnsloth: compiling each transformer block as one region (Qwen3DecoderLayer).\nUnsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.\n[sft] pack gate ok=True items=[4.2e-05, 0.000636, 0.00058, 0.000133] fused=3.51e-04\n[sft] dev step 0: 0.77046\n[sft] step 0/5 loss 0.7896 lr 2.00e-04 gn 1.63759 skip 0\n[sft] skip rule not applicable: only 5 steps (< 50)\n[sft] dev step 5: 0.53512\n"
+  }
+ ]
+]

@@ -3,7 +3,7 @@
 This document records the provenance and upstream terms of the four benchmark
 datasets used by Vi-Math-SMT. It is an attribution and release checklist, not
 legal advice. Verify the upstream pages again before publishing a new dataset
-release because dataset cards and provider terms can change.
+release because dataset cards can change.
 
 ## Source Summary
 
@@ -36,7 +36,7 @@ When publishing original, translated, normalized, or augmented records:
 
 The repository's MIT License governs only original project code and
 documentation unless a file explicitly says otherwise. It does not override
-dataset licenses or third-party service terms.
+dataset licenses.
 
 ## Citations
 
@@ -110,7 +110,7 @@ embedded in a model card, or copied into execution logs.
 - Use separate development and production credentials where possible.
 - Restrict token scopes to the minimum required operation.
 - Treat every prompt and uploaded record as data disclosed to the selected API
-  provider; review its current retention, training, privacy, and billing terms.
+  provider; do not send restricted or confidential records.
 - Revoke and rotate a credential immediately if it appears in Git history,
   notebook output, screenshots, issue text, or a shared archive.
 

@@ -1,0 +1,33 @@
+{
+ "run_id": "t1r-gate-uns-0p6B-s1",
+ "status": "COMPLETE",
+ "steps": 300,
+ "loss_first5": 0.7702,
+ "loss_last10pct": 0.4332,
+ "dev": [
+  [
+   0,
+   0.75214
+  ],
+  [
+   100,
+   0.486747
+  ],
+  [
+   200,
+   0.464177
+  ],
+  [
+   300,
+   0.456511
+  ]
+ ],
+ "quick": [],
+ "tok_per_s_median": 3814,
+ "platform": "Tesla T4",
+ "flags": {
+  "preflight": "missing"
+ },
+ "warnings": {},
+ "clean": false
+}

@@ -1,0 +1,4 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<01:48,  2.86it/s]Loading weights:  55%|█████▍    | 170/310 [00:00<00:00, 483.88it/s]Loading weights:  85%|████████▌ | 265/310 [00:00<00:00, 502.78it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 425.90it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:18,  2.23it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 599.55it/s]
+PACKCHECK Qwen/Qwen3-0.6B-Base {'fp32': {'pos_ids_default_cache': 22.954269, 'pos_ids_no_cache': 0.000342, 'block_mask_4d': 0.000342, 'padded': 0.000355}, 'fp16': {'pos_ids_default_cache': 22.984375, 'pos_ids_no_cache': 0.119141, 'block_mask_4d': 0.119141, 'padded': 0.18457}}

@@ -1,0 +1,16 @@
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:36,  1.97it/s]Loading weights:  94%|█████████▍| 291/310 [00:00<00:00, 630.52it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 495.14it/s]
+[W1107 11:30:28.797332898 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 1556938752, total: 15636037632).
+[W1107 11:30:28.892316042 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 833421312, total: 15636037632).
+[W1107 11:30:28.892480566 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 833421312, total: 15636037632).
+SFT Qwen3-0.6B-Base padded step 0 loss 0.7907 gn 0.687 3.17s amax 6476.0
+SFT Qwen3-0.6B-Base padded step 10 loss 0.6330 gn 0.419 2.47s amax None
+SFT Qwen3-0.6B-Base padded step 20 loss 0.5656 gn 0.328 3.20s amax 6480.0
+SFT Qwen3-0.6B-Base padded step 30 loss 0.5940 gn 0.278 2.87s amax None
+SFT Qwen3-0.6B-Base padded step 40 loss 0.4731 gn 0.273 3.09s amax 6480.0
+SFT Qwen3-0.6B-Base padded step 50 loss 0.5128 gn 0.286 2.77s amax None
+SFT Qwen3-0.6B-Base padded step 60 loss 0.4768 gn 0.300 2.79s amax 6476.0
+SFT Qwen3-0.6B-Base padded step 70 loss 0.5064 gn 0.291 2.73s amax None
+SFT Qwen3-0.6B-Base padded step 80 loss 0.5272 gn 0.287 2.98s amax 6476.0
+SFT Qwen3-0.6B-Base padded step 90 loss 0.5085 gn 0.286 2.74s amax None
+SFT Qwen3-0.6B-Base padded step 99 loss 0.5209 gn 0.300 2.48s amax None
+SFT_DONE Qwen/Qwen3-0.6B-Base padded_length_grouped 2352.4 0.695 0.5286 0 6484.0

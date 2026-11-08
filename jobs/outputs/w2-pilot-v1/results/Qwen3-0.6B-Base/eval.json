@@ -1,0 +1,46 @@
+{
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "n": 300,
+ "gpu": {
+  "name": "Tesla T4",
+  "cap": [
+   7,
+   5
+  ],
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0"
+ },
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "vllm": "0.33.0",
+  "fla": "0.6.0",
+  "triton": "3.8.0",
+  "accelerate": "1.15.0"
+ },
+ "decoding": {
+  "temperature": 0,
+  "max_tokens": 400,
+  "stop": [
+   "\n\nBài toán",
+   "Bài toán:"
+  ],
+  "shots": 4
+ },
+ "load_s": 117.7,
+ "gen_s": 86.75,
+ "prompt_tokens_mean": 754.9,
+ "vllm_attn_backend": "auto",
+ "engine": "vllm",
+ "correct": 115,
+ "accuracy": 0.3833,
+ "ci95_wilson": [
+  0.3301,
+  0.4395
+ ],
+ "gen_tokens_total": 34524,
+ "gen_tok_per_s": 398.0,
+ "boxed_rate": 0.96,
+ "hit_max_tokens": 12
+}

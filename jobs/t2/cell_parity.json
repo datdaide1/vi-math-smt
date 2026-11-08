@@ -1,0 +1,201 @@
+{
+ "groups": [
+  {
+   "gpu": "l40s",
+   "cell": "parity-cell",
+   "tasks": [
+    {
+     "cmd": "sft-cell",
+     "configs": [
+      {
+       "kind": "sft",
+       "run_id": "parity-cell-A",
+       "arm": "S0",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 0,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 3000,
+        "epochs": 3,
+        "max_steps": 60
+       },
+       "data": {
+        "train": "{vol}/train_data/t1r/s0_train.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 50,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "46d63216725d06c15156cd85d03024100badba7f",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+        "expected_rows": 6788,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "cell parity test"
+      },
+      {
+       "kind": "sft",
+       "run_id": "parity-cell-B",
+       "arm": "S0",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 3000,
+        "epochs": 3,
+        "max_steps": 60
+       },
+       "data": {
+        "train": "{vol}/train_data/t1r/s0_train.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 50,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "46d63216725d06c15156cd85d03024100badba7f",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+        "expected_rows": 6788,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "cell parity test"
+      }
+     ],
+     "budget_s": 1800
+    }
+   ]
+  },
+  {
+   "gpu": "l40s",
+   "cell": "parity-fresh",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "parity-fresh-B",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 1,
+      "lang": "vi",
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 3000,
+       "epochs": 3,
+       "max_steps": 60
+      },
+      "data": {
+       "train": "{vol}/train_data/t1r/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0001,
+       "micro_batch": 32,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+       "dev_every_steps": 50,
+       "ckpt_every_min": 15,
+       "keep_ckpts": 1,
+       "grad_ckpt": false,
+       "branch_epochs": [
+        1,
+        2
+       ]
+      },
+      "platform": "modal_l40s",
+      "code": {
+       "git_sha": "46d63216725d06c15156cd85d03024100badba7f",
+       "dirty": false,
+       "dirty_files": [],
+       "paths": [
+        "vi_math_verified_aug/train",
+        "vi_math_verified_aug/evalrun",
+        "vi_math_verified_aug/eval/math_verify.py",
+        "vi_math_verified_aug/__init__.py"
+       ]
+      },
+      "guards": {
+       "enabled": true,
+       "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+       "expected_rows": 6788,
+       "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+       "step0_loss_band": [
+        0.3,
+        1.6
+       ],
+       "expected_tok_per_s": 36300
+      },
+      "notes": "cell parity test"
+     },
+     "budget_s": 1800
+    }
+   ]
+  }
+ ],
+ "wait_s": 3600
+}

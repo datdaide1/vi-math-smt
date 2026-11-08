@@ -1,0 +1,5 @@
+{"lane": 0, "cmd": "sft", "run_id": "t1r-gate-uns-0p6B-s1", "rc": 0, "status": "COMPLETE", "start_min": 5.24, "s": 592.2, "budget_s": 1800}
+{"lane": 0, "cmd": "sft", "run_id": "t1r-S0-uns-0p6B-s1", "rc": 0, "status": "COMPLETE", "start_min": 15.11, "s": 812.8, "budget_s": 3300}
+{"lane": 1, "cmd": "sft", "run_id": "t1r-gate-hf-0p6B-s1", "rc": 75, "status": "NEEDS_RESUME", "start_min": 5.24, "s": 2110.1, "budget_s": 2400}
+{"lane": 0, "cmd": "sft", "run_id": "t1r-lfm2.5-2.6B-smoke", "rc": 0, "status": "COMPLETE", "start_min": 28.66, "s": 916.0, "budget_s": 2400}
+{"lane": 1, "cmd": "sft", "run_id": "t1r-S0-uns-0p6B-s2", "rc": 0, "status": "COMPLETE", "start_min": 40.41, "s": 816.8, "budget_s": 3300}

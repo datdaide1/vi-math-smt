@@ -1,0 +1,4 @@
+step,dev_loss,quick_correct,quick_no_answer,quick_repetition,quick_truncated
+0,0.764272,,,,
+3,0.611966,,,,
+6,0.589747,,,,

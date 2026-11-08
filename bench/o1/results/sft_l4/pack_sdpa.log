@@ -1,0 +1,7 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:  87%|████████▋ | 271/310 [00:00<00:00, 2667.64it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 2841.14it/s]
+[W1107 10:52:49.561550943 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2457862144 bytes (free: 308215808, total: 23689363456).
+[W1107 10:53:10.701434964 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2613051392 bytes (free: 186580992, total: 23689363456).
+RESULT {"variant": "pack_sdpa", "ok": true, "tok_per_s": 1641.0, "peak_mem_gb": 12.78, "packing_correct": true, "logit_check_max_nll_diff": 0.0038599999999999746, "error": null}

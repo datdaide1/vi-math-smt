@@ -1,0 +1,25 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-CxlPmWFnASYNbFLwvp4Xlw
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:train_l40s', 'fc-01M6VCBZWDZCVXTJKS2NY0MG7A'), ('1:train_l40s', 'fc-01M6VCC0DKTQ8NGTBYSQS1NCTF'), ('2:train_l40s', 'fc-01M6VCC0YV41JGVTGQH687S1ZV')]
+b17_mb32 wall 120.8 [('b17_mb32', 0, 14125.9)]
+full_n4k_mb32_s0 wall 141.0 [('full_n4k_mb32_s0', 0, 35140.5)]
+b17_mb8 wall 105.6 [('b17_mb8', 0, 7695.5)]
+conc3_full_n4k_mb32 wall 236.8 [('conc3_full_n4k_mb32-c0', 0, 12077.8), ('conc3_full_n4k_mb32-c1', 0, 12259.2), ('conc3_full_n4k_mb32-c2', 0, 12170.5)]
+full_n4k_mb32_s1 wall 110.6 [('full_n4k_mb32_s1', 0, 35703.3)]
+b17_mb32_nogc wall 85.5 [('b17_mb32_nogc', 0, 19448.3)]
+full_n4k_mb32_s2 wall 110.6 [('full_n4k_mb32_s2', 0, 35817.1)]
+0:train_l40s done
+1:train_l40s done
+conc2_b17_mb32 wall 120.8 [('conc2_b17_mb32-c0', 0, 6539.3), ('conc2_b17_mb32-c1', 0, 6603.8)]
+2:train_l40s done
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-CxlPmWFnASYNbFLwvp4Xlw

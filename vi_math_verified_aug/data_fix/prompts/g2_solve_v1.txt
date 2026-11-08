@@ -1,0 +1,4 @@
+### USER
+Giải bài toán sau. Trình bày ngắn gọn, đặt đáp án cuối cùng (chỉ giá trị, không đơn vị) trong \boxed{}.
+
+{problem}

@@ -1,0 +1,16 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-InvFi1lF0Hyxewt3uw8Onj
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:eval_l40s', 'fc-01M6VPMVEM1AMXPRNKCZKYDGXD')]
+0:eval_l40s done
+l40s-devv1-bf16 0 120.1 {'devv1-l40s-uns_bf16_mb8': ({'dev_v1': {'gen_tokens': 396309, 's': 45.4, 'gen_tok_per_s': 8728.1}}, 45.6), 'devv1-l40s-uns_bf16_mb32_q': ({'dev_v1': {'gen_tokens': 392566, 's': 45.4, 'gen_tok_per_s': 8638.4}}, 45.5), 'devv1-h100-uns_bf16_mb8': ({'dev_v1': {'gen_tokens': 382025, 's': 44.6, 'gen_tok_per_s': 8557.4}}, 44.7), 'devv1-h100-uns_fp8_mb8': ({'dev_v1': {'gen_tokens': 376317, 's': 40.5, 'gen_tok_per_s': 9293.5}}, 40.6), 'devv1-l4-uns_bf16_mb8': ({'dev_v1': {'gen_tokens': 400774, 's': 44.3, 'gen_tok_per_s': 9046.2}}, 44.4)}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-InvFi1lF0Hyxewt3uw8Onj

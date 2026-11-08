@@ -1,0 +1,18 @@
+# LR/epoch sweep run on arm S0 (T3 §3.1): one 3-epoch WSD run, epoch-1 and epoch-2 decay branches.
+kind: sft
+arm: S0
+model: Qwen/Qwen3-1.7B-Base
+size: 1.7B
+seed: 1
+precision: fp16
+budget: {n_train: 10000, epochs: 3, wall_s: 39600}     # 11 h of a 12 h Kaggle session
+data: {train: "{input}/vimath-data/arms/S0.train.jsonl"}
+sft:
+  lr: 2.0e-4                 # sweep {1e-4, 2e-4, 4e-4}, then freeze
+  seq_per_step: 32
+  micro_batch: 8
+  max_length: 1024           # TODO: set to the p99 of the pooled arm lengths (data.suggest_max_length) and freeze
+  branch_epochs: [1, 2]
+  grad_ckpt: auto            # on for >= 1.5B params
+  ckpt_every_min: 30
+resume_dirs: ["{input}/vm-ckpt-sft-S0-1p7B-s1"]   # Kaggle relay: previous session's ckpt/ as a dataset

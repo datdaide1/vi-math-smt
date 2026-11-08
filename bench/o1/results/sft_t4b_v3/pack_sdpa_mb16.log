@@ -1,0 +1,12 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<03:13,  1.60it/s]
+Loading weights:  79%|███████▉  | 245/310 [00:00<00:00, 450.76it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 363.35it/s]
+[W1107 11:00:17.461393681 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3055550464 bytes (free: 842465280, total: 15645278208).
+[W1107 11:00:17.274976229 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3055550464 bytes (free: 1792475136, total: 15645278208).
+[W1107 11:00:23.400692497 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 9895936, total: 15645278208).
+[W1107 11:00:28.570931802 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3766484992 bytes (free: 2572615680, total: 15645278208).
+[W1107 11:00:29.547715497 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3766484992 bytes (free: 2782330880, total: 15645278208).
+[W1107 11:00:29.548142847 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3766484992 bytes (free: 2782330880, total: 15645278208).
+RESULT {"variant": "pack_sdpa_mb16", "ok": false, "tok_per_s": null, "peak_mem_gb": null, "packing_correct": true, "logit_check_max_nll_diff": 0.0005500000000000504, "error": "OutOfMemoryError('CUDA out of memory. Tried to allocate 3.51 GiB. GPU 0 has a total capacity of 14.57 GiB of which 2.59 GiB is free. Process 1 has 11.98 GiB memory in use. Of the allocated memory 11.09 GiB is allocated by PyTorch, and 772.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')"}

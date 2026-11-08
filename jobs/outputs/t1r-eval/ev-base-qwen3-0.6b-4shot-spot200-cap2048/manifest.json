@@ -1,0 +1,71 @@
+{
+ "run_id": "ev-base-qwen3-0.6b-4shot-spot200-cap2048",
+ "kind": "eval",
+ "arm": "base",
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "size": "0.6B",
+ "seed": 0,
+ "config_hash": "4c9a14ba",
+ "eval_of": "base-qwen3-0.6b",
+ "status": "COMPLETE",
+ "grader": "3.0.2/math-verify-0.9.0",
+ "backend": "vllm",
+ "model_path": "Qwen/Qwen3-0.6B-Base",
+ "adapter_path": null,
+ "decoding": {
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "min_p": 0.0,
+  "k_samples": 4,
+  "greedy": true,
+  "max_new_tokens": 2048,
+  "shots": 4
+ },
+ "attn_backend": "auto",
+ "chunk_items": 256,
+ "precision": "bf16",
+ "info": {
+  "vllm": "0.33.0",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "gpu": "NVIDIA A10",
+  "VLLM_USE_FLASHINFER_SAMPLER": "0"
+ },
+ "throughput": {
+  "vi_primary_spot200": {
+   "gen_tokens": 211995,
+   "s": 79.8,
+   "gen_tok_per_s": 2655.3
+  }
+ },
+ "metrics": {
+  "gsm8k_platinum": {
+   "n_items": 120,
+   "mean_pass1": 0.325,
+   "maj@4": 0.35833,
+   "greedy_acc": 0.39167,
+   "truncation_rate_sampled": 0.00833,
+   "truncation_rate_greedy": 0.04167,
+   "repetition_loop_rate": 0.01167,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 138.815
+  },
+  "math_algprealg": {
+   "n_items": 80,
+   "mean_pass1": 0.34687,
+   "maj@4": 0.3625,
+   "greedy_acc": 0.3875,
+   "truncation_rate_sampled": 0.075,
+   "truncation_rate_greedy": 0.125,
+   "repetition_loop_rate": 0.045,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 321.765
+  }
+ },
+ "platform": {
+  "gpu": "NVIDIA A10, 23028 MiB",
+  "engine_load_s": 88.6,
+  "shared_engine": true
+ }
+}

@@ -1,0 +1,16 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-SSYPbY9Fm4iHq4Gd5vD8EP
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\modal_bench_eval3.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\eval_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\data
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\sft_worker.py
+├── ✓ Created Function run_unsloth.
+└── ✓ Created Function run_hf.
+spawned flex_t4 T4 fp16
+flex_t4 base_noseed_flex 0 947
+done flex_t4 [{'task': 'base_noseed_flex', 'rc': 0, 's': 946.9}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-SSYPbY9Fm4iHq4Gd5vD8EP

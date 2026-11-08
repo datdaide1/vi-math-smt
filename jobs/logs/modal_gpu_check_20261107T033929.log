@@ -1,0 +1,11 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-FhsspOKBGf9steWWMG24T8
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\modal_gpu_c
+│   heck.py
+└── ✓ Created Function gpu_probe.
+RESULT: nvidia-smi rc=0 out=Tesla T4, 610.57.04, 15360 MiB err= t=0.05s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-FhsspOKBGf9steWWMG24T8

@@ -1,0 +1,28 @@
+{
+ "plan": "eval_l4",
+ "gpu": "NVIDIA L4, 610.57.04, 23034 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "mkadapters",
+   "rc": 0,
+   "s": 35.0
+  },
+  {
+   "task": "base",
+   "rc": 0,
+   "s": 237.6
+  },
+  {
+   "task": "multi",
+   "rc": 0,
+   "s": 675.7
+  },
+  {
+   "task": "seq",
+   "rc": 0,
+   "s": 450.0
+  }
+ ],
+ "wall_s": 1398.4
+}

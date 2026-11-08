@@ -1,0 +1,150 @@
+{"file": "data/test/math/algebra_vi.jsonl", "index": 83, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful ('quart' kept as unit name)."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 326, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 838, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1000, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 321, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 361, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 485, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 956, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1028, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful; 'Rationalize the denominator' -> 'Trục căn thức ở mẫu' (correct VN term)."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1110, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 145, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 158, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 164, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 330, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 487, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 645, "subject": "algebra", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "'slope' -> 'Độ dốc' and 'endpoints' -> 'các điểm cuối' instead of textbook 'hệ số góc' / 'đầu mút'; meaning intact."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 702, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 924, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 362, "subject": "algebra", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "Solution: 'agrees with x^2-x-1 except for the constant term' -> 'phù hợp với x^2-x-1 trừ đi hằng số' (reads as 'minus the constant'); answer unaffected."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 375, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 395, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 486, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 601, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 692, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 930, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1183, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 54, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 116, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 134, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 169, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 503, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 513, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 843, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1026, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/algebra_vi.jsonl", "index": 1035, "subject": "algebra", "codes": [], "severity": null, "note": "Faithful; \\text{if} localised to \\text{nếu}."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 323, "subject": "counting_and_probability", "codes": ["NL-MEANING"], "severity": "major", "note": "Solution reverses divisibility: EN '5! divides 10!' -> '5! chia hết cho 10!' (= 10! divides 5!), a false statement; correct is '10! chia hết cho 5!' / '5! là ước của 10!'."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 100, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 291, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 335, "subject": "counting_and_probability", "codes": ["NL-LATEX"], "severity": "major", "note": "Solution: real newlines inside the array were replaced by literal two-char '\\n' ('\\[\\n\\begin{array}{|c|c|}\\hline\\n\\text{Chữ số đầu}...'); '\\n' is an undefined control sequence, table no longer compiles."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 88, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 91, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 449, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 44, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 252, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 304, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 208, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 339, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 376, "subject": "counting_and_probability", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/counting_and_probability_vi.jsonl", "index": 452, "subject": "counting_and_probability", "codes": ["NL-MEANING"], "severity": "minor", "note": "Solution: 'more than 1/4 unit greater' -> 'lớn hơn số thứ nhất một khoảng 1/4' (drops 'more than'); problem statement itself is correct, answer unaffected."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 395, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 81, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 315, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 144, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 288, "subject": "geometry", "codes": ["NL-MEANING"], "severity": "major", "note": "Solution: 'triangle VTR is congruent to WRS' -> 'đồng dạng' (similar), then concludes equal areas — a false inference as written; should be 'bằng nhau'."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 363, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 27, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 40, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful (counterclockwise correctly 'ngược chiều kim đồng hồ'); asy identical."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 240, "subject": "geometry", "codes": ["ANS-FORMAT"], "severity": "minor", "note": "Boxed answer '864 \\mbox{ inches}^2' carries English unit text (inherited from EN); grader must strip units."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 293, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 5, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 72, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful; both asy identical; \\text{Volume of} localised."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 203, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/geometry_vi.jsonl", "index": 256, "subject": "geometry", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 451, "subject": "intermediate_algebra", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "Problem: 'common ratio' calqued as 'Tỉ số chung' instead of the standard term 'công bội'."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 514, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 21, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 601, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 700, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 853, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful ('Trivial Inequality' calqued as 'Bất đẳng thức Hiển nhiên', acceptable as a name)."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 5, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 7, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 216, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 278, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 326, "subject": "intermediate_algebra", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "Problem: 'monic quadratic polynomial' -> 'đa thức bậc hai đơn thức' ('đơn thức' = monomial); the in-text definition '(Một đa thức là đơn thức nếu hệ số bậc cao nhất của nó là 1.)' keeps it solvable but the term is wrong."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 447, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 156, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 233, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 414, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 573, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 622, "subject": "intermediate_algebra", "codes": ["ANS-FORMAT"], "severity": "minor", "note": "Boxed answer '0,4' (list of two roots) reads as decimal 0.4 under Vietnamese convention; inherited from EN."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 748, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 760, "subject": "intermediate_algebra", "codes": ["NL-LATEX"], "severity": "major", "note": "Problem and solution contain literal two-char '\\n' instead of newlines: 'bất đẳng thức\\n\\[\\lambda xy + yz ...' — '\\n' is an undefined TeX control sequence and pollutes the prompt."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 6, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 18, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful (inherits EN typo 'B = Q'F''); asy identical."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 158, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 191, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 347, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 391, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 641, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/intermediate_algebra_vi.jsonl", "index": 703, "subject": "intermediate_algebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 338, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 295, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 324, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 483, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful; boxed answer localised '\\mbox{Thứ Bảy}' (EN 'Saturday') — correct, but any EN-derived gold would not string-match."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 176, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 467, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 468, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 534, "subject": "number_theory", "codes": ["ANS-FORMAT"], "severity": "minor", "note": "Boxed answer '5\\text{ chữ số}' embeds unit text (EN '5\\text{ digits}'); grader must strip text."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 50, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 318, "subject": "number_theory", "codes": ["NL-LEAK"], "severity": "minor", "note": "Problem table row label left in English: 'inverse of $\\,b$ & 1 & 24 ...' inside an otherwise Vietnamese problem."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 379, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 400, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 7, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 62, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 143, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 499, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful (solution 'tỷ số chung' for common ratio, minor calque)."}
+{"file": "data/test/math/number_theory_vi.jsonl", "index": 531, "subject": "number_theory", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 286, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 558, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 691, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 433, "subject": "prealgebra", "codes": ["NL-LEAK"], "severity": "minor", "note": "Solution keeps English words in formula: '$\\mbox{Area}=\\frac{1}{2}\\times \\mbox{base} \\times \\mbox{height}$'."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 755, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 759, "subject": "prealgebra", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "Solution: 'the fraction of blue marbles' -> 'phần trăm bi xanh' (percentage) while the expression is a fraction; answer unaffected."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 847, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 851, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 136, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 296, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 703, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 707, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 734, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 765, "subject": "prealgebra", "codes": ["X-DECSEP", "ANS-FORMAT"], "severity": "major", "note": "Problem keeps English thousands comma: 'Thừa số lớn nhất của 54,321 mà nhỏ hơn 54,321' — in Vietnamese '54,321' is the decimal 54.321, making the question read as non-integer; gold '18,\\!107' has the same issue."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 768, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful (decimal points kept as in EN)."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 16, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 351, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 368, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 634, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 681, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 798, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 32, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 446, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 547, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful; '40,000' correctly localised to '40.000'."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 655, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 659, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful (solution keeps '\\text{ pound}' in one fraction, cosmetic)."}
+{"file": "data/test/math/prealgebra_vi.jsonl", "index": 756, "subject": "prealgebra", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 176, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 411, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful; options translated."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 347, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 398, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 479, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 6, "subject": "precalculus", "codes": ["NL-FLUENCY"], "severity": "minor", "note": "Problem question is a fragment: 'Diện tích của tập con của $S$ mà với đó [inequality]?' (missing 'là bao nhiêu'); intent still clear."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 22, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 358, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 430, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 9, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 80, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 318, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 78, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 107, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 442, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful; asy identical."}
+{"file": "data/test/math/precalculus_vi.jsonl", "index": 542, "subject": "precalculus", "codes": [], "severity": null, "note": "Faithful (inherits EN typo omitting 'c' in two equations)."}

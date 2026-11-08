@@ -1,0 +1,31 @@
+{
+ "base": "Qwen/Qwen3-0.6B-Base",
+ "tag": "exam-costprobe",
+ "configs": [
+  {
+   "kind": "eval",
+   "run_id": "ev-costprobe-exam200",
+   "arm": "S0",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 1,
+   "precision": "bf16",
+   "platform": "modal_l40s",
+   "out_dir": "{vol}/eval/costprobe/exam200",
+   "eval": {
+    "source_run_id": "t1r-S0-uns-0p6B-s1",
+    "adapter_path": "{vol}/adapters/t1r-S0-uns-0p6B-s1",
+    "max_new_tokens": 1024,
+    "max_items": 200,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ],
+    "model_tag": "qwen3-0.6b"
+   }
+  }
+ ]
+}

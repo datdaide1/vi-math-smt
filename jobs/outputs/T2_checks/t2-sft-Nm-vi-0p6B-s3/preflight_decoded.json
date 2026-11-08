@@ -1,0 +1,31 @@
+{
+ "label_frac_min": 0.335,
+ "label_frac_mean": 0.6033,
+ "label_frac_max": 0.8494,
+ "decoded": [
+  {
+   "id": "N/vi/02a2030ef06e:1",
+   "prompt_tail": "ài nhà bếp. Nếu toàn bộ trạm không gian có 128 phòng, hỏi có bao nhiêu nhà bếp trên toàn bộ trạm không gian?\n\nLời giải:\n",
+   "trained_text": "**Bước 1: Tính số phòng trong mỗi hình trụ.**\nBốn hình trụ giống hệt nhau, tổng 128 phòng, nên mỗi hình trụ có:\n128 ÷ 4 = 32 phòng.\n\n**Bước 2: Tính số nhà bếp trong mỗi hình trụ.**\nMỗi hình trụ có 15 phòng ngủ và 9 phòng tắm, nên số nhà bếp là:\n32 − 15 − 9 = 8 nhà bếp.\n\n**Bước 3: Tính tổng số nhà bếp trên toàn trạm.**\n4 × 8 = 32 nhà bếp.\nĐáp số: \\boxed{32}",
+   "n_trained": 146,
+   "n_total": 283,
+   "eos_trained": true
+  },
+  {
+   "id": "N/vi/66e7f92742de:1",
+   "prompt_tail": "c 4 quyển, và số vở Bình nhận được ít hơn số vở Hoa nhận được 6 quyển. Hỏi Nam nhận được bao nhiêu quyển vở?\n\nLời giải:\n",
+   "trained_text": "Số quyển vở cô Thu mua: 420.000 : 12.000 = 35 quyển.\n\nGọi số vở Nam nhận được là x (quyển). Khi đó:\n- Hoa nhận được: x + 4\n- Bình nhận được: (x + 4) − 6 = x − 2\n\nTổng số vở: x + (x + 4) + (x − 2) = 35\n\n3x + 2 = 35\n\n3x = 33\n\nx = 11\n\nVậy Nam nhận được 11 quyển vở.\nĐáp số: \\boxed{11}",
+   "n_trained": 158,
+   "n_total": 277,
+   "eos_trained": true
+  },
+  {
+   "id": "N/vi/5297338785a0:1",
+   "prompt_tail": " giá 5.000 đồng. Lớp đã bán được 45 ổ bánh mì và 70 phần trứng ốp la. Lớp 4A đã gây quỹ được bao nhiêu tiền?\n\nLời giải:\n",
+   "trained_text": "Tiền bán bánh mì: 45 × 15.000 = 675.000 đồng.\n\nTiền bán trứng ốp la: 70 × 5.000 = 350.000 đồng.\n\nTổng số tiền gây quỹ: 675.000 + 350.000 = 1.025.000 đồng.\nĐáp số: \\boxed{1025000}",
+   "n_trained": 114,
+   "n_total": 222,
+   "eos_trained": true
+  }
+ ]
+}

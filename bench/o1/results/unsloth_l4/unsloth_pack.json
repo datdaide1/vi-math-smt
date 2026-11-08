@@ -1,0 +1,85 @@
+{
+ "variant": "unsloth_pack",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "bf16",
+ "gpu": "NVIDIA L4",
+ "libs": {
+  "torch": "2.14.1+cu130",
+  "transformers": "5.17.0",
+  "peft": "0.21.2",
+  "unsloth": "2026.11.3"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "sdpa",
+ "grad_ckpt": true,
+ "micro_batch": 8,
+ "packed": true,
+ "length_group": true,
+ "load_s": 10.5,
+ "logit_check": [
+  {
+   "len": 350,
+   "max_abs": 1.5,
+   "mean_abs": 0.06175,
+   "nll_sep": 0.95488,
+   "nll_packed": 0.95579,
+   "argmax_agree": 0.9886
+  },
+  {
+   "len": 208,
+   "max_abs": 0.75,
+   "mean_abs": 0.05155,
+   "nll_sep": 0.65123,
+   "nll_packed": 0.65012,
+   "argmax_agree": 0.9952
+  },
+  {
+   "len": 295,
+   "max_abs": 1.5,
+   "mean_abs": 0.0558,
+   "nll_sep": 0.71985,
+   "nll_packed": 0.71608,
+   "argmax_agree": 0.9831
+  },
+  {
+   "len": 227,
+   "max_abs": 3.125,
+   "mean_abs": 0.06522,
+   "nll_sep": 0.83851,
+   "nll_packed": 0.84325,
+   "argmax_agree": 0.9912
+  }
+ ],
+ "logit_check_max_nll_diff": 0.0047400000000000775,
+ "packing_correct": true,
+ "progress_steps": 7,
+ "step_s": [
+  4.26,
+  2.52,
+  2.13,
+  2.35,
+  2.79,
+  2.61,
+  2.05
+ ],
+ "tok_per_s": 3586.9,
+ "pad_frac": 0.0,
+ "losses": [
+  0.5589,
+  0.7362,
+  0.6338,
+  0.513,
+  0.759,
+  0.5404,
+  0.5697
+ ],
+ "peak_mem_gb": 5.35,
+ "s_per_step": 2.41,
+ "ok": true
+}

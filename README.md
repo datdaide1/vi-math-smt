@@ -222,11 +222,10 @@ Populate only the services required by the stages you plan to run:
 Never commit `.env` or any file containing real credentials.
 
 API keys are access credentials, not redistributable project assets. Every user
-must provide their own authorized keys and comply with the relevant provider's
-terms, data-handling policy, rate limits, and billing rules. Prompts and dataset
-records sent to an external API leave the local environment; review provider
-retention and training policies before processing restricted or confidential
-data. Use least-privilege tokens where supported, rotate any exposed key
+must provide their own keys and plan for the relevant provider's rate limits and
+billing. Prompts and dataset records sent to an external API leave the local
+environment; do not send restricted or confidential data to an external API.
+Use least-privilege tokens where supported, rotate any exposed key
 immediately, and keep production credentials out of notebooks and captured
 output files.
 
@@ -376,7 +375,7 @@ generated datasets are not bundled with the repository.
 Original source code and documentation in this repository are available under
 the [MIT License](LICENSE), unless a file states otherwise. This license does
 not relicense or override third-party datasets, model weights, generated records
-derived from those datasets, or external API/service terms.
+derived from those datasets, or external API services.
 
 In particular, ASDiv and ASDiv-derived records remain subject to CC BY-NC 4.0
 and its non-commercial restriction. See [`DATA_SOURCES.md`](DATA_SOURCES.md)

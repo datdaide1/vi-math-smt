@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "70cd0ded11f87c8d42d4e021f14df815ad3926ab643746af3ac4e0ff15ba5932",
+  "rows": 6788
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.2692,
+  "label_frac_mean": 0.5941,
+  "label_frac_max": 0.8161,
+  "decoded": [
+   {
+    "id": "vi_gsm8k_train/3",
+    "prompt_tail": "ges as yesterday. If she wants to read half of the remaining pages tomorrow, how many pages should she read?\n\nSolution:\n",
+    "trained_text": "Maila read 12 x 2 = 24 pages today.\nSo she was able to read a total of 12 + 24 = 36 pages since yesterday.\nThere are 120 - 36 = 84 pages left to be read.\nSince she wants to read half of the remaining pages tomorrow, then she should read 84/2 = 42 pages.\nFinal answer: \\boxed{42}",
+    "n_trained": 97,
+    "n_total": 155,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/4",
+    "prompt_tail": "lem:\nJames writes a 3-page letter to 2 different friends twice a week.  How many pages does he write a year?\n\nSolution:\n",
+    "trained_text": "He writes each friend 3*2=6 pages a week\nSo he writes 6*2=12 pages every week\nThat means he writes 12*52=624 pages a year\nFinal answer: \\boxed{624}",
+    "n_trained": 57,
+    "n_total": 87,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/7",
+    "prompt_tail": "gh gummy worms to double the weight once again.  What was the final weight of the box of goodies, in pounds?\n\nSolution:\n",
+    "trained_text": "To the initial 2 pounds of jelly beans, he added enough brownies to cause the weight to triple, bringing the weight to 2*3=6 pounds.\nNext, he added another 2 pounds of jelly beans, bringing the weight to 6+2=8 pounds.\nAnd finally, he added enough gummy worms to double the weight once again, to a final weight of 8*2=16 pounds.\nFinal answer: \\boxed{16}",
+    "n_trained": 98,
+    "n_total": 208,
+    "eos_trained": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,6 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 3279.16it/s]
+[W1107 10:54:37.431917184 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2457862144 bytes (free: 278855680, total: 23689363456).
+[W1107 10:54:53.674908413 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2613051392 bytes (free: 157220864, total: 23689363456).
+RESULT {"variant": "pack_flex", "ok": true, "tok_per_s": 2131.0, "peak_mem_gb": 12.76, "packing_correct": true, "logit_check_max_nll_diff": 0.005189999999999917, "error": null}

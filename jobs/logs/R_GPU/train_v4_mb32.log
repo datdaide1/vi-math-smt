@@ -1,0 +1,18 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-SPppiSLz7qxOFqLB4lDp6e
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:train_l40s', 'fc-01M6VC6HTDAMXB9MW288GEBX68')]
+uns_bf16_mb32_q wall 156.2 [('uns_bf16_mb32_q', 0, 33657.7)]
+conc3_uns_bf16_mb32 wall 101.1 [('conc3_uns_bf16_mb32-c0', 0, 31408.3), ('conc3_uns_bf16_mb32-c1', 3, None), ('conc3_uns_bf16_mb32-c2', 3, None)]
+seq3_uns_bf16_mb32 wall 85.7 [('seq3_uns_bf16_mb32', 0, 32597.1)]
+0:train_l40s done
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-SPppiSLz7qxOFqLB4lDp6e

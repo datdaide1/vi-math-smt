@@ -1,0 +1,75 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 10:22:17.082000 540 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 10:22:17.083000 540 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 10:22:17.083000 540 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+Unsloth: `bitsandbytes` is not installed - 4bit QLoRA unallowed, but 16bit and full finetuning works!
+/tmp/uns_site/unsloth/_gpu_init.py:702: UserWarning: Unsloth: Running `ldconfig /usr/lib64-nvidia` to link CUDA.
+  warnings.warn("Unsloth: Running `ldconfig /usr/lib64-nvidia` to link CUDA.")
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_5.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link
+
+/tmp/uns_site/unsloth/_gpu_init.py:748: UserWarning: Unsloth: CUDA is not linked properly.
+Try running `python -m bitsandbytes` then `python -m xformers.info`
+We tried running `ldconfig /usr/lib64-nvidia` ourselves, but it didn't work.
+You need to run in your terminal `sudo ldconfig /usr/lib64-nvidia` yourself, then import Unsloth.
+Also try `sudo ldconfig /usr/local/cuda-xx.x` - find the latest cuda version.
+Unsloth will still run for now, but maybe it might crash - let's hope it works!
+  warnings.warn(
+🦥 Unsloth Zoo will now patch everything to make training faster!
+Unsloth: Could not patch bitsandbytes for torch.compile - No module named 'bitsandbytes'
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:28,  2.08it/s]Loading weights:  75%|███████▍  | 232/310 [00:00<00:00, 519.86it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 439.58it/s]
+Unsloth: Could not patch bitsandbytes for torch.compile - No module named 'bitsandbytes'
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:32,  2.02it/s]Loading weights:  86%|████████▌ | 267/310 [00:00<00:00, 596.64it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 478.91it/s]
+UNSLOTH CHECK {'fp32': 'patch_model_and_tokenizer\n    raise ImportError("Unsloth: Please install bitsandbytes via `pip install bitsandbytes`")\nImportError: Unsloth: Please install bitsandbytes via `pip install bitsandbytes`\n', 'fp16': 'patch_model_and_tokenizer\n    raise ImportError("Unsloth: Please install bitsandbytes via `pip install bitsandbytes`")\nImportError: Unsloth: Please install bitsandbytes via `pip install bitsandbytes`\n'}
+Unsloth: Could not patch bitsandbytes for torch.compile - No module named 'bitsandbytes'
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:20,  2.20it/s]Loading weights:  83%|████████▎ | 258/310 [00:00<00:00, 613.47it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 503.06it/s]
+Unsloth: Could not patch bitsandbytes for torch.compile - No module named 'bitsandbytes'
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:13,  2.31it/s]Loading weights:  75%|███████▍  | 231/310 [00:00<00:00, 572.65it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 483.72it/s]
+UNSLOTH DONE {"padding_free": null, "padded": null}

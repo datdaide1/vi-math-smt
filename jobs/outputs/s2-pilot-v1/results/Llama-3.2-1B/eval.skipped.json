@@ -1,0 +1,5 @@
+{
+ "model": "meta-llama/Llama-3.2-1B",
+ "task": "eval",
+ "why": "no HF access: GatedRepoError: 401 Client Error. (Request ID: Root=1-6aef0225-15504f5e4f3833fe1b69d478;aadf3a37-d3b9-404e-90ce-fcacc47b7be1)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.\nAccess to model meta-llama/Llama-3.2-1B is restricted. You must have access to it and be authenticated to access it. Please log in."
+}

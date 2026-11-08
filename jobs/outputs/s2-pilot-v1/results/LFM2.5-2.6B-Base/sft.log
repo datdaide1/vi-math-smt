@@ -1,0 +1,17 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/266 [00:00<?, ?it/s]Loading weights:   0%|          | 1/266 [00:00<03:24,  1.29it/s]Loading weights:  26%|██▌       | 68/266 [00:00<00:01, 105.60it/s]Loading weights:  41%|████      | 108/266 [00:01<00:01, 101.41it/s]Loading weights:  50%|█████     | 134/266 [00:01<00:01, 98.80it/s] Loading weights:  58%|█████▊    | 154/266 [00:01<00:01, 90.59it/s]Loading weights:  64%|██████▎   | 169/266 [00:01<00:00, 97.92it/s]Loading weights:  69%|██████▉   | 184/266 [00:02<00:00, 94.37it/s]Loading weights:  74%|███████▍  | 197/266 [00:02<00:00, 98.56it/s]Loading weights:  79%|███████▉  | 210/266 [00:02<00:00, 88.37it/s]Loading weights:  85%|████████▍ | 225/266 [00:02<00:00, 97.09it/s]Loading weights:  89%|████████▉ | 237/266 [00:02<00:00, 85.33it/s]Loading weights:  95%|█████████▌| 254/266 [00:02<00:00, 88.32it/s]Loading weights: 100%|██████████| 266/266 [00:03<00:00, 88.60it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+/kaggle/src/script.py:629: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+SFT LFM2.5-2.6B-Base padded step 0 loss 0.9549 gn nan 8.37s amax 21.546875
+SFT LFM2.5-2.6B-Base padded step 10 loss 0.6148 gn 0.276 7.51s amax None
+SFT LFM2.5-2.6B-Base padded step 20 loss 0.5221 gn 0.247 10.42s amax 20.421875
+SFT LFM2.5-2.6B-Base padded step 30 loss 0.5789 gn 0.258 9.48s amax None
+SFT LFM2.5-2.6B-Base padded step 40 loss 0.4508 gn 0.224 9.48s amax 18.078125
+SFT LFM2.5-2.6B-Base padded step 50 loss 0.5414 gn 0.232 8.26s amax None
+SFT LFM2.5-2.6B-Base padded step 60 loss 0.4843 gn 0.245 8.00s amax 22.640625
+SFT LFM2.5-2.6B-Base padded step 70 loss 0.5069 gn 0.243 8.79s amax None
+SFT LFM2.5-2.6B-Base padded step 80 loss 0.4808 gn 0.249 8.75s amax 26.25
+SFT LFM2.5-2.6B-Base padded step 90 loss 0.4902 gn 0.242 7.99s amax None
+SFT LFM2.5-2.6B-Base padded step 99 loss 0.4964 gn 0.268 7.06s amax None
+SFT_DONE LiquidAI/LFM2.5-2.6B-Base padded_length_grouped 692.2 0.7841 0.5086 1 26.921875

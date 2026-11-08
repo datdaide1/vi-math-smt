@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-z4cJemtO5rIxFtfxjxesFT
+✓ Created objects.
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\r_gpu\modal_rgpu.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_h100.
+├── ✓ Created Function train_l4.
+├── ✓ Created Function eval_l4.
+└── ✓ Created Function eval_l40s.
+spawned [('0:train_l40s', 'fc-01M6VBXABZ0VK3G9X0H7AZQ1T7'), ('1:train_l40s', 'fc-01M6VBXAXBQ8JPDYQWWA65VZS8'), ('2:train_h100', 'fc-01M6VBXBA3XZ6NN549Q164V4JV'), ('3:train_h100', 'fc-01M6VBXBN85JHTF2FGX94F8PCF'), ('4:train_l4', 'fc-01M6VBXBZ8CBX4NV01DDYE8078')]
+uns_bf16_mb32 wall 80.5 [('uns_bf16_mb32', 0, 34548.4)]
+hf_bf16_mb8 wall 60.4 [('hf_bf16_mb8', 0, 7848.1)]
+uns_bf16_mb8 wall 150.8 [('uns_bf16_mb8', 0, 20442.0)]
+hf_aofp8_mb8 wall 25.2 [('hf_aofp8_mb8', 3, None)]
+uns_bf16_mb8 wall 216.7 [('uns_bf16_mb8', 0, 14002.6)]
+conc3_uns_bf16_mb8 wall 85.5 [('conc3_uns_bf16_mb8-c0', 0, 10803.3), ('conc3_uns_bf16_mb8-c1', 0, 10726.8), ('conc3_uns_bf16_mb8-c2', 0, 10759.4)]
+hf_compile_mb8 wall 90.5 [('hf_compile_mb8', 0, 16472.7)]
+conc2_uns_bf16_mb8 wall 80.4 [('conc2_uns_bf16_mb8-c0', 0, 15149.3), ('conc2_uns_bf16_mb8-c1', 0, 15139.6)]
+0:train_l40s done
+conc3_uns_bf16_mb8 wall 100.8 [('conc3_uns_bf16_mb8-c0', 0, 12604.2), ('conc3_uns_bf16_mb8-c1', 0, 12298.2), ('conc3_uns_bf16_mb8-c2', 0, 12838.1)]
+uns_fp8_mb8 wall 327.2 [('uns_fp8_mb8', 0, 8655.2)]
+hf_aofp8c_mb8 wall 85.5 [('hf_aofp8c_mb8', 3, None)]
+uns_fp8blk_mb8 wall 30.2 [('uns_fp8blk_mb8', 3, None)]
+hf_bf16_mb8 wall 75.5 [('hf_bf16_mb8', 0, 5800.6)]
+uns_bf16_mb32 wall 50.3 [('uns_bf16_mb32', 0, 63653.9)]
+hf_aofp8c_row_mb8 wall 85.5 [('hf_aofp8c_row_mb8', 3, None)]
+1:train_l40s done
+2:train_h100 done
+uns_fp8_mb32 wall 60.4 [('uns_fp8_mb32', 0, 31984.8)]
+hf_aofp8c_mb8 wall 100.8 [('hf_aofp8c_mb8', 3, None)]
+3:train_h100 done
+uns_bf16_mb8 wall 383.0 [('uns_bf16_mb8', 0, 7372.8)]
+uns_bf16_mb32 wall 115.9 [('uns_bf16_mb32', 0, 10879.1)]
+4:train_l4 done
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-z4cJemtO5rIxFtfxjxesFT

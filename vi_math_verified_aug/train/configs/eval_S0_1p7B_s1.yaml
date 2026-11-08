@@ -1,0 +1,16 @@
+# T5 §4.1 decoding: T=0.6, top-p 0.95, top-k 20, K=4 + greedy, max_new_tokens 2048, zero-shot training template.
+kind: eval
+arm: S0
+model: Qwen/Qwen3-1.7B-Base
+size: 1.7B
+seed: 1
+precision: fp16
+budget: {wall_s: 7200}
+eval:
+  source_run_id: sft-S0-1p7B-s1-TODO      # the training run's id (from its manifest.json)
+  model_path: "{results}/merged-sft-S0-1p7B-s1"
+  backend: auto
+  sets:
+    - {name: vi_exammath_core, path: "{input}/vimath-eval/vi_exammath_core.jsonl", lang: vi}
+    - {name: vi_gsm8k_platinum_600, path: "{input}/vimath-eval/vi_gsm8k_platinum_600.jsonl", lang: vi}
+    - {name: vi_math_algprealg_400, path: "{input}/vimath-eval/vi_math_algprealg_400.jsonl", lang: vi}

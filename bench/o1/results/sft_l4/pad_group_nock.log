@@ -1,0 +1,6 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 3222.73it/s]
+[W1107 10:52:22.391087697 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2311061504 bytes (free: 1711210496, total: 23689363456).
+[W1107 10:52:22.597677409 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2311061504 bytes (free: 1727987712, total: 23689363456).
+RESULT {"variant": "pad_group_nock", "ok": false, "tok_per_s": null, "peak_mem_gb": null, "packing_correct": null, "logit_check_max_nll_diff": null, "error": "OutOfMemoryError('CUDA out of memory. Tried to allocate 2.15 GiB. GPU 0 has a total capacity of 22.06 GiB of which 1.61 GiB is free. Process 1 has 20.45 GiB memory in use. Of the allocated memory 18.73 GiB is allocated by PyTorch, and 1.48 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')"}

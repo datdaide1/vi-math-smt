@@ -1,0 +1,16 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-slvQPi9sZgrgiezi8k4xFh
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\modal_bench_eval3.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\eval_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\sft_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\data
+├── ✓ Created Function run_unsloth.
+└── ✓ Created Function run_hf.
+spawned seedtest_t4 T4 fp16
+seedtest_t4 base_noseed 0 959
+done seedtest_t4 [{'task': 'base_noseed', 'rc': 0, 's': 959.2}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-slvQPi9sZgrgiezi8k4xFh

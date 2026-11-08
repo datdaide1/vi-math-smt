@@ -1,0 +1,202 @@
+{
+ "gpu": "NVIDIA L40S, 46068 MiB",
+ "engine_load_s": 131.5,
+ "env": null,
+ "runs": {
+  "ev-base-qwen3-0.6b-4shot-vi-primary": {
+   "rc": 0,
+   "s": 145.9,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-4shot-vi-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.33833,
+     "maj@4": 0.43333,
+     "greedy_acc": 0.40667,
+     "truncation_rate_sampled": 0.02333,
+     "truncation_rate_greedy": 0.05,
+     "repetition_loop_rate": 0.023,
+     "no_answer_rate": 0.00033,
+     "tokens_mean": 134.439
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.34813,
+     "maj@4": 0.4425,
+     "greedy_acc": 0.405,
+     "truncation_rate_sampled": 0.06125,
+     "truncation_rate_greedy": 0.1025,
+     "repetition_loop_rate": 0.0505,
+     "no_answer_rate": 0.0025,
+     "tokens_mean": 216.439
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 836195,
+     "s": 143.4,
+     "gen_tok_per_s": 5830.1
+    }
+   }
+  },
+  "ev-base-qwen3-0.6b-4shot-vi-exam-greedy": {
+   "rc": 0,
+   "s": 133.7,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-4shot-vi-exam-greedy",
+   "metrics": {
+    "vi_exam_core_verified": {
+     "n_items": 1367,
+     "mean_pass1": null,
+     "maj@0": null,
+     "greedy_acc": 0.34236,
+     "truncation_rate_sampled": null,
+     "truncation_rate_greedy": 0.32992,
+     "repetition_loop_rate": 0.23043,
+     "no_answer_rate": 0.00073,
+     "tokens_mean": 544.83321
+    }
+   },
+   "throughput": {
+    "vi_exam_core_verified": {
+     "gen_tokens": 744787,
+     "s": 131.1,
+     "gen_tok_per_s": 5680.7
+    }
+   }
+  },
+  "ev-base-qwen3-0.6b-4shot-en-primary": {
+   "rc": 0,
+   "s": 122.5,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-4shot-en-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.4375,
+     "maj@4": 0.555,
+     "greedy_acc": 0.51,
+     "truncation_rate_sampled": 0.00917,
+     "truncation_rate_greedy": 0.01833,
+     "repetition_loop_rate": 0.006,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 95.466
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.40687,
+     "maj@4": 0.5225,
+     "greedy_acc": 0.48,
+     "truncation_rate_sampled": 0.04125,
+     "truncation_rate_greedy": 0.095,
+     "repetition_loop_rate": 0.0285,
+     "no_answer_rate": 0.0015,
+     "tokens_mean": 181.8075
+    }
+   },
+   "throughput": {
+    "en_primary_1000": {
+     "gen_tokens": 650013,
+     "s": 119.9,
+     "gen_tok_per_s": 5419.8
+    }
+   }
+  },
+  "ev-t2-sft-S0-vi-0p6B-s0-primary": {
+   "rc": 0,
+   "s": 135.5,
+   "out_dir": "/vol/eval/ev-t2-sft-S0-vi-0p6B-s0-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.39292,
+     "maj@4": 0.485,
+     "greedy_acc": 0.43,
+     "truncation_rate_sampled": 0.00917,
+     "truncation_rate_greedy": 0.02833,
+     "repetition_loop_rate": 0.008,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 124.92667
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.25375,
+     "maj@4": 0.3575,
+     "greedy_acc": 0.28,
+     "truncation_rate_sampled": 0.08625,
+     "truncation_rate_greedy": 0.1525,
+     "repetition_loop_rate": 0.07,
+     "no_answer_rate": 0.0055,
+     "tokens_mean": 247.9885
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 870757,
+     "s": 133.2,
+     "gen_tok_per_s": 6539.7
+    }
+   }
+  },
+  "ev-t2-sft-S0-vi-0p6B-s0-exam-greedy": {
+   "rc": 0,
+   "s": 115.6,
+   "out_dir": "/vol/eval/ev-t2-sft-S0-vi-0p6B-s0-exam-greedy",
+   "metrics": {
+    "vi_exam_core_verified": {
+     "n_items": 1367,
+     "mean_pass1": null,
+     "maj@0": null,
+     "greedy_acc": 0.25165,
+     "truncation_rate_sampled": null,
+     "truncation_rate_greedy": 0.24726,
+     "repetition_loop_rate": 0.21214,
+     "no_answer_rate": 0.0117,
+     "tokens_mean": 426.19093
+    }
+   },
+   "throughput": {
+    "vi_exam_core_verified": {
+     "gen_tokens": 582603,
+     "s": 112.2,
+     "gen_tok_per_s": 5191.1
+    }
+   }
+  },
+  "ev-t2-sft-S0-en-0p6B-s0-primary": {
+   "rc": 0,
+   "s": 117.6,
+   "out_dir": "/vol/eval/ev-t2-sft-S0-en-0p6B-s0-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.46792,
+     "maj@4": 0.575,
+     "greedy_acc": 0.49833,
+     "truncation_rate_sampled": 0.00542,
+     "truncation_rate_greedy": 0.025,
+     "repetition_loop_rate": 0.00467,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 104.98933
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.35125,
+     "maj@4": 0.44,
+     "greedy_acc": 0.3975,
+     "truncation_rate_sampled": 0.02937,
+     "truncation_rate_greedy": 0.07,
+     "repetition_loop_rate": 0.024,
+     "no_answer_rate": 0.0005,
+     "tokens_mean": 159.143
+    }
+   },
+   "throughput": {
+    "en_primary_1000": {
+     "gen_tokens": 633254,
+     "s": 114.2,
+     "gen_tok_per_s": 5545.6
+    }
+   }
+  }
+ },
+ "wall_s": 916.4
+}

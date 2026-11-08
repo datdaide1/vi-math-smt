@@ -1,0 +1,31 @@
+{
+ "kind": "sft",
+ "run_id": "t1r-lfm2.5-2.6B-smoke",
+ "arm": "S0",
+ "model": "LiquidAI/LFM2.5-2.6B-Base",
+ "size": "2.6B",
+ "seed": 1,
+ "precision": "fp16",
+ "engine": "hf",
+ "budget": {
+  "n_train": 3200,
+  "epochs": 1,
+  "max_steps": 100
+ },
+ "data": {
+  "train": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/s0_train.jsonl"
+ },
+ "sft": {
+  "lr": 0.0002,
+  "micro_batch": 8,
+  "max_length": 1024,
+  "packing": false,
+  "dev_path": null,
+  "dev_every_steps": null,
+  "act_monitor_every": 4,
+  "ckpt_every_min": 30,
+  "keep_ckpts": 1
+ },
+ "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)",
+ "out_dir": "/kaggle/working/results/t1r-lfm2.5-2.6B-smoke"
+}

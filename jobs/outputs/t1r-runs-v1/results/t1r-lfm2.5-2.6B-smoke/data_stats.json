@@ -1,0 +1,20 @@
+{
+ "n_pool": 7157,
+ "n_malformed": 0,
+ "n_dropped_too_long": 0,
+ "max_length": 1024,
+ "drop_rate": 0.0,
+ "n_eligible": 7157,
+ "pool_len_p50": 167,
+ "pool_len_p99": 366,
+ "pool_len_max": 529,
+ "n_items": 3200,
+ "completion_tokens_mean": 98.7,
+ "completion_tokens_p99": 231,
+ "completion_tokens_total": 315847,
+ "sequence_tokens_total": 571617,
+ "sequence_tokens_p99": 363,
+ "fingerprint": "cc9e4370ec9c16aa",
+ "arm": "S0",
+ "train_path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/s0_train.jsonl"
+}

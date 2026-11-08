@@ -1,0 +1,32 @@
+{
+ "plan": "parity_l4_bf16",
+ "gpu": "NVIDIA A10, 610.57.04, 23028 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "rc": 0,
+   "s": 152.3
+  },
+  {
+   "task": "eval_dev",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "rc": 0,
+   "s": 95.3
+  },
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "rc": 0,
+   "s": 232.7
+  },
+  {
+   "task": "eval_dev",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "rc": 0,
+   "s": 87.9
+  }
+ ],
+ "wall_s": 568.3
+}

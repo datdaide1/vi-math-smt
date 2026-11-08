@@ -1,0 +1,11 @@
+{"step": 0, "dev_loss": 0.791504, "n_items": 300, "n_tokens": 32951, "s": 0.68}
+{"step": 0, "kind": "midrun", "final": false, "train_loss_recent": null, "dev_loss": 0.791504, "quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.6, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.6, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 46, "dev_loss": 0.543144, "n_items": 300, "n_tokens": 32951, "s": 0.7}
+{"step": 46, "kind": "midrun", "final": false, "train_loss_recent": 0.5574868000000001, "dev_loss": 0.543144, "quick": {"correct": 0.4219, "no_answer": 0.0312, "repetition": 0.0469, "truncated": 0.0469, "n": 64, "step": 46, "s": 11.0, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.6, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 50, "dev_loss": 0.540436, "n_items": 300, "n_tokens": 32951, "s": 0.7}
+{"step": 93, "dev_loss": 0.520887, "n_items": 300, "n_tokens": 32951, "s": 0.68}
+{"step": 93, "kind": "midrun", "final": false, "train_loss_recent": 0.53261005, "dev_loss": 0.520887, "quick": {"correct": 0.5156, "no_answer": 0.0, "repetition": 0.0156, "truncated": 0.0156, "n": 64, "step": 93, "s": 8.9, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.6, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 100, "dev_loss": 0.524608, "n_items": 300, "n_tokens": 32951, "s": 0.72}
+{"step": 150, "dev_loss": 0.517754, "n_items": 300, "n_tokens": 32951, "s": 0.66}
+{"step": 186, "dev_loss": 0.50719, "n_items": 300, "n_tokens": 32951, "s": 0.71}
+{"step": 186, "kind": "midrun", "final": true, "train_loss_recent": 0.45584045, "dev_loss": 0.50719, "quick": {"correct": 0.5, "no_answer": 0.0, "repetition": 0.0, "truncated": 0.0, "n": 64, "step": 186, "s": 8.0, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.6, "path": "generate"}, "abort": [], "warnings": []}

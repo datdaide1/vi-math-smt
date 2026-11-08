@@ -1,0 +1,118 @@
+{
+ "run_id": "smoke-lfm-hf",
+ "kind": "sft",
+ "arm": "S0",
+ "model": "LiquidAI/LFM2.5-2.6B-Base",
+ "size": "2.6B",
+ "seed": 1,
+ "config_hash": "15828281",
+ "status": "COMPLETE",
+ "env": {
+  "python": "3.12.10",
+  "platform": "Linux-4.19.0-gvisor-x86_64-with-glibc2.36",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "accelerate": "1.15.0",
+  "vllm": "0.33.0",
+  "gpu": "Tesla T4",
+  "gpu_cap": [
+   7,
+   5
+  ],
+  "cuda": "13.0"
+ },
+ "started_utc": "2026-11-07T14:57:26Z",
+ "model_path": "LiquidAI/LFM2.5-2.6B-Base",
+ "n_params": 2697198592,
+ "lora": {
+  "n_modules": 166,
+  "suffixes": [
+   "in_proj",
+   "k_proj",
+   "out_proj",
+   "q_proj",
+   "v_proj",
+   "w1",
+   "w2",
+   "w3"
+  ]
+ },
+ "grad_ckpt": true,
+ "plan": {
+  "total": 3,
+  "warmup": 0,
+  "decay": 1,
+  "steps_per_epoch": 4,
+  "epochs": 1,
+  "branches": []
+ },
+ "data_stats": {
+  "n_pool": 7157,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 7157,
+  "pool_len_p50": 167,
+  "pool_len_p99": 366,
+  "pool_len_max": 529,
+  "n_items": 128,
+  "completion_tokens_mean": 99.08,
+  "completion_tokens_p99": 198,
+  "completion_tokens_total": 12682,
+  "sequence_tokens_total": 22551,
+  "sequence_tokens_p99": 311,
+  "fingerprint": "ea956001dd19348d",
+  "arm": "S0",
+  "train_path": "/vol/data/s0_train.jsonl",
+  "dev": {
+   "n_pool": 300,
+   "n_malformed": 0,
+   "n_dropped_too_long": 0,
+   "max_length": 1024,
+   "drop_rate": 0.0,
+   "n_eligible": 300,
+   "pool_len_p50": 164,
+   "pool_len_p99": 332,
+   "pool_len_max": 401,
+   "n_used": 32,
+   "path": "/vol/data/dev300.jsonl"
+  }
+ },
+ "engine": "hf",
+ "packed": false,
+ "tok_check": null,
+ "lora_param_dtypes": [
+  "torch.float32"
+ ],
+ "trainable_params": 48922624,
+ "updated_utc": "2026-11-07T14:59:12Z",
+ "micro_batch": 8,
+ "accum": 4,
+ "oom_probe": [],
+ "summary": {
+  "steps_total": 3,
+  "exec_steps": 3,
+  "skipped_steps": 0,
+  "skipped_frac": 0.0,
+  "skipped_first10": 0,
+  "nonfinite_losses": 0,
+  "final_scale": 65536.0,
+  "pad_fraction": 0.12251,
+  "real_tokens_per_s": 836.8,
+  "train_s": 19.4,
+  "final_adapter": "/vol/smoke/smoke-lfm-hf/adapters/step3",
+  "outputs": {
+   "step3": "/vol/smoke/smoke-lfm-hf/adapters/step3"
+  },
+  "engine": "hf",
+  "packed": false,
+  "micro_batch": 8,
+  "dev_loss_final": 0.635049,
+  "max_abs_act": 14.015625,
+  "peak_mem_gb": 7.7,
+  "resumed_from": []
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "jobs": [
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "uns_bf16_mb8",
+     "steps": 300,
+     "dev": true
+    },
+    {
+     "name": "uns_fp8_mb8",
+     "variant": "unsloth_fp8",
+     "steps": 300,
+     "dev": true
+    },
+    {
+     "name": "conc3_uns_bf16_mb8",
+     "concurrent": 3,
+     "steps": 60,
+     "dev": false
+    },
+    {
+     "name": "conc2_uns_bf16_mb8",
+     "concurrent": 2,
+     "steps": 60,
+     "dev": false
+    }
+   ]
+  },
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "uns_fp8blk_mb8",
+     "variant": "unsloth_fp8",
+     "env": {
+      "RGPU_FP8_MODE": "block"
+     },
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "uns_bf16_mb32",
+     "mb": 32,
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "uns_fp8_mb32",
+     "variant": "unsloth_fp8",
+     "mb": 32,
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "hf_bf16_mb8",
+     "engine": "hf",
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "hf_aofp8_mb8",
+     "engine": "hf",
+     "variant": "ao_fp8",
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "hf_compile_mb8",
+     "engine": "hf",
+     "variant": "hf_compile",
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "hf_aofp8c_mb8",
+     "engine": "hf",
+     "variant": "ao_fp8_compile",
+     "steps": 50,
+     "dev": false
+    }
+   ]
+  },
+  {
+   "fn": "train_h100",
+   "args": [
+    {
+     "name": "uns_bf16_mb8",
+     "steps": 300,
+     "dev": true
+    },
+    {
+     "name": "uns_fp8_mb8",
+     "variant": "unsloth_fp8",
+     "steps": 300,
+     "dev": true
+    },
+    {
+     "name": "uns_bf16_mb32",
+     "mb": 32,
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "uns_fp8_mb32",
+     "variant": "unsloth_fp8",
+     "mb": 32,
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "conc3_uns_bf16_mb8",
+     "concurrent": 3,
+     "steps": 60,
+     "dev": false
+    }
+   ]
+  },
+  {
+   "fn": "train_l4",
+   "args": [
+    {
+     "name": "uns_bf16_mb8",
+     "steps": 300,
+     "dev": true
+    },
+    {
+     "name": "uns_fp8_mb8",
+     "variant": "unsloth_fp8",
+     "steps": 50,
+     "dev": false
+    },
+    {
+     "name": "uns_bf16_mb32",
+     "mb": 32,
+     "steps": 50,
+     "dev": false
+    }
+   ]
+  }
+ ],
+ "wait_s": 3900
+}

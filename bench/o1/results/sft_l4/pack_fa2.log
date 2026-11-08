@@ -1,0 +1,1 @@
+RESULT {"variant": "pack_fa2", "ok": false, "tok_per_s": null, "peak_mem_gb": null, "packing_correct": null, "logit_check_max_nll_diff": null, "error": "ImportError('`kernels` is either not installed or uses an incompatible version. Please install a compatible version (0.17.2 <= version < 0.18.0), e.g. `pip install kernels==0.17.2`')"}

@@ -1,0 +1,16 @@
+{
+ "run_id": "t1r-lfm2.5-2.6B-smoke",
+ "status": "COMPLETE",
+ "steps": 100,
+ "loss_first5": 0.7135,
+ "loss_last10pct": 0.4953,
+ "dev": [],
+ "quick": [],
+ "tok_per_s_median": 684,
+ "platform": "Tesla T4",
+ "flags": {
+  "preflight": "missing"
+ },
+ "warnings": {},
+ "clean": false
+}

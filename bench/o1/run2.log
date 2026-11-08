@@ -1,0 +1,49 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-YhTJd9j0fHHAUZC6q8wSyo
+Building image im-Vs0yyNMrE08ngRFCR0pQRH
+
+=> Step 0: FROM base
+
+=> Step 1: ENV HF_HUB_ENABLE_HF_TRANSFER=0
+
+=> Step 2: ENV TOKENIZERS_PARALLELISM=false
+
+=> Step 3: ENV VLLM_USE_FLASHINFER_SAMPLER=0
+Saving image...
+Building image im-3U9KM8hSUVcar1Py6GQsZl
+Image saved, took 874.59ms
+
+Built image im-Vs0yyNMrE08ngRFCR0pQRH in 1.71s
+
+
+
+=> Step 0: FROM base
+
+=> Step 1: ENV HF_HUB_ENABLE_HF_TRANSFER=0
+
+=> Step 2: ENV TOKENIZERS_PARALLELISM=false
+
+=> Step 3: ENV VLLM_USE_FLASHINFER_SAMPLER=0
+Saving image...
+Image saved, took 6.47s
+
+Built image im-3U9KM8hSUVcar1Py6GQsZl in 8.09s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\modal_bench_eval2.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\eval_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\sft_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\data
+├── ✓ Created Function run_unsloth.
+└── ✓ Created Function run_hf.
+spawned eval_l4 L4 bf16
+eval_l4 mkadapters 0 35
+eval_l4 base 0 238
+eval_l4 multi 0 676
+eval_l4 seq 0 450
+done eval_l4 [{'task': 'mkadapters', 'rc': 0, 's': 35.0}, {'task': 'base', 'rc': 0, 's': 237.6}, {'task': 'multi', 'rc': 0, 's': 675.7}, {'task': 'seq', 'rc': 0, 's': 450.0}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-YhTJd9j0fHHAUZC6q8wSyo

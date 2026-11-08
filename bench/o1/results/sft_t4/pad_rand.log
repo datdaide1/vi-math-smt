@@ -1,0 +1,12 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<04:36,  1.12it/s]
+Loading weights:  73%|███████▎  | 225/310 [00:00<00:00, 308.07it/s]
+Loading weights: 100%|██████████| 310/310 [00:01<00:00, 245.28it/s]
+[W1107 10:31:19.219781973 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2053111808 bytes (free: 1857486848, total: 15645278208).
+[W1107 10:31:23.125547456 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2311061504 bytes (free: 592904192, total: 15645278208).
+[W1107 10:31:29.401443032 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4280287232 bytes (free: 1800863744, total: 15645278208).
+[W1107 10:31:29.163567933 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4280287232 bytes (free: 2266431488, total: 15645278208).
+[W1107 10:31:29.163826203 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4280287232 bytes (free: 2266431488, total: 15645278208).
+RESULT {"variant": "pad_rand", "ok": false, "tok_per_s": null, "peak_mem_gb": null, "packing_correct": null, "logit_check_max_nll_diff": null, "error": "OutOfMemoryError('CUDA out of memory. Tried to allocate 3.99 GiB. GPU 0 has a total capacity of 14.57 GiB of which 2.11 GiB is free. Process 1 has 12.46 GiB memory in use. Of the allocated memory 10.64 GiB is allocated by PyTorch, and 1.68 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)')"}

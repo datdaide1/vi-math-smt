@@ -1,0 +1,19 @@
+# RLVR stage (T3 §4.1) from the merged fp16 SFT model of arm S0.
+kind: grpo
+arm: S0
+model: Qwen/Qwen3-1.7B-Base
+size: 1.7B
+seed: 1
+precision: fp16
+budget: {wall_s: 39600}
+data: {train: "{input}/vimath-data/rl_pool/pool_v1.jsonl"}   # fixed mid-difficulty pool, identical for all arms
+grpo:
+  sft_model: "{results}/merged-sft-S0-1p7B-s1"
+  reward: math_verify
+  num_generations: 8
+  prompts_per_step: 32
+  micro_batch: 16
+  max_steps: 200
+  max_completion_length: 512
+  lr: 2.0e-5
+  use_vllm: auto

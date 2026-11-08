@@ -1,0 +1,59 @@
+{
+ "model": "google/gemma-4-E2B",
+ "n": 300,
+ "gpu": {
+  "name": "Tesla T4",
+  "cap": [
+   7,
+   5
+  ],
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0"
+ },
+ "libs": {
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "unsloth": null,
+  "unsloth_zoo": null,
+  "vllm": "0.33.0",
+  "accelerate": "1.15.0",
+  "torchao": null,
+  "triton": "3.8.0",
+  "bitsandbytes": null,
+  "flash-linear-attention": null,
+  "causal-conv1d": null,
+  "xformers": null,
+  "datasets": "4.8.5",
+  "cut_cross_entropy": null,
+  "torch_full": "2.14.0+cu130"
+ },
+ "engine": "hf_generate",
+ "decoding": {
+  "temperature": 0,
+  "max_tokens": 400,
+  "stop": [
+   "\n\nBài toán",
+   "Bài toán:"
+  ],
+  "shots": 4
+ },
+ "vllm_errors": [
+  "t.py\", line 129, in make_client\n    return SyncMPClient(\n        vllm_config,\n    ...<2 lines>...\n        renderer=renderer,\n    )\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/tracing/otel.py\", line 175, in sync_wrapper\n    return func(*args, **kwargs)\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/core_client.py\", line 966, in __init__\n    super().__init__(\n    ~~~~~~~~~~~~~~~~^\n        asyncio_mode=False,\n        ^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        renderer=renderer,\n        ^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/core_client.py\", line 699, in __init__\n    with launch_core_engines(\n         ~~~~~~~~~~~~~~~~~~~^\n        vllm_config, executor_class, log_stats, addresses\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ) as engine_launch:\n    ^\n  File \"/usr/lib/python3.13/contextlib.py\", line 148, in __exit__\n    next(self.gen)\n    ~~~~^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1393, in launch_core_engines\n    wait_for_engine_startup(\n    ~~~~~~~~~~~~~~~~~~~~~~~^\n        handshake_socket,\n        ^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        launch,\n        ^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/vllm/v1/engine/utils.py\", line 1473, in wait_for_engine_startup\n    raise RuntimeError(\n    ...<8 lines>...\n    )\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"
+ ],
+ "load_s": 116.5,
+ "loader": "Gemma4ForCausalLM(text-only, key_mapping=True, attn=sdpa)",
+ "gen_s": 570.22,
+ "hf_eval_bs": 16,
+ "correct": 67,
+ "accuracy": 0.2233,
+ "ci95_wilson": [
+  0.1799,
+  0.2738
+ ],
+ "gen_tokens_total": 29675,
+ "gen_tok_per_s": 52.0,
+ "boxed_rate": 0.94,
+ "hit_max_tokens": 18
+}

@@ -1,0 +1,27 @@
+# THE lock (T1r, 2026-11-07) -- one stack for Kaggle T4 training and Modal L4 evaluation.
+#
+# Decision: transformers 5.20.2 (S2's lock), NOT O1's 5.17.0.  vLLM 0.33.0 resolves transformers 5.20.2, so it is the
+# only version that serves training (Unsloth / HF) and vLLM eval in one environment.  O1's Unsloth exactness result
+# was on 5.17.0; it is re-checked on 5.20.2 by every Unsloth run's start-of-job logits gate (sft.SFTRun.pack_gate)
+# -- measured on Kaggle in t1r-runs-v1 (docs/research_2026-11/exec/T1r_first_runs.md §1).
+#
+# Main site-packages: ENVCHECK (kaggle/job_template.py) fails fast on any mismatch of the `pkg==version` lines.
+torch==2.14.0              # Kaggle image (2.14.0+cu130), never pip-installed by the job
+transformers==5.20.2       # via `pip install vllm==0.33.0` (S2 v1/v2, T1r)
+peft==0.21.2               # needs torchao removed (`pip uninstall -y torchao`, env_fix)
+accelerate==1.15.0
+vllm==0.33.0               # installed on Kaggle only so the image matches the Modal eval image (and vLLM dev eval
+                           # can run there if Modal is unavailable); 7.6 min per session
+triton==3.8.0
+datasets==4.8.5
+#
+# Unsloth: `--no-deps` into an isolated dir (/tmp/uns_site) so torch/vLLM stay untouched (S2 §5); only engine=unsloth
+# tasks get it on PYTHONPATH.  render.py builds the install command from the `uns:` lines (not ENVCHECK pins).
+# uns: unsloth==2026.11.3
+# uns: unsloth_zoo==2026.11.3
+# uns: trl==1.17.1
+# uns: cut_cross_entropy==25.1.1
+# uns: bitsandbytes==0.50.2   # REQUIRED: imported inside from_pretrained even without 4-bit (S2)
+#
+# Modal eval image (evalrun/modal_eval.py) = the main pins above (minus triton/datasets, resolved by vllm) +
+# math-verify==0.9.0 (grader expression backend, X1).

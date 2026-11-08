@@ -1,0 +1,68 @@
+
+=== 2026-11-07T15:50:12Z /usr/bin/python3 -m vi_math_verified_aug.train.cli sft --config /kaggle/working/configs/t1r-S0-uns-0p6B-s1.json --budget-s 3300
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 15:50:24.366000 347 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 15:50:24.366000 347 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 15:50:24.367000 347 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 7157
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[5.2e-05, 2e-06, 4.1e-05, 0.000976] fused=1.59e-04
+[sft] dev step 0: 0.75214
+[sft] step 0/446 loss 0.8029 lr 1.54e-05 gn 0.79127 skip 0
+[sft] step 10/446 loss 0.5811 lr 1.69e-04 gn 0.47196 skip 0
+[sft] step 20/446 loss 0.6306 lr 2.00e-04 gn 0.34521 skip 0
+[sft] step 30/446 loss 0.5628 lr 2.00e-04 gn 0.33 skip 0
+[sft] step 40/446 loss 0.5128 lr 2.00e-04 gn 0.33087 skip 0
+[sft] step 50/446 loss 0.5152 lr 2.00e-04 gn 0.32294 skip 0
+[sft] step 60/446 loss 0.5039 lr 2.00e-04 gn 0.28886 skip 0
+[sft] step 70/446 loss 0.5152 lr 2.00e-04 gn 0.28307 skip 0
+[sft] step 80/446 loss 0.5761 lr 2.00e-04 gn 0.34209 skip 0
+[sft] step 90/446 loss 0.5540 lr 2.00e-04 gn 0.34271 skip 0
+[sft] step 100/446 loss 0.5181 lr 2.00e-04 gn 0.3536 skip 0
+[sft] step 110/446 loss 0.5303 lr 2.00e-04 gn 0.34896 skip 0
+[sft] step 120/446 loss 0.5589 lr 2.00e-04 gn 0.35134 skip 0
+[sft] step 130/446 loss 0.5338 lr 2.00e-04 gn 0.39925 skip 0
+[sft] step 140/446 loss 0.5527 lr 2.00e-04 gn 0.35033 skip 0
+[sft] dev step 150: 0.47719
+[sft] step 150/446 loss 0.4907 lr 2.00e-04 gn 0.3347 skip 0
+[sft] step 160/446 loss 0.4911 lr 2.00e-04 gn 0.322 skip 0
+[sft] step 170/446 loss 0.5307 lr 2.00e-04 gn 0.33639 skip 0
+[sft] step 180/446 loss 0.3959 lr 2.00e-04 gn 0.31676 skip 0
+[sft] step 190/446 loss 0.4822 lr 2.00e-04 gn 0.3139 skip 0
+[sft] step 200/446 loss 0.5159 lr 2.00e-04 gn 0.30568 skip 0
+[sft] step 210/446 loss 0.4522 lr 2.00e-04 gn 0.30925 skip 0
+[sft] step 220/446 loss 0.4406 lr 2.00e-04 gn 0.30848 skip 0
+[sft] step 230/446 loss 0.4076 lr 2.00e-04 gn 0.30843 skip 0
+[sft] step 240/446 loss 0.3987 lr 2.00e-04 gn 0.32189 skip 0
+[sft] step 250/446 loss 0.4114 lr 2.00e-04 gn 0.31042 skip 0
+[sft] step 260/446 loss 0.4313 lr 2.00e-04 gn 0.37086 skip 0
+[sft] step 270/446 loss 0.4373 lr 2.00e-04 gn 0.36973 skip 0
+[sft] step 280/446 loss 0.4068 lr 2.00e-04 gn 0.38058 skip 0
+[sft] step 290/446 loss 0.4495 lr 2.00e-04 gn 0.3532 skip 0
+[sft] dev step 300: 0.45782
+[sft] step 300/446 loss 0.4730 lr 2.00e-04 gn 0.37418 skip 0
+[sft] step 310/446 loss 0.4614 lr 2.00e-04 gn 0.40739 skip 0
+[sft] step 320/446 loss 0.4375 lr 2.00e-04 gn 0.34774 skip 0
+[sft] step 330/446 loss 0.4210 lr 2.00e-04 gn 0.40144 skip 0
+[sft] step 340/446 loss 0.3517 lr 2.00e-04 gn 0.34676 skip 0
+[sft] step 350/446 loss 0.4663 lr 2.00e-04 gn 0.36112 skip 0
+[sft] step 360/446 loss 0.4635 lr 2.00e-04 gn 0.37008 skip 0
+[sft] step 370/446 loss 0.4570 lr 2.00e-04 gn 0.34291 skip 0
+[sft] step 380/446 loss 0.4134 lr 2.00e-04 gn 0.35586 skip 0
+[sft] step 390/446 loss 0.4488 lr 2.00e-04 gn 0.36986 skip 0
+[sft] step 400/446 loss 0.4047 lr 2.00e-04 gn 0.35016 skip 0
+[sft] step 410/446 loss 0.4737 lr 1.57e-04 gn 0.34786 skip 0
+[sft] step 420/446 loss 0.3711 lr 1.13e-04 gn 0.3018 skip 0
+[sft] step 430/446 loss 0.5575 lr 6.96e-05 gn 0.37267 skip 0
+[sft] step 440/446 loss 0.4323 lr 2.61e-05 gn 0.33522 skip 0
+[sft] dev step 446: 0.44410

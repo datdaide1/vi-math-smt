@@ -1,0 +1,31 @@
+{
+ "label_frac_min": 0.3264,
+ "label_frac_mean": 0.5701,
+ "label_frac_max": 0.9101,
+ "decoded": [
+  {
+   "id": "N/en/02a2030ef06e:1",
+   "prompt_tail": "kitchens. If the entire space station has 96 rooms, how many kitchens are there on the entire space station?\n\nSolution:\n",
+   "trained_text": "Each cylindrical structure contains 10 bedrooms, 6 bathrooms, and k kitchens, so it has 16 + k rooms.\n\nWith four identical cylinders, the station has 4(16 + k) rooms. Setting this equal to 96:\n\n4(16 + k) = 96\n16 + k = 24\nk = 8\n\nSo each cylinder has 8 kitchens, and the entire station has 4 × 8 = 32 kitchens.\n\nNote that the tunnels are not rooms, so they don't affect the count.\nFinal answer: \\boxed{32}",
+   "n_trained": 129,
+   "n_total": 210,
+   "eos_trained": true
+  },
+  {
+   "id": "N/en/66e7f92742de:1",
+   "prompt_tail": "an the total number of photos the three boys have together. How many photos do the three boys have together?\n\nSolution:\n",
+   "trained_text": "Let T = Tim's photos. Paul = T + 10. Total = 38 + T + (T + 10) = 2T + 48.\n\nTim's photos = Total − 100, so T = 2T + 48 − 100 = 2T − 52.\n\nSolving: T = 52.\n\nTotal = 2(52) + 48 = 152.\n\nCheck: Tim = 52, Paul = 62, Tom = 38, sum = 152, and 152 − 100 = 52 = Tim. ✓\nFinal answer: \\boxed{152}",
+   "n_trained": 158,
+   "n_total": 221,
+   "eos_trained": true
+  },
+  {
+   "id": "N/en/5297338785a0:1",
+   "prompt_tail": "am and Ava helped the class sell 45 notebooks and 28 boxes of crayons. How many dollars did the class raise?\n\nSolution:\n",
+   "trained_text": "Notebooks: 45 × $3 = $135\nCrayons: 28 × $5 = $140\nTotal: $135 + $140 = $275\nFinal answer: \\boxed{275}",
+   "n_trained": 59,
+   "n_total": 126,
+   "eos_trained": true
+  }
+ ]
+}

@@ -1,0 +1,346 @@
+[22:32:18] DRY kernel t2-k01: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k01\run.py
+[22:32:18] DRY kernel t2-k02: ['t2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k02\run.py
+[22:32:18] DRY kernel t2-k03: ['t2-sft-Nm-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s1'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k03\run.py
+[22:32:18] DRY kernel t2-k04: ['t2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k04\run.py
+[22:32:18] DRY kernel t2-k05: ['t2-sft-Nm-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s2'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k05\run.py
+[22:32:18] DRY kernel t2-k06: ['t2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k06\run.py
+[22:32:19] DRY kernel t2-k07: ['t2-sft-Nm-vi-0p6B-s2', 't2-sft-S0-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k07\run.py
+[22:32:19] DRY kernel t2-k08: ['t2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k08\run.py
+[22:32:19] DRY kernel t2-k09: ['t2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k09\run.py
+[22:32:19] tick done: {'?': 18}; ready-not-launched 0
+[22:37:12] DRY kernel t2-k01: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k01\run.py
+[22:37:12] DRY kernel t2-k02: ['t2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k02\run.py
+[22:37:13] DRY kernel t2-k03: ['t2-sft-Nm-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k03\run.py
+[22:37:13] tick done: {'?': 5}; ready-not-launched 0
+[22:50:34] DRY canary t2-canary-225034: ['S0|0.6B|vi|lr0.0002|ep2', 'Y+|0.6B|vi|lr0.0002|ep2', 'Y-|0.6B|vi|lr0.0002|ep2', 'N+|0.6B|vi|lr0.0002|ep2', 'N-|0.6B|vi|lr0.0002|ep2', 'S0|0.6B|en|lr0.0002|ep2', 'Y+|0.6B|en|lr0.0002|ep2', 'Y-|0.6B|en|lr0.0002|ep2', 'N+|0.6B|en|lr0.0002|ep2', 'N-|0.6B|en|lr0.0002|ep2']
+[22:50:34] DRY kernel t2-k01: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k01\run.py
+[22:50:35] DRY kernel t2-k02: ['t2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k02\run.py
+[22:50:35] DRY kernel t2-k03: ['t2-sft-Nm-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s1'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k03\run.py
+[22:50:35] DRY kernel t2-k04: ['t2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k04\run.py
+[22:50:35] DRY kernel t2-k05: ['t2-sft-Nm-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s2'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k05\run.py
+[22:50:35] DRY kernel t2-k06: ['t2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k06\run.py
+[22:50:36] DRY kernel t2-k07: ['t2-sft-Nm-vi-0p6B-s2', 't2-sft-S0-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k07\run.py
+[22:50:36] DRY kernel t2-k08: ['t2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k08\run.py
+[22:50:36] DRY kernel t2-k09: ['t2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k09\run.py
+[22:50:36] tick done: {'?': 18}; ready-not-launched 0
+[22:58:37] DRY canary t2-canary-225837: ['S0|0.6B|vi|lr0.0002|ep2']
+[22:58:37] DRY kernel t2-k01: ['t2-sft-S0-vi-0p6B-s0'] -> E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\t2-k01\run.py
+[22:58:37] tick done: {'?': 1}; ready-not-launched 0
+[22:58:50] BLOCKING vi|0.6B: matched n_train 200 < 8000 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[22:58:50] BLOCKING vi|0.6B: matched n_train 200 < 8000 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[22:58:50] BLOCKING vi|0.6B: matched n_train 200 < 8000 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[22:58:50] BLOCKING vi|0.6B: matched n_train 200 < 8000 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[02:43:02] t2-sft-S0-vi-0p6B-s0: waiting (data/train/final/Y/vi/train_plus.jsonl missing)
+[02:43:02] t2-sft-S0-en-0p6B-s0: waiting (data/train/final/Y/en/train_plus.jsonl missing)
+[02:43:02] tick done: {}; ready-not-launched 0
+[02:43:16] DRY canary t2-canary-024316: ['S0|0.6B|vi|lr0.0002|ep2', 'Y+|0.6B|vi|lr0.0002|ep2', 'Y-|0.6B|vi|lr0.0002|ep2', 'N+|0.6B|vi|lr0.0002|ep2', 'N-|0.6B|vi|lr0.0002|ep2', 'S0|0.6B|en|lr0.0002|ep2', 'Y+|0.6B|en|lr0.0002|ep2', 'Y-|0.6B|en|lr0.0002|ep2', 'N+|0.6B|en|lr0.0002|ep2', 'N-|0.6B|en|lr0.0002|ep2']
+[02:43:16] DRY modal train t2-modal-024316: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[02:43:16] DRY modal train t2-modal-024316: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[02:43:16] tick done: {'?': 10}; ready-not-launched 0
+[03:45:07] DRY canary t2-canary-034507511133: ['S0|0.6B|vi|lr0.0001|ep3', 'Y+|0.6B|vi|lr0.0001|ep3', 'Y-|0.6B|vi|lr0.0001|ep3', 'N+|0.6B|vi|lr0.0001|ep3', 'N-|0.6B|vi|lr0.0001|ep3']
+[03:45:07] DRY modal train t2-modal-034507544459-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0-lr0.0001', 't2-sft-Yp-vi-0p6B-s0-lr0.0001', 't2-sft-Ym-vi-0p6B-s0-lr0.0001', 't2-sft-Np-vi-0p6B-s0-lr0.0001', 't2-sft-Nm-vi-0p6B-s0-lr0.0001']
+[03:45:07] tick done: {'?': 5}; ready-not-launched 0
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:47] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING en|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] BLOCKING vi|0.6B: matched n_train 200 < 2400 {'Y+': 200, 'Y-': 200, 'N+': 200, 'N-': 200}
+[03:51:48] tick done: {}; ready-not-launched 0
+[05:14:30] DRY canary t2-canary-051430250246: ['S0|0.6B|vi|lr0.0001|ep3', 'Y+|0.6B|vi|lr0.0001|ep3', 'Y-|0.6B|vi|lr0.0001|ep3', 'N+|0.6B|vi|lr0.0001|ep3', 'N-|0.6B|vi|lr0.0001|ep3', 'S0|0.6B|en|lr0.0001|ep3', 'Y+|0.6B|en|lr0.0001|ep3', 'Y-|0.6B|en|lr0.0001|ep3', 'N+|0.6B|en|lr0.0001|ep3', 'N-|0.6B|en|lr0.0001|ep3']
+[05:14:30] DRY modal train t2-modal-051430301772-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[05:14:30] committed $1.39 for 0.6B|vi|s0; total committed $1.39
+[05:14:30] DRY modal train t2-modal-051430333179-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[05:14:30] committed $0.96 for 0.6B|en|s0; total committed $2.35
+[05:14:30] DRY modal train t2-modal-051430370164-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[05:14:30] committed $1.39 for 0.6B|vi|s1; total committed $3.74
+[05:14:30] DRY modal train t2-modal-051430401755-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[05:14:30] committed $1.39 for 0.6B|vi|s2; total committed $5.14
+[05:14:30] DRY modal train t2-modal-051430447694-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[05:14:30] committed $1.39 for 0.6B|vi|s3; total committed $6.53
+[05:14:30] DRY modal train t2-modal-051430469313-0.6B-en-s1: ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[05:14:30] committed $0.96 for 0.6B|en|s1; total committed $7.49
+[05:14:30] tick done: {'?': 30}; ready-not-launched 0
+[05:15:01] DRY modal train t2-modal-051501800414-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[05:15:01] committed $1.39 for 0.6B|vi|s0; total committed $1.39
+[05:15:01] DRY modal train t2-modal-051501816508-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[05:15:01] committed $0.96 for 0.6B|en|s0; total committed $2.35
+[05:15:01] DRY modal train t2-modal-051501849722-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[05:15:01] committed $1.39 for 0.6B|vi|s1; total committed $3.74
+[05:15:01] DRY modal train t2-modal-051501883295-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[05:15:01] committed $1.39 for 0.6B|vi|s2; total committed $5.14
+[05:15:01] DRY modal train t2-modal-051501923341-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[05:15:01] committed $1.39 for 0.6B|vi|s3; total committed $6.53
+[05:15:01] DRY modal train t2-modal-051501947680-0.6B-en-s1: ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[05:15:01] committed $0.96 for 0.6B|en|s1; total committed $7.49
+[05:15:01] tick done: {'?': 30}; ready-not-launched 0
+[05:18:00] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-335\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[05:18:17] DRY modal train t2-modal-051817473886-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[05:18:17] committed $1.36 for 0.6B|vi|s0; total committed $1.36
+[05:18:17] DRY modal train t2-modal-051817477230-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[05:18:17] committed $0.92 for 0.6B|en|s0; total committed $2.28
+[05:18:17] DRY modal train t2-modal-051817508733-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[05:18:17] committed $1.36 for 0.6B|vi|s1; total committed $3.64
+[05:18:17] DRY modal train t2-modal-051817556347-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[05:18:17] committed $1.36 for 0.6B|vi|s2; total committed $4.99
+[05:18:17] DRY modal train t2-modal-051817590083-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[05:18:17] committed $1.36 for 0.6B|vi|s3; total committed $6.35
+[05:18:17] DRY modal train t2-modal-051817607861-0.6B-en-s1: ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[05:18:17] committed $0.92 for 0.6B|en|s1; total committed $7.27
+[05:18:17] tick done: {'?': 30}; ready-not-launched 0
+[07:03:34] DRY modal train t2-modal-070334165448-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[07:03:34] committed $1.36 for 0.6B|vi|s0; total committed $1.36
+[07:03:34] DRY modal train t2-modal-070334218708-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[07:03:34] committed $0.92 for 0.6B|en|s0; total committed $2.28
+[07:03:34] DRY modal train t2-modal-070334301641-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[07:03:34] committed $1.36 for 0.6B|vi|s1; total committed $3.64
+[07:03:34] DRY modal train t2-modal-070334431976-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:03:34] committed $1.36 for 0.6B|vi|s2; total committed $4.99
+[07:03:34] DRY modal train t2-modal-070334552446-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[07:03:34] committed $1.36 for 0.6B|vi|s3; total committed $6.35
+[07:03:34] DRY modal train t2-modal-070334618102-0.6B-en-s1: ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[07:03:34] committed $0.92 for 0.6B|en|s1; total committed $7.27
+[07:03:34] tick done: {'?': 30}; ready-not-launched 0
+[07:03:48] DRY modal train t2-modal-070348568113-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[07:03:48] committed $1.36 for 0.6B|vi|s0; total committed $1.36
+[07:03:48] DRY modal train t2-modal-070348633026-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[07:03:48] committed $0.70 for 0.6B|en|s0; total committed $2.06
+[07:03:48] DRY modal train t2-modal-070348722733-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[07:03:48] committed $1.14 for 0.6B|vi|s1; total committed $3.20
+[07:03:48] DRY modal train t2-modal-070348810516-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:03:48] committed $1.14 for 0.6B|vi|s2; total committed $4.33
+[07:03:48] DRY modal train t2-modal-070348898479-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[07:03:48] committed $1.14 for 0.6B|vi|s3; total committed $5.47
+[07:03:48] DRY modal train t2-modal-070348959379-0.6B-en-s1: ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[07:03:48] committed $0.70 for 0.6B|en|s1; total committed $6.17
+[07:03:48] tick done: {'?': 30}; ready-not-launched 0
+[07:03:50] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-342\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[07:04:06] approve s0-review
+[07:05:40] modal train t2-modal-070424651050-0.6B-vi-s0: ['t2-sft-S0-vi-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[07:05:40] committed $1.36 for 0.6B|vi|s0; total committed $1.36
+[07:07:00] modal train t2-modal-070540531713-0.6B-en-s0: ['t2-sft-S0-en-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[07:07:00] committed $0.70 for 0.6B|en|s0; total committed $2.06
+[07:07:00] tick done: {'LAUNCHED': 10, '?': 20}; ready-not-launched 0
+[07:09:08] tick done: {'LAUNCHED': 10, '?': 20}; ready-not-launched 0
+[07:11:56] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-344\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[07:12:58] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-345\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[07:13:27] run t2-sft-S0-vi-0p6B-s0: TRAINED
+[07:14:08] run t2-sft-Yp-vi-0p6B-s0: FAILED
+[07:14:47] BLOCKING: t2-sft-Yp-vi-0p6B-s0 flags {'status': 'ABORTED_DEV_DIVERGED'} (inspect jobs/outputs/T2_checks/t2-sft-Yp-vi-0p6B-s0; `launcher ack t2-sft-Yp-vi-0p6B-s0`)
+[07:14:47] BLOCKING language vi: t2-sft-Yp-vi-0p6B-s0 rc=7
+[07:14:47] run t2-sft-Ym-vi-0p6B-s0: FAILED
+[07:15:14] BLOCKING: t2-sft-Ym-vi-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Ym-vi-0p6B-s0; `launcher ack t2-sft-Ym-vi-0p6B-s0`)
+[07:15:14] BLOCKING language vi: t2-sft-Ym-vi-0p6B-s0 rc=9
+[07:15:14] run t2-sft-Np-vi-0p6B-s0: FAILED
+[07:15:41] BLOCKING: t2-sft-Np-vi-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Np-vi-0p6B-s0; `launcher ack t2-sft-Np-vi-0p6B-s0`)
+[07:15:41] BLOCKING language vi: t2-sft-Np-vi-0p6B-s0 rc=9
+[07:15:41] run t2-sft-Nm-vi-0p6B-s0: FAILED
+[07:16:05] BLOCKING: t2-sft-Nm-vi-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Nm-vi-0p6B-s0; `launcher ack t2-sft-Nm-vi-0p6B-s0`)
+[07:16:05] BLOCKING language vi: t2-sft-Nm-vi-0p6B-s0 rc=9
+[07:16:05] run t2-sft-S0-en-0p6B-s0: TRAINED
+[07:16:44] run t2-sft-Yp-en-0p6B-s0: FAILED
+[07:17:23] BLOCKING: t2-sft-Yp-en-0p6B-s0 flags {'status': 'ABORTED_DEV_DIVERGED'} (inspect jobs/outputs/T2_checks/t2-sft-Yp-en-0p6B-s0; `launcher ack t2-sft-Yp-en-0p6B-s0`)
+[07:17:23] BLOCKING language en: t2-sft-Yp-en-0p6B-s0 rc=7
+[07:17:23] run t2-sft-Ym-en-0p6B-s0: FAILED
+[07:17:47] BLOCKING: t2-sft-Ym-en-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Ym-en-0p6B-s0; `launcher ack t2-sft-Ym-en-0p6B-s0`)
+[07:17:47] BLOCKING language en: t2-sft-Ym-en-0p6B-s0 rc=9
+[07:17:47] run t2-sft-Np-en-0p6B-s0: FAILED
+[07:18:11] BLOCKING: t2-sft-Np-en-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Np-en-0p6B-s0; `launcher ack t2-sft-Np-en-0p6B-s0`)
+[07:18:11] BLOCKING language en: t2-sft-Np-en-0p6B-s0 rc=9
+[07:18:11] run t2-sft-Nm-en-0p6B-s0: FAILED
+[07:18:35] BLOCKING: t2-sft-Nm-en-0p6B-s0 flags {'status': 'CELL_STOPPED', 'preflight': 'missing'} (inspect jobs/outputs/T2_checks/t2-sft-Nm-en-0p6B-s0; `launcher ack t2-sft-Nm-en-0p6B-s0`)
+[07:18:35] BLOCKING language en: t2-sft-Nm-en-0p6B-s0 rc=9
+[07:18:35] eval t2-eval-071835249854: ['ev-base-qwen3-0.6b-4shot-vi-primary', 'ev-base-qwen3-0.6b-4shot-vi-exam-greedy', 'ev-base-qwen3-0.6b-4shot-en-primary', 'ev-t2-sft-S0-vi-0p6B-s0-primary', 'ev-t2-sft-S0-vi-0p6B-s0-exam-greedy', 'ev-t2-sft-S0-en-0p6B-s0-primary']
+[07:18:36] languages blocked: ['en', 'vi']
+[07:18:36] not launching: blocked by post-run flags on ['t2-sft-Nm-en-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Yp-en-0p6B-s0', 't2-sft-Yp-vi-0p6B-s0'] (`launcher ack RUN_ID`); 0 ready rows wait
+[07:18:36] tick done: {'TRAINED': 2, 'FAILED': 8, '?': 20}; ready-not-launched 0
+[07:18:43] ack t2-sft-Yp-vi-0p6B-s0
+[07:18:43] ack lang:vi
+[07:18:43] ack t2-sft-Ym-vi-0p6B-s0
+[07:18:43] ack t2-sft-Np-vi-0p6B-s0
+[07:18:44] ack t2-sft-Nm-vi-0p6B-s0
+[07:18:44] ack t2-sft-Yp-en-0p6B-s0
+[07:18:44] ack lang:en
+[07:18:44] ack t2-sft-Ym-en-0p6B-s0
+[07:18:44] ack t2-sft-Np-en-0p6B-s0
+[07:18:44] ack t2-sft-Nm-en-0p6B-s0
+[07:19:49] modal train t2-modal-071902200044-0.6B-vi-s0: ['t2-sft-Yp-vi-0p6B-s0', 't2-sft-Ym-vi-0p6B-s0', 't2-sft-Np-vi-0p6B-s0', 't2-sft-Nm-vi-0p6B-s0']
+[07:19:49] committed $0.91 for 0.6B|vi|s0; total committed $2.97
+[07:20:35] modal train t2-modal-071949681918-0.6B-en-s0: ['t2-sft-Yp-en-0p6B-s0', 't2-sft-Ym-en-0p6B-s0', 't2-sft-Np-en-0p6B-s0', 't2-sft-Nm-en-0p6B-s0']
+[07:20:35] committed $0.56 for 0.6B|en|s0; total committed $3.53
+[07:20:35] tick done: {'TRAINED': 2, 'LAUNCHED': 8, '?': 20}; ready-not-launched 4
+[07:22:41] tick done: {'TRAINED': 2, 'LAUNCHED': 8, '?': 20}; ready-not-launched 4
+[07:24:47] tick done: {'TRAINED': 2, 'LAUNCHED': 8, '?': 20}; ready-not-launched 4
+[07:26:35] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-346\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[07:26:56] tick done: {'TRAINED': 2, 'LAUNCHED': 8, '?': 20}; ready-not-launched 4
+[07:28:56] run t2-sft-Yp-vi-0p6B-s0: TRAINED
+[07:29:36] run t2-sft-Ym-vi-0p6B-s0: TRAINED
+[07:30:16] run t2-sft-Np-vi-0p6B-s0: TRAINED
+[07:30:55] run t2-sft-Nm-vi-0p6B-s0: TRAINED
+[07:31:35] run t2-sft-Yp-en-0p6B-s0: TRAINED
+[07:32:15] run t2-sft-Ym-en-0p6B-s0: TRAINED
+[07:32:55] run t2-sft-Np-en-0p6B-s0: TRAINED
+[07:33:34] run t2-sft-Nm-en-0p6B-s0: TRAINED
+[07:34:15] eval t2-eval-073415427694: ['ev-t2-sft-Yp-vi-0p6B-s0-primary', 'ev-t2-sft-Yp-vi-0p6B-s0-exam-greedy', 'ev-t2-sft-Ym-vi-0p6B-s0-primary', 'ev-t2-sft-Ym-vi-0p6B-s0-exam-greedy', 'ev-t2-sft-Np-vi-0p6B-s0-primary', 'ev-t2-sft-Np-vi-0p6B-s0-exam-greedy', 'ev-t2-sft-Nm-vi-0p6B-s0-primary', 'ev-t2-sft-Nm-vi-0p6B-s0-exam-greedy', 'ev-t2-sft-Yp-en-0p6B-s0-primary', 'ev-t2-sft-Ym-en-0p6B-s0-primary', 'ev-t2-sft-Np-en-0p6B-s0-primary', 'ev-t2-sft-Nm-en-0p6B-s0-primary']
+[07:34:23] eval metrics ev-t2-sft-S0-vi-0p6B-s0-primary: gsm8k_platinum p1 0.3929 g 0.43; math_algprealg p1 0.2537 g 0.28
+[07:34:30] eval metrics ev-t2-sft-S0-vi-0p6B-s0-exam-greedy: vi_exam_core_verified p1 None g 0.2516
+[07:34:39] eval metrics ev-t2-sft-S0-en-0p6B-s0-primary: gsm8k_platinum p1 0.4679 g 0.4983; math_algprealg p1 0.3513 g 0.3975
+[07:34:47] eval metrics ev-base-qwen3-0.6b-4shot-vi-primary: gsm8k_platinum p1 0.3383 g 0.4067; math_algprealg p1 0.3481 g 0.405
+[07:34:54] eval metrics ev-base-qwen3-0.6b-4shot-vi-exam-greedy: vi_exam_core_verified p1 None g 0.3424
+[07:35:01] eval metrics ev-base-qwen3-0.6b-4shot-en-primary: gsm8k_platinum p1 0.4375 g 0.51; math_algprealg p1 0.4069 g 0.48
+[07:36:09] modal train t2-modal-073509481693-0.6B-vi-s1: ['t2-sft-S0-vi-0p6B-s1', 't2-sft-Yp-vi-0p6B-s1', 't2-sft-Ym-vi-0p6B-s1', 't2-sft-Np-vi-0p6B-s1', 't2-sft-Nm-vi-0p6B-s1']
+[07:36:09] committed $1.14 for 0.6B|vi|s1; total committed $4.67
+[07:36:09] STOP at the Modal cap: spent/committed $5.88 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:36:09] tick done: {'TRAINED': 10, 'LAUNCHED': 5, '?': 15}; ready-not-launched 10
+[07:38:15] STOP at the Modal cap: spent/committed $6.03 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:38:15] tick done: {'TRAINED': 10, 'LAUNCHED': 5, '?': 15}; ready-not-launched 10
+[07:40:23] STOP at the Modal cap: spent/committed $6.17 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:40:23] tick done: {'TRAINED': 10, 'LAUNCHED': 5, '?': 15}; ready-not-launched 10
+[07:42:29] not launching: modal spend $6.33 >= cap $6.30; 15 ready rows wait
+[07:42:29] tick done: {'TRAINED': 10, 'LAUNCHED': 5, '?': 15}; ready-not-launched 15
+[07:44:36] not launching: modal spend $6.46 >= cap $6.30; 15 ready rows wait
+[07:44:36] tick done: {'TRAINED': 10, 'LAUNCHED': 5, '?': 15}; ready-not-launched 15
+[07:46:36] run t2-sft-S0-vi-0p6B-s1: TRAINED
+[07:47:15] run t2-sft-Yp-vi-0p6B-s1: TRAINED
+[07:47:54] run t2-sft-Ym-vi-0p6B-s1: TRAINED
+[07:48:30] run t2-sft-Np-vi-0p6B-s1: TRAINED
+[07:49:07] run t2-sft-Nm-vi-0p6B-s1: TRAINED
+[07:49:43] eval t2-eval-074943247838: ['ev-t2-sft-S0-vi-0p6B-s1-primary', 'ev-t2-sft-S0-vi-0p6B-s1-exam-greedy', 'ev-t2-sft-Yp-vi-0p6B-s1-primary', 'ev-t2-sft-Yp-vi-0p6B-s1-exam-greedy', 'ev-t2-sft-Ym-vi-0p6B-s1-primary', 'ev-t2-sft-Ym-vi-0p6B-s1-exam-greedy', 'ev-t2-sft-Np-vi-0p6B-s1-primary', 'ev-t2-sft-Np-vi-0p6B-s1-exam-greedy', 'ev-t2-sft-Nm-vi-0p6B-s1-primary', 'ev-t2-sft-Nm-vi-0p6B-s1-exam-greedy']
+[07:50:46] modal train t2-modal-074949682050-0.6B-vi-s2: ['t2-sft-S0-vi-0p6B-s2', 't2-sft-Yp-vi-0p6B-s2', 't2-sft-Ym-vi-0p6B-s2', 't2-sft-Np-vi-0p6B-s2', 't2-sft-Nm-vi-0p6B-s2']
+[07:50:46] committed $1.14 for 0.6B|vi|s2; total committed $5.80
+[07:50:46] STOP at the Modal cap: spent/committed $5.78 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[07:50:46] tick done: {'TRAINED': 15, 'LAUNCHED': 5, '?': 10}; ready-not-launched 5
+[07:52:52] STOP at the Modal cap: spent/committed $6.05 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[07:52:52] tick done: {'TRAINED': 15, 'LAUNCHED': 5, '?': 10}; ready-not-launched 5
+[07:54:58] STOP at the Modal cap: spent/committed $6.15 + next cell $1.14 > $6.30; not launching ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[07:54:58] tick done: {'TRAINED': 15, 'LAUNCHED': 5, '?': 10}; ready-not-launched 5
+[07:57:05] not launching: modal spend $6.45 >= cap $6.30; 10 ready rows wait
+[07:57:05] tick done: {'TRAINED': 15, 'LAUNCHED': 5, '?': 10}; ready-not-launched 10
+[07:59:11] not launching: modal spend $6.67 >= cap $6.30; 10 ready rows wait
+[07:59:11] tick done: {'TRAINED': 15, 'LAUNCHED': 5, '?': 10}; ready-not-launched 10
+[08:01:11] run t2-sft-S0-vi-0p6B-s2: TRAINED
+[08:01:48] run t2-sft-Yp-vi-0p6B-s2: TRAINED
+[08:02:28] run t2-sft-Ym-vi-0p6B-s2: TRAINED
+[08:03:04] run t2-sft-Np-vi-0p6B-s2: TRAINED
+[08:03:41] run t2-sft-Nm-vi-0p6B-s2: TRAINED
+[08:04:18] eval t2-eval-080418679221: ['ev-t2-sft-S0-vi-0p6B-s2-primary', 'ev-t2-sft-S0-vi-0p6B-s2-exam-greedy', 'ev-t2-sft-Yp-vi-0p6B-s2-primary', 'ev-t2-sft-Yp-vi-0p6B-s2-exam-greedy', 'ev-t2-sft-Ym-vi-0p6B-s2-primary', 'ev-t2-sft-Ym-vi-0p6B-s2-exam-greedy', 'ev-t2-sft-Np-vi-0p6B-s2-primary', 'ev-t2-sft-Np-vi-0p6B-s2-exam-greedy', 'ev-t2-sft-Nm-vi-0p6B-s2-primary', 'ev-t2-sft-Nm-vi-0p6B-s2-exam-greedy']
+[08:04:26] eval metrics ev-t2-sft-Yp-vi-0p6B-s0-primary: gsm8k_platinum p1 0.4583 g 0.4867; math_algprealg p1 0.3719 g 0.3775
+[08:04:33] eval metrics ev-t2-sft-Yp-vi-0p6B-s0-exam-greedy: vi_exam_core_verified p1 None g 0.3197
+[08:04:41] eval metrics ev-t2-sft-Ym-vi-0p6B-s0-primary: gsm8k_platinum p1 0.4392 g 0.4683; math_algprealg p1 0.3719 g 0.4125
+[08:04:48] eval metrics ev-t2-sft-Ym-vi-0p6B-s0-exam-greedy: vi_exam_core_verified p1 None g 0.3211
+[08:04:57] eval metrics ev-t2-sft-Np-vi-0p6B-s0-primary: gsm8k_platinum p1 0.4808 g 0.4933; math_algprealg p1 0.3706 g 0.4225
+[08:05:04] eval metrics ev-t2-sft-Np-vi-0p6B-s0-exam-greedy: vi_exam_core_verified p1 None g 0.305
+[08:05:12] eval metrics ev-t2-sft-Nm-vi-0p6B-s0-primary: gsm8k_platinum p1 0.4708 g 0.475; math_algprealg p1 0.3875 g 0.4125
+[08:05:19] eval metrics ev-t2-sft-Nm-vi-0p6B-s0-exam-greedy: vi_exam_core_verified p1 None g 0.3138
+[08:05:28] eval metrics ev-t2-sft-Yp-en-0p6B-s0-primary: gsm8k_platinum p1 0.6171 g 0.6283; math_algprealg p1 0.5244 g 0.5375
+[08:05:36] eval metrics ev-t2-sft-Ym-en-0p6B-s0-primary: gsm8k_platinum p1 0.6004 g 0.62; math_algprealg p1 0.535 g 0.55
+[08:05:43] eval metrics ev-t2-sft-Np-en-0p6B-s0-primary: gsm8k_platinum p1 0.6104 g 0.61; math_algprealg p1 0.5094 g 0.5375
+[08:05:52] eval metrics ev-t2-sft-Nm-en-0p6B-s0-primary: gsm8k_platinum p1 0.6029 g 0.6; math_algprealg p1 0.5238 g 0.5375
+[08:05:52] wrote E:\MATH-REASONING-THESIS\vi-math-smt\jobs\logs\T2\vi_s0_summary.md
+[08:05:57] not launching: modal spend $7.02 >= cap $6.30; 10 ready rows wait
+[08:05:57] tick done: {'TRAINED': 20, '?': 10}; ready-not-launched 10
+[08:06:56] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-352\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:08:18] modal train t2-modal-080719366315-0.6B-vi-s3: ['t2-sft-S0-vi-0p6B-s3', 't2-sft-Yp-vi-0p6B-s3', 't2-sft-Ym-vi-0p6B-s3', 't2-sft-Np-vi-0p6B-s3', 't2-sft-Nm-vi-0p6B-s3']
+[08:08:18] committed $1.14 for 0.6B|vi|s3; total committed $6.94
+[08:08:18] STOP at the Modal cap: spent/committed $6.15 + next cell $0.70 > $6.30; not launching ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']
+[08:08:18] tick done: {'TRAINED': 20, 'LAUNCHED': 5, '?': 5}; ready-not-launched 0
+[08:10:24] not launching: modal spend $6.47 >= cap $6.30; 5 ready rows wait
+[08:10:24] tick done: {'TRAINED': 20, 'LAUNCHED': 5, '?': 5}; ready-not-launched 5
+[08:10:48] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-354\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:13:07] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-355\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:13:29] eval metrics ev-t2-sft-S0-vi-0p6B-s1-primary: gsm8k_platinum p1 0.3821 g 0.4217; math_algprealg p1 0.2875 g 0.305
+[08:13:35] eval metrics ev-t2-sft-S0-vi-0p6B-s1-exam-greedy: vi_exam_core_verified p1 None g 0.2699
+[08:13:43] eval metrics ev-t2-sft-Yp-vi-0p6B-s1-primary: gsm8k_platinum p1 0.4496 g 0.4467; math_algprealg p1 0.3837 g 0.395
+[08:13:50] eval metrics ev-t2-sft-Yp-vi-0p6B-s1-exam-greedy: vi_exam_core_verified p1 None g 0.3116
+[08:13:57] eval metrics ev-t2-sft-Ym-vi-0p6B-s1-primary: gsm8k_platinum p1 0.4383 g 0.4633; math_algprealg p1 0.3656 g 0.4075
+[08:14:05] eval metrics ev-t2-sft-Ym-vi-0p6B-s1-exam-greedy: vi_exam_core_verified p1 None g 0.308
+[08:14:13] eval metrics ev-t2-sft-Np-vi-0p6B-s1-primary: gsm8k_platinum p1 0.4954 g 0.5233; math_algprealg p1 0.3912 g 0.42
+[08:14:19] eval metrics ev-t2-sft-Np-vi-0p6B-s1-exam-greedy: vi_exam_core_verified p1 None g 0.3087
+[08:14:28] eval metrics ev-t2-sft-Nm-vi-0p6B-s1-primary: gsm8k_platinum p1 0.4592 g 0.4967; math_algprealg p1 0.3713 g 0.3925
+[08:14:36] eval metrics ev-t2-sft-Nm-vi-0p6B-s1-exam-greedy: vi_exam_core_verified p1 None g 0.3036
+[08:14:45] HARD STOP: workspace month-to-date $29.716 + next cell $0.70 > $29.50; not launching ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']; the loop stops
+[08:14:45] tick done: {'TRAINED': 20, 'LAUNCHED': 5, '?': 5}; ready-not-launched 0
+[08:15:37] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-356\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:15:58] HARD STOP: workspace month-to-date $29.822 + next cell $0.70 > $29.50; not launching ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']; the loop stops
+[08:15:58] tick done: {'TRAINED': 20, 'LAUNCHED': 5, '?': 5}; ready-not-launched 0
+[08:18:07] HARD STOP: workspace month-to-date $29.954 + next cell $0.70 > $29.50; not launching ['t2-sft-S0-en-0p6B-s1', 't2-sft-Yp-en-0p6B-s1', 't2-sft-Ym-en-0p6B-s1', 't2-sft-Np-en-0p6B-s1', 't2-sft-Nm-en-0p6B-s1']; the loop stops
+[08:18:07] tick done: {'TRAINED': 20, 'LAUNCHED': 5, '?': 5}; ready-not-launched 0
+[08:19:31] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-357\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:19:40] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-358\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:20:07] run t2-sft-S0-vi-0p6B-s3: TRAINED
+[08:20:47] run t2-sft-Yp-vi-0p6B-s3: TRAINED
+[08:21:23] run t2-sft-Ym-vi-0p6B-s3: TRAINED
+[08:22:00] run t2-sft-Np-vi-0p6B-s3: TRAINED
+[08:22:36] run t2-sft-Nm-vi-0p6B-s3: TRAINED
+[08:23:13] eval t2-eval-082313150282: ['ev-t2-sft-S0-vi-0p6B-s3-primary', 'ev-t2-sft-S0-vi-0p6B-s3-exam-greedy', 'ev-t2-sft-Yp-vi-0p6B-s3-primary', 'ev-t2-sft-Yp-vi-0p6B-s3-exam-greedy', 'ev-t2-sft-Ym-vi-0p6B-s3-primary', 'ev-t2-sft-Ym-vi-0p6B-s3-exam-greedy', 'ev-t2-sft-Np-vi-0p6B-s3-primary', 'ev-t2-sft-Np-vi-0p6B-s3-exam-greedy', 'ev-t2-sft-Nm-vi-0p6B-s3-primary', 'ev-t2-sft-Nm-vi-0p6B-s3-exam-greedy']
+[08:23:19] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:25:24] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:27:29] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:29:37] eval metrics ev-t2-sft-S0-vi-0p6B-s2-primary: gsm8k_platinum p1 0.3867 g 0.4183; math_algprealg p1 0.25 g 0.27
+[08:29:44] eval metrics ev-t2-sft-S0-vi-0p6B-s2-exam-greedy: vi_exam_core_verified p1 None g 0.2297
+[08:29:53] eval metrics ev-t2-sft-Yp-vi-0p6B-s2-primary: gsm8k_platinum p1 0.4521 g 0.4767; math_algprealg p1 0.3575 g 0.3675
+[08:30:00] eval metrics ev-t2-sft-Yp-vi-0p6B-s2-exam-greedy: vi_exam_core_verified p1 None g 0.3065
+[08:30:07] eval metrics ev-t2-sft-Ym-vi-0p6B-s2-primary: gsm8k_platinum p1 0.4487 g 0.4633; math_algprealg p1 0.36 g 0.38
+[08:30:14] eval metrics ev-t2-sft-Ym-vi-0p6B-s2-exam-greedy: vi_exam_core_verified p1 None g 0.3072
+[08:30:23] eval metrics ev-t2-sft-Np-vi-0p6B-s2-primary: gsm8k_platinum p1 0.4771 g 0.49; math_algprealg p1 0.3731 g 0.3925
+[08:30:30] eval metrics ev-t2-sft-Np-vi-0p6B-s2-exam-greedy: vi_exam_core_verified p1 None g 0.3146
+[08:30:38] eval metrics ev-t2-sft-Nm-vi-0p6B-s2-primary: gsm8k_platinum p1 0.4637 g 0.4933; math_algprealg p1 0.3625 g 0.405
+[08:30:44] eval metrics ev-t2-sft-Nm-vi-0p6B-s2-exam-greedy: vi_exam_core_verified p1 None g 0.3109
+[08:30:50] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:32:55] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:35:01] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:37:06] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:39:12] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:41:17] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:42:38] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-377\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md
+[08:43:23] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:45:29] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:47:38] eval metrics ev-t2-sft-S0-vi-0p6B-s3-primary: gsm8k_platinum p1 0.3829 g 0.415; math_algprealg p1 0.2594 g 0.325
+[08:47:45] eval metrics ev-t2-sft-S0-vi-0p6B-s3-exam-greedy: vi_exam_core_verified p1 None g 0.2253
+[08:47:53] eval metrics ev-t2-sft-Yp-vi-0p6B-s3-primary: gsm8k_platinum p1 0.4454 g 0.4533; math_algprealg p1 0.3444 g 0.3725
+[08:48:00] eval metrics ev-t2-sft-Yp-vi-0p6B-s3-exam-greedy: vi_exam_core_verified p1 None g 0.289
+[08:48:08] eval metrics ev-t2-sft-Ym-vi-0p6B-s3-primary: gsm8k_platinum p1 0.4612 g 0.495; math_algprealg p1 0.3781 g 0.4075
+[08:48:15] eval metrics ev-t2-sft-Ym-vi-0p6B-s3-exam-greedy: vi_exam_core_verified p1 None g 0.3175
+[08:48:26] eval metrics ev-t2-sft-Np-vi-0p6B-s3-primary: gsm8k_platinum p1 0.4725 g 0.4917; math_algprealg p1 0.365 g 0.42
+[08:48:33] eval metrics ev-t2-sft-Np-vi-0p6B-s3-exam-greedy: vi_exam_core_verified p1 None g 0.3146
+[08:48:41] eval metrics ev-t2-sft-Nm-vi-0p6B-s3-primary: gsm8k_platinum p1 0.4713 g 0.5133; math_algprealg p1 0.3725 g 0.425
+[08:48:48] eval metrics ev-t2-sft-Nm-vi-0p6B-s3-exam-greedy: vi_exam_core_verified p1 None g 0.3321
+[08:48:53] tick done: {'TRAINED': 25, '?': 5}; ready-not-launched 0
+[08:48:53] loop: HARD STOP (workspace MTD 29.954 + 0.702 > 29.5) and nothing in flight; exiting
+[09:36:47] wrote C:\Users\tranh\AppData\Local\Temp\pytest-of-datvon\pytest-401\test_eval_metrics_and_vi_s0_su0\vi_s0_summary.md

@@ -1,0 +1,43 @@
+{
+ "plan": "sft_l4",
+ "gpu": "NVIDIA L4, 610.57.04, 23034 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "pad_rand",
+   "rc": 0,
+   "s": 102.0
+  },
+  {
+   "task": "pad_group",
+   "rc": 0,
+   "s": 60.7
+  },
+  {
+   "task": "pad_group_mb16",
+   "rc": 0,
+   "s": 30.8
+  },
+  {
+   "task": "pad_group_nock",
+   "rc": 0,
+   "s": 21.2
+  },
+  {
+   "task": "pack_sdpa",
+   "rc": 0,
+   "s": 55.4
+  },
+  {
+   "task": "pack_flex",
+   "rc": 0,
+   "s": 103.6
+  },
+  {
+   "task": "pack_fa2",
+   "rc": 0,
+   "s": 15.7
+  }
+ ],
+ "wall_s": 389.6
+}

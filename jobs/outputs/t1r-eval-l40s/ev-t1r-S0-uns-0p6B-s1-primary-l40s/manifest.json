@@ -1,0 +1,82 @@
+{
+ "run_id": "ev-t1r-S0-uns-0p6B-s1-primary-l40s",
+ "kind": "eval",
+ "arm": "S0",
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "size": "0.6B",
+ "seed": 1,
+ "config_hash": "e7427f33",
+ "eval_of": "t1r-S0-uns-0p6B-s1",
+ "status": "COMPLETE",
+ "code": {
+  "git_sha": "195a6bd4dfe664a95b855471d9ec2bc22532ff42",
+  "dirty": false,
+  "dirty_files": [],
+  "paths": [
+   "vi_math_verified_aug/train",
+   "vi_math_verified_aug/evalrun",
+   "vi_math_verified_aug/eval/math_verify.py",
+   "vi_math_verified_aug/__init__.py"
+  ]
+ },
+ "platform": {
+  "gpu": "NVIDIA L40S, 46068 MiB",
+  "engine_load_s": 148.8,
+  "shared_engine": true
+ },
+ "grader": "3.0.2/math-verify-0.9.0",
+ "backend": "vllm",
+ "model_path": "Qwen/Qwen3-0.6B-Base",
+ "adapter_path": "/vol/adapters/t1r-S0-uns-0p6B-s1",
+ "decoding": {
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "min_p": 0.0,
+  "k_samples": 4,
+  "greedy": true,
+  "max_new_tokens": 1024,
+  "shots": 0
+ },
+ "attn_backend": "auto",
+ "chunk_items": 256,
+ "precision": "bf16",
+ "info": {
+  "vllm": "0.33.0",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "gpu": "NVIDIA L40S",
+  "VLLM_USE_FLASHINFER_SAMPLER": "0"
+ },
+ "throughput": {
+  "vi_primary_1000": {
+   "gen_tokens": 867312,
+   "s": 107.0,
+   "gen_tok_per_s": 8104.1
+  }
+ },
+ "metrics": {
+  "gsm8k_platinum": {
+   "n_items": 600,
+   "mean_pass1": 0.44917,
+   "maj@4": 0.54167,
+   "greedy_acc": 0.47,
+   "truncation_rate_sampled": 0.00708,
+   "truncation_rate_greedy": 0.01,
+   "repetition_loop_rate": 0.00533,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 118.78867
+  },
+  "math_algprealg": {
+   "n_items": 400,
+   "mean_pass1": 0.21438,
+   "maj@4": 0.2825,
+   "greedy_acc": 0.2625,
+   "truncation_rate_sampled": 0.08625,
+   "truncation_rate_greedy": 0.1775,
+   "repetition_loop_rate": 0.0685,
+   "no_answer_rate": 0.0045,
+   "tokens_mean": 255.473
+  }
+ }
+}

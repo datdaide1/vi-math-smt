@@ -1,0 +1,18 @@
+{
+ "plan": "unsloth_l4",
+ "gpu": "NVIDIA L4, 610.57.04, 23034 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "unsloth_pad",
+   "rc": 0,
+   "s": 125.3
+  },
+  {
+   "task": "unsloth_pack",
+   "rc": 0,
+   "s": 57.1
+  }
+ ],
+ "wall_s": 182.4
+}

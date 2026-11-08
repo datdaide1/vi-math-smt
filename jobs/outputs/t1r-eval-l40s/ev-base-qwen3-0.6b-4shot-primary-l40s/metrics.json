@@ -1,0 +1,31 @@
+{
+ "run_id": "base-qwen3-0.6b",
+ "arm": "base",
+ "model": "qwen3-0.6b",
+ "size": "0.6B",
+ "seed": 0,
+ "per_dataset": {
+  "gsm8k_platinum": {
+   "n_items": 600,
+   "mean_pass1": 0.35,
+   "maj@4": 0.43667,
+   "greedy_acc": 0.4,
+   "truncation_rate_sampled": 0.01917,
+   "truncation_rate_greedy": 0.04667,
+   "repetition_loop_rate": 0.01967,
+   "no_answer_rate": 0.00133,
+   "tokens_mean": 128.93
+  },
+  "math_algprealg": {
+   "n_items": 400,
+   "mean_pass1": 0.33187,
+   "maj@4": 0.4375,
+   "greedy_acc": 0.38,
+   "truncation_rate_sampled": 0.07,
+   "truncation_rate_greedy": 0.1075,
+   "repetition_loop_rate": 0.0525,
+   "no_answer_rate": 0.0025,
+   "tokens_mean": 225.2685
+  }
+ }
+}

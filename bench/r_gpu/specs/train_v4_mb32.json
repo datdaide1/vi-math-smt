@@ -1,0 +1,32 @@
+{
+ "jobs": [
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "uns_bf16_mb32_q",
+     "mb": 32,
+     "steps": 300,
+     "dev": true,
+     "ver": "v4"
+    },
+    {
+     "name": "conc3_uns_bf16_mb32",
+     "mb": 32,
+     "concurrent": 3,
+     "steps": 60,
+     "dev": false,
+     "ver": "v4"
+    },
+    {
+     "name": "seq3_uns_bf16_mb32",
+     "mb": 32,
+     "steps": 60,
+     "dev": false,
+     "ver": "v4"
+    }
+   ]
+  }
+ ],
+ "wait_s": 3000
+}

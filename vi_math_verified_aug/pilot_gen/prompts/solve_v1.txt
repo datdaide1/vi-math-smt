@@ -1,0 +1,7 @@
+### SYSTEM
+
+
+### USER
+Giải bài toán sau bằng tiếng Việt, ngắn gọn từng bước, kết thúc bằng \boxed{đáp số} (chỉ ghi số trong \boxed, không kèm đơn vị).
+
+<<problem>>

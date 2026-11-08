@@ -1,0 +1,82 @@
+{
+ "run_id": "ev-base-qwen3-0.6b-4shot-spot200-cap2048-l40s",
+ "kind": "eval",
+ "arm": "base",
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "size": "0.6B",
+ "seed": 0,
+ "config_hash": "4f6ab297",
+ "eval_of": "base-qwen3-0.6b",
+ "status": "COMPLETE",
+ "code": {
+  "git_sha": "195a6bd4dfe664a95b855471d9ec2bc22532ff42",
+  "dirty": false,
+  "dirty_files": [],
+  "paths": [
+   "vi_math_verified_aug/train",
+   "vi_math_verified_aug/evalrun",
+   "vi_math_verified_aug/eval/math_verify.py",
+   "vi_math_verified_aug/__init__.py"
+  ]
+ },
+ "platform": {
+  "gpu": "NVIDIA L40S, 46068 MiB",
+  "engine_load_s": 148.8,
+  "shared_engine": true
+ },
+ "grader": "3.0.2/math-verify-0.9.0",
+ "backend": "vllm",
+ "model_path": "Qwen/Qwen3-0.6B-Base",
+ "adapter_path": null,
+ "decoding": {
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "min_p": 0.0,
+  "k_samples": 4,
+  "greedy": true,
+  "max_new_tokens": 2048,
+  "shots": 4
+ },
+ "attn_backend": "auto",
+ "chunk_items": 256,
+ "precision": "bf16",
+ "info": {
+  "vllm": "0.33.0",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "gpu": "NVIDIA L40S",
+  "VLLM_USE_FLASHINFER_SAMPLER": "0"
+ },
+ "throughput": {
+  "vi_primary_spot200": {
+   "gen_tokens": 229721,
+   "s": 46.9,
+   "gen_tok_per_s": 4900.4
+  }
+ },
+ "metrics": {
+  "gsm8k_platinum": {
+   "n_items": 120,
+   "mean_pass1": 0.31458,
+   "maj@4": 0.38333,
+   "greedy_acc": 0.425,
+   "truncation_rate_sampled": 0.01875,
+   "truncation_rate_greedy": 0.025,
+   "repetition_loop_rate": 0.01333,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 149.28833
+  },
+  "math_algprealg": {
+   "n_items": 80,
+   "mean_pass1": 0.32812,
+   "maj@4": 0.3625,
+   "greedy_acc": 0.4125,
+   "truncation_rate_sampled": 0.0875,
+   "truncation_rate_greedy": 0.1625,
+   "repetition_loop_rate": 0.0775,
+   "no_answer_rate": 0.0,
+   "tokens_mean": 350.37
+  }
+ }
+}

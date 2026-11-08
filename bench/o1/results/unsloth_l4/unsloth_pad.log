@@ -1,0 +1,28 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 10:41:52.389000 7 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1107 10:41:52.499000 7 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Unsloth: xformers is installed but cannot load with torch 2.14.1+cu130 (it was built for 2.10.0+cu128), so PyTorch attention is used instead.
+To install a matching xformers, run `unsloth install-kernels xformers`, or `pip uninstall xformers` to hide this. UNSLOTH_ENABLE_LOGGING=1 shows the full error.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.17.0.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.062 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.1+cu130. CUDA: 8.9. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = TRUE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<00:36,  8.47it/s]
+Loading weights:  15%|█▌        | 47/310 [00:00<00:01, 251.06it/s]
+Loading weights:  26%|██▋       | 82/310 [00:00<00:00, 292.33it/s]
+Loading weights:  40%|████      | 125/310 [00:00<00:00, 342.03it/s]
+Loading weights:  54%|█████▍    | 168/310 [00:00<00:00, 362.23it/s]
+Loading weights:  66%|██████▌   | 205/310 [00:00<00:00, 361.23it/s]
+Loading weights:  79%|███████▉  | 246/310 [00:00<00:00, 370.82it/s]
+Loading weights:  93%|█████████▎| 288/310 [00:00<00:00, 363.74it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 346.01it/s]
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: Will smartly offload gradients to save VRAM!
+Unsloth: Double buffering enabled (parallel H2D + compute) for backward pass.
+RESULT {"variant": "unsloth_pad", "ok": true, "tok_per_s": 1948.2, "peak_mem_gb": 4.65, "packing_correct": null, "logit_check_max_nll_diff": null, "error": null}

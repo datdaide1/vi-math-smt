@@ -1,0 +1,32 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-fCvpCHcjs5QB6A6FzUlgVq
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function eval_l40s.
+├── ✓ Created Function eval_a10g.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_t4.
+├── ✓ Created Function smoke_t4.
+└── ✓ Created Function parity_peft.
+spawned ['fc-01M6W8ER3FA2XJ9NY8H46XFYN6']
+t2-sft-Yp-en-0p6B-s0 0 414.2 NVIDIA L40S, 46068 MiB
+
+t2-sft-Ym-en-0p6B-s0 0 414.3 NVIDIA L40S, 46068 MiB
+
+t2-sft-Np-en-0p6B-s0 0 414.3 NVIDIA L40S, 46068 MiB
+
+t2-sft-Nm-en-0p6B-s0 0 414.3 NVIDIA L40S, 46068 MiB
+classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 168: {'correct': 0.7188, 'no_answer': 0.0, 'repetition': 0.0, 'truncated': 0.0156, 'n': 64, 'step': 168, 's': 7.2, 'path': 'generate'}
+CELL {"t2-sft-Yp-en-0p6B-s0": 0, "t2-sft-Ym-en-0p6B-s0": 0, "t2-sft-Np-en-0p6B-s0": 0, "t2-sft-Nm-en-0p6B-s0": 0}
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-fCvpCHcjs5QB6A6FzUlgVq

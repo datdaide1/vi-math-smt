@@ -1,0 +1,105 @@
+{
+ "jobs": [
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "full_n4k_mb32_s0",
+     "seed": 0,
+     "n_train": 4000,
+     "epochs": 2,
+     "steps": null,
+     "mb": 32,
+     "dev": true,
+     "dev_every": null,
+     "ver": "v5"
+    },
+    {
+     "name": "full_n4k_mb32_s1",
+     "seed": 1,
+     "n_train": 4000,
+     "epochs": 2,
+     "steps": null,
+     "mb": 32,
+     "dev": true,
+     "dev_every": null,
+     "ver": "v5"
+    },
+    {
+     "name": "full_n4k_mb32_s2",
+     "seed": 2,
+     "n_train": 4000,
+     "epochs": 2,
+     "steps": null,
+     "mb": 32,
+     "dev": true,
+     "dev_every": null,
+     "ver": "v5"
+    }
+   ]
+  },
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "conc3_full_n4k_mb32",
+     "concurrent": 3,
+     "n_train": 4000,
+     "epochs": 2,
+     "steps": null,
+     "mb": 32,
+     "dev": true,
+     "dev_every": null,
+     "ver": "v5"
+    }
+   ]
+  },
+  {
+   "fn": "train_l40s",
+   "args": [
+    {
+     "name": "b17_mb32",
+     "model": "Qwen/Qwen3-1.7B-Base",
+     "size": "1.7B",
+     "mb": 32,
+     "steps": 60,
+     "dev": false,
+     "grad_ckpt": "auto",
+     "ver": "v5"
+    },
+    {
+     "name": "b17_mb8",
+     "model": "Qwen/Qwen3-1.7B-Base",
+     "size": "1.7B",
+     "mb": 8,
+     "steps": 60,
+     "dev": false,
+     "grad_ckpt": "auto",
+     "ver": "v5"
+    },
+    {
+     "name": "b17_mb32_nogc",
+     "model": "Qwen/Qwen3-1.7B-Base",
+     "size": "1.7B",
+     "mb": 32,
+     "steps": 60,
+     "dev": false,
+     "grad_ckpt": false,
+     "ver": "v5"
+    },
+    {
+     "name": "conc2_b17_mb32",
+     "model": "Qwen/Qwen3-1.7B-Base",
+     "size": "1.7B",
+     "mb": 32,
+     "concurrent": 2,
+     "steps": 60,
+     "dev": false,
+     "grad_ckpt": "auto",
+     "ver": "v5"
+    }
+   ]
+  }
+ ],
+ "wait_s": 3600
+}

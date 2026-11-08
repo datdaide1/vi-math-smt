@@ -1,0 +1,6 @@
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<02:57,  1.74it/s]
+Loading weights:  65%|██████▍   | 201/310 [00:00<00:00, 394.38it/s]
+Loading weights: 100%|██████████| 310/310 [00:01<00:00, 292.73it/s]
+RESULT {"variant": "pack_flex", "ok": false, "tok_per_s": null, "peak_mem_gb": null, "packing_correct": null, "logit_check_max_nll_diff": null, "error": "InductorError('OutOfMemoryError: out of resource: triton_tem_fused_flex_attention_0 Required: 65536 Hardware limit:65536 Reducing block sizes or `num_stages` may help.\\n\\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\\n')"}

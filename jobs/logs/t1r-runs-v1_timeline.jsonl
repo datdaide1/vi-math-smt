@@ -1,0 +1,4 @@
+{"ts": "2026-11-07T15:05:46Z", "epoch": 1794063946.7, "ref": "datuni/t1r-runs-v1", "status": "WAIT_START", "gpu_quota_used_h": 2.52}
+{"ts": "2026-11-07T15:05:48Z", "epoch": 1794063948.4, "ref": "datuni/t1r-runs-v1", "status": "QUEUED", "waited_min": 0.1}
+{"ts": "2026-11-07T15:35:55Z", "epoch": 1794065755.2, "ref": "datuni/t1r-runs-v1", "status": "RUNNING", "waited_min": 30.2, "gpu_quota_used_h": 2.54}
+{"ts": "2026-11-07T16:30:02Z", "epoch": 1794069002.3, "ref": "datuni/t1r-runs-v1", "status": "COMPLETE", "waited_min": 84.3, "gpu_quota_used_h": 3.43}

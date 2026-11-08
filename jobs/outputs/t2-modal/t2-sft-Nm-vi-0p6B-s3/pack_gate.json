@@ -1,0 +1,52 @@
+{
+ "ok": true,
+ "packed": true,
+ "engine": "unsloth",
+ "precision": "bf16",
+ "items": [
+  {
+   "len": 211,
+   "n_targets": 137,
+   "nll_sep": 1.22093,
+   "nll_batch": 1.2186,
+   "dnll_per_tok": 0.00233,
+   "argmax_agree": 0.9858,
+   "max_abs_dlogit": 0.8125
+  },
+  {
+   "len": 311,
+   "n_targets": 208,
+   "nll_sep": 0.23182,
+   "nll_batch": 0.22962,
+   "dnll_per_tok": 0.002201,
+   "argmax_agree": 0.9904,
+   "max_abs_dlogit": 1.625
+  },
+  {
+   "len": 324,
+   "n_targets": 177,
+   "nll_sep": 0.45164,
+   "nll_batch": 0.44963,
+   "dnll_per_tok": 0.002012,
+   "argmax_agree": 0.9877,
+   "max_abs_dlogit": 1.3125
+  },
+  {
+   "len": 351,
+   "n_targets": 243,
+   "nll_sep": 0.36319,
+   "nll_batch": 0.36136,
+   "dnll_per_tok": 0.001834,
+   "argmax_agree": 0.9858,
+   "max_abs_dlogit": 1.3438
+  }
+ ],
+ "fused_loss_sum": 382.4431,
+ "logits_sum": 382.1029,
+ "fused_vs_logits_per_tok": 0.000445,
+ "max_dnll": 0.02,
+ "min_argmax_cfg": 0.97,
+ "argmax_floor_padded_vs_sep": 0.9829,
+ "argmax_margin": 0.02,
+ "min_argmax_effective": 0.9629
+}

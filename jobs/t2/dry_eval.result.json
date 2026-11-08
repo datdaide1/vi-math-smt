@@ -1,0 +1,57 @@
+{
+ "gpu": "NVIDIA A10, 23028 MiB",
+ "engine_load_s": 114.4,
+ "runs": {
+  "ev-dry-t2-sft-Yp-vi-0p6B-s0-primary": {
+   "rc": 0,
+   "s": 8.2,
+   "out_dir": "/vol/eval/ev-dry-t2-sft-Yp-vi-0p6B-s0-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 16,
+     "mean_pass1": 0.28125,
+     "maj@4": 0.375,
+     "greedy_acc": 0.3125,
+     "truncation_rate_sampled": 0.0,
+     "truncation_rate_greedy": 0.0,
+     "repetition_loop_rate": 0.0,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 80.3375
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 6427,
+     "s": 6.4,
+     "gen_tok_per_s": 1001.5
+    }
+   }
+  },
+  "ev-dry-t2-sft-S0-en-0p6B-s0-primary": {
+   "rc": 0,
+   "s": 9.8,
+   "out_dir": "/vol/eval/ev-dry-t2-sft-S0-en-0p6B-s0-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 16,
+     "mean_pass1": 0.34375,
+     "maj@4": 0.375,
+     "greedy_acc": 0.375,
+     "truncation_rate_sampled": 0.0,
+     "truncation_rate_greedy": 0.0,
+     "repetition_loop_rate": 0.0,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 96.75
+    }
+   },
+   "throughput": {
+    "en_primary_1000": {
+     "gen_tokens": 7740,
+     "s": 8.4,
+     "gen_tok_per_s": 926.1
+    }
+   }
+  }
+ },
+ "wall_s": 135.6
+}

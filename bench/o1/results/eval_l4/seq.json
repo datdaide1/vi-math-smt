@@ -1,0 +1,11 @@
+{
+ "mode": "seq",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "bf16",
+ "n_items": 256,
+ "max_tokens": 1024,
+ "vllm": "0.33.0",
+ "ok": false,
+ "error": "RuntimeError('Engine core initialization failed. See root cause above. Failed core proc(s): {}')",
+ "tb": "Traceback (most recent call last):\n  File \"/app/eval_worker.py\", line 87, in <module>\n    llm, load_s = engine(1 if MODE == \"seq\" else 0)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/eval_worker.py\", line 80, in engine\n    llm = LLM(**kw)\n          ^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/entrypoints/llm.py\", line 341, in __init__\n    self.llm_engine = LLMEngine.from_engine_args(\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py\", line 191, in from_engine_args\n    return cls(\n           ^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py\", line 116, in __init__\n    self.engine_core = EngineCoreClient.make_client(\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 129, in make_client\n    return SyncMPClient(\n           ^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/tracing/otel.py\", line 175, in sync_wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 966, in __init__\n    super().__init__(\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 699, in __init__\n    with launch_core_engines(\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/contextlib.py\", line 144, in __exit__\n    next(self.gen)\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1393, in launch_core_engines\n    wait_for_engine_startup(\n  File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1473, in wait_for_engine_startup\n    raise RuntimeError(\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"
+}

@@ -1,0 +1,222 @@
+{
+ "run_id": "parity-cell-A",
+ "kind": "sft",
+ "arm": "S0",
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "size": "0.6B",
+ "seed": 0,
+ "config_hash": "e4b5930b",
+ "platform": "modal_l40s",
+ "precision": "bf16",
+ "code": {
+  "git_sha": "46d63216725d06c15156cd85d03024100badba7f",
+  "dirty": false,
+  "dirty_files": [],
+  "paths": [
+   "vi_math_verified_aug/train",
+   "vi_math_verified_aug/evalrun",
+   "vi_math_verified_aug/eval/math_verify.py",
+   "vi_math_verified_aug/__init__.py"
+  ]
+ },
+ "status": "COMPLETE",
+ "env": {
+  "python": "3.12.10",
+  "platform": "Linux-4.19.0-gvisor-x86_64-with-glibc2.36",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": "1.17.1",
+  "accelerate": "1.15.0",
+  "vllm": "0.33.0",
+  "gpu": "NVIDIA L40S",
+  "gpu_cap": [
+   8,
+   9
+  ],
+  "cuda": "13.0"
+ },
+ "started_utc": "2026-11-07T20:45:24Z",
+ "model_path": "Qwen/Qwen3-0.6B-Base",
+ "n_params": 616235008,
+ "lora": {
+  "targets": "unsloth",
+  "modules": [
+   "down_proj",
+   "gate_proj",
+   "k_proj",
+   "o_proj",
+   "q_proj",
+   "up_proj",
+   "v_proj"
+  ]
+ },
+ "grad_ckpt": false,
+ "plan": {
+  "total": 60,
+  "warmup": 8,
+  "decay": 6,
+  "steps_per_epoch": 93,
+  "epochs": 3,
+  "branches": []
+ },
+ "data_stats": {
+  "n_pool": 6788,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 6788,
+  "pool_len_p50": 183,
+  "pool_len_p99": 405,
+  "pool_len_max": 560,
+  "n_train_requested": 3000,
+  "n_train_eff": 3000,
+  "shortfall": 0,
+  "shortfall_frac": 0.0,
+  "n_items": 3000,
+  "completion_tokens_mean": 113.57,
+  "completion_tokens_p99": 267,
+  "completion_tokens_total": 340696,
+  "sequence_tokens_total": 592064,
+  "sequence_tokens_p99": 409,
+  "fingerprint": "9517a4481bc07b71",
+  "arm": "S0",
+  "train_path": "/vol/train_data/t1r/s0_train.jsonl",
+  "dev": {
+   "n_pool": 512,
+   "n_malformed": 0,
+   "n_dropped_too_long": 0,
+   "max_length": 1024,
+   "drop_rate": 0.0,
+   "n_eligible": 512,
+   "pool_len_p50": 166,
+   "pool_len_p99": 438,
+   "pool_len_max": 765,
+   "n_used": 300,
+   "path": "/vol/train_data/t1r/dev_seed_vi.jsonl"
+  }
+ },
+ "engine": "unsloth",
+ "packed": true,
+ "tok_check": {
+  "eos_same": true,
+  "vocab_same": true,
+  "unsloth_pad": 151654,
+  "pad": 151643
+ },
+ "lora_init_sha": "aaa023582af9a0633e9cacd16d1be419470ba6cd927bf866379a1f1618a8c405",
+ "shared_process": true,
+ "lora_param_dtypes": [
+  "torch.float32"
+ ],
+ "trainable_params": 20185088,
+ "updated_utc": "2026-11-07T20:47:03Z",
+ "pack_gate": {
+  "ok": true,
+  "packed": true,
+  "engine": "unsloth",
+  "precision": "bf16",
+  "items": [
+   {
+    "len": 197,
+    "n_targets": 108,
+    "nll_sep": 0.96016,
+    "nll_batch": 0.95266,
+    "dnll_per_tok": 0.007494,
+    "argmax_agree": 0.9746,
+    "max_abs_dlogit": 1.3125
+   },
+   {
+    "len": 314,
+    "n_targets": 177,
+    "nll_sep": 0.49456,
+    "nll_batch": 0.49446,
+    "dnll_per_tok": 9.9e-05,
+    "argmax_agree": 0.9873,
+    "max_abs_dlogit": 1.1875
+   },
+   {
+    "len": 112,
+    "n_targets": 58,
+    "nll_sep": 1.38651,
+    "nll_batch": 1.37812,
+    "dnll_per_tok": 0.008385,
+    "argmax_agree": 0.9643,
+    "max_abs_dlogit": 1.0
+   },
+   {
+    "len": 286,
+    "n_targets": 176,
+    "nll_sep": 0.77917,
+    "nll_batch": 0.77541,
+    "dnll_per_tok": 0.003756,
+    "argmax_agree": 0.986,
+    "max_abs_dlogit": 0.9375
+   }
+  ],
+  "fused_loss_sum": 407.5215,
+  "logits_sum": 406.8117,
+  "fused_vs_logits_per_tok": 0.001368,
+  "max_dnll": 0.02,
+  "min_argmax_cfg": 0.97,
+  "argmax_floor_padded_vs_sep": 0.9732,
+  "argmax_margin": 0.02,
+  "min_argmax_effective": 0.9532
+ },
+ "micro_batch": 32,
+ "accum": 1,
+ "oom_probe": [],
+ "last_midrun": {
+  "step": 60,
+  "kind": "midrun",
+  "final": true,
+  "train_loss_recent": 0.5359445,
+  "dev_loss": 0.548413,
+  "quick": {
+   "correct": 0.5,
+   "no_answer": 0.0156,
+   "repetition": 0.0156,
+   "truncated": 0.0156,
+   "n": 64,
+   "step": 60,
+   "s": 8.2,
+   "path": "generate"
+  },
+  "base_quick": {
+   "correct": 0.3594,
+   "no_answer": 0.0938,
+   "repetition": 0.0781,
+   "truncated": 0.1719,
+   "n": 64,
+   "step": 0,
+   "s": 14.8,
+   "path": "generate"
+  },
+  "abort": [],
+  "warnings": []
+ },
+ "summary": {
+  "steps_total": 60,
+  "exec_steps": 60,
+  "skipped_steps": 0,
+  "skipped_frac": 0.0,
+  "skipped_first10": 0,
+  "nonfinite_losses": 0,
+  "final_scale": null,
+  "pad_fraction": 0.0,
+  "real_tokens_per_s": 34986.8,
+  "train_s": 10.7,
+  "final_adapter": "/vol/train/parity-cell-A/adapters/step60",
+  "outputs": {
+   "step60": "/vol/train/parity-cell-A/adapters/step60"
+  },
+  "engine": "unsloth",
+  "packed": true,
+  "micro_batch": 32,
+  "dev_loss_final": 0.548413,
+  "max_abs_act": null,
+  "peak_mem_gb": 15.98,
+  "resumed_from": []
+ }
+}

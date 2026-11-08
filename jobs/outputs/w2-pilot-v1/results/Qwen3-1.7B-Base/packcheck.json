@@ -1,0 +1,54 @@
+{
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "loader": "AutoModelForCausalLM",
+ "gdn": null,
+ "libs": {
+  "torch": "2.14.0+cu130",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "vllm": "0.33.0",
+  "fla": "0.6.0",
+  "triton": "3.8.0",
+  "accelerate": "1.15.0"
+ },
+ "per_item": [
+  {
+   "len": 337,
+   "packed_vs_sep_max_abs_logit_diff": 0.1875,
+   "packed_vs_sep_mean_abs_logit_diff": 0.006402,
+   "padded_vs_sep_max_abs_logit_diff": 0.13281,
+   "nll_sep": 0.32931,
+   "nll_packed": 0.32931,
+   "argmax_agree_packed": 1.0
+  },
+  {
+   "len": 147,
+   "packed_vs_sep_max_abs_logit_diff": 21.55469,
+   "packed_vs_sep_mean_abs_logit_diff": 2.845342,
+   "padded_vs_sep_max_abs_logit_diff": 0.14062,
+   "nll_sep": 0.79315,
+   "nll_packed": 3.21841,
+   "argmax_agree_packed": 0.381
+  },
+  {
+   "len": 133,
+   "packed_vs_sep_max_abs_logit_diff": 26.35938,
+   "packed_vs_sep_mean_abs_logit_diff": 4.144588,
+   "padded_vs_sep_max_abs_logit_diff": 0.08594,
+   "nll_sep": 0.62033,
+   "nll_packed": 3.54854,
+   "argmax_agree_packed": 0.3684
+  },
+  {
+   "len": 249,
+   "packed_vs_sep_max_abs_logit_diff": 33.97656,
+   "packed_vs_sep_mean_abs_logit_diff": 4.563603,
+   "padded_vs_sep_max_abs_logit_diff": 0.21875,
+   "nll_sep": 0.36808,
+   "nll_packed": 3.47212,
+   "argmax_agree_packed": 0.2892
+  }
+ ],
+ "max_diff_items_2_4": 33.97656,
+ "leak_suspected": true
+}

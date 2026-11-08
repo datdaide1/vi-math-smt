@@ -1,0 +1,44 @@
+{
+ "gpu": "NVIDIA L40S, 46068 MiB",
+ "engine_load_s": 177.7,
+ "env": null,
+ "runs": {
+  "ev-rep-a-t1r-S0-s1-primary": {
+   "rc": 0,
+   "s": 127.2,
+   "out_dir": "/vol/eval/rep/rep-a",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.45,
+     "maj@4": 0.545,
+     "greedy_acc": 0.46167,
+     "truncation_rate_sampled": 0.005,
+     "truncation_rate_greedy": 0.00833,
+     "repetition_loop_rate": 0.00267,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 116.476
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.22312,
+     "maj@4": 0.3175,
+     "greedy_acc": 0.27,
+     "truncation_rate_sampled": 0.09125,
+     "truncation_rate_greedy": 0.1775,
+     "repetition_loop_rate": 0.0695,
+     "no_answer_rate": 0.0035,
+     "tokens_mean": 259.8265
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 869081,
+     "s": 126.2,
+     "gen_tok_per_s": 6886.5
+    }
+   }
+  }
+ },
+ "wall_s": 306.3
+}

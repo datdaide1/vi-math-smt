@@ -1,0 +1,37 @@
+{
+ "libs": {
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "unsloth": null,
+  "unsloth_zoo": null,
+  "vllm": "0.33.0",
+  "accelerate": "1.15.0",
+  "torchao": null,
+  "triton": "3.8.0",
+  "bitsandbytes": null,
+  "flash-linear-attention": null,
+  "causal-conv1d": null,
+  "xformers": null,
+  "datasets": "4.8.5",
+  "cut_cross_entropy": null,
+  "torch_full": "2.14.0+cu130"
+ },
+ "gpu": {
+  "name": "Tesla T4",
+  "cap": [
+   7,
+   5
+  ],
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0"
+ },
+ "peft_lora_fp16_smoke": {
+  "ok": true,
+  "loss": 6.997427463531494,
+  "lora_dtypes": [
+   "torch.float32"
+  ]
+ }
+}

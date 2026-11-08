@@ -1,0 +1,13 @@
+{
+ "plan": "flex_t4",
+ "gpu": "Tesla T4, 610.57.04, 15360 MiB",
+ "dtype": "fp16",
+ "tasks": [
+  {
+   "task": "base_noseed_flex",
+   "rc": 0,
+   "s": 946.9
+  }
+ ],
+ "wall_s": 947.0
+}

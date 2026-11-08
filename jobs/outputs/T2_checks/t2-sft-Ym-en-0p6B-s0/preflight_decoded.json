@@ -1,0 +1,31 @@
+{
+ "label_frac_min": 0.3333,
+ "label_frac_mean": 0.5586,
+ "label_frac_max": 0.8974,
+ "decoded": [
+  {
+   "id": "Y/en/02a2030ef06e:1",
+   "prompt_tail": "ms in total, and the station has 34 kitchens altogether. How many cylindrical modules does the station have?\n\nSolution:\n",
+   "trained_text": "Each module has 12 bedrooms, 7 bathrooms, and k kitchens, where k is the same for every module.\n\nTotal kitchens in the station: 34 = n·k, where n is the number of modules.\n\nTotal rooms in the station: 72 = n·(12 + 7 + k) = n·(19 + k).\n\nSo n·19 + n·k = 72, which gives 19n + 34 = 72, hence 19n = 38, so n = 2.\n\nCheck: k = 34/2 = 17 kitchens per module. Each module has 12 + 7 + 17 = 36 rooms, and 2 modules give 72 rooms. Consistent.\nFinal answer: \\boxed{2}",
+   "n_trained": 180,
+   "n_total": 253,
+   "eos_trained": true
+  },
+  {
+   "id": "Y/en/66e7f92742de:1",
+   "prompt_tail": "bum. Paul took 10 more photos than Tim. Tom took 70 photos. What is the total number of photos in the album?\n\nSolution:\n",
+   "trained_text": "Let the total number of photos be T, and Tim's number be M.\n\nTim's photos: M = T − 100.\nPaul's photos: P = M + 10.\nTom's photos: 70.\n\nSince every photo belongs to one of the three friends:\nM + P + 70 = T\n\nSubstitute:\n(T − 100) + (T − 100 + 10) + 70 = T\n2T − 190 + 70 = T\n2T − 120 = T\nT = 120\n\nCheck: Tim = 20, Paul = 30, Tom = 70, total = 120. Tim's 20 is 100 fewer than 120. ✓\nFinal answer: \\boxed{120}",
+   "n_trained": 188,
+   "n_total": 270,
+   "eos_trained": true
+  },
+  {
+   "id": "Y/en/5297338785a0:1",
+   "prompt_tail": "con, and both amounts were added together. How many dollars did the club raise in total from the fundraiser?\n\nSolution:\n",
+   "trained_text": "Pancakes: 55 stacks × $4 = $220.\n\nBacon: 95 slices × $2 = $190.\n\nTotal: $220 + $190 = $410.\nFinal answer: \\boxed{410}",
+   "n_trained": 61,
+   "n_total": 141,
+   "eos_trained": true
+  }
+ ]
+}

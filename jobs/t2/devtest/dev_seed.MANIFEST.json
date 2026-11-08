@@ -1,0 +1,14 @@
+{
+ "source": "jobs\\t2\\devtest\\dev_v1.jsonl",
+ "source_sha256": "a1a42993a061c0c98d2b468e1b2e27a9be6d0f50c8ed0187cb4e1b949c856f65",
+ "n": 522,
+ "per_dataset": {
+  "dev_seed_gsm8k": 369,
+  "dev_seed_math": 153
+ },
+ "eval_overlap_refused": [],
+ "files": {
+  "dev_seed_vi.jsonl": "902fb3475562bf8493510de6af08c8a11c8970776bb1eb59ed517fa756bc2fe3",
+  "dev_seed_en.jsonl": "2c1be9ee49871fe52f874e4af13c6159430ba643bb5671ae1a988768f582e3b1"
+ }
+}

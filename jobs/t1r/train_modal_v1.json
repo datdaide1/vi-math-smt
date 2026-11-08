@@ -1,0 +1,271 @@
+{
+ "groups": [
+  {
+   "gpu": "ampere",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t1r-gate-uns-0p6B-s1",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 1,
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": 300
+      },
+      "data": {
+       "train": "{vol}/data/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300.jsonl",
+       "dev_every_steps": 100,
+       "act_monitor_every": 0,
+       "ckpt_every_min": 20,
+       "keep_ckpts": 1
+      },
+      "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+     },
+     "budget_s": 3600
+    }
+   ]
+  },
+  {
+   "gpu": "ampere",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t1r-gate-hf-0p6B-s1",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 1,
+      "precision": "bf16",
+      "engine": "hf",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": 300
+      },
+      "data": {
+       "train": "{vol}/data/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": false,
+       "dev_path": "{vol}/data/dev300.jsonl",
+       "dev_every_steps": 100,
+       "act_monitor_every": 0,
+       "ckpt_every_min": 20,
+       "keep_ckpts": 1
+      },
+      "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+     },
+     "budget_s": 3600
+    }
+   ]
+  },
+  {
+   "gpu": "ampere",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t1r-S0-uns-0p6B-s1",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 1,
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": null
+      },
+      "data": {
+       "train": "{vol}/data/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300.jsonl",
+       "dev_every_steps": 150,
+       "act_monitor_every": 0,
+       "ckpt_every_min": 20,
+       "keep_ckpts": 1
+      },
+      "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+     },
+     "budget_s": 3600
+    }
+   ]
+  },
+  {
+   "gpu": "ampere",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "t1r-S0-uns-0p6B-s2",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 2,
+      "precision": "bf16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": null,
+       "epochs": 2,
+       "max_steps": null
+      },
+      "data": {
+       "train": "{vol}/data/s0_train.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300.jsonl",
+       "dev_every_steps": 150,
+       "act_monitor_every": 0,
+       "ckpt_every_min": 20,
+       "keep_ckpts": 1
+      },
+      "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+     },
+     "budget_s": 3600
+    }
+   ]
+  },
+  {
+   "gpu": "t4",
+   "tasks": [
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "dry-t2-sft-Yp-vi-0p6B-s0",
+      "arm": "Y+",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 0,
+      "lang": "vi",
+      "precision": "fp16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 200,
+       "epochs": 2,
+       "max_steps": 5
+      },
+      "data": {
+       "train": "{vol}/dryrun_data/train/Y/vi/train_10k_plus.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300.jsonl",
+       "dev_every_steps": null,
+       "ckpt_every_min": 30,
+       "keep_ckpts": 1,
+       "dev_max_items": 32
+      },
+      "notes": "T2 P1 0.6B VI seed 0"
+     },
+     "budget_s": 900
+    },
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "dry-t2-sft-Nm-en-0p6B-s0",
+      "arm": "N-",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 0,
+      "lang": "en",
+      "precision": "fp16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 200,
+       "epochs": 2,
+       "max_steps": 5
+      },
+      "data": {
+       "train": "{vol}/dryrun_data/train/N/en/train_10k_minus.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300_en.jsonl",
+       "dev_every_steps": null,
+       "ckpt_every_min": 30,
+       "keep_ckpts": 1,
+       "dev_max_items": 32
+      },
+      "notes": "T2 P3 0.6B EN seed 0"
+     },
+     "budget_s": 900
+    },
+    {
+     "cmd": "sft",
+     "config": {
+      "kind": "sft",
+      "run_id": "dry-t2-sft-S0-en-0p6B-s0",
+      "arm": "S0",
+      "model": "Qwen/Qwen3-0.6B-Base",
+      "size": "0.6B",
+      "seed": 0,
+      "lang": "en",
+      "precision": "fp16",
+      "engine": "unsloth",
+      "budget": {
+       "n_train": 200,
+       "epochs": 2,
+       "max_steps": 5
+      },
+      "data": {
+       "train": "{vol}/data/s0_train_en.jsonl"
+      },
+      "sft": {
+       "lr": 0.0002,
+       "micro_batch": 8,
+       "max_length": 1024,
+       "packing": true,
+       "dev_path": "{vol}/data/dev300_en.jsonl",
+       "dev_every_steps": null,
+       "ckpt_every_min": 30,
+       "keep_ckpts": 1,
+       "dev_max_items": 32
+      },
+      "notes": "T2 P3 0.6B EN seed 0"
+     },
+     "budget_s": 900
+    }
+   ]
+  }
+ ],
+ "wait_s": 14400
+}

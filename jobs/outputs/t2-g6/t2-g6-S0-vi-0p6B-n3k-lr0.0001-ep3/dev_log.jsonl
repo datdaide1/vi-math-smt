@@ -1,0 +1,13 @@
+{"step": 0, "dev_loss": 0.791504, "n_items": 300, "n_tokens": 32951, "s": 0.67}
+{"step": 0, "kind": "midrun", "final": false, "train_loss_recent": null, "dev_loss": 0.791504, "quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.8, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.8, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 50, "dev_loss": 0.553498, "n_items": 300, "n_tokens": 32951, "s": 0.68}
+{"step": 69, "dev_loss": 0.541742, "n_items": 300, "n_tokens": 32951, "s": 0.67}
+{"step": 69, "kind": "midrun", "final": false, "train_loss_recent": 0.54719165, "dev_loss": 0.541742, "quick": {"correct": 0.4062, "no_answer": 0.0, "repetition": 0.0469, "truncated": 0.0469, "n": 64, "step": 69, "s": 10.1, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.8, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 100, "dev_loss": 0.532227, "n_items": 300, "n_tokens": 32951, "s": 0.67}
+{"step": 139, "dev_loss": 0.523723, "n_items": 300, "n_tokens": 32951, "s": 0.72}
+{"step": 139, "kind": "midrun", "final": false, "train_loss_recent": 0.48594194999999996, "dev_loss": 0.523723, "quick": {"correct": 0.4219, "no_answer": 0.0, "repetition": 0.0469, "truncated": 0.0469, "n": 64, "step": 139, "s": 8.1, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.8, "path": "generate"}, "abort": [], "warnings": []}
+{"step": 150, "dev_loss": 0.522011, "n_items": 300, "n_tokens": 32951, "s": 0.69}
+{"step": 200, "dev_loss": 0.525987, "n_items": 300, "n_tokens": 32951, "s": 0.68}
+{"step": 250, "dev_loss": 0.521834, "n_items": 300, "n_tokens": 32951, "s": 1.01}
+{"step": 279, "dev_loss": 0.515744, "n_items": 300, "n_tokens": 32951, "s": 0.73}
+{"step": 279, "kind": "midrun", "final": true, "train_loss_recent": 0.43023795, "dev_loss": 0.515744, "quick": {"correct": 0.4531, "no_answer": 0.0, "repetition": 0.0312, "truncated": 0.0156, "n": 64, "step": 279, "s": 9.7, "path": "generate"}, "base_quick": {"correct": 0.3594, "no_answer": 0.0938, "repetition": 0.0781, "truncated": 0.1719, "n": 64, "step": 0, "s": 14.8, "path": "generate"}, "abort": [], "warnings": []}

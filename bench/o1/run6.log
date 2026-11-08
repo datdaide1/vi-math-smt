@@ -1,0 +1,18 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-3jPatqa1fBul5Xvvm7FEmB
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\modal_bench_eval3.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\eval_worker.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\data
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\bench\o1\sft_worker.py
+├── ✓ Created Function run_unsloth.
+└── ✓ Created Function run_hf.
+spawned unsloth_t4 T4 fp16
+unsloth_t4 unsloth_pad 0 113
+unsloth_t4 unsloth_pack 0 68
+unsloth_t4 unsloth_pad_mb4 0 76
+done unsloth_t4 [{'task': 'unsloth_pad', 'rc': 0, 's': 112.5}, {'task': 'unsloth_pack', 'rc': 0, 's': 68.1}, {'task': 'unsloth_pad_mb4', 'rc': 0, 's': 76.4}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-3jPatqa1fBul5Xvvm7FEmB

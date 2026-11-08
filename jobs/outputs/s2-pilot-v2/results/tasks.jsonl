@@ -1,0 +1,6 @@
+{"lane": 0, "model": "env/check", "task": "envcheck", "arg": "", "rc": 0, "start_min": 5.99, "s": 29.2}
+{"lane": 0, "model": "Qwen/Qwen3-0.6B-Base", "task": "packcheck", "arg": "", "rc": 0, "start_min": 6.58, "s": 44.4}
+{"lane": 0, "model": "Qwen/Qwen3-0.6B-Base", "task": "sft", "arg": "", "rc": 0, "start_min": 7.32, "s": 294.1}
+{"lane": 1, "model": "Qwen/Qwen3-1.7B-Base", "task": "sft", "arg": "", "rc": 0, "start_min": 6.58, "s": 513.1}
+{"lane": 0, "model": "Qwen/Qwen3-0.6B-Base", "task": "sft_packed_hf", "arg": "pos_ids_no_cache", "rc": 0, "start_min": 12.22, "s": 316.7}
+{"lane": 0, "model": "Qwen/Qwen3-0.6B-Base", "task": "unsloth", "arg": "", "rc": 0, "start_min": 17.5, "s": 568.3}

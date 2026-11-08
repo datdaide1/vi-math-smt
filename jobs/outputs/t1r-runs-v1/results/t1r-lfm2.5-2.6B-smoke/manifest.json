@@ -1,0 +1,105 @@
+{
+ "run_id": "t1r-lfm2.5-2.6B-smoke",
+ "kind": "sft",
+ "arm": "S0",
+ "model": "LiquidAI/LFM2.5-2.6B-Base",
+ "size": "2.6B",
+ "seed": 1,
+ "config_hash": "8dd5ab6e",
+ "status": "COMPLETE",
+ "env": {
+  "python": "3.13.16",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "trl": null,
+  "accelerate": "1.15.0",
+  "vllm": "0.33.0",
+  "gpu": "Tesla T4",
+  "gpu_cap": [
+   7,
+   5
+  ],
+  "cuda": "13.0"
+ },
+ "started_utc": "2026-11-07T16:03:47Z",
+ "model_path": "LiquidAI/LFM2.5-2.6B-Base",
+ "n_params": 2697198592,
+ "lora": {
+  "n_modules": 166,
+  "suffixes": [
+   "in_proj",
+   "k_proj",
+   "out_proj",
+   "q_proj",
+   "v_proj",
+   "w1",
+   "w2",
+   "w3"
+  ]
+ },
+ "grad_ckpt": true,
+ "plan": {
+  "total": 100,
+  "warmup": 3,
+  "decay": 10,
+  "steps_per_epoch": 100,
+  "epochs": 1,
+  "branches": []
+ },
+ "data_stats": {
+  "n_pool": 7157,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 7157,
+  "pool_len_p50": 167,
+  "pool_len_p99": 366,
+  "pool_len_max": 529,
+  "n_items": 3200,
+  "completion_tokens_mean": 98.7,
+  "completion_tokens_p99": 231,
+  "completion_tokens_total": 315847,
+  "sequence_tokens_total": 571617,
+  "sequence_tokens_p99": 363,
+  "fingerprint": "cc9e4370ec9c16aa",
+  "arm": "S0",
+  "train_path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/s0_train.jsonl"
+ },
+ "engine": "hf",
+ "packed": false,
+ "tok_check": null,
+ "lora_param_dtypes": [
+  "torch.float32"
+ ],
+ "trainable_params": 48922624,
+ "updated_utc": "2026-11-07T16:18:59Z",
+ "micro_batch": 8,
+ "accum": 4,
+ "oom_probe": [],
+ "summary": {
+  "steps_total": 100,
+  "exec_steps": 100,
+  "skipped_steps": 0,
+  "skipped_frac": 0.0,
+  "skipped_first10": 0,
+  "nonfinite_losses": 0,
+  "final_scale": 65536.0,
+  "pad_fraction": 0.15473,
+  "real_tokens_per_s": 672.9,
+  "train_s": 849.5,
+  "final_adapter": "/kaggle/working/results/t1r-lfm2.5-2.6B-smoke/adapters/epoch1",
+  "outputs": {
+   "epoch1": "/kaggle/working/results/t1r-lfm2.5-2.6B-smoke/adapters/epoch1"
+  },
+  "engine": "hf",
+  "packed": false,
+  "micro_batch": 8,
+  "dev_loss_final": null,
+  "max_abs_act": 16.109375,
+  "peak_mem_gb": 8.99,
+  "resumed_from": []
+ }
+}

@@ -1,0 +1,48 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-yEBXDWLt2cXvzazavrLlUZ
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\modal_s2.py
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\pilot\s2_pi
+│   lot.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\s2-modal-data
+└── ✓ Created Function run_plan.
+spawned parity_t4_fp16 T4 fp16
+Stopping app - uncaught exception raised locally: InvalidError("Invalid GPU config: ['L4', 'A10G', 'L40S']. Value must be a string or `None`").
+┌───────────────────── Traceback (most recent call last) ─────────────────────┐
+│ E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug/infra/modal_s2.py │
+│ :107 in main                                                                │
+│                                                                             │
+│   106 │   │   gpu, dtype, env_extra, steps, timeout = PLANS[n]              │
+│ > 107 │   │   calls[n] = run_plan.with_options(gpu=gpu, timeout=timeout).sp │
+│   108 │   │   print("spawned", n, gpu, dtype, flush=True)                   │
+│                                                                             │
+│ E:\venv_tools\Lib\site-packages\modal\_functions.py:1868 in with_options    │
+│                                                                             │
+│   1867 │   │   """                                                          │
+│ > 1868 │   │   options = _FunctionOptions.new(                              │
+│   1869 │   │   │   cpu=cpu,                                                 │
+│                                                                             │
+│ E:\venv_tools\Lib\site-packages\modal\_function_variants.py:90 in new       │
+│                                                                             │
+│    89 │   │   if gpu or cpu or memory:                                      │
+│ >  90 │   │   │   resources = convert_fn_config_to_resources_config(cpu=cpu │
+│    91 │   │   else:                                                         │
+│                                                                             │
+│ E:\venv_tools\Lib\site-packages\modal\_resources.py:47 in                   │
+│ convert_fn_config_to_resources_config                                       │
+│                                                                             │
+│   46 │   │   milli_cpu_max=milli_cpu_max,                                   │
+│ > 47 │   │   gpu_config=parse_gpu_config(gpu),                              │
+│   48 │   │   memory_mb=memory_mb,                                           │
+│                                                                             │
+│ E:\venv_tools\Lib\site-packages\modal\_utils\function_utils.py:669 in       │
+│ parse_gpu_config                                                            │
+│                                                                             │
+│   668 │   else:                                                             │
+│ > 669 │   │   raise InvalidError(f"Invalid GPU config: {value!r}. Value mus │
+│   670                                                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+InvalidError: Invalid GPU config: ['L4', 'A10G', 'L40S']. Value must be a 
+string or `None`

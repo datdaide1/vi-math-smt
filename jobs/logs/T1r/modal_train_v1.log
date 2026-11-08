@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-BKAGWLVHtrRduaMAe0Gk3G
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_t4.
+└── ✓ Created Function smoke_t4.
+spawned ['fc-01M6VAF904MPVK8EN950QW1N78', 'fc-01M6VAF9HS0C9B0P525JMYEDJY', 'fc-01M6VAFA3DP5A1DAV3JCQ10MNA', 'fc-01M6VAFAGDBWCK0FDYK3QEQ41Z', 'fc-01M6VAFAZCC8V1H2CNEMX6Y0KV']
+[modal-client] 2026-11-07T15:37:30+0000 Received a cancellation signal while processing input ('in-01M6VAF9J145DCJAGQNHYWSEKJ:1794065802842-0',)
+[modal-client] 2026-11-07T15:37:30+0000 Successfully canceled input ('in-01M6VAF9J145DCJAGQNHYWSEKJ:1794065802842-0',)
+[modal-client] 2026-11-07T15:37:30+0000 Received a cancellation signal while processing input ('in-01M6VAF90CMFQR5P2TJ8TAWPKS:1794065802271-0',)
+[modal-client] 2026-11-07T15:37:30+0000 Successfully canceled input ('in-01M6VAF90CMFQR5P2TJ8TAWPKS:1794065802271-0',)
+None None None None
+RemoteError('Function call was cancelled by user or a failure.')
+[modal-client] 2026-11-07T15:37:31+0000 Received a cancellation signal while processing input ('in-01M6VAFA3SH5TGEVD09K6EN5NP:1794065803401-0',)
+[modal-client] 2026-11-07T15:37:31+0000 Successfully canceled input ('in-01M6VAFA3SH5TGEVD09K6EN5NP:1794065803401-0',)
+[modal-client] 2026-11-07T15:37:31+0000 Received a cancellation signal while processing input ('in-01M6VAFAGMWEPPFF5MA5VFQVAW:1794065803816-0',)
+[modal-client] 2026-11-07T15:37:31+0000 Successfully canceled input ('in-01M6VAFAGMWEPPFF5MA5VFQVAW:1794065803816-0',)
+None None None None
+RemoteError('Function call was cancelled by user or a failure.')
+None None None None
+RemoteError('Function call was cancelled by user or a failure.')
+Runner terminated.
+None None None None
+RemoteError('Function call was cancelled by user or a failure.')
+Runner terminated.
+Runner terminated.
+Runner terminated.
+dry-t2-sft-Yp-vi-0p6B-s0 0 100.4 Tesla T4, 15360 MiB
+nslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[9.6e-05, 0.000372, 0.000328, 0.000452] fused=1.13e-05
+[sft] dev step 0: 0.76427
+[sft] step 0/5 loss 0.5604 lr 2.00e-04 gn 0.83413 skip 0
+[sft] skip rule not applicable: only 5 steps (< 50)
+[sft] dev step 5: 0.82354
+
+dry-t2-sft-Nm-en-0p6B-s0 0 79.0 Tesla T4, 15360 MiB
+unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[0.000238, 5.7e-05, 9.3e-05, 0.000498] fused=4.59e-05
+[sft] dev step 0: 0.77046
+[sft] step 0/5 loss 0.6745 lr 2.00e-04 gn 1.04663 skip 0
+[sft] skip rule not applicable: only 5 steps (< 50)
+[sft] dev step 5: 0.70885
+
+dry-t2-sft-S0-en-0p6B-s0 0 75.5 Tesla T4, 15360 MiB
+unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[4.2e-05, 0.000636, 0.00058, 0.000133] fused=3.51e-04
+[sft] dev step 0: 0.77046
+[sft] step 0/5 loss 0.7896 lr 2.00e-04 gn 1.63759 skip 0
+[sft] skip rule not applicable: only 5 steps (< 50)
+[sft] dev step 5: 0.53512
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-BKAGWLVHtrRduaMAe0Gk3G
+rc=0

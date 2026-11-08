@@ -1,0 +1,386 @@
+{
+ "base": "Qwen/Qwen3-0.6B-Base",
+ "tag": "t2-eval-080418679221",
+ "configs": [
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-S0-vi-0p6B-s2-primary",
+   "arm": "S0",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-S0-vi-0p6B-s2-primary",
+   "eval": {
+    "source_run_id": "t2-sft-S0-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-S0-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 4,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-S0-vi-0p6B-s2-exam-greedy",
+   "arm": "S0",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-S0-vi-0p6B-s2-exam-greedy",
+   "eval": {
+    "source_run_id": "t2-sft-S0-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-S0-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 0,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Yp-vi-0p6B-s2-primary",
+   "arm": "Y+",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Yp-vi-0p6B-s2-primary",
+   "eval": {
+    "source_run_id": "t2-sft-Yp-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Yp-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 4,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Yp-vi-0p6B-s2-exam-greedy",
+   "arm": "Y+",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Yp-vi-0p6B-s2-exam-greedy",
+   "eval": {
+    "source_run_id": "t2-sft-Yp-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Yp-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 0,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Ym-vi-0p6B-s2-primary",
+   "arm": "Y-",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Ym-vi-0p6B-s2-primary",
+   "eval": {
+    "source_run_id": "t2-sft-Ym-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Ym-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 4,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Ym-vi-0p6B-s2-exam-greedy",
+   "arm": "Y-",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Ym-vi-0p6B-s2-exam-greedy",
+   "eval": {
+    "source_run_id": "t2-sft-Ym-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Ym-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 0,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Np-vi-0p6B-s2-primary",
+   "arm": "N+",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Np-vi-0p6B-s2-primary",
+   "eval": {
+    "source_run_id": "t2-sft-Np-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Np-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 4,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Np-vi-0p6B-s2-exam-greedy",
+   "arm": "N+",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Np-vi-0p6B-s2-exam-greedy",
+   "eval": {
+    "source_run_id": "t2-sft-Np-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Np-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 0,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Nm-vi-0p6B-s2-primary",
+   "arm": "N-",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Nm-vi-0p6B-s2-primary",
+   "eval": {
+    "source_run_id": "t2-sft-Nm-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Nm-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 4,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "code": {
+    "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+    "dirty": false,
+    "dirty_files": [],
+    "paths": [
+     "vi_math_verified_aug/train",
+     "vi_math_verified_aug/evalrun",
+     "vi_math_verified_aug/eval/math_verify.py",
+     "vi_math_verified_aug/__init__.py"
+    ]
+   },
+   "platform": "modal_l40s",
+   "run_id": "ev-t2-sft-Nm-vi-0p6B-s2-exam-greedy",
+   "arm": "N-",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 2,
+   "lang": "vi",
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-t2-sft-Nm-vi-0p6B-s2-exam-greedy",
+   "eval": {
+    "source_run_id": "t2-sft-Nm-vi-0p6B-s2",
+    "adapter_path": "{vol}/train/t2-sft-Nm-vi-0p6B-s2/adapters/epoch3",
+    "shots": 0,
+    "max_new_tokens": 1024,
+    "k_samples": 0,
+    "greedy": true,
+    "sets": [
+     {
+      "name": "vi_exam_core_verified",
+      "path": "{vol}/eval_data/vi_exam_core_verified.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  }
+ ]
+}

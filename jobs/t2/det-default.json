@@ -1,0 +1,65 @@
+{
+ "base": "Qwen/Qwen3-0.6B-Base",
+ "tag": "det-default",
+ "env": {},
+ "configs": [
+  {
+   "kind": "eval",
+   "run_id": "det-default-c128",
+   "arm": "base",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "precision": "bf16",
+   "out_dir": "{vol}/det/det-default-c128",
+   "template": {
+    "fewshot_path": "{vol}/eval_data/fewshot4_vi.jsonl"
+   },
+   "eval": {
+    "source_run_id": "det",
+    "shots": 4,
+    "k_samples": 0,
+    "greedy": true,
+    "max_new_tokens": 512,
+    "max_items": 128,
+    "chunk_items": 128,
+    "sets": [
+     {
+      "name": "dev300",
+      "path": "{vol}/data/dev300.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "eval",
+   "run_id": "det-default-c16",
+   "arm": "base",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "precision": "bf16",
+   "out_dir": "{vol}/det/det-default-c16",
+   "template": {
+    "fewshot_path": "{vol}/eval_data/fewshot4_vi.jsonl"
+   },
+   "eval": {
+    "source_run_id": "det",
+    "shots": 4,
+    "k_samples": 0,
+    "greedy": true,
+    "max_new_tokens": 512,
+    "max_items": 128,
+    "chunk_items": 16,
+    "sets": [
+     {
+      "name": "dev300",
+      "path": "{vol}/data/dev300.jsonl",
+      "lang": "vi"
+     }
+    ]
+   }
+  }
+ ]
+}

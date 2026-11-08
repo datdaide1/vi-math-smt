@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+  "rows": 6788
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.2578,
+  "label_frac_mean": 0.5662,
+  "label_frac_max": 0.8127,
+  "decoded": [
+   {
+    "id": "vi_gsm8k_train/3",
+    "prompt_tail": "i số trang hôm qua. Nếu cô ấy muốn đọc một nửa số trang còn lại vào ngày mai, cô ấy nên đọc bao nhiêu trang?\n\nLời giải:\n",
+    "trained_text": "Maila đã đọc 12 x 2 = 24 trang hôm nay.\nVì vậy, cô ấy đã đọc tổng cộng 12 + 24 = 36 trang kể từ hôm qua.\nCòn lại 120 - 36 = 84 trang cần đọc.\nVì cô ấy muốn đọc một nửa số trang còn lại vào ngày mai, thì cô ấy nên đọc 84/2 = 42 trang.\nĐáp số: \\boxed{42}",
+    "n_trained": 113,
+    "n_total": 191,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/4",
+    "prompt_tail": "viết một lá thư dài 3 trang cho 2 người bạn khác nhau hai lần một tuần. Anh ấy viết bao nhiêu trang một năm?\n\nLời giải:\n",
+    "trained_text": "Anh ấy viết cho mỗi người bạn 3*2=6 trang một tuần\nVậy anh ấy viết 6*2=12 trang mỗi tuần\nĐiều đó có nghĩa là anh ấy viết 12*52=624 trang một năm\nĐáp số: \\boxed{624}",
+    "n_trained": 75,
+    "n_total": 118,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/7",
+    "prompt_tail": "n để trọng lượng tăng gấp đôi một lần nữa. Trọng lượng cuối cùng của hộp quà, tính bằng pound, là bao nhiêu?\n\nLời giải:\n",
+    "trained_text": "Với 2 pound kẹo dẻo ban đầu, anh ấy đã thêm đủ bánh brownie để trọng lượng tăng gấp ba, làm cho trọng lượng là 2*3=6 pound.\nTiếp theo, anh ấy thêm 2 pound kẹo dẻo nữa, làm cho trọng lượng là 6+2=8 pound.\nVà cuối cùng, anh ấy thêm đủ kẹo dẻo hình giun để trọng lượng tăng gấp đôi một lần nữa, đạt trọng lượng cuối cùng là 8*2=16 pound.\nĐáp số: \\boxed{16}",
+    "n_trained": 131,
+    "n_total": 272,
+    "eos_trained": true
+   }
+  ]
+ }
+}

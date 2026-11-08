@@ -1,0 +1,8 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:  94%|█████████▍| 291/310 [00:00<00:00, 2908.52it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 3057.82it/s]
+[W1107 10:49:35.839371938 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2311061504 bytes (free: 1056899072, total: 23689363456).
+[W1107 10:49:38.344495518 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4280287232 bytes (free: 2115960832, total: 23689363456).
+RESULT {"variant": "pad_rand", "ok": true, "tok_per_s": 981.0, "peak_mem_gb": 16.51, "packing_correct": null, "logit_check_max_nll_diff": null, "error": null}

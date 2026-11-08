@@ -1,0 +1,33 @@
+{
+ "n_pool": 7157,
+ "n_malformed": 0,
+ "n_dropped_too_long": 0,
+ "max_length": 1024,
+ "drop_rate": 0.0,
+ "n_eligible": 7157,
+ "pool_len_p50": 183,
+ "pool_len_p99": 405,
+ "pool_len_max": 560,
+ "n_items": 256,
+ "completion_tokens_mean": 115.45,
+ "completion_tokens_p99": 260,
+ "completion_tokens_total": 29554,
+ "sequence_tokens_total": 50790,
+ "sequence_tokens_p99": 364,
+ "fingerprint": "156ee64bd645ef48",
+ "arm": "S0",
+ "train_path": "/vol/data/s0_train.jsonl",
+ "dev": {
+  "n_pool": 300,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 300,
+  "pool_len_p50": 179,
+  "pool_len_p99": 375,
+  "pool_len_max": 439,
+  "n_used": 32,
+  "path": "/vol/data/dev300.jsonl"
+ }
+}

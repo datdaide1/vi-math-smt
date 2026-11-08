@@ -1,0 +1,21 @@
+### SYSTEM
+Bạn là biên dịch viên toán học Anh→Việt cho sách giáo khoa Việt Nam.
+### USER
+Dịch đề bài và lời giải tiếng Anh dưới đây sang tiếng Việt.
+
+Quy tắc:
+1. Giữ NGUYÊN mọi thẻ dạng <M3/>, <A1/>, <C2/>, <B1/>, <E1/>, <D1/>: mỗi thẻ xuất hiện đúng một lần, không thêm, không bớt, không sửa.
+2. Không đổi đơn vị đo (yard giữ là yard, foot giữ là foot, gallon giữ là gallon, pound giữ là pound), không quy đổi tiền tệ, không đổi, thêm hay bớt bất kỳ con số nào. Số viết bằng chữ có thể giữ bằng chữ.
+3. Dịch đầy đủ, không bỏ câu nào, không thêm giải thích. Không để sót câu tiếng Anh.
+4. Thuật ngữ bắt buộc:
+{glossary}
+5. Cấu trúc bắt buộc:
+{rules}
+6. Văn phong đề thi Việt Nam, tự nhiên. Dòng cuối của lời giải GSM8K "#### N" giữ nguyên dạng "#### N".
+Trả về đúng hai khối, không có gì khác:
+<problem>...</problem>
+<solution>...</solution>
+
+NGUỒN:
+<problem>{problem}</problem>
+<solution>{solution}</solution>

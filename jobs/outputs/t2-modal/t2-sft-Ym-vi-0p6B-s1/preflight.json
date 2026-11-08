@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "0b51bebf01343984abc6717675f6ef6d3cab135aaedcf567a111a7ab4fb2f749",
+  "rows": 1808
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3148,
+  "label_frac_mean": 0.5805,
+  "label_frac_max": 0.837,
+  "decoded": [
+   {
+    "id": "Y/vi/02a2030ef06e:1",
+    "prompt_tail": "ng. Ngoài ra, tổng số nhà bếp trên toàn bộ trạm là 34 ngôi nhà bếp. Hỏi trạm có bao nhiêu cấu trúc hình trụ?\n\nLời giải:\n",
+    "trained_text": "**Bước 1: Đặt ẩn.** Gọi $n$ là số cấu trúc hình trụ, $k$ là số nhà bếp trong mỗi cấu trúc.\n\n**Bước 2: Lập phương trình số nhà bếp.** Tổng số nhà bếp toàn trạm là 34:\n$$n \\cdot k = 34$$\n\n**Bước 3: Lập phương trình tổng số phòng.** Mỗi cấu trúc có 12 phòng ngủ, 7 phòng tắm và $k$ nhà bếp (nhà bếp cũng là phòng). Tổng số phòng toàn trạm là 72:\n$$n(12 + 7 + k) = 72 \\implies n(19 + k) = 72$$\n\n**Bước 4: Giải hệ.** Khai triển phương trình thứ hai:\n$$19n + nk = 72$$\nThay $nk = 34$:\n$$19n + 34 = 72 \\implies 19n = 38 \\implies n = 2$$\n\nKhi đó $k = 34/2 = 17$.\n\n**Bước 5: Kiểm tra.** Mỗi cấu trúc có $12 + 7 + 17 = 36$ phòng, hai cấu trúc có $2 \\cdot 36 = 72$ phòng. Tổng nhà bếp là $2 \\cdot 17 = 34$. Thỏa mãn cả hai điều kiện.\n\nVậy trạm có 2 cấu trúc hình trụ.\nĐáp số: \\boxed{2}",
+    "n_trained": 346,
+    "n_total": 458,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/vi/66e7f92742de:1",
+    "prompt_tail": "của cả nhóm là 100 bức ảnh. Chú Lực chụp được 70 bức ảnh. Hỏi cả nhóm chụp được tổng cộng bao nhiêu bức ảnh?\n\nLời giải:\n",
+    "trained_text": "**Bước 1: Gọi số ảnh.** Gọi số ảnh Hằng chụp là $H$, tổng số ảnh cả nhóm là $T$.\n\n**Bước 2: Biểu diễn số ảnh của Phúc.** Phúc chụp nhiều hơn Hằng 10 bức, nên Phúc chụp $H + 10$ bức.\n\n**Bước 3: Lập phương trình theo tổng.** Tổng số ảnh:\n$$T = (H + 10) + H + 70 = 2H + 80$$\n\n**Bước 4: Dùng điều kiện Hằng ít hơn tổng 100 bức.**\n$$H = T - 100$$\n\n**Bước 5: Giải.** Thay $H = T - 100$ vào phương trình trên:\n$$T = 2(T - 100) + 80 = 2T - 120$$\n$$T = 120$$\n\n**Kiểm tra:** Hằng chụp $H = 20$, Phúc chụp $30$, chú Lực chụp $70$. Tổng là $120$. Hằng ít hơn tổng $120 - 20 = 100$ bức. Đúng.\n\nVậy cả nhóm chụp được tổng cộng 120 bức ảnh.\nĐáp số: \\boxed{120}",
+    "n_trained": 302,
+    "n_total": 398,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/vi/5297338785a0:1",
+    "prompt_tail": "đã bán được 55 chồng bánh kếp và 95 lát thịt xông khói. Hỏi tổng số tiền gây quỹ thu được là bao nhiêu đồng?\n\nLời giải:\n",
+    "trained_text": "Số tiền bán bánh kếp: 55 × 40.000 = 2.200.000 đồng.\n\nSố tiền bán thịt xông khói: 95 × 20.000 = 1.900.000 đồng.\n\nTổng số tiền gây quỹ thu được: 2.200.000 + 1.900.000 = 4.100.000 đồng.\nĐáp số: \\boxed{4100000}",
+    "n_trained": 127,
+    "n_total": 243,
+    "eos_trained": true
+   }
+  ]
+ }
+}

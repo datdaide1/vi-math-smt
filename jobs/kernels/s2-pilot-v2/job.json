@@ -1,0 +1,29 @@
+{
+ "lanes": [
+  [
+   ["Qwen/Qwen3-0.6B-Base", ["packcheck", "sft", "sft_packed_hf"]],
+   ["Qwen/Qwen3-0.6B-Base", ["unsloth"]]
+  ],
+  [
+   ["Qwen/Qwen3-1.7B-Base", ["sft"]]
+  ]
+ ],
+ "install": "pip install -q 'vllm==0.33.0'",
+ "env_fix": ["pip uninstall -y -q torchao"],
+ "python": "3.13",
+ "pins": {"torch": "2.14.0", "transformers": "5.20.2", "peft": "0.21.2", "vllm": "0.33.0", "accelerate": "1.15.0"},
+ "fail_fast": true,
+ "unsloth_install": "pip install -q --no-deps --target /tmp/uns_site unsloth==2026.11.3 unsloth_zoo==2026.11.3 trl==1.17.1 cut_cross_entropy==25.1.1 bitsandbytes",
+ "micro": 8,
+ "gc_above_params": 2.5e9,
+ "hook_every": 4,
+ "sft_steps": 100,
+ "eval_n": 300,
+ "use_vllm": true,
+ "task_timeout_s": 1500,
+ "unsloth_timeout_s": 1800,
+ "deadline_s": 3000,
+ "deadline_grace_s": 300,
+ "kernel_timeout_s": 4200,
+ "max_queued_s": 3600
+}

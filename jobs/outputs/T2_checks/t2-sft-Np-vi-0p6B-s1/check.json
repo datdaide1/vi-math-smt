@@ -1,0 +1,93 @@
+{
+ "run_id": "t2-sft-Np-vi-0p6B-s1",
+ "status": "COMPLETE",
+ "steps": 168,
+ "loss_first5": 0.5424,
+ "loss_last10pct": 0.1898,
+ "dev": [
+  [
+   0,
+   0.791504
+  ],
+  [
+   42,
+   0.919171
+  ],
+  [
+   84,
+   0.974558
+  ],
+  [
+   168,
+   1.084332
+  ]
+ ],
+ "quick": [
+  [
+   0,
+   {
+    "correct": 0.3594,
+    "no_answer": 0.0938,
+    "repetition": 0.0781,
+    "truncated": 0.1719,
+    "n": 64,
+    "step": 0,
+    "s": 14.3,
+    "path": "generate"
+   }
+  ],
+  [
+   42,
+   {
+    "correct": 0.5312,
+    "no_answer": 0.0,
+    "repetition": 0.0,
+    "truncated": 0.0,
+    "n": 64,
+    "step": 42,
+    "s": 7.7,
+    "path": "generate"
+   }
+  ],
+  [
+   84,
+   {
+    "correct": 0.5156,
+    "no_answer": 0.0156,
+    "repetition": 0.0156,
+    "truncated": 0.0156,
+    "n": 64,
+    "step": 84,
+    "s": 9.6,
+    "path": "generate"
+   }
+  ],
+  [
+   168,
+   {
+    "correct": 0.4688,
+    "no_answer": 0.0,
+    "repetition": 0.0,
+    "truncated": 0.0156,
+    "n": 64,
+    "step": 168,
+    "s": 9.2,
+    "path": "generate"
+   }
+  ]
+ ],
+ "tok_per_s_median": 38681,
+ "platform": "NVIDIA L40S",
+ "flags": {},
+ "warnings": {
+  "dev_up": [
+   0.791504,
+   1.084332
+  ],
+  "dev_gap": [
+   1.084332,
+   0.1898
+  ]
+ },
+ "clean": true
+}

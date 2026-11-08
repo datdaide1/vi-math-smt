@@ -1,0 +1,19 @@
+### SYSTEM
+Bạn là biên tập viên sách giáo khoa toán. Sửa TỐI THIỂU đoạn văn dưới đây theo đúng danh sách chỉnh sửa. Giữ nguyên nhân vật, bối cảnh, giọng văn. Mọi con số đã cho phải nằm trong thẻ <q n="ID">…</q> (ID và giá trị đúng như danh sách). Không thêm số nào khác (kể cả số viết bằng chữ số ngoài thẻ). Không viết lời giải, gợi ý hay đáp số.
+
+### USER
+VĂN_BẢN (có thẻ):
+<<tagged>>
+
+CHỈNH_SỬA (JSON):
+<<edits>>
+
+Giải thích các loại chỉnh sửa:
+- UNKNOWN: số trong thẻ q này không còn được cho biết nữa; xoá thẻ và con số đó, viết lại câu cho tự nhiên (đại lượng này trở thành điều cần tìm).
+- STATE_FACT: thêm một câu nêu dữ kiện mới (nhãn + giá trị), đặt giá trị trong thẻ <q n="ID">…</q> như đã cho.
+- NEW_QUESTION: thay câu hỏi cuối bằng một câu hỏi về đại lượng có nhãn đã cho.
+- INSERT_STEP: chèn đúng một tình tiết mới vào câu chuyện, ngay sau câu có thẻ "after_q", theo mô tả; giá trị mới đặt trong thẻ đã cho.
+- REPLACE_RELATION: đổi quan hệ được mô tả trong câu chứa đoạn "clause" (ví dụ "thêm" thành "bớt"), giữ nguyên các thẻ số.
+- SET_VALUE: đổi giá trị trong thẻ q này thành giá trị mới.
+
+Chỉ trả về MỘT đối tượng JSON: {"text_tagged": "<đoạn văn đã sửa, còn nguyên các thẻ q>"}

@@ -1,0 +1,556 @@
+{
+ "Qwen/Qwen3-0.6B-Base": {
+  "bos_token": null,
+  "bos_id": null,
+  "eos_token": "<|endoftext|>",
+  "eos_id": 151643,
+  "pad_token": "<|endoftext|>",
+  "pad_id": 151643,
+  "generation_config_eos": 151643,
+  "bos_prefix": [],
+  "add_special_tokens_ids_of_x": [
+   87
+  ],
+  "S0_vi": {
+   "stats": {
+    "n_pool": 1500,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 1500,
+    "pool_len_p50": 180,
+    "pool_len_p99": 405,
+    "pool_len_max": 496
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.255,
+    "label_frac_mean": 0.5608,
+    "label_frac_max": 0.8069,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/0",
+      "prompt_tail": "ố kẹp tóc bằng một nửa số đó vào tháng 5. Natalia đã bán tổng cộng bao nhiêu kẹp tóc vào tháng 4 và tháng 5?\n\nLời giải:\n",
+      "trained_text": "Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}",
+      "n_trained": 64,
+      "n_total": 138,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/1",
+      "prompt_tail": "ược 12 đô la mỗi giờ khi trông trẻ. Hôm qua, cô ấy chỉ trông trẻ 50 phút. Cô ấy đã kiếm được bao nhiêu tiền?\n\nLời giải:\n",
+      "trained_text": "Weng kiếm được 12/60 = $0.2 mỗi phút.\nLàm việc 50 phút, cô ấy kiếm được 0.2 x 50 = $10.\nĐáp số: \\boxed{10}",
+      "n_trained": 55,
+      "n_total": 101,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    33,
+    52551,
+    130051,
+    510
+   ],
+   "last_ids": [
+    17,
+    92,
+    151643
+   ],
+   "first_trained_tok": "N",
+   "prompt_tail": "5?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 137,
+   "n_sep": 137,
+   "completion_tokens_p50_p90_p99_max": [
+    101,
+    175,
+    263,
+    393
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    181,
+    287,
+    406,
+    496
+   ],
+   "trained_text_example": "Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}<|endoftext|>"
+  },
+  "S0_en": {
+   "stats": {
+    "n_pool": 1500,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 1500,
+    "pool_len_p50": 147,
+    "pool_len_p99": 336,
+    "pool_len_max": 434
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.232,
+    "label_frac_mean": 0.5886,
+    "label_frac_max": 0.8107,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/0",
+      "prompt_tail": "l, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?\n\nSolution:\n",
+      "trained_text": "Natalia sold 48/2 = 24 clips in May.\nNatalia sold 48+24 = 72 clips altogether in April and May.\nFinal answer: \\boxed{72}",
+      "n_trained": 48,
+      "n_total": 91,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/1",
+      "prompt_tail": "earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?\n\nSolution:\n",
+      "trained_text": "Weng earns 12/60 = $0.2 per minute.\nWorking 50 minutes, she earned 0.2 x 50 = $10.\nFinal answer: \\boxed{10}",
+      "n_trained": 48,
+      "n_total": 83,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    31198,
+    510,
+    45,
+    4212
+   ],
+   "last_ids": [
+    17,
+    92,
+    151643
+   ],
+   "first_trained_tok": "N",
+   "prompt_tail": " April and May?\n\nSolution:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 90,
+   "n_sep": 90,
+   "completion_tokens_p50_p90_p99_max": [
+    87,
+    150,
+    228,
+    347
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    147,
+    234,
+    337,
+    434
+   ],
+   "trained_text_example": "Natalia sold 48/2 = 24 clips in May.\nNatalia sold 48+24 = 72 clips altogether in April and May.\nFinal answer: \\boxed{72}<|endoftext|>"
+  },
+  "dev300_vi": {
+   "stats": {
+    "n_pool": 300,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 300,
+    "pool_len_p50": 179,
+    "pool_len_p99": 375,
+    "pool_len_max": 439
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.314,
+    "label_frac_mean": 0.5622,
+    "label_frac_max": 0.7968,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/23",
+      "prompt_tail": " giày với giá $10 mỗi đôi. Cô ấy cũng mua 4 chiếc áo, tất cả đều có cùng giá. Mỗi chiếc áo có giá bao nhiêu?\n\nLời giải:\n",
+      "trained_text": "Cô ấy mua 5 chiếc quần short với giá $7 mỗi chiếc, vậy là 5*7=$35\nCô ấy mua 2 đôi giày với giá $10 mỗi đôi, vậy là 2*10=$20\nQuần short và giày có giá 35+20 = $55\nChúng ta biết cô ấy đã chi tổng cộng $75 và quần short cùng giày có giá $55, vậy số tiền còn lại là 75-55 = $20\nCô ấy mua 4 chiếc áo với tổng giá $20, vậy 20/4 = $5\nĐáp số: \\boxed{5}",
+      "n_trained": 153,
+      "n_total": 238,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/34",
+      "prompt_tail": " Tony. Nếu Ken nhận được $1750, và Tony nhận được gấp đôi số tiền của Ken, thì số tiền đã chia là bao nhiêu?\n\nLời giải:\n",
+      "trained_text": "Tony nhận được gấp đôi $1750, tức là 2*$1750 = $3500\nTổng số tiền đã chia là $1750+$3500 = $5250\nĐáp số: \\boxed{5250}",
+      "n_trained": 66,
+      "n_total": 128,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    33,
+    52551,
+    130051,
+    510
+   ],
+   "last_ids": [
+    20,
+    92,
+    151643
+   ],
+   "first_trained_tok": "C",
+   "prompt_tail": " nhiêu?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 237,
+   "n_sep": 237,
+   "completion_tokens_p50_p90_p99_max": [
+    100,
+    178,
+    248,
+    289
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    179,
+    290,
+    387,
+    439
+   ],
+   "trained_text_example": " 5*7=$35\nCô ấy mua 2 đôi giày với giá $10 mỗi đôi, vậy là 2*10=$20\nQuần short và giày có giá 35+20 = $55\nChúng ta biết cô ấy đã chi tổng cộng $75 và quần short cùng giày có giá $55, vậy số tiền còn lại là 75-55 = $20\nCô ấy mua 4 chiếc áo với tổng giá $20, vậy 20/4 = $5\nĐáp số: \\boxed{5}<|endoftext|>"
+  },
+  "N_pilot_vi": {
+   "stats": {
+    "n_pool": 179,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 179,
+    "pool_len_p50": 280,
+    "pool_len_p99": 585,
+    "pool_len_max": 646
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.4538,
+    "label_frac_mean": 0.632,
+    "label_frac_max": 0.8869,
+    "decoded": [
+     {
+      "id": "vi|B|a3596dbdc726:1",
+      "prompt_tail": "iá 5.000 đồng và tổng số tiền Vy phải trả cho cả bốn món là 135.000 đồng, hỏi cuốn vở có giá bao nhiêu tiền?\n\nLời giải:\n",
+      "trained_text": "Giải từng bước:\n\n1. Giá tờ báo: 5.000 đồng.\n2. Giá cuốn truyện bằng 4 lần giá tờ báo: 5.000 × 4 = 20.000 đồng.\n3. Giá cuốn sách tham khảo bằng 2 lần giá cuốn truyện: 20.000 × 2 = 40.000 đồng.\n4. Giá cuốn vở bằng 40% giá cuốn sách tham khảo: 40.000 × 40% = 16.000 đồng.\n\nKiểm tra: 20.000 + 40.000 + 5.000 + 16.000 = 81.000 đồng, không khớp với tổng 135.000 đồng. Vì vậy cần xem lại cách hiểu đề.\n\nCách hiểu hợp lý: tổng 135.000 đồng là tổng của cả bốn món, với giá truyện, sách, báo, vở đều được biểu diễn theo giá báo (ẩn số). Gọi giá báo là x:\n- Truyện: 4x\n- Sách tham khảo: 2 × 4x = 8x\n- Vở: 40% × 8x = 3,2x\n\nTổng: x + 4x + 8x + 3,2x = 16,2x = 135.000\n\nx = 135.000 / 16,2 = 8.333,33..., không phải số nguyên, nên đề này không nhất quán với giá báo 5.000 đồng.\n\nVới giá báo đã cho 5.000 đồng, các giá trị tính được là truyện 20.000, sách 40.000, báo 5.000, vở 16.000, tổng 81.000 đồng. Nếu tổng thực tế là 135.000 đồng thì các giá đã cho không đủ để xác định giá vở theo đúng dữ kiện tổng; nhưng theo quan hệ các giá đã cho, giá cuốn vở là 16.000 đồng.\n\n16000\nĐáp số: \\boxed{16000}",
+      "n_trained": 523,
+      "n_total": 646,
+      "eos_trained": true
+     },
+     {
+      "id": "vi|B|494a9c0fdc19:1",
+      "prompt_tail": "a đình trong xóm. Thảo nhận được 1/4 số bánh mà Minh đã tặng. Hỏi Thảo nhận được bao nhiêu chiếc bánh chưng?\n\nLời giải:\n",
+      "trained_text": "Bước 1: Minh giữ lại 1/3 số bánh:\n72 × 1/3 = 24 chiếc.\n\nBước 2: Số bánh Minh tặng cho hàng xóm:\n72 − 24 = 48 chiếc.\n\nBước 3: Thảo nhận được 1/4 số bánh Minh đã tặng:\n48 × 1/4 = 12 chiếc.\n\nVậy Thảo nhận được 12 chiếc bánh chưng.\n\n12\nĐáp số: \\boxed{12}",
+      "n_trained": 112,
+      "n_total": 190,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    33,
+    52551,
+    130051,
+    510
+   ],
+   "last_ids": [
+    15,
+    92,
+    151643
+   ],
+   "first_trained_tok": "Gi",
+   "prompt_tail": " tiền?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 645,
+   "n_sep": 645,
+   "completion_tokens_p50_p90_p99_max": [
+    179,
+    308,
+    394,
+    523
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    280,
+    434,
+    585,
+    646
+   ],
+   "trained_text_example": "ác giá trị tính được là truyện 20.000, sách 40.000, báo 5.000, vở 16.000, tổng 81.000 đồng. Nếu tổng thực tế là 135.000 đồng thì các giá đã cho không đủ để xác định giá vở theo đúng dữ kiện tổng; nhưng theo quan hệ các giá đã cho, giá cuốn vở là 16.000 đồng.\n\n16000\nĐáp số: \\boxed{16000}<|endoftext|>"
+  }
+ },
+ "LiquidAI/LFM2.5-2.6B-Base": {
+  "bos_token": "<|startoftext|>",
+  "bos_id": 124894,
+  "eos_token": "<|im_end|>",
+  "eos_id": 124900,
+  "pad_token": "<|pad|>",
+  "pad_id": 124893,
+  "generation_config_eos": 124900,
+  "bos_prefix": [],
+  "add_special_tokens_ids_of_x": [
+   96
+  ],
+  "S0_vi": {
+   "stats": {
+    "n_pool": 1500,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 1500,
+    "pool_len_p50": 165,
+    "pool_len_p99": 366,
+    "pool_len_max": 450
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.2463,
+    "label_frac_mean": 0.5406,
+    "label_frac_max": 0.7952,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/0",
+      "prompt_tail": "ố kẹp tóc bằng một nửa số đó vào tháng 5. Natalia đã bán tổng cộng bao nhiêu kẹp tóc vào tháng 4 và tháng 5?\n\nLời giải:\n",
+      "trained_text": "Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}",
+      "n_trained": 56,
+      "n_total": 126,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/1",
+      "prompt_tail": "ược 12 đô la mỗi giờ khi trông trẻ. Hôm qua, cô ấy chỉ trông trẻ 50 phút. Cô ấy đã kiếm được bao nhiêu tiền?\n\nLời giải:\n",
+      "trained_text": "Weng kiếm được 12/60 = $0.2 mỗi phút.\nLàm việc 50 phút, cô ấy kiếm được 0.2 x 50 = $10.\nĐáp số: \\boxed{10}",
+      "n_trained": 48,
+      "n_total": 95,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    42,
+    73193,
+    75979,
+    833
+   ],
+   "last_ids": [
+    7832,
+    101,
+    124900
+   ],
+   "first_trained_tok": "N",
+   "prompt_tail": "5?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 125,
+   "n_sep": 125,
+   "completion_tokens_p50_p90_p99_max": [
+    89,
+    155,
+    242,
+    348
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    165,
+    261,
+    366,
+    450
+   ],
+   "trained_text_example": "Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}<|im_end|>"
+  },
+  "S0_en": {
+   "stats": {
+    "n_pool": 1500,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 1500,
+    "pool_len_p50": 136,
+    "pool_len_p99": 306,
+    "pool_len_max": 400
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.2333,
+    "label_frac_mean": 0.5631,
+    "label_frac_max": 0.7978,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/0",
+      "prompt_tail": "l, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?\n\nSolution:\n",
+      "trained_text": "Natalia sold 48/2 = 24 clips in May.\nNatalia sold 48+24 = 72 clips altogether in April and May.\nFinal answer: \\boxed{72}",
+      "n_trained": 42,
+      "n_total": 84,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/1",
+      "prompt_tail": "earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?\n\nSolution:\n",
+      "trained_text": "Weng earns 12/60 = $0.2 per minute.\nWorking 50 minutes, she earned 0.2 x 50 = $10.\nFinal answer: \\boxed{10}",
+      "n_trained": 43,
+      "n_total": 80,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    60668,
+    833,
+    54,
+    2831
+   ],
+   "last_ids": [
+    7832,
+    101,
+    124900
+   ],
+   "first_trained_tok": "N",
+   "prompt_tail": " April and May?\n\nSolution:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 83,
+   "n_sep": 83,
+   "completion_tokens_p50_p90_p99_max": [
+    77,
+    132,
+    210,
+    300
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    136,
+    217,
+    309,
+    400
+   ],
+   "trained_text_example": "Natalia sold 48/2 = 24 clips in May.\nNatalia sold 48+24 = 72 clips altogether in April and May.\nFinal answer: \\boxed{72}<|im_end|>"
+  },
+  "dev300_vi": {
+   "stats": {
+    "n_pool": 300,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 300,
+    "pool_len_p50": 164,
+    "pool_len_p99": 332,
+    "pool_len_max": 401
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.3099,
+    "label_frac_mean": 0.5413,
+    "label_frac_max": 0.7955,
+    "decoded": [
+     {
+      "id": "vi_gsm8k_train/23",
+      "prompt_tail": " giày với giá $10 mỗi đôi. Cô ấy cũng mua 4 chiếc áo, tất cả đều có cùng giá. Mỗi chiếc áo có giá bao nhiêu?\n\nLời giải:\n",
+      "trained_text": "Cô ấy mua 5 chiếc quần short với giá $7 mỗi chiếc, vậy là 5*7=$35\nCô ấy mua 2 đôi giày với giá $10 mỗi đôi, vậy là 2*10=$20\nQuần short và giày có giá 35+20 = $55\nChúng ta biết cô ấy đã chi tổng cộng $75 và quần short cùng giày có giá $55, vậy số tiền còn lại là 75-55 = $20\nCô ấy mua 4 chiếc áo với tổng giá $20, vậy 20/4 = $5\nĐáp số: \\boxed{5}",
+      "n_trained": 136,
+      "n_total": 219,
+      "eos_trained": true
+     },
+     {
+      "id": "vi_gsm8k_train/34",
+      "prompt_tail": " Tony. Nếu Ken nhận được $1750, và Tony nhận được gấp đôi số tiền của Ken, thì số tiền đã chia là bao nhiêu?\n\nLời giải:\n",
+      "trained_text": "Tony nhận được gấp đôi $1750, tức là 2*$1750 = $3500\nTổng số tiền đã chia là $1750+$3500 = $5250\nĐáp số: \\boxed{5250}",
+      "n_trained": 54,
+      "n_total": 111,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    42,
+    73193,
+    75979,
+    833
+   ],
+   "last_ids": [
+    29,
+    101,
+    124900
+   ],
+   "first_trained_tok": "C",
+   "prompt_tail": " nhiêu?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 218,
+   "n_sep": 218,
+   "completion_tokens_p50_p90_p99_max": [
+    88,
+    158,
+    222,
+    251
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    165,
+    273,
+    350,
+    401
+   ],
+   "trained_text_example": " là 5*7=$35\nCô ấy mua 2 đôi giày với giá $10 mỗi đôi, vậy là 2*10=$20\nQuần short và giày có giá 35+20 = $55\nChúng ta biết cô ấy đã chi tổng cộng $75 và quần short cùng giày có giá $55, vậy số tiền còn lại là 75-55 = $20\nCô ấy mua 4 chiếc áo với tổng giá $20, vậy 20/4 = $5\nĐáp số: \\boxed{5}<|im_end|>"
+  },
+  "N_pilot_vi": {
+   "stats": {
+    "n_pool": 179,
+    "n_malformed": 0,
+    "n_dropped_too_long": 0,
+    "max_length": 1024,
+    "drop_rate": 0.0,
+    "n_eligible": 179,
+    "pool_len_p50": 243,
+    "pool_len_p99": 509,
+    "pool_len_max": 554
+   },
+   "preflight_ok": true,
+   "preflight": {
+    "label_frac_min": 0.3942,
+    "label_frac_mean": 0.6039,
+    "label_frac_max": 0.8802,
+    "decoded": [
+     {
+      "id": "vi|B|a3596dbdc726:1",
+      "prompt_tail": "iá 5.000 đồng và tổng số tiền Vy phải trả cho cả bốn món là 135.000 đồng, hỏi cuốn vở có giá bao nhiêu tiền?\n\nLời giải:\n",
+      "trained_text": "Giải từng bước:\n\n1. Giá tờ báo: 5.000 đồng.\n2. Giá cuốn truyện bằng 4 lần giá tờ báo: 5.000 × 4 = 20.000 đồng.\n3. Giá cuốn sách tham khảo bằng 2 lần giá cuốn truyện: 20.000 × 2 = 40.000 đồng.\n4. Giá cuốn vở bằng 40% giá cuốn sách tham khảo: 40.000 × 40% = 16.000 đồng.\n\nKiểm tra: 20.000 + 40.000 + 5.000 + 16.000 = 81.000 đồng, không khớp với tổng 135.000 đồng. Vì vậy cần xem lại cách hiểu đề.\n\nCách hiểu hợp lý: tổng 135.000 đồng là tổng của cả bốn món, với giá truyện, sách, báo, vở đều được biểu diễn theo giá báo (ẩn số). Gọi giá báo là x:\n- Truyện: 4x\n- Sách tham khảo: 2 × 4x = 8x\n- Vở: 40% × 8x = 3,2x\n\nTổng: x + 4x + 8x + 3,2x = 16,2x = 135.000\n\nx = 135.000 / 16,2 = 8.333,33..., không phải số nguyên, nên đề này không nhất quán với giá báo 5.000 đồng.\n\nVới giá báo đã cho 5.000 đồng, các giá trị tính được là truyện 20.000, sách 40.000, báo 5.000, vở 16.000, tổng 81.000 đồng. Nếu tổng thực tế là 135.000 đồng thì các giá đã cho không đủ để xác định giá vở theo đúng dữ kiện tổng; nhưng theo quan hệ các giá đã cho, giá cuốn vở là 16.000 đồng.\n\n16000\nĐáp số: \\boxed{16000}",
+      "n_trained": 435,
+      "n_total": 554,
+      "eos_trained": true
+     },
+     {
+      "id": "vi|B|494a9c0fdc19:1",
+      "prompt_tail": "a đình trong xóm. Thảo nhận được 1/4 số bánh mà Minh đã tặng. Hỏi Thảo nhận được bao nhiêu chiếc bánh chưng?\n\nLời giải:\n",
+      "trained_text": "Bước 1: Minh giữ lại 1/3 số bánh:\n72 × 1/3 = 24 chiếc.\n\nBước 2: Số bánh Minh tặng cho hàng xóm:\n72 − 24 = 48 chiếc.\n\nBước 3: Thảo nhận được 1/4 số bánh Minh đã tặng:\n48 × 1/4 = 12 chiếc.\n\nVậy Thảo nhận được 12 chiếc bánh chưng.\n\n12\nĐáp số: \\boxed{12}",
+      "n_trained": 101,
+      "n_total": 181,
+      "eos_trained": true
+     }
+    ]
+   },
+   "first_ids": [
+    42,
+    73193,
+    75979,
+    833
+   ],
+   "last_ids": [
+    555,
+    101,
+    124900
+   ],
+   "first_trained_tok": "Gi",
+   "prompt_tail": " tiền?\n\nLời giải:\n",
+   "boundary_joint_equals_separate": true,
+   "n_joint": 553,
+   "n_sep": 553,
+   "completion_tokens_p50_p90_p99_max": [
+    146,
+    260,
+    351,
+    435
+   ],
+   "sequence_tokens_p50_p90_p99_max": [
+    243,
+    396,
+    509,
+    554
+   ],
+   "trained_text_example": ", các giá trị tính được là truyện 20.000, sách 40.000, báo 5.000, vở 16.000, tổng 81.000 đồng. Nếu tổng thực tế là 135.000 đồng thì các giá đã cho không đủ để xác định giá vở theo đúng dữ kiện tổng; nhưng theo quan hệ các giá đã cho, giá cuốn vở là 16.000 đồng.\n\n16000\nĐáp số: \\boxed{16000}<|im_end|>"
+  }
+ }
+}

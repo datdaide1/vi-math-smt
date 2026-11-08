@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<01:54,  2.70it/s]Loading weights:  75%|███████▌  | 234/310 [00:00<00:00, 647.90it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 520.95it/s]
+[W1107 09:50:30.233079928 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 1556938752, total: 15636037632).
+[W1107 09:50:30.330344096 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 833421312, total: 15636037632).
+[W1107 09:50:30.330505631 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 833421312, total: 15636037632).
+[W1107 09:50:30.469311203 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 16777216 bytes (free: 11337728, total: 15636037632).
+[W1107 09:50:30.498347370 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 16777216 bytes (free: 7143424, total: 15636037632).
+[W1107 09:50:30.498434949 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 16777216 bytes (free: 7143424, total: 15636037632).
+[W1107 09:50:30.574197845 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2949120, total: 15636037632).
+[W1107 09:50:30.686986553 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 306184192 bytes (free: 191692800, total: 15636037632).
+[W1107 09:50:30.689352052 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 306184192 bytes (free: 204275712, total: 15636037632).
+[W1107 09:50:30.852637689 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 153092096 bytes (free: 34406400, total: 15636037632).
+SFT Qwen3-0.6B-Base padded step 0 loss 0.7908 gn 0.687 9.91s amax 6476.0
+SFT Qwen3-0.6B-Base padded step 10 loss 0.6328 gn 0.431 8.11s amax None
+SFT Qwen3-0.6B-Base padded step 20 loss 0.5654 gn 0.329 9.33s amax 6476.0
+SFT Qwen3-0.6B-Base padded step 30 loss 0.5936 gn 0.277 8.08s amax None
+SFT Qwen3-0.6B-Base padded step 40 loss 0.4733 gn 0.273 9.72s amax 6484.0
+SFT Qwen3-0.6B-Base padded step 50 loss 0.5131 gn 0.286 8.88s amax None
+SFT Qwen3-0.6B-Base padded step 60 loss 0.4768 gn 0.300 9.76s amax 6480.0
+SFT Qwen3-0.6B-Base padded step 70 loss 0.5060 gn 0.288 8.27s amax None
+SFT Qwen3-0.6B-Base padded step 80 loss 0.5273 gn 0.287 10.06s amax 6480.0
+SFT Qwen3-0.6B-Base padded step 90 loss 0.5087 gn 0.286 11.96s amax None
+SFT Qwen3-0.6B-Base padded step 99 loss 0.5201 gn 0.300 7.97s amax None
+SFT_DONE Qwen/Qwen3-0.6B-Base padded_length_grouped 735.2 0.695 0.5283 0 6488.0

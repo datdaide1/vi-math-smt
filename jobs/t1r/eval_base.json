@@ -1,0 +1,60 @@
+{
+ "base": "Qwen/Qwen3-0.6B-Base",
+ "tag": "base",
+ "configs": [
+  {
+   "kind": "eval",
+   "run_id": "ev-base-qwen3-0.6b-4shot-primary",
+   "arm": "base",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-base-qwen3-0.6b-4shot-primary",
+   "eval": {
+    "source_run_id": "base-qwen3-0.6b",
+    "adapter_path": null,
+    "shots": 4,
+    "max_new_tokens": 1024,
+    "sets": [
+     {
+      "name": "vi_primary_1000",
+      "path": "{vol}/eval_data/vi_primary_1000.jsonl",
+      "lang": "vi"
+     }
+    ],
+    "model_tag": "qwen3-0.6b"
+   },
+   "template": {
+    "fewshot_path": "{vol}/eval_data/fewshot4_vi.jsonl"
+   }
+  },
+  {
+   "kind": "eval",
+   "run_id": "ev-base-qwen3-0.6b-4shot-spot200-cap2048",
+   "arm": "base",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "size": "0.6B",
+   "seed": 0,
+   "precision": "bf16",
+   "out_dir": "{vol}/eval/ev-base-qwen3-0.6b-4shot-spot200-cap2048",
+   "eval": {
+    "source_run_id": "base-qwen3-0.6b",
+    "adapter_path": null,
+    "shots": 4,
+    "max_new_tokens": 2048,
+    "sets": [
+     {
+      "name": "vi_primary_spot200",
+      "path": "{vol}/eval_data/vi_primary_spot200.jsonl",
+      "lang": "vi"
+     }
+    ],
+    "model_tag": "qwen3-0.6b"
+   },
+   "template": {
+    "fewshot_path": "{vol}/eval_data/fewshot4_vi.jsonl"
+   }
+  }
+ ]
+}

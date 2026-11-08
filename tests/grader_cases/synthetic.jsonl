@@ -1,0 +1,191 @@
+{"id": "B1a", "pred": "125", "gold": {"answer_type": "decimal", "answer_canonical": "0.125"}, "expect": false, "note": "B1: 3-digit decimal gold must not collapse", "source": "T2-4.6"}
+{"id": "B1b", "pred": "\\boxed{125}", "gold": {"answer_type": "decimal", "answer_canonical": "0.125"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "B1c", "pred": "3500", "gold": {"answer_type": "decimal", "answer_canonical": "3.5"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "B1d", "pred": "Đáp số: 3.500 đồng", "gold": {"answer_type": "int", "answer_canonical": "3500"}, "expect": true, "note": "vi grouping dot + unit", "source": "T2-4.6"}
+{"id": "B1e", "pred": "Giá trị là \\boxed{0,125}", "gold": {"answer_type": "decimal", "answer_canonical": "0.125"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "TUP1", "pred": "1.2", "gold": {"answer_type": "tuple", "answer_canonical": "1;2"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "TUP2", "pred": "\\boxed{(1,2)}", "gold": {"answer_type": "decimal", "answer_canonical": "1.2"}, "expect": false, "note": "pair is decided before locale", "source": "T2-4.6"}
+{"id": "TUP3", "pred": "\\boxed{(1;2)}", "gold": {"answer_type": "tuple", "answer_canonical": "1;2"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "TUP4", "pred": "\\boxed{(1,2)}", "gold": {"answer_type": "tuple", "answer_canonical": "1;2"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "TUP5", "pred": "\\boxed{(2;1)}", "gold": {"answer_type": "tuple", "answer_canonical": "1;2"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "TUP6", "pred": "Vậy hệ có nghiệm \\boxed{x=7, y=8}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "TUP7", "pred": "\\boxed{y = 8; x = 7}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B2a", "pred": "8", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": false, "note": "B2: partial answer", "source": "T2-4.6"}
+{"id": "B2b", "pred": "\\boxed{3}", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "B2c", "pred": "Vậy \\boxed{x=3}", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "B3a", "pred": "Vậy x = 2 hoặc x = 3.", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": true, "note": "B3", "source": "T2-4.6"}
+{"id": "B3b", "pred": "Vậy x = 3 hoặc x = 2", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B3c", "pred": "$x_1 = 2; x_2 = 3$\nĐáp số: $x_1 = 2; x_2 = 3$", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B3d", "pred": "Vậy $S=\\{2;3\\}$", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B3e", "pred": "x = \\boxed{2} hoặc x = \\boxed{3}", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B3f", "pred": "\\boxed{2; 3; 3}", "gold": {"answer_type": "set", "answer_canonical": "2;3"}, "expect": false, "note": "multiset arity", "source": "T2-4.6"}
+{"id": "B4a", "pred": "\\boxed{1{,}5}", "gold": {"answer_type": "decimal", "answer_canonical": "1.5"}, "expect": true, "note": "B4: LaTeX decimal comma", "source": "T2-4.6"}
+{"id": "B4b", "pred": "\\boxed{2,5}", "gold": {"answer_type": "decimal", "answer_canonical": "2.5"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B4c", "pred": "\\boxed{2,5}", "gold": {"answer_type": "set", "answer_canonical": "2;5", "locale": "vi"}, "expect": false, "note": "vi: 2,5 is a decimal, not a list (T2: vi default)", "source": "T2-4.6"}
+{"id": "B5a", "pred": "\\boxed{\\frac{\\sqrt{3}}{2}}", "gold": {"answer_type": "radical", "answer_canonical": "\\frac{\\sqrt{3}}{2}"}, "expect": true, "note": "B5: nested braces", "source": "T2-4.6"}
+{"id": "B5b", "pred": "\\boxed{\\{-1; 2\\}}", "gold": {"answer_type": "set", "answer_canonical": "2;-1"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B5c", "pred": "\\boxed{\\dfrac{1}{\\sqrt{2}}}", "gold": {"answer_type": "radical", "answer_canonical": "\\frac{\\sqrt{2}}{2}"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B5d", "pred": "\\boxed{2\\sqrt{2}}", "gold": {"answer_type": "radical", "answer_canonical": "\\sqrt{8}"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B6a", "pred": "Vậy x=4 thì A=2", "gold": {"answer_type": "int", "answer_canonical": "4", "target_var": "x"}, "expect": true, "note": "B6: target variable", "source": "T2-4.6"}
+{"id": "B6b", "pred": "Vậy x=4 thì A=2", "gold": {"answer_type": "int", "answer_canonical": "2", "target_var": "A"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B6c", "pred": "1,500", "gold": {"answer_type": "decimal", "answer_canonical": "1.5"}, "expect": true, "note": "vi default: decimal comma", "source": "T2-4.6"}
+{"id": "B6d", "pred": "The total is 1,500 dollars. So 1,500.", "gold": {"answer_type": "int", "answer_canonical": "1500", "locale": "en"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "B6e", "pred": "Tổng là 2,5 kg và 1,500 kg", "gold": {"answer_type": "decimal", "answer_canonical": "1.5"}, "expect": true, "note": "response votes vi", "source": "T2-4.6"}
+{"id": "B6f", "pred": "We get 2.5 and 1,500", "gold": {"answer_type": "int", "answer_canonical": "1500"}, "expect": true, "note": "response votes en", "source": "T2-4.6"}
+{"id": "LOC1", "pred": "1.000.000", "gold": {"answer_type": "int", "answer_canonical": "1000000"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "LOC2", "pred": "giá là 885.000 đồng", "gold": {"answer_type": "int", "answer_canonical": "885000"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "LOC3", "pred": "\\boxed{1\\,000\\,000}", "gold": {"answer_type": "int", "answer_canonical": "1000000"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "LOC4", "pred": "1.234,5", "gold": {"answer_type": "decimal", "answer_canonical": "1234.5"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "LOC5", "pred": "1,234.5", "gold": {"answer_type": "decimal", "answer_canonical": "1234.5"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "LOC6", "pred": "\\boxed{3.14}", "gold": {"answer_type": "decimal", "answer_canonical": "3.14"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "NUM1", "pred": "1/3", "gold": {"answer_type": "rational", "answer_canonical": "1/3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "NUM2", "pred": "0.333", "gold": {"answer_type": "rational", "answer_canonical": "1/3"}, "expect": false, "note": "exact rationals", "source": "T2-4.6"}
+{"id": "NUM3", "pred": "\\boxed{\\frac{2}{6}}", "gold": {"answer_type": "rational", "answer_canonical": "1/3"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "NUM4", "pred": "0,5", "gold": {"answer_type": "rational", "answer_canonical": "1/2"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "NUM5", "pred": "-3", "gold": {"answer_type": "int", "answer_canonical": "3"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "NUM6", "pred": "12", "gold": {"answer_type": "int", "answer_canonical": "120"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "NUM7", "pred": "12345678901234567891", "gold": {"answer_type": "int", "answer_canonical": "12345678901234567890"}, "expect": false, "note": "big ints exact", "source": "T2-4.6"}
+{"id": "RND1", "pred": "\\boxed{1{,}41}", "gold": {"answer_type": "radical", "answer_canonical": "\\sqrt{2}", "round_dp": 2}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "RND2", "pred": "\\boxed{1{,}42}", "gold": {"answer_type": "radical", "answer_canonical": "\\sqrt{2}", "round_dp": 2}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "PCT1", "pred": "\\boxed{20\\%}", "gold": {"answer_type": "int", "answer_canonical": "20", "percent": true}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "INT1", "pred": "\\boxed{[1;3)}", "gold": {"answer_type": "interval", "answer_canonical": "[1,3)"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "INT2", "pred": "\\boxed{[1;3]}", "gold": {"answer_type": "interval", "answer_canonical": "[1,3)"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "INT3", "pred": "\\boxed{x \\ge 2}", "gold": {"answer_type": "interval", "answer_canonical": "[2,\\infty)"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "INT4", "pred": "\\boxed{(2;+\\infty)}", "gold": {"answer_type": "interval", "answer_canonical": "[2,\\infty)"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "INT5", "pred": "\\boxed{]1;3[}", "gold": {"answer_type": "interval", "answer_canonical": "(1,3)"}, "expect": true, "note": "French-style open brackets", "source": "T2-4.6"}
+{"id": "HED1", "pred": "\\boxed{2} hoặc \\boxed{3}", "gold": {"answer_type": "int", "answer_canonical": "2"}, "expect": false, "note": "hedge", "source": "T2-4.6"}
+{"id": "HED2", "pred": "Đáp án: 2 hoặc 3", "gold": {"answer_type": "int", "answer_canonical": "2"}, "expect": false, "note": "hedge", "source": "T2-4.6"}
+{"id": "THK1", "pred": "<think>thử 5... \\boxed{5}</think> Vậy đáp số là 7.", "gold": {"answer_type": "int", "answer_canonical": "7"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "MCQ1", "pred": "Đáp án: C", "gold": {"answer_type": "choice", "answer_canonical": "C"}, "expect": true, "note": "", "source": "T2-4.6"}
+{"id": "NONE", "pred": "Em không biết.", "gold": {"answer_type": "int", "answer_canonical": "3"}, "expect": false, "note": "", "source": "T2-4.6"}
+{"id": "MIX1", "pred": "12 giờ 30 phút", "gold": {"answer_type": "decimal", "answer_canonical": "12.5"}, "expect": false, "note": "mixed units: wrong by policy", "source": "T2-4.6-todo"}
+{"id": "DEG1", "pred": "\\boxed{30^\\circ}", "gold": {"answer_type": "expr", "answer_canonical": "\\frac{\\pi}{6}"}, "expect": false, "note": "degrees vs radians", "source": "T2-4.6-todo"}
+{"id": "INT6", "pred": "\\boxed{m > 2}", "gold": {"answer_type": "interval", "answer_canonical": "(2,+\\infty)"}, "expect": true, "note": "", "source": "T2-4.6-todo"}
+{"id": "INT7", "pred": "Vậy $m \\in (2;+\\infty)$", "gold": {"answer_type": "interval", "answer_canonical": "(2,+\\infty)"}, "expect": true, "note": "", "source": "T2-4.6-todo"}
+{"id": "L01", "pred": "42", "gold": {"answer_type": "int", "answer_canonical": "42"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L02", "pred": "42", "gold": {"answer_type": "int", "answer_canonical": "43"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L03", "pred": "The answer is 120.", "gold": {"answer_type": "int", "answer_canonical": "120"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L04", "pred": "007", "gold": {"answer_type": "int", "answer_canonical": "7"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L05", "pred": "... nên \\(x=365\\). Vậy \\(\\boxed{365}\\).", "gold": {"answer_type": "int", "answer_canonical": "365"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L06", "pred": "\\boxed{\\dfrac{11}{3}}", "gold": {"answer_type": "rational", "answer_canonical": "11/3"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L07", "pred": "blah \\boxed{365 \\text{ nghìn đồng}}", "gold": {"answer_type": "int", "answer_canonical": "365"}, "expect": true, "note": "unit text in box", "source": "X1"}
+{"id": "L08", "pred": "\\boxed{365 \\text{ nghìn đồng}; 520 \\text{ nghìn đồng}}", "gold": {"answer_type": "tuple", "answer_canonical": "365;520"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L09", "pred": "Chi tiết...\n#### 18", "gold": {"answer_type": "int", "answer_canonical": "18"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L10", "pred": "... #### 18", "gold": {"answer_type": "int", "answer_canonical": "19"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L11", "pred": "3,14", "gold": {"answer_type": "decimal", "answer_canonical": "3.14"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L12", "pred": "1.000.000", "gold": {"answer_type": "int", "answer_canonical": "1000001"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L13", "pred": "1/2", "gold": {"answer_type": "decimal", "answer_canonical": "0.5"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L14", "pred": "7/2", "gold": {"answer_type": "decimal", "answer_canonical": "3.5"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L15", "pred": "\\frac{7}{2}", "gold": {"answer_type": "decimal", "answer_canonical": "3.5"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L16", "pred": "\\dfrac{-3}{4}", "gold": {"answer_type": "decimal", "answer_canonical": "-0.75"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L17", "pred": "\\frac{1}{3}", "gold": {"answer_type": "decimal", "answer_canonical": "0.333"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L18", "pred": "\\sqrt{2}", "gold": {"answer_type": "decimal", "answer_canonical": "1.4142135623730951"}, "expect": false, "note": "irrational vs decimal gold: exact policy", "source": "X1"}
+{"id": "L19", "pred": "2\\sqrt{3}", "gold": {"answer_type": "radical", "answer_canonical": "\\sqrt{12}"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L20", "pred": "\\boxed{\\sqrt{9}}", "gold": {"answer_type": "int", "answer_canonical": "3"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L21", "pred": "\\left( \\frac{7}{2}; 1 \\right)", "gold": {"answer_type": "tuple", "answer_canonical": "3.5;1"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L22", "pred": "(1, 2)", "gold": {"answer_type": "tuple", "answer_canonical": "1;3"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L23", "pred": "x = -1", "gold": {"answer_type": "int", "answer_canonical": "-1"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L24", "pred": "(x;y) = (2;3)", "gold": {"answer_type": "tuple", "answer_canonical": "2;3"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L25", "pred": "51 đô la", "gold": {"answer_type": "int", "answer_canonical": "51"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L26", "pred": "Vậy quãng đường là 120 km.", "gold": {"answer_type": "int", "answer_canonical": "120"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L27", "pred": "Diện tích là 15,5 m²", "gold": {"answer_type": "decimal", "answer_canonical": "15.5"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L28", "pred": "45^\\circ", "gold": {"answer_type": "int", "answer_canonical": "45"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L29", "pred": "2*x + 3*x", "gold": {"answer_type": "expr", "answer_canonical": "5x"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L30", "pred": "\\frac{x}{2} + \\frac{x}{2}", "gold": {"answer_type": "expr", "answer_canonical": "x"}, "expect": true, "note": "", "source": "X1"}
+{"id": "L31", "pred": "", "gold": {"answer_type": "int", "answer_canonical": "5"}, "expect": false, "note": "", "source": "X1"}
+{"id": "L32", "pred": "không biết", "gold": {"answer_type": "int", "answer_canonical": "5"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X01", "pred": "\\boxed{0.625}", "gold": {"answer_type": "int", "answer_canonical": "625"}, "expect": false, "note": "0.625 is never 625", "source": "X1"}
+{"id": "X02", "pred": "Đáp số: \\boxed{0,625}", "gold": {"answer_type": "int", "answer_canonical": "625"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X03", "pred": "\\boxed{0.625}", "gold": {"answer_type": "decimal", "answer_canonical": "0.625"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X04", "pred": "\\boxed{625}", "gold": {"answer_type": "decimal", "answer_canonical": "0.625"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X05", "pred": "\\boxed{1.5}", "gold": {"answer_type": "decimal", "answer_canonical": "1.5"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X06", "pred": "\\boxed{3,500}", "gold": {"answer_type": "int", "answer_canonical": "3500", "locale": "en"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X07", "pred": "\\boxed{3,500}", "gold": {"answer_type": "decimal", "answer_canonical": "3.5", "locale": "vi"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X08", "pred": "\\boxed{3.500}", "gold": {"answer_type": "decimal", "answer_canonical": "3.5", "locale": "en"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X09", "pred": "\\boxed{3.500}", "gold": {"answer_type": "int", "answer_canonical": "3500", "locale": "vi"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X10", "pred": "Mỗi kg giá 12,5 nghìn. Tổng: \\boxed{3.500}", "gold": {"answer_type": "int", "answer_canonical": "3500", "locale": "en"}, "expect": true, "note": "response votes vi beats gold.locale", "source": "X1"}
+{"id": "X11", "pred": "\\boxed{90.000}", "gold": {"answer_type": "int", "answer_canonical": "90000", "locale": "mixed"}, "expect": true, "note": "mixed tie -> int gold reads grouping", "source": "X1"}
+{"id": "X12", "pred": "\\boxed{90.000}", "gold": {"answer_type": "int", "answer_canonical": "90", "locale": "mixed"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X13", "pred": "\\boxed{(1;2)}", "gold": {"answer_type": "decimal", "answer_canonical": "1.2"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X14", "pred": "\\boxed{(1{,}2)}", "gold": {"answer_type": "decimal", "answer_canonical": "1.2"}, "expect": true, "note": "{,} is decimal even in parens", "source": "X1"}
+{"id": "X15", "pred": "\\boxed{x=7}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": false, "note": "", "source": "X1"}
+{"id": "X16", "pred": "\\boxed{x=8, y=7}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": false, "note": "names swap values", "source": "X1"}
+{"id": "X17", "pred": "\\boxed{(7;8)}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": true, "note": "", "source": "X1"}
+{"id": "X18", "pred": "\\boxed{a=7, b=8}", "gold": {"answer_type": "tuple", "answer_canonical": "7;8", "vars": ["x", "y"]}, "expect": false, "note": "wrong variable names", "source": "X1"}
+{"id": "X19", "pred": "Vậy $x \\in \\{-2; 3\\}$", "gold": {"answer_type": "set", "answer_canonical": "3;-2"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X20", "pred": "\\boxed{x = \\pm 2}", "gold": {"answer_type": "set", "answer_canonical": "2;-2"}, "expect": true, "note": "\\pm expands", "source": "X1"}
+{"id": "X21", "pred": "\\boxed{\\pm 2}", "gold": {"answer_type": "set", "answer_canonical": "2;-2"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X22", "pred": "\\boxed{2}", "gold": {"answer_type": "set", "answer_canonical": "2;-2"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X23", "pred": "Phương trình vô nghiệm.", "gold": {"answer_type": "set", "answer_canonical": ""}, "expect": true, "note": "empty set", "source": "X1"}
+{"id": "X24", "pred": "\\boxed{\\emptyset}", "gold": {"answer_type": "set", "answer_canonical": ""}, "expect": true, "note": "", "source": "X1"}
+{"id": "X25", "pred": "\\boxed{2}", "gold": {"answer_type": "set", "answer_canonical": ""}, "expect": false, "note": "", "source": "X1"}
+{"id": "X26", "pred": "\\boxed{1, 2, 3}", "gold": {"answer_type": "set", "answer_canonical": "1;2;3"}, "expect": true, "note": "comma list (no ambiguity)", "source": "X1"}
+{"id": "X27", "pred": "\\boxed{1, 2}", "gold": {"answer_type": "set", "answer_canonical": "1;2", "locale": "en"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X28", "pred": "\\boxed{1,5; 2}", "gold": {"answer_type": "set", "answer_canonical": "1.5;2"}, "expect": true, "note": "';' present: comma is decimal", "source": "X1"}
+{"id": "X29", "pred": "\\boxed{-\\frac{1}{2}; 3}", "gold": {"answer_type": "set", "answer_canonical": "-1/2;3"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X30", "pred": "\\boxed{(-\\infty; 1) \\cup (3; +\\infty)}", "gold": {"answer_type": "interval", "answer_canonical": "(-\\infty,1)\\cup(3,\\infty)"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X31", "pred": "\\boxed{x < 1 \\text{ hoặc } x > 3}", "gold": {"answer_type": "interval", "answer_canonical": "(-\\infty,1)\\cup(3,\\infty)"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X32", "pred": "\\boxed{(-\\infty; 1] \\cup (3; +\\infty)}", "gold": {"answer_type": "interval", "answer_canonical": "(-\\infty,1)\\cup(3,\\infty)"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X33", "pred": "\\boxed{1 \\le x < 3}", "gold": {"answer_type": "interval", "answer_canonical": "[1,3)"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X34", "pred": "\\boxed{\\mathbb{R}}", "gold": {"answer_type": "interval", "answer_canonical": "(-\\infty,\\infty)"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X35", "pred": "\\boxed{[1;3)}", "gold": {"answer_type": "interval", "answer_canonical": "[1,3]"}, "expect": false, "note": "old scorer FP via last number", "source": "X1"}
+{"id": "X36", "pred": "Vậy $T = (2; 5]$", "gold": {"answer_type": "interval", "answer_canonical": "(2,5]"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X37", "pred": "\\boxed{\\frac{\\pi}{6}}", "gold": {"answer_type": "expr", "answer_canonical": "\\frac{\\pi}{6}"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X38", "pred": "\\boxed{0.5236}", "gold": {"answer_type": "expr", "answer_canonical": "\\frac{\\pi}{6}"}, "expect": false, "note": "decimal never equals irrational", "source": "X1"}
+{"id": "X39", "pred": "\\boxed{0{,}52}", "gold": {"answer_type": "expr", "answer_canonical": "\\frac{\\pi}{6}", "round_dp": 2}, "expect": true, "note": "", "source": "X1"}
+{"id": "X40", "pred": "\\boxed{x^2 + 2x + 1}", "gold": {"answer_type": "expr", "answer_canonical": "(x+1)^2"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X41", "pred": "\\boxed{x^2 + 2x - 1}", "gold": {"answer_type": "expr", "answer_canonical": "(x+1)^2"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X42", "pred": "\\boxed{y = 2x + 3}", "gold": {"answer_type": "expr", "answer_canonical": "y=2x+3"}, "expect": true, "note": "equation gold", "source": "X1"}
+{"id": "X43", "pred": "\\boxed{2x - y + 3 = 0}", "gold": {"answer_type": "expr", "answer_canonical": "y=2x+3"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X44", "pred": "\\boxed{y = 2x - 3}", "gold": {"answer_type": "expr", "answer_canonical": "y=2x+3"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X45", "pred": "\\boxed{\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}}", "gold": {"answer_type": "expr", "answer_canonical": "\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X46", "pred": "\\boxed{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}}", "gold": {"answer_type": "expr", "answer_canonical": "\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X47", "pred": "\\boxed{3 + 4i}", "gold": {"answer_type": "expr", "answer_canonical": "3+4i"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X48", "pred": "\\boxed{4i + 3}", "gold": {"answer_type": "expr", "answer_canonical": "3+4i"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X49", "pred": "\\boxed{25\\%}", "gold": {"answer_type": "decimal", "answer_canonical": "0.25"}, "expect": true, "note": "percent of a ratio gold", "source": "X1"}
+{"id": "X50", "pred": "\\boxed{25}", "gold": {"answer_type": "int", "answer_canonical": "25", "percent": true}, "expect": true, "note": "", "source": "X1"}
+{"id": "X51", "pred": "\\boxed{0.25}", "gold": {"answer_type": "int", "answer_canonical": "25", "percent": true}, "expect": false, "note": "percent gold expects P, not P/100", "source": "X1"}
+{"id": "X52", "pred": "Số tiền là 1,5 triệu đồng", "gold": {"answer_type": "int", "answer_canonical": "1500000"}, "expect": true, "note": "triệu multiplier", "source": "X1"}
+{"id": "X53", "pred": "\\boxed{\\text{(C)}}", "gold": {"answer_type": "choice", "answer_canonical": "C"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X54", "pred": "Đáp án đúng là B.", "gold": {"answer_type": "choice", "answer_canonical": "C"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X55", "pred": "\\boxed{\\text{Chủ nhật}}", "gold": {"answer_type": "text", "answer_canonical": "Chủ nhật"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X56", "pred": "\\boxed{\\text{Thứ hai}}", "gold": {"answer_type": "text", "answer_canonical": "Chủ nhật"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X57", "pred": "Vậy x=4 thì A=2", "gold": {"answer_type": "int", "answer_canonical": "4"}, "expect": false, "note": "no target var: last RHS (A=2)", "source": "X1"}
+{"id": "X58", "pred": "Ta có $a = 3$ và $b = 5$. Vậy $a + b = \\boxed{8}$.", "gold": {"answer_type": "int", "answer_canonical": "8"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X59", "pred": "Ta tính được 3 + 4 = 7. Vậy kết quả là 7 quả táo.", "gold": {"answer_type": "int", "answer_canonical": "7"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X60", "pred": "Có 2 trường hợp, vậy xác suất là 1/6.", "gold": {"answer_type": "rational", "answer_canonical": "1/6"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X61", "pred": "\\boxed{2} ... \\boxed{2}", "gold": {"answer_type": "int", "answer_canonical": "2"}, "expect": true, "note": "same box repeated is not a hedge", "source": "X1"}
+{"id": "X62", "pred": "Bước 1: \\boxed{5}\n\nBước 2: tính lại\n\nĐáp số: \\boxed{7}", "gold": {"answer_type": "int", "answer_canonical": "7"}, "expect": true, "note": "earlier paragraph box ignored", "source": "X1"}
+{"id": "X63", "pred": "\\boxed{-0,75}", "gold": {"answer_type": "decimal", "answer_canonical": "-0.75"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X64", "pred": "\\boxed{\\frac{3}{4}}", "gold": {"answer_type": "decimal", "answer_canonical": "0.75"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X65", "pred": "\\boxed{2\\frac{1}{4}}", "gold": {"answer_type": "rational", "answer_canonical": "9/4"}, "expect": true, "note": "mixed number", "source": "X1"}
+{"id": "X66", "pred": "\\boxed{10^{3}}", "gold": {"answer_type": "int", "answer_canonical": "1000"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X67", "pred": "\\boxed{2^{10}}", "gold": {"answer_type": "int", "answer_canonical": "1024"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X68", "pred": "\\boxed{1{,}000}", "gold": {"answer_type": "int", "answer_canonical": "1000"}, "expect": false, "note": "{,} is a decimal comma: 1{,}000 = 1.0", "source": "X1"}
+{"id": "X69", "pred": "\\boxed{1{,}000}", "gold": {"answer_type": "decimal", "answer_canonical": "1"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X70", "pred": "\\boxed{10,\\!000}", "gold": {"answer_type": "int", "answer_canonical": "10000"}, "expect": true, "note": "MATH thousands idiom", "source": "X1"}
+{"id": "X71", "pred": "\\boxed{(2, -1)}", "gold": {"answer_type": "tuple", "answer_canonical": "2;-1"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X72", "pred": "\\boxed{M(2; -1)}", "gold": {"answer_type": "tuple", "answer_canonical": "2;-1"}, "expect": true, "note": "point notation", "source": "X1"}
+{"id": "X73", "pred": "\\boxed{(2; -1; 0)}", "gold": {"answer_type": "tuple", "answer_canonical": "2;-1"}, "expect": false, "note": "arity", "source": "X1"}
+{"id": "X74", "pred": "Đáp số: 1 000 000 đồng", "gold": {"answer_type": "int", "answer_canonical": "1000000"}, "expect": true, "note": "space grouping", "source": "X1"}
+{"id": "X75", "pred": "<think>\\boxed{9}", "gold": {"answer_type": "int", "answer_canonical": "9"}, "expect": true, "note": "unclosed think still graded", "source": "X1"}
+{"id": "X76", "pred": "\\boxed{\\sqrt{2}/2}", "gold": {"answer_type": "radical", "answer_canonical": "\\frac{\\sqrt{2}}{2}"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X77", "pred": "\\boxed{\\frac{1}{2}\\sqrt{2}}", "gold": {"answer_type": "radical", "answer_canonical": "\\frac{\\sqrt{2}}{2}"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X78", "pred": "\\boxed{\\sqrt{3}}", "gold": {"answer_type": "radical", "answer_canonical": "\\frac{\\sqrt{2}}{2}"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X79", "pred": "\\boxed{x = 2 \\text{ hoặc } x = -2}", "gold": {"answer_type": "set", "answer_canonical": "2;-2"}, "expect": true, "note": "", "source": "X1"}
+{"id": "X80", "pred": "\\boxed{x=2}, \\boxed{x=-2}", "gold": {"answer_type": "set", "answer_canonical": "2;-2"}, "expect": true, "note": "two boxes joined for a set gold", "source": "X1"}
+{"id": "X81", "pred": "\\boxed{1.5}", "gold": {"answer_type": "decimal", "answer_canonical": "1.5", "locale": "vi"}, "expect": true, "note": "English decimal in vi locale (tail 1 digit)", "source": "X1"}
+{"id": "X82", "pred": "\\boxed{2.25}", "gold": {"answer_type": "int", "answer_canonical": "2"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X83", "pred": "\\boxed{2,25}", "gold": {"answer_type": "int", "answer_canonical": "2", "locale": "mixed"}, "expect": false, "note": "", "source": "X1"}
+{"id": "X84", "pred": "\\boxed{-6,75}", "gold": {"answer_type": "int", "answer_canonical": "3", "locale": "mixed"}, "expect": false, "note": "", "source": "X1"}
+{"id": "P01", "pred": "\\boxed{12}", "gold": {"answer_type": "expr", "answer_canonical": "2^{2005}"}, "expect": false, "note": "huge closed form vs small int (was a float-overflow FP)", "source": "X1-probe"}
+{"id": "P02", "pred": "Ta có \\boxed{x+11}, tức là \\boxed{11+x}.", "gold": {"answer_type": "expr", "answer_canonical": "11+x"}, "expect": true, "note": "same answer boxed twice is not a hedge", "source": "X1-probe"}
+{"id": "P03", "pred": "\\boxed{7, -2, \\text{ và } -5}", "gold": {"answer_type": "set", "answer_canonical": "7;-2;-5", "locale": "en"}, "expect": true, "note": "commas plus a connector", "source": "X1-probe"}
+{"id": "P04", "pred": "$\\boxed{\\phantom{2}}$ ... \\boxed{4}", "gold": {"answer_type": "int", "answer_canonical": "4"}, "expect": true, "note": "empty phantom box ignored", "source": "X1-probe"}
+{"id": "P05", "pred": "\\boxed{3:1}", "gold": {"answer_type": "expr", "answer_canonical": "3:1"}, "expect": true, "note": "ratio (string identity)", "source": "X1-probe"}
+{"id": "P06", "pred": "\\boxed{-2} \\text{ (loại) và } \\boxed{1}", "gold": {"answer_type": "int", "answer_canonical": "1"}, "expect": false, "note": "two different final boxes = hedge", "source": "X1-probe"}
+{"id": "P07", "pred": "Các giá trị là 1, 2 và 3.", "gold": {"answer_type": "set", "answer_canonical": "1;2;3", "locale": "en"}, "expect": true, "note": "cue-less prose list", "source": "X1-probe"}
+{"id": "P08", "pred": "\\boxed{\\$115,000}", "gold": {"answer_type": "int", "answer_canonical": "115000"}, "expect": true, "note": "X3 base gold without locale (MATH algebra-0710): missing locale = mixed", "source": "X1-followup"}
+{"id": "P09", "pred": "\\boxed{1.125}", "gold": {"answer_type": "decimal", "answer_canonical": "1.125"}, "expect": true, "note": "X3 base gold without locale (MATH prealgebra-0470)", "source": "X1-followup"}
+{"id": "P10", "pred": "Đáp án: \\boxed{\\text{Ngày 20 tháng 6}}", "gold": {"answer_type": "text", "answer_canonical": "20 tháng 6"}, "expect": true, "note": "leading filler word", "source": "X1-followup"}
+{"id": "P11", "pred": "\\boxed{\\text{không phải hàm chẵn}}", "gold": {"answer_type": "text", "answer_canonical": "chẵn"}, "expect": false, "note": "negation is never stripped", "source": "X1-followup"}

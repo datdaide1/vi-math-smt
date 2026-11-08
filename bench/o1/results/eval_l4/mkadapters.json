@@ -1,0 +1,8 @@
+{
+ "mode": "mkadapters",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "bf16",
+ "n_items": 256,
+ "max_tokens": 1024,
+ "ok": true
+}

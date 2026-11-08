@@ -1,0 +1,33 @@
+{
+ "n_pool": 7157,
+ "n_malformed": 0,
+ "n_dropped_too_long": 0,
+ "max_length": 1024,
+ "drop_rate": 0.0,
+ "n_eligible": 7157,
+ "pool_len_p50": 183,
+ "pool_len_p99": 405,
+ "pool_len_max": 560,
+ "n_items": 7157,
+ "completion_tokens_mean": 112.51,
+ "completion_tokens_p99": 266,
+ "completion_tokens_total": 805246,
+ "sequence_tokens_total": 1401828,
+ "sequence_tokens_p99": 405,
+ "fingerprint": "212aebe751b8d721",
+ "arm": "S0",
+ "train_path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/s0_train.jsonl",
+ "dev": {
+  "n_pool": 300,
+  "n_malformed": 0,
+  "n_dropped_too_long": 0,
+  "max_length": 1024,
+  "drop_rate": 0.0,
+  "n_eligible": 300,
+  "pool_len_p50": 179,
+  "pool_len_p99": 375,
+  "pool_len_max": 439,
+  "n_used": 300,
+  "path": "/kaggle/input/datasets/datuni/t1r-runs-v1-data/data/dev300.jsonl"
+ }
+}

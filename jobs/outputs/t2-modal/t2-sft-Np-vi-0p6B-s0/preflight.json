@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "9c3e61f691b02a805fa68b2f51a72059f651d6bb3cf1c5bed9f134eb5235a381",
+  "rows": 1808
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3452,
+  "label_frac_mean": 0.597,
+  "label_frac_max": 0.8351,
+  "decoded": [
+   {
+    "id": "N/vi/ae83b2342df6:1",
+    "prompt_tail": " muốn thu được lợi nhuận 250.000 đồng sau khi trừ chi phí nguyên liệu. Hỏi lớp cần bán bao nhiêu chiếc bánh?\n\nLời giải:\n",
+    "trained_text": "Bước 1: Số tiền cần thu để đạt lợi nhuận mong muốn là chi phí nguyên liệu cộng lợi nhuận:\n150.000 + 250.000 = 400.000 (đồng)\n\nBước 2: Số chiếc bánh cần bán là số tiền cần thu chia cho giá mỗi chiếc:\n400.000 : 5.000 = 80 (chiếc)\n\nVậy lớp cần bán 80 chiếc bánh.\nĐáp số: \\boxed{80}",
+    "n_trained": 119,
+    "n_total": 227,
+    "eos_trained": true
+   },
+   {
+    "id": "N/vi/92755f2cc0d9:1",
+    "prompt_tail": "u tây đem tặng bạn và còn lại 28 cây. Hỏi sau 2 tháng kể từ lúc trồng, vườn nhà Út có bao nhiêu cây dâu tây?\n\nLời giải:\n",
+    "trained_text": "**Bước 1: Gọi số cây ban đầu là x.**\nMỗi tháng số cây tăng gấp đôi, nên sau 3 tháng số cây là 2³·x = 8x.\n\n**Bước 2: Lập phương trình theo dữ kiện đề bài.**\nÚt đào đi 4 cây và còn lại 28 cây:\n8x − 4 = 28\n8x = 32\nx = 4\n\n**Bước 3: Tính số cây sau 2 tháng.**\nSau 2 tháng, số cây là 2²·x = 4·4 = 16.\n\nVậy vườn nhà Út có 16 cây dâu tây.\nĐáp số: \\boxed{16}",
+    "n_trained": 165,
+    "n_total": 253,
+    "eos_trained": true
+   },
+   {
+    "id": "N/vi/6bb9857b981e:1",
+    "prompt_tail": " thấy số châu chấu con gấp 3 lần số châu chấu trên cây. Quỳnh đã tìm thấy tổng cộng bao nhiêu con châu chấu?\n\nLời giải:\n",
+    "trained_text": "**Bước 1:** Số châu chấu trên cây là 7 con.\n\n**Bước 2:** Số châu chấu trên cỏ gấp 3 lần số châu chấu trên cây: 3 × 7 = 21 con.\n\n**Bước 3:** Tổng số châu chấu Quỳnh tìm thấy: 7 + 21 = 28 con.\nĐáp số: \\boxed{28}",
+    "n_trained": 92,
+    "n_total": 169,
+    "eos_trained": true
+   }
+  ]
+ }
+}

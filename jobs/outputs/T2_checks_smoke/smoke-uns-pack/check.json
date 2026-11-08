@@ -1,0 +1,28 @@
+{
+ "run_id": "smoke-uns-pack",
+ "status": "COMPLETE",
+ "steps": 6,
+ "loss_first5": 0.6288,
+ "loss_last10pct": 0.5755,
+ "dev": [
+  [
+   0,
+   0.764272
+  ],
+  [
+   3,
+   0.611966
+  ],
+  [
+   6,
+   0.589747
+  ]
+ ],
+ "quick": [],
+ "tok_per_s_median": 4359,
+ "platform": "Tesla T4",
+ "flags": {
+  "preflight": "missing"
+ },
+ "clean": false
+}

@@ -1,0 +1,49 @@
+{
+ "variant": "unsloth_pad",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "bf16",
+ "gpu": "NVIDIA L4",
+ "libs": {
+  "torch": "2.14.1+cu130",
+  "transformers": "5.17.0",
+  "peft": "0.21.2",
+  "unsloth": "2026.11.3"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "sdpa",
+ "grad_ckpt": true,
+ "micro_batch": 8,
+ "packed": false,
+ "length_group": true,
+ "load_s": 31.5,
+ "progress_steps": 7,
+ "step_s": [
+  29.74,
+  12.53,
+  2.62,
+  2.95,
+  2.98,
+  3.05,
+  2.48
+ ],
+ "tok_per_s": 1948.2,
+ "pad_frac": 0.2321,
+ "losses": [
+  0.5592,
+  0.736,
+  0.6343,
+  0.5125,
+  0.7585,
+  0.5403,
+  0.57
+ ],
+ "peak_mem_gb": 4.65,
+ "s_per_step": 4.43,
+ "ok": true
+}

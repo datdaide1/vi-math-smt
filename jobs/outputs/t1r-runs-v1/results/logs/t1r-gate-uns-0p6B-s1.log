@@ -1,0 +1,54 @@
+
+=== 2026-11-07T15:40:20Z /usr/bin/python3 -m vi_math_verified_aug.train.cli sft --config /kaggle/working/configs/t1r-gate-uns-0p6B-s1.json --budget-s 1800
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 15:40:32.881000 143 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 15:40:32.882000 143 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 15:40:32.882000 143 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 7157
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.562 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[5.2e-05, 2e-06, 4.1e-05, 0.000976] fused=1.59e-04
+[sft] dev step 0: 0.75214
+[sft] step 0/300 loss 0.8029 lr 1.54e-05 gn 0.79129 skip 0
+[sft] step 10/300 loss 0.5811 lr 1.69e-04 gn 0.4719 skip 0
+[sft] step 20/300 loss 0.6307 lr 2.00e-04 gn 0.34689 skip 0
+[sft] step 30/300 loss 0.5628 lr 2.00e-04 gn 0.32969 skip 0
+[sft] step 40/300 loss 0.5126 lr 2.00e-04 gn 0.33045 skip 0
+[sft] step 50/300 loss 0.5154 lr 2.00e-04 gn 0.32174 skip 0
+[sft] step 60/300 loss 0.5037 lr 2.00e-04 gn 0.28738 skip 0
+[sft] step 70/300 loss 0.5149 lr 2.00e-04 gn 0.28167 skip 0
+[sft] step 80/300 loss 0.5763 lr 2.00e-04 gn 0.34261 skip 0
+[sft] step 90/300 loss 0.5538 lr 2.00e-04 gn 0.34213 skip 0
+[sft] dev step 100: 0.48675
+[sft] step 100/300 loss 0.5189 lr 2.00e-04 gn 0.35889 skip 0
+[sft] step 110/300 loss 0.5300 lr 2.00e-04 gn 0.35097 skip 0
+[sft] step 120/300 loss 0.5584 lr 2.00e-04 gn 0.35125 skip 0
+[sft] step 130/300 loss 0.5336 lr 2.00e-04 gn 0.39981 skip 0
+[sft] step 140/300 loss 0.5523 lr 2.00e-04 gn 0.34819 skip 0
+[sft] step 150/300 loss 0.4905 lr 2.00e-04 gn 0.33495 skip 0
+[sft] step 160/300 loss 0.4909 lr 2.00e-04 gn 0.32492 skip 0
+[sft] step 170/300 loss 0.5301 lr 2.00e-04 gn 0.33775 skip 0
+[sft] step 180/300 loss 0.3957 lr 2.00e-04 gn 0.3123 skip 0
+[sft] step 190/300 loss 0.4834 lr 2.00e-04 gn 0.31881 skip 0
+[sft] dev step 200: 0.46418
+[sft] step 200/300 loss 0.5155 lr 2.00e-04 gn 0.30391 skip 0
+[sft] step 210/300 loss 0.4511 lr 2.00e-04 gn 0.31421 skip 0
+[sft] step 220/300 loss 0.4398 lr 2.00e-04 gn 0.30935 skip 0
+[sft] step 230/300 loss 0.4076 lr 2.00e-04 gn 0.31269 skip 0
+[sft] step 240/300 loss 0.3990 lr 2.00e-04 gn 0.32672 skip 0
+[sft] step 250/300 loss 0.4114 lr 2.00e-04 gn 0.31063 skip 0
+[sft] step 260/300 loss 0.4311 lr 2.00e-04 gn 0.37168 skip 0
+[sft] step 270/300 loss 0.4376 lr 1.94e-04 gn 0.37214 skip 0
+[sft] step 280/300 loss 0.4051 lr 1.29e-04 gn 0.37458 skip 0
+[sft] step 290/300 loss 0.4421 lr 6.45e-05 gn 0.3199 skip 0
+[sft] dev step 300: 0.45651

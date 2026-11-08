@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<05:03,  1.02it/s]Loading weights:  58%|█████▊    | 179/310 [00:01<00:00, 213.73it/s]Loading weights:  81%|████████  | 250/310 [00:01<00:00, 221.86it/s]Loading weights:  97%|█████████▋| 300/310 [00:01<00:00, 211.38it/s]Loading weights: 100%|██████████| 310/310 [00:01<00:00, 182.63it/s]
+[W1107 10:14:20.523864219 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 36503552, total: 15636037632).
+[W1107 10:14:20.803617595 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 19726336, total: 15636037632).
+[W1107 10:14:20.803810614 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 19726336, total: 15636037632).
+[W1107 10:14:21.163239640 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 612368384 bytes (free: 86835200, total: 15636037632).
+SFT Qwen3-1.7B-Base padded step 0 loss 0.7129 gn 0.403 5.08s amax 14320.0
+SFT Qwen3-1.7B-Base padded step 10 loss 0.5575 gn 0.237 4.30s amax None
+SFT Qwen3-1.7B-Base padded step 20 loss 0.4827 gn 0.186 5.29s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 30 loss 0.4996 gn 0.165 4.85s amax None
+SFT Qwen3-1.7B-Base padded step 40 loss 0.4112 gn 0.160 4.89s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 50 loss 0.4448 gn 0.163 4.66s amax None
+SFT Qwen3-1.7B-Base padded step 60 loss 0.4258 gn 0.176 4.42s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 70 loss 0.4442 gn 0.173 4.51s amax None
+SFT Qwen3-1.7B-Base padded step 80 loss 0.4600 gn 0.185 4.83s amax 14328.0
+SFT Qwen3-1.7B-Base padded step 90 loss 0.4406 gn 0.172 4.69s amax None
+SFT Qwen3-1.7B-Base padded step 99 loss 0.4529 gn 0.202 4.26s amax None
+SFT_DONE Qwen/Qwen3-1.7B-Base padded_length_grouped 1383.5 0.6159 0.4619 0 14360.0

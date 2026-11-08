@@ -1,0 +1,26 @@
+{
+ "plan": "tput_l40s",
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-4B-Base",
+   "rc": 0,
+   "s": 222.8
+  },
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "rc": 0,
+   "s": 142.8
+  },
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-0.6B-Base",
+   "rc": 0,
+   "s": 103.5
+  }
+ ],
+ "wall_s": 469.7
+}

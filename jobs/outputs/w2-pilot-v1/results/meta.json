@@ -1,0 +1,37 @@
+{
+ "job": {
+  "lanes": [
+   [
+    "google/gemma-4-E2B",
+    "Qwen/Qwen3.5-0.8B-Base",
+    "Qwen/Qwen3-0.6B-Base"
+   ],
+   [
+    "Qwen/Qwen3.5-2B-Base",
+    "Qwen/Qwen3-1.7B-Base"
+   ]
+  ],
+  "tasks": [
+   "eval",
+   "packcheck",
+   "sft"
+  ],
+  "install": "pip install -q 'vllm==0.33.0' 'flash-linear-attention==0.6.0'",
+  "sft_steps": 50,
+  "eval_n": 300,
+  "use_vllm": true,
+  "hf_eval_bs": 16,
+  "task_timeout_s": 2700,
+  "kernel_timeout_s": 10800
+ },
+ "t0": 1794023634.5947576,
+ "nvidia_smi": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB\n",
+ "install": {
+  "cmd": "pip install -q 'vllm==0.33.0' 'flash-linear-attention==0.6.0'",
+  "rc": 0,
+  "s": 457.2,
+  "tail": "ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\nydata-profiling 4.18.4 requires numba<0.63,>=0.60, but you have numba 0.65.0 which is incompatible.\nnumba-cuda 0.28.2 requires cuda-core<1.0.0,>=0.5.1, but you have cuda-core 1.2.2 which is incompatible.\ncuml-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.\ncudf-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.65.0 which is incompatible.\ngradio 6.30.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.\ngoogle-adk 2.7.1 requires opentelemetry-api<=1.42.1,>=1.39, but you have opentelemetry-api 1.45.2 which is incompatible.\ngoogle-adk 2.7.1 requires opentelemetry-sdk<=1.42.1,>=1.39, but you have opentelemetry-sdk 1.45.2 which is incompatible.\n"
+ },
+ "pip": "accelerate                               1.15.0\nfla-core                                 0.6.0\nflash-linear-attention                   0.6.0\npeft                                     0.21.2\ntorch                                    2.14.0\ntransformers                             5.20.2\ntriton                                   3.8.0\nvllm                                     0.33.0\n",
+ "wall_s": 2072.9
+}

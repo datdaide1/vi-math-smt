@@ -1,0 +1,5 @@
+{"workspace_mtd_usd": 29.1764, "est_usd": 0.3, "cap_usd": 29.5, "training_in_flight": [], "tranche_unbilled_usd": 0.0, "decision": "RUN"}
+modal run rc 0
+ev-base-qwen3-0.6b-0shot-vi-primary {"gsm8k_platinum": {"n": 600, "pass1": 0.3029, "pass1_ci": [0.2779, 0.3258], "greedy": 0.345, "greedy_ci": [0.3067, 0.38]}, "math_algprealg": {"n": 400, "pass1": 0.2681, "pass1_ci": [0.2362, 0.3], "greedy": 0.3475, "greedy_ci": [0.3025, 0.3925]}}
+ev-base-qwen3-0.6b-0shot-vi-exam-greedy {"vi_exam_core_verified": {"n": 1367, "pass1": null, "pass1_ci": null, "greedy": 0.1807, "greedy_ci": [0.1602, 0.2004]}}
+month-to-date after: 29.3837

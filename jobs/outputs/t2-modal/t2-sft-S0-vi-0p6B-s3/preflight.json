@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+  "rows": 6788
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.264,
+  "label_frac_mean": 0.5636,
+  "label_frac_max": 0.8069,
+  "decoded": [
+   {
+    "id": "vi_gsm8k_train/2",
+    "prompt_tail": " đó, và ông bà cô ấy cho gấp đôi số tiền bố mẹ cô ấy cho. Betty cần thêm bao nhiêu tiền nữa để mua chiếc ví?\n\nLời giải:\n",
+    "trained_text": "Ban đầu, Betty chỉ có 100 / 2 = $50.\nÔng bà của Betty đã cho cô ấy 15 * 2 = $30.\nĐiều này có nghĩa là Betty cần thêm 100 - 50 - 30 - 15 = $5 nữa.\nĐáp số: \\boxed{5}",
+    "n_trained": 79,
+    "n_total": 170,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/6",
+    "prompt_tail": "t và một chiếc pizza nhỏ có 8 lát. Nếu anh ấy ăn hết tất cả, anh ấy đã ăn bao nhiêu miếng trong ngày hôm đó?\n\nLời giải:\n",
+    "trained_text": "Anh ấy ăn 32 miếng từ những chiếc pizza lớn vì 2 x 16 = 32\nAnh ấy ăn 16 miếng từ những chiếc pizza nhỏ vì 2 x 8 = 16\nAnh ấy ăn 48 miếng vì 32 + 16 = 48\nĐáp số: \\boxed{48}",
+    "n_trained": 87,
+    "n_total": 176,
+    "eos_trained": true
+   },
+   {
+    "id": "vi_gsm8k_train/7",
+    "prompt_tail": "n để trọng lượng tăng gấp đôi một lần nữa. Trọng lượng cuối cùng của hộp quà, tính bằng pound, là bao nhiêu?\n\nLời giải:\n",
+    "trained_text": "Với 2 pound kẹo dẻo ban đầu, anh ấy đã thêm đủ bánh brownie để trọng lượng tăng gấp ba, làm cho trọng lượng là 2*3=6 pound.\nTiếp theo, anh ấy thêm 2 pound kẹo dẻo nữa, làm cho trọng lượng là 6+2=8 pound.\nVà cuối cùng, anh ấy thêm đủ kẹo dẻo hình giun để trọng lượng tăng gấp đôi một lần nữa, đạt trọng lượng cuối cùng là 8*2=16 pound.\nĐáp số: \\boxed{16}",
+    "n_trained": 131,
+    "n_total": 272,
+    "eos_trained": true
+   }
+  ]
+ }
+}

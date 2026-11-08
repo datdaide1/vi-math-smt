@@ -1,0 +1,111 @@
+{
+ "gpu": "Tesla T4, 15360 MiB",
+ "tasks": [
+  {
+   "run_id": "smoke-hf",
+   "rc": 0,
+   "s": 63.6,
+   "tail": "[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 256\n[sft] dev step 0: 0.76427\n[sft] step 0/6 loss 0.7334 lr 2.00e-04 gn 0.76122 skip 0\n[sft] dev step 3: 0.61241\n[sft] skip rule not applicable: only 6 steps (< 50)\n[sft] dev step 6: 0.59024\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"
+  },
+  {
+   "run_id": "smoke-uns-pack",
+   "rc": 0,
+   "s": 90.3,
+   "tail": "\ud83e\udda5 Unsloth: Will patch your computer to enable 2x faster free finetuning.\n\ud83e\udda5 Unsloth Zoo will now patch everything to make training faster!\n[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 256\n==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.\n   \\\\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.\nO^O/ \\_/ \\    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0\n\\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]\n \"-____-\"     Free license: http://github.com/unslothai/unsloth\nUnsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.\nUnsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with \"unsloth\" earlier.\nUnsloth: compiling each transformer block as one region (Qwen3DecoderLayer).\nUnsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.\n[sft] pack gate ok=True items=[0.000159, 0.00017, 0.000255, 0.000163] fused=1.01e-05\n[sft] dev step 0: 0.76427\n[sft] step 0/6 loss 0.7334 lr 2.00e-04 gn 0.75811 skip 0\n[sft] dev step 3: 0.61197\n[sft] skip rule not applicable: only 6 steps (< 50)\n[sft] dev step 6: 0.58975\nW1107 14:54:29.520000 18 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead\nW1107 14:54:29.520000 18 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead\nW1107 14:54:29.521000 18 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead\n[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.\nUnsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.\n"
+  },
+  {
+   "run_id": "smoke-uns-pad",
+   "rc": 0,
+   "s": 90.2,
+   "tail": "\ud83e\udda5 Unsloth: Will patch your computer to enable 2x faster free finetuning.\n\ud83e\udda5 Unsloth Zoo will now patch everything to make training faster!\n[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 256\n==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.\n   \\\\   /|    Tesla T4. Num GPUs = 1. Max memory: 14.571 GB. Platform: Linux.\nO^O/ \\_/ \\    Torch: 2.14.0+cu130. CUDA: 7.5. CUDA Toolkit: 13.0. Triton: 3.8.0\n\\        /    Bfloat16 = FALSE. FA [Xformers = None. FA2 = False]\n \"-____-\"     Free license: http://github.com/unslothai/unsloth\nUnsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.\nUnsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with \"unsloth\" earlier.\nUnsloth: compiling each transformer block as one region (Qwen3DecoderLayer).\n[sft] pack gate ok=True items=[0.000312, 0.000224, 0.000814, 0.000369] fused=2.78e-05\n[sft] dev step 0: 0.76426\n[sft] step 0/4 loss 0.7333 lr 2.00e-04 gn 0.75793 skip 0\n[sft] dev step 3: 0.61197\n[sft] skip rule not applicable: only 4 steps (< 50)\n[sft] dev step 4: 0.60609\nW1107 14:56:01.571000 141 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead\nW1107 14:56:01.572000 141 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead\nW1107 14:56:01.572000 141 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead\n[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.\nUnsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.\n"
+  },
+  {
+   "run_id": "smoke-lfm-hf",
+   "rc": 0,
+   "s": 109.1,
+   "tail": "[sft] pool 7157 eligible 7157 dropped>max_len 0 (rate 0.0) -> train 128\n[sft] dev step 0: 0.95256\n[sft] step 0/3 loss 0.8632 lr 2.00e-04 gn 1.3082 skip 0\n[sft] skip rule not applicable: only 3 steps (< 50)\n[sft] dev step 3: 0.63505\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.\n"
+  }
+ ],
+ "eval": {
+  "gpu": "Tesla T4, 15360 MiB",
+  "engine_load_s": 196.6,
+  "runs": {
+   "smoke-ev-base": {
+    "rc": 0,
+    "s": 27.1,
+    "out_dir": "/vol/smoke/eval/smoke-ev-base",
+    "metrics": {
+     "vi_gsm8k_train_dev": {
+      "n_items": 16,
+      "mean_pass1": 0.3125,
+      "maj@4": 0.3125,
+      "greedy_acc": 0.375,
+      "truncation_rate_sampled": 0.01562,
+      "truncation_rate_greedy": 0.0625,
+      "repetition_loop_rate": 0.0,
+      "no_answer_rate": 0.0,
+      "tokens_mean": 110.6375
+     }
+    },
+    "throughput": {
+     "dev300": {
+      "gen_tokens": 8851,
+      "s": 25.7,
+      "gen_tok_per_s": 344.0
+     }
+    }
+   },
+   "smoke-ev-hf": {
+    "rc": 0,
+    "s": 28.4,
+    "out_dir": "/vol/smoke/eval/smoke-ev-hf",
+    "metrics": {
+     "vi_gsm8k_train_dev": {
+      "n_items": 16,
+      "mean_pass1": 0.3125,
+      "maj@4": 0.4375,
+      "greedy_acc": 0.4375,
+      "truncation_rate_sampled": 0.07812,
+      "truncation_rate_greedy": 0.25,
+      "repetition_loop_rate": 0.075,
+      "no_answer_rate": 0.0,
+      "tokens_mean": 137.2125
+     }
+    },
+    "throughput": {
+     "dev300": {
+      "gen_tokens": 10977,
+      "s": 27.4,
+      "gen_tok_per_s": 399.9
+     }
+    }
+   },
+   "smoke-ev-uns": {
+    "rc": 0,
+    "s": 29.7,
+    "out_dir": "/vol/smoke/eval/smoke-ev-uns",
+    "metrics": {
+     "vi_gsm8k_train_dev": {
+      "n_items": 16,
+      "mean_pass1": 0.3125,
+      "maj@4": 0.3125,
+      "greedy_acc": 0.4375,
+      "truncation_rate_sampled": 0.10938,
+      "truncation_rate_greedy": 0.1875,
+      "repetition_loop_rate": 0.0375,
+      "no_answer_rate": 0.0,
+      "tokens_mean": 141.025
+     }
+    },
+    "throughput": {
+     "dev300": {
+      "gen_tokens": 11282,
+      "s": 28.3,
+      "gen_tok_per_s": 398.1
+     }
+    }
+   }
+  },
+  "wall_s": 285.9
+ }
+}

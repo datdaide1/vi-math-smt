@@ -1,0 +1,43 @@
+{
+ "dataset": {
+  "sha256": "4bb481930ebd788cfec592b3f2291c98dda28e14968b57d61cf3592626acfdb9",
+  "rows": 1808
+ },
+ "eval_overlap": {
+  "n_checked": 1808,
+  "n_eval_hashes": 11245,
+  "n_overlap": 0,
+  "examples": []
+ },
+ "labels": {
+  "label_frac_min": 0.3148,
+  "label_frac_mean": 0.5699,
+  "label_frac_max": 0.8275,
+  "decoded": [
+   {
+    "id": "Y/vi/ae83b2342df6:1",
+    "prompt_tail": " liệu, số tiền lãi thu được là 800.000 đồng để mua sách. Hỏi Trang và Long cần bán bao nhiêu cốc nước chanh?\n\nLời giải:\n",
+    "trained_text": "**Bước 1: Tính tổng số tiền bán nước cần thu được.**\nSố tiền lãi mong muốn là 800.000 đồng, cộng với chi phí nguyên liệu 360.000 đồng:\n800.000 + 360.000 = 1.160.000 (đồng)\n\n**Bước 2: Tính số cốc nước chanh cần bán.**\nMỗi cốc có giá 10.000 đồng, nên số cốc cần bán là:\n1.160.000 : 10.000 = 116 (cốc)\n\nVậy Trang và Long cần bán 116 cốc nước chanh.\nĐáp số: \\boxed{116}",
+    "n_trained": 179,
+    "n_total": 297,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/vi/92755f2cc0d9:1",
+    "prompt_tail": "ây dâu tây. Lúc này, trong vườn còn lại 23 cây dâu tây. Hỏi lúc đầu bác Hùng đã trồng bao nhiêu cây dâu tây?\n\nLời giải:\n",
+    "trained_text": "**Bước 1: Gọi số cây ban đầu là x.**\n\n**Bước 2: Tính số cây sau 3 tháng.** Mỗi tháng số cây tăng gấp 3 lần, nên sau 3 tháng:\nx × 3 × 3 × 3 = 27x\n\n**Bước 3: Lập phương trình.** Sau khi bác đào bớt và tặng bạn tổng cộng 4 cây, còn lại 23 cây:\n27x − 4 = 23\n\n**Bước 4: Giải phương trình.**\n27x = 27\nx = 1\n\n**Kiểm tra:** 1 cây → 3 → 9 → 27 cây sau 3 tháng. Bớt 4 cây còn 23 cây. Đúng.\n\nLúc đầu bác Hùng trồng 1 cây dâu tây.\nĐáp số: \\boxed{1}",
+    "n_trained": 195,
+    "n_total": 297,
+    "eos_trained": true
+   },
+   {
+    "id": "Y/vi/6bb9857b981e:1",
+    "prompt_tail": "lại và thấy tổng số châu chấu mình tìm được là 27 con. Hỏi trên cây Trang nhìn thấy bao nhiêu con châu chấu?\n\nLời giải:\n",
+    "trained_text": "Bước 1: Đổi 2 tá sang số con: 1 tá = 12 con, nên 2 tá = 2 × 12 = 24 con.\n\nBước 2: Tổng số châu chấu Trang tìm được là 27 con, gồm 24 con trong bụi cỏ và số con đậu trên cây.\n\nBước 3: Số châu chấu trên cây là 27 − 24 = 3 con.\nĐáp số: \\boxed{3}",
+    "n_trained": 110,
+    "n_total": 208,
+    "eos_trained": true
+   }
+  ]
+ }
+}

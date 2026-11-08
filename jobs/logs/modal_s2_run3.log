@@ -1,0 +1,40 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-PhgedC27S51CAc9rjKi8RF
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\modal_s2.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\s2-modal-data
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\pilot\s2_pi
+│   lot.py
+├── ✓ Created Function run_l4_fallback.
+├── ✓ Created Function run_t4.
+├── ✓ Created Function run_l4_a10g.
+├── ✓ Created Function run_l40s.
+└── ✓ Created Function run_h100.
+spawned parity_t4_fp16 T4 fp16
+spawned parity_l4_bf16 ['L4', 'A10G', 'L40S'] bf16
+spawned tput_l40s L40S bf16
+spawned tput_h100_4b H100 bf16
+spawned tput_l4_4b ['L4', 'A10G'] bf16
+parity_l4_bf16 sft Qwen/Qwen3-0.6B-Base 0 156
+tput_h100_4b sft Qwen/Qwen3-4B-Base 0 179
+parity_l4_bf16 eval_dev Qwen/Qwen3-0.6B-Base 3 63
+tput_l40s sft Qwen/Qwen3-4B-Base 0 223
+tput_l40s sft Qwen/Qwen3-1.7B-Base 0 143
+tput_l40s sft Qwen/Qwen3-0.6B-Base 0 104
+tput_l4_4b sft Qwen/Qwen3-4B-Base 0 667
+parity_t4_fp16 sft Qwen/Qwen3-0.6B-Base 0 754
+parity_l4_bf16 sft Qwen/Qwen3-1.7B-Base 0 589
+parity_l4_bf16 eval_dev Qwen/Qwen3-1.7B-Base 3 50
+parity_t4_fp16 eval_dev Qwen/Qwen3-0.6B-Base 0 163
+parity_t4_fp16 sft Qwen/Qwen3-1.7B-Base 0 463
+parity_t4_fp16 eval_dev Qwen/Qwen3-1.7B-Base 0 149
+done parity_t4_fp16 [{'task': 'sft', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 753.8}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 162.7}, {'task': 'sft', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 462.9}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 148.8}]
+done parity_l4_bf16 [{'task': 'sft', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 155.6}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 3, 's': 63.4}, {'task': 'sft', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 589.0}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 3, 's': 50.0}]
+done tput_l40s [{'task': 'sft', 'model': 'Qwen/Qwen3-4B-Base', 'rc': 0, 's': 222.8}, {'task': 'sft', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 142.8}, {'task': 'sft', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 103.5}]
+done tput_h100_4b [{'task': 'sft', 'model': 'Qwen/Qwen3-4B-Base', 'rc': 0, 's': 178.6}]
+done tput_l4_4b [{'task': 'sft', 'model': 'Qwen/Qwen3-4B-Base', 'rc': 0, 's': 667.1}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-PhgedC27S51CAc9rjKi8RF

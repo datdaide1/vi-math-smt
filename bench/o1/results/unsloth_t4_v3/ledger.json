@@ -1,0 +1,23 @@
+{
+ "plan": "unsloth_t4",
+ "gpu": "Tesla T4, 610.57.04, 15360 MiB",
+ "dtype": "fp16",
+ "tasks": [
+  {
+   "task": "unsloth_pad",
+   "rc": 0,
+   "s": 112.5
+  },
+  {
+   "task": "unsloth_pack",
+   "rc": 0,
+   "s": 68.1
+  },
+  {
+   "task": "unsloth_pad_mb4",
+   "rc": 0,
+   "s": 76.4
+  }
+ ],
+ "wall_s": 257.2
+}

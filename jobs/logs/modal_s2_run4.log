@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-RqLhIgBSJhWjKNeA9eLIEN
+Building image im-DVyAfPKt9NBnM9yAobwCTm
+
+=> Step 0: FROM base
+
+=> Step 1: ENV HF_HUB_ENABLE_HF_TRANSFER=0
+
+=> Step 2: ENV TOKENIZERS_PARALLELISM=false
+
+=> Step 3: ENV VLLM_USE_FLASHINFER_SAMPLER=0
+Saving image...
+Image saved, took 1.85s
+
+Built image im-DVyAfPKt9NBnM9yAobwCTm in 2.53s
+
+
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\modal_s2.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\jobs\build\s2-modal-data
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\infra\pilot\s2_pi
+│   lot.py
+├── ✓ Created Function run_t4.
+├── ✓ Created Function run_l4_fallback.
+├── ✓ Created Function run_l4_a10g.
+├── ✓ Created Function run_l40s.
+└── ✓ Created Function run_h100.
+spawned parity_l4_bf16 ['L4', 'A10G', 'L40S'] bf16
+parity_l4_bf16 sft Qwen/Qwen3-0.6B-Base 0 152
+parity_l4_bf16 eval_dev Qwen/Qwen3-0.6B-Base 0 95
+parity_l4_bf16 sft Qwen/Qwen3-1.7B-Base 0 233
+parity_l4_bf16 eval_dev Qwen/Qwen3-1.7B-Base 0 88
+done parity_l4_bf16 [{'task': 'sft', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 152.3}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-0.6B-Base', 'rc': 0, 's': 95.3}, {'task': 'sft', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 232.7}, {'task': 'eval_dev', 'model': 'Qwen/Qwen3-1.7B-Base', 'rc': 0, 's': 87.9}]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-RqLhIgBSJhWjKNeA9eLIEN

@@ -1,0 +1,302 @@
+{
+ "groups": [
+  {
+   "gpu": "l40s",
+   "cell": "0.6B|vi|s1",
+   "tasks": [
+    {
+     "cmd": "sft-cell",
+     "configs": [
+      {
+       "kind": "sft",
+       "run_id": "t2-sft-S0-vi-0p6B-s1",
+       "arm": "S0",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 1808,
+        "epochs": 3
+       },
+       "data": {
+        "train": "{vol}/train_data/t1r/s0_train.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 200,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "40917e65f28e9de3cb68a3f28e4d6f3b05cec0e658a930d83d4d3e98876fb825",
+        "expected_rows": 6788,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "T2 P3 0.6B VI seeds 1-3 | n_train=1808 (arm-matched per language for Y+-/N+-)"
+      },
+      {
+       "kind": "sft",
+       "run_id": "t2-sft-Yp-vi-0p6B-s1",
+       "arm": "Y+",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 1808,
+        "epochs": 3
+       },
+       "data": {
+        "train": "{vol}/train_data/train/final/Y/vi/train_plus.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 200,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "4bb481930ebd788cfec592b3f2291c98dda28e14968b57d61cf3592626acfdb9",
+        "expected_rows": 1808,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "T2 P3 0.6B VI seeds 1-3 | n_train=1808 (arm-matched per language for Y+-/N+-)"
+      },
+      {
+       "kind": "sft",
+       "run_id": "t2-sft-Ym-vi-0p6B-s1",
+       "arm": "Y-",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 1808,
+        "epochs": 3
+       },
+       "data": {
+        "train": "{vol}/train_data/train/final/Y/vi/train_minus.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 200,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "0b51bebf01343984abc6717675f6ef6d3cab135aaedcf567a111a7ab4fb2f749",
+        "expected_rows": 1808,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "T2 P3 0.6B VI seeds 1-3 | n_train=1808 (arm-matched per language for Y+-/N+-)"
+      },
+      {
+       "kind": "sft",
+       "run_id": "t2-sft-Np-vi-0p6B-s1",
+       "arm": "N+",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 1808,
+        "epochs": 3
+       },
+       "data": {
+        "train": "{vol}/train_data/train/final/N/vi/train_plus.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 200,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "9c3e61f691b02a805fa68b2f51a72059f651d6bb3cf1c5bed9f134eb5235a381",
+        "expected_rows": 1808,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "T2 P3 0.6B VI seeds 1-3 | n_train=1808 (arm-matched per language for Y+-/N+-)"
+      },
+      {
+       "kind": "sft",
+       "run_id": "t2-sft-Nm-vi-0p6B-s1",
+       "arm": "N-",
+       "model": "Qwen/Qwen3-0.6B-Base",
+       "size": "0.6B",
+       "seed": 1,
+       "lang": "vi",
+       "precision": "bf16",
+       "engine": "unsloth",
+       "budget": {
+        "n_train": 1808,
+        "epochs": 3
+       },
+       "data": {
+        "train": "{vol}/train_data/train/final/N/vi/train_minus.jsonl"
+       },
+       "sft": {
+        "lr": 0.0001,
+        "micro_batch": 32,
+        "max_length": 1024,
+        "packing": true,
+        "dev_path": "{vol}/train_data/t1r/dev_seed_vi.jsonl",
+        "dev_every_steps": 200,
+        "ckpt_every_min": 15,
+        "keep_ckpts": 1,
+        "grad_ckpt": false,
+        "branch_epochs": [
+         1,
+         2
+        ]
+       },
+       "platform": "modal_l40s",
+       "code": {
+        "git_sha": "e999a5653c3dbd4e92f36a82033bb7e642c0329b",
+        "dirty": false,
+        "dirty_files": [],
+        "paths": [
+         "vi_math_verified_aug/train",
+         "vi_math_verified_aug/evalrun",
+         "vi_math_verified_aug/eval/math_verify.py",
+         "vi_math_verified_aug/__init__.py"
+        ]
+       },
+       "guards": {
+        "enabled": true,
+        "expected_sha256": "fc35ac449a115bde9d4c7afcdd6f53d38b25f51eb55ebf9ee56634489232c3c2",
+        "expected_rows": 1808,
+        "eval_hashes_path": "{vol}/train_data/t1r/eval_qhashes.json",
+        "step0_loss_band": [
+         0.3,
+         1.6
+        ],
+        "expected_tok_per_s": 36300
+       },
+       "notes": "T2 P3 0.6B VI seeds 1-3 | n_train=1808 (arm-matched per language for Y+-/N+-)"
+      }
+     ],
+     "budget_s": 5935,
+     "stop_on_fail": false
+    }
+   ]
+  }
+ ]
+}

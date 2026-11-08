@@ -1,0 +1,89 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+W1107 20:45:11.687000 4 site-packages/torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1107 20:45:11.688000 4 site-packages/torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1107 20:45:11.689000 4 site-packages/torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+[vllm.utils.flashinfer|WARNING]FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[preflight] vi_gsm8k_train/3 trained 113/191: 'Maila đã đọc 12 x 2 = 24 trang hôm nay.\nVì vậy, cô ấy đã đọc tổng cộng 12 + 24 = 36 trang kể từ hôm qua.\nCòn lại 120 - 36 = 84 trang cần đọc.\nVì cô ấy muốn đọc một nửa số trang còn lại vào ngày mai, thì cô ấy nên đọc 84/2 = 42 trang.\nĐáp số: \\boxed{42}'
+[preflight] vi_gsm8k_train/4 trained 75/118: 'Anh ấy viết cho mỗi người bạn 3*2=6 trang một tuần\nVậy anh ấy viết 6*2=12 trang mỗi tuần\nĐiều đó có nghĩa là anh ấy viết 12*52=624 trang một năm\nĐáp số: \\boxed{624}'
+[preflight] vi_gsm8k_train/5 trained 154/246: 'Có 80/100 * 10 = 8 bông hoa màu tím nhiều hơn hoa màu vàng.\nVì vậy, trong vườn của Mark, có 10 + 8 = 18 bông hoa màu tím.\nTổng số hoa màu tím và màu vàng là 10 + 18 = 28 bông.\nĐiều đó có nghĩa là trong vườn của Mark có 25/100 * 28 = 7 bông hoa màu xanh lá cây.\nVậy tổng cộng Mark có 28 + 7 = 35 cây trong vườn của mình.\nĐáp số: \\boxed{35}'
+[sft] pool 6788 eligible 6788 dropped>max_len 0 (rate 0.0) -> train 3000
+==((====))==  Unsloth 2026.11.3: Fast Qwen3 patching. Transformers: 5.20.2. vLLM: 0.33.0.
+   \\   /|    NVIDIA L40S. Num GPUs = 1. Max memory: 44.42 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.14.0+cu130. CUDA: 8.9. CUDA Toolkit: 13.0. Triton: 3.8.0
+\        /    Bfloat16 = TRUE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Qwen/Qwen3-0.6B-Base had a bad pad_token (<|endoftext|>). Using pad_token = <|vision_pad|>.
+Unsloth: use_gradient_checkpointing = False turns off smart offloading for every model in this process, including ones loaded with "unsloth" earlier.
+Unsloth 2026.11.3 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+Unsloth: compiling each transformer block as one region (Qwen3DecoderLayer).
+Unsloth: packed / padding-free rows run each transformer block uncompiled; only unpacked batches use the compiled blocks.
+[sft] pack gate ok=True items=[0.007494, 9.9e-05, 0.008385, 0.003756] fused=1.37e-03
+[sft] dev step 0: 0.79150
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 0: {'correct': 0.3594, 'no_answer': 0.0938, 'repetition': 0.0781, 'truncated': 0.1719, 'n': 64, 'step': 0, 's': 14.8, 'path': 'generate'}
+[sft] step 0/60 loss 0.7479 lr 1.25e-05 gn 0.75138 skip 0
+[sft] step 10/60 loss 0.5774 lr 1.00e-04 gn 0.44866 skip 0
+[sft] dev step 15: 0.59979
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 15: {'correct': 0.3438, 'no_answer': 0.0312, 'repetition': 0.0312, 'truncated': 0.0625, 'n': 64, 'step': 15, 's': 11.6, 'path': 'generate'}
+[sft] step 20/60 loss 0.6112 lr 1.00e-04 gn 0.37691 skip 0
+[sft] dev step 30: 0.57187
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 30: {'correct': 0.4219, 'no_answer': 0.0312, 'repetition': 0.0156, 'truncated': 0.0312, 'n': 64, 'step': 30, 's': 10.1, 'path': 'generate'}
+[sft] step 30/60 loss 0.5232 lr 1.00e-04 gn 0.344 skip 0
+[sft] step 40/60 loss 0.6204 lr 1.00e-04 gn 0.33011 skip 0
+[sft] dev step 50: 0.55395
+[sft] step 50/60 loss 0.5732 lr 1.00e-04 gn 0.34623 skip 0
+[sft] dev step 60: 0.54841
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 60: {'correct': 0.5, 'no_answer': 0.0156, 'repetition': 0.0156, 'truncated': 0.0156, 'n': 64, 'step': 60, 's': 8.2, 'path': 'generate'}
+[preflight] vi_gsm8k_train/0 trained 64/138: 'Natalia đã bán 48/2 = 24 kẹp tóc vào tháng 5.\nNatalia đã bán tổng cộng 48+24 = 72 kẹp tóc vào tháng 4 và tháng 5.\nĐáp số: \\boxed{72}'
+[preflight] vi_gsm8k_train/3 trained 113/191: 'Maila đã đọc 12 x 2 = 24 trang hôm nay.\nVì vậy, cô ấy đã đọc tổng cộng 12 + 24 = 36 trang kể từ hôm qua.\nCòn lại 120 - 36 = 84 trang cần đọc.\nVì cô ấy muốn đọc một nửa số trang còn lại vào ngày mai, thì cô ấy nên đọc 84/2 = 42 trang.\nĐáp số: \\boxed{42}'
+[preflight] vi_gsm8k_train/5 trained 154/246: 'Có 80/100 * 10 = 8 bông hoa màu tím nhiều hơn hoa màu vàng.\nVì vậy, trong vườn của Mark, có 10 + 8 = 18 bông hoa màu tím.\nTổng số hoa màu tím và màu vàng là 10 + 18 = 28 bông.\nĐiều đó có nghĩa là trong vườn của Mark có 25/100 * 28 = 7 bông hoa màu xanh lá cây.\nVậy tổng cộng Mark có 28 + 7 = 35 cây trong vườn của mình.\nĐáp số: \\boxed{35}'
+[sft] pool 6788 eligible 6788 dropped>max_len 0 (rate 0.0) -> train 3000
+[sft] pack gate ok=True items=[0.000713, 0.000462, 0.004586, 0.001963] fused=8.51e-05
+[sft] dev step 0: 0.79150
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 0: {'correct': 0.3594, 'no_answer': 0.0938, 'repetition': 0.0781, 'truncated': 0.1719, 'n': 64, 'step': 0, 's': 14.1, 'path': 'generate'}
+[sft] step 0/60 loss 0.7022 lr 1.25e-05 gn 0.6746 skip 0
+[sft] step 10/60 loss 0.5646 lr 1.00e-04 gn 0.42986 skip 0
+[sft] dev step 15: 0.59907
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 15: {'correct': 0.3125, 'no_answer': 0.0312, 'repetition': 0.0625, 'truncated': 0.0625, 'n': 64, 'step': 15, 's': 13.5, 'path': 'generate'}
+[sft] step 20/60 loss 0.5878 lr 1.00e-04 gn 0.42963 skip 0
+[sft] dev step 30: 0.57183
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 30: {'correct': 0.4062, 'no_answer': 0.0469, 'repetition': 0.0156, 'truncated': 0.0469, 'n': 64, 'step': 30, 's': 12.2, 'path': 'generate'}
+[sft] step 30/60 loss 0.6569 lr 1.00e-04 gn 0.36271 skip 0
+[sft] step 40/60 loss 0.6022 lr 1.00e-04 gn 0.33829 skip 0
+[sft] dev step 50: 0.55346
+[sft] step 50/60 loss 0.5902 lr 1.00e-04 gn 0.3318 skip 0
+[sft] dev step 60: 0.54866
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 60: {'correct': 0.4062, 'no_answer': 0.0312, 'repetition': 0.0312, 'truncated': 0.0312, 'n': 64, 'step': 60, 's': 10.8, 'path': 'generate'}
+CELL {"parity-cell-A": 0, "parity-cell-B": 0}

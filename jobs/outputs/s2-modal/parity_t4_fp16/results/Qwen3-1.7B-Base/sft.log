@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<02:25,  2.13it/s]
+Loading weights:  72%|███████▏  | 223/310 [00:00<00:00, 514.73it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 419.11it/s]
+[W1107 11:07:37.020518078 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 45154304, total: 15645278208).
+[W1107 11:07:37.037302436 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 28377088, total: 15645278208).
+[W1107 11:07:37.037543060 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 50331648 bytes (free: 28377088, total: 15645278208).
+[W1107 11:07:38.393620710 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 612368384 bytes (free: 95485952, total: 15645278208).
+SFT Qwen3-1.7B-Base padded step 0 loss 0.7129 gn 0.403 4.76s amax 14320.0
+SFT Qwen3-1.7B-Base padded step 10 loss 0.5576 gn 0.238 3.96s amax None
+SFT Qwen3-1.7B-Base padded step 20 loss 0.4826 gn 0.185 4.81s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 30 loss 0.4997 gn 0.168 4.40s amax None
+SFT Qwen3-1.7B-Base padded step 40 loss 0.4105 gn 0.160 4.51s amax 14344.0
+SFT Qwen3-1.7B-Base padded step 50 loss 0.4448 gn 0.162 4.18s amax None
+SFT Qwen3-1.7B-Base padded step 60 loss 0.4257 gn 0.175 4.01s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 70 loss 0.4430 gn 0.168 4.04s amax None
+SFT Qwen3-1.7B-Base padded step 80 loss 0.4600 gn 0.185 4.35s amax 14336.0
+SFT Qwen3-1.7B-Base padded step 90 loss 0.4401 gn 0.174 4.17s amax None
+SFT Qwen3-1.7B-Base padded step 99 loss 0.4526 gn 0.195 3.79s amax None
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.79s/it]
+Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.79s/it]
+SFT_DONE Qwen/Qwen3-1.7B-Base padded_length_grouped 1533.7 0.616 0.4616 0 14360.0

@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-uL6RrTLujIxe6YLXCuRNPZ
+✓ Created objects.
+├── ✓ Uploaded 
+│   E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug\evalrun\modal_eva
+│   l.py
+├── ✓ Uploaded E:\MATH-REASONING-THESIS\vi-math-smt\vi_math_verified_aug
+├── ✓ Created Function eval_l4.
+├── ✓ Created Function eval_l40s.
+├── ✓ Created Function eval_a10g.
+├── ✓ Created Function train_gpu.
+├── ✓ Created Function train_l40s.
+├── ✓ Created Function train_t4.
+├── ✓ Created Function smoke_t4.
+└── ✓ Created Function parity_peft.
+spawned ['fc-01M6VW3GYAZG2KEAWZB8FHH2HP', 'fc-01M6VW3HFXD7X3TBNHDN6AF1CV']
+parity-cell-A 0 208.7 NVIDIA L40S, 46068 MiB
+
+parity-cell-B 0 208.7 NVIDIA L40S, 46068 MiB
+mation. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 60: {'correct': 0.4062, 'no_answer': 0.0312, 'repetition': 0.0312, 'truncated': 0.0312, 'n': 64, 'step': 60, 's': 10.8, 'path': 'generate'}
+CELL {"parity-cell-A": 0, "parity-cell-B": 0}
+
+parity-fresh-B 0 140.8 NVIDIA L40S, 46068 MiB
+ease refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=384) and `max_length`(=32768) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[sft] quick-eval step 60: {'correct': 0.4531, 'no_answer': 0.0312, 'repetition': 0.0469, 'truncated': 0.0469, 'n': 64, 'step': 60, 's': 10.6, 'path': 'generate'}
+
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/tran-hoang-dat-2312/main/ap-uL6RrTLujIxe6YLXCuRNPZ
+rc=0

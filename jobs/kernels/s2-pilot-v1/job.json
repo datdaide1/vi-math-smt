@@ -1,0 +1,36 @@
+{
+ "lanes": [
+  [
+   ["Qwen/Qwen3-0.6B-Base", ["packcheck", "sft", "sft_packed_hf"]],
+   ["Qwen/Qwen3-1.7B-Base", ["sft"]],
+   ["Qwen/Qwen3-0.6B-Base", ["unsloth"]],
+   ["Qwen/Qwen3-4B-Base", ["eval", "sft"], {"cleanup": true}],
+   ["LiquidAI/LFM2.5-1.2B-Base", ["eval", "sft"], {"sft_if_acc": 0.15, "cleanup": true}]
+  ],
+  [
+   ["google/gemma-4-E2B", ["eval", "sft"], {"cleanup": true}],
+   ["HuggingFaceTB/SmolLM3-3B-Base", ["eval", "sft"], {"sft_if_acc": 0.15, "cleanup": true}],
+   ["meta-llama/Llama-3.2-1B", ["eval", "sft"], {"sft_if_acc": 0.15}],
+   ["LiquidAI/LFM2.5-2.6B-Base", ["eval", "sft"], {"sft_if_acc": 0.15, "cleanup": true}]
+  ]
+ ],
+ "install": "pip install -q 'vllm==0.33.0'",
+ "env_fix": ["pip uninstall -y -q torchao"],
+ "unsloth_install": "pip install -q --no-deps --target /tmp/uns_site unsloth unsloth_zoo trl cut_cross_entropy",
+ "vllm_attempts": {"gemma-4-E2B": [{"env": {"VLLM_ATTENTION_BACKEND": "FLEX_ATTENTION"},
+                                    "kw": {"enforce_eager": true, "attention_config": {"backend": "FLEX_ATTENTION"}}}]},
+ "micro": 8,
+ "micro_by_model": {"gemma-4-E2B": 4},
+ "gc_above_params": 2.5e9,
+ "hook_every": 4,
+ "sft_steps": 100,
+ "eval_n": 300,
+ "use_vllm": true,
+ "hf_eval_bs": 16,
+ "task_timeout_s": 2400,
+ "vllm_timeout_s": 1200,
+ "hf_eval_timeout_s": 2400,
+ "unsloth_timeout_s": 2400,
+ "deadline_s": 7800,
+ "kernel_timeout_s": 9000
+}

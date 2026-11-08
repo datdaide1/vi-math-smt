@@ -1,0 +1,16 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 5710.80it/s]
+SFT Qwen3-1.7B-Base padded step 0 loss 0.7128 gn 0.402 1.27s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 10 loss 0.5593 gn 0.230 0.87s amax None
+SFT Qwen3-1.7B-Base padded step 20 loss 0.4834 gn 0.180 1.13s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 30 loss 0.5015 gn 0.169 0.95s amax None
+SFT Qwen3-1.7B-Base padded step 40 loss 0.4134 gn 0.159 1.05s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 50 loss 0.4450 gn 0.161 0.94s amax None
+SFT Qwen3-1.7B-Base padded step 60 loss 0.4261 gn 0.178 0.98s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 70 loss 0.4428 gn 0.176 0.94s amax None
+SFT Qwen3-1.7B-Base padded step 80 loss 0.4624 gn 0.185 0.97s amax 14400.0
+SFT Qwen3-1.7B-Base padded step 90 loss 0.4409 gn 0.173 0.85s amax None
+SFT Qwen3-1.7B-Base padded step 99 loss 0.4531 gn 0.201 0.84s amax None
+SFT_DONE Qwen/Qwen3-1.7B-Base padded_length_grouped 6999.1 0.6307 0.4622 0 14400.0

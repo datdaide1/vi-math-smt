@@ -1,0 +1,263 @@
+{
+ "expect_gpu": "T4",
+ "fail_fast": true,
+ "deadline_s": 9000,
+ "grace_s": 300,
+ "env_fix": [
+  "pip uninstall -y -q torchao"
+ ],
+ "install": "pip install -q 'vllm==0.33.0'",
+ "wheels_dir_glob": null,
+ "unsloth_install": "pip install -q --no-deps --target /tmp/uns_site unsloth==2026.11.3 unsloth_zoo==2026.11.3 trl==1.17.1 cut_cross_entropy==25.1.1 bitsandbytes==0.50.2",
+ "drop_ckpt_on_done": true,
+ "python": "3.13",
+ "pins": {
+  "torch": "2.14.0",
+  "transformers": "5.20.2",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "vllm": "0.33.0",
+  "triton": "3.8.0",
+  "datasets": "4.8.5"
+ },
+ "run_id": "t1r-runs-v1-20261107T150455Z",
+ "lanes": [
+  [
+   {
+    "cmd": "sft",
+    "config": {
+     "kind": "sft",
+     "run_id": "t1r-gate-uns-0p6B-s1",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 1,
+     "precision": "fp16",
+     "engine": "unsloth",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": 300
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": true,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 100,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    },
+    "budget_s": 1800
+   },
+   {
+    "cmd": "sft",
+    "config": {
+     "kind": "sft",
+     "run_id": "t1r-S0-uns-0p6B-s1",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 1,
+     "precision": "fp16",
+     "engine": "unsloth",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": null
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": true,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 150,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    },
+    "budget_s": 3300,
+    "requires": "t1r-gate-uns-0p6B-s1",
+    "fallback_config": {
+     "kind": "sft",
+     "run_id": "t1r-S0-hf-0p6B-s1",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 1,
+     "precision": "fp16",
+     "engine": "hf",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": null
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": false,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 150,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    }
+   },
+   {
+    "cmd": "sft",
+    "config": {
+     "kind": "sft",
+     "run_id": "t1r-lfm2.5-2.6B-smoke",
+     "arm": "S0",
+     "model": "LiquidAI/LFM2.5-2.6B-Base",
+     "size": "2.6B",
+     "seed": 1,
+     "precision": "fp16",
+     "engine": "hf",
+     "budget": {
+      "n_train": 3200,
+      "epochs": 1,
+      "max_steps": 100
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": false,
+      "dev_path": null,
+      "dev_every_steps": null,
+      "act_monitor_every": 4,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    },
+    "budget_s": 2400
+   }
+  ],
+  [
+   {
+    "cmd": "sft",
+    "config": {
+     "kind": "sft",
+     "run_id": "t1r-gate-hf-0p6B-s1",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 1,
+     "precision": "fp16",
+     "engine": "hf",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": 300
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": false,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 100,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    },
+    "budget_s": 2400
+   },
+   {
+    "cmd": "sft",
+    "config": {
+     "kind": "sft",
+     "run_id": "t1r-S0-uns-0p6B-s2",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 2,
+     "precision": "fp16",
+     "engine": "unsloth",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": null
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": true,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 150,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    },
+    "budget_s": 3300,
+    "requires": "t1r-gate-uns-0p6B-s1",
+    "wait_max_s": 1800,
+    "fallback_config": {
+     "kind": "sft",
+     "run_id": "t1r-S0-hf-0p6B-s2",
+     "arm": "S0",
+     "model": "Qwen/Qwen3-0.6B-Base",
+     "size": "0.6B",
+     "seed": 2,
+     "precision": "fp16",
+     "engine": "hf",
+     "budget": {
+      "n_train": null,
+      "epochs": 2,
+      "max_steps": null
+     },
+     "data": {
+      "train": "{code}/data/s0_train.jsonl"
+     },
+     "sft": {
+      "lr": 0.0002,
+      "micro_batch": 8,
+      "max_length": 1024,
+      "packing": false,
+      "dev_path": "{code}/data/dev300.jsonl",
+      "dev_every_steps": 150,
+      "act_monitor_every": 0,
+      "ckpt_every_min": 30,
+      "keep_ckpts": 1
+     },
+     "notes": "T1r first real runs (S0 = clean Vi-GSM8K train minus R1's 16 rows minus dev300)"
+    }
+   }
+  ]
+ ]
+}

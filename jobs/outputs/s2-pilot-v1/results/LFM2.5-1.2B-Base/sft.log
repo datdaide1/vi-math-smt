@@ -1,0 +1,15 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:   1%|          | 1/148 [00:00<00:50,  2.92it/s]Loading weights:  28%|██▊       | 41/148 [00:00<00:00, 114.81it/s]Loading weights:  42%|████▏     | 62/148 [00:00<00:00, 130.68it/s]Loading weights:  55%|█████▍    | 81/148 [00:00<00:00, 130.34it/s]Loading weights:  66%|██████▌   | 98/148 [00:00<00:00, 128.03it/s]Loading weights:  76%|███████▋  | 113/148 [00:00<00:00, 127.11it/s]Loading weights:  88%|████████▊ | 130/148 [00:01<00:00, 130.29it/s]Loading weights: 100%|██████████| 148/148 [00:01<00:00, 123.95it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+SFT LFM2.5-1.2B-Base padded step 0 loss 1.4561 gn 2.930 4.67s amax 8.171875
+SFT LFM2.5-1.2B-Base padded step 10 loss 0.5343 gn 0.543 4.28s amax None
+SFT LFM2.5-1.2B-Base padded step 20 loss 0.4211 gn 0.436 3.90s amax 11.078125
+SFT LFM2.5-1.2B-Base padded step 30 loss 0.4183 gn 0.355 4.53s amax None
+SFT LFM2.5-1.2B-Base padded step 40 loss 0.4112 gn 0.360 4.43s amax 11.375
+SFT LFM2.5-1.2B-Base padded step 50 loss 0.3855 gn 0.335 4.33s amax None
+SFT LFM2.5-1.2B-Base padded step 60 loss 0.3707 gn 0.326 4.61s amax 11.1953125
+SFT LFM2.5-1.2B-Base padded step 70 loss 0.3719 gn 0.333 4.36s amax None
+SFT LFM2.5-1.2B-Base padded step 80 loss 0.3732 gn 0.356 4.78s amax 11.84375
+SFT LFM2.5-1.2B-Base padded step 90 loss 0.3568 gn 0.295 4.73s amax None
+SFT LFM2.5-1.2B-Base padded step 99 loss 0.3744 gn 0.338 4.35s amax None
+SFT_DONE LiquidAI/LFM2.5-1.2B-Base padded_length_grouped 2355.2 1.0373 0.3697 0 12.46875

@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<02:25,  2.12it/s]Loading weights:  79%|███████▉  | 245/310 [00:00<00:00, 560.55it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 457.60it/s]
+[W1107 10:05:51.853823430 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 695009280, total: 15636037632).
+[W1107 10:05:51.884750612 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1581252608 bytes (free: 1575813120, total: 15636037632).
+[W1107 10:05:51.041943737 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 25165824 bytes (free: 5046272, total: 15636037632).
+[W1107 10:05:52.139189071 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 25165824 bytes (free: 21823488, total: 15636037632).
+[W1107 10:05:54.557964387 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2949120, total: 15636037632).
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 0 loss 0.7908 gn 0.687 5.71s amax 6476.0
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 10 loss 0.6329 gn 0.426 4.40s amax None
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 20 loss 0.5669 gn 0.331 5.46s amax 6468.0
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 30 loss 0.5917 gn 0.276 4.41s amax None
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 40 loss 0.4741 gn 0.273 5.28s amax 6452.0
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 50 loss 0.5123 gn 0.286 4.35s amax None
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 60 loss 0.4765 gn 0.299 5.10s amax 6444.0
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 70 loss 0.5055 gn 0.286 4.45s amax None
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 80 loss 0.5274 gn 0.288 5.14s amax 6444.0
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 90 loss 0.5088 gn 0.285 4.39s amax None
+SFT Qwen3-0.6B-Base pos_ids_no_cache step 99 loss 0.5210 gn 0.298 4.35s amax None
+SFT_DONE Qwen/Qwen3-0.6B-Base packed:pos_ids_no_cache 1424.2 0.695 0.5283 0 6480.0

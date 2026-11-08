@@ -1,0 +1,200 @@
+{
+ "gpu": "NVIDIA L40S, 46068 MiB",
+ "engine_load_s": 148.8,
+ "env": null,
+ "runs": {
+  "ev-base-qwen3-0.6b-4shot-primary-l40s": {
+   "rc": 0,
+   "s": 115.0,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-4shot-primary-l40s",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.35,
+     "maj@4": 0.43667,
+     "greedy_acc": 0.4,
+     "truncation_rate_sampled": 0.01917,
+     "truncation_rate_greedy": 0.04667,
+     "repetition_loop_rate": 0.01967,
+     "no_answer_rate": 0.00133,
+     "tokens_mean": 128.93
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.33187,
+     "maj@4": 0.4375,
+     "greedy_acc": 0.38,
+     "truncation_rate_sampled": 0.07,
+     "truncation_rate_greedy": 0.1075,
+     "repetition_loop_rate": 0.0525,
+     "no_answer_rate": 0.0025,
+     "tokens_mean": 225.2685
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 837327,
+     "s": 114.1,
+     "gen_tok_per_s": 7338.0
+    }
+   }
+  },
+  "ev-base-qwen3-0.6b-4shot-spot200-cap2048-l40s": {
+   "rc": 0,
+   "s": 47.6,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-4shot-spot200-cap2048-l40s",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 120,
+     "mean_pass1": 0.31458,
+     "maj@4": 0.38333,
+     "greedy_acc": 0.425,
+     "truncation_rate_sampled": 0.01875,
+     "truncation_rate_greedy": 0.025,
+     "repetition_loop_rate": 0.01333,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 149.28833
+    },
+    "math_algprealg": {
+     "n_items": 80,
+     "mean_pass1": 0.32812,
+     "maj@4": 0.3625,
+     "greedy_acc": 0.4125,
+     "truncation_rate_sampled": 0.0875,
+     "truncation_rate_greedy": 0.1625,
+     "repetition_loop_rate": 0.0775,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 350.37
+    }
+   },
+   "throughput": {
+    "vi_primary_spot200": {
+     "gen_tokens": 229721,
+     "s": 46.9,
+     "gen_tok_per_s": 4900.4
+    }
+   }
+  },
+  "ev-base-qwen3-0.6b-4shot-devv1-l40s": {
+   "rc": "error",
+   "error": "FileNotFoundError(2, 'No such file or directory')"
+  },
+  "ev-t1r-S0-uns-0p6B-s1-primary-l40s": {
+   "rc": 0,
+   "s": 107.8,
+   "out_dir": "/vol/eval/ev-t1r-S0-uns-0p6B-s1-primary-l40s",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.44917,
+     "maj@4": 0.54167,
+     "greedy_acc": 0.47,
+     "truncation_rate_sampled": 0.00708,
+     "truncation_rate_greedy": 0.01,
+     "repetition_loop_rate": 0.00533,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 118.78867
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.21438,
+     "maj@4": 0.2825,
+     "greedy_acc": 0.2625,
+     "truncation_rate_sampled": 0.08625,
+     "truncation_rate_greedy": 0.1775,
+     "repetition_loop_rate": 0.0685,
+     "no_answer_rate": 0.0045,
+     "tokens_mean": 255.473
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 867312,
+     "s": 107.0,
+     "gen_tok_per_s": 8104.1
+    }
+   }
+  },
+  "ev-t1r-S0-uns-0p6B-s1-devv1-l40s": {
+   "rc": "error",
+   "error": "FileNotFoundError(2, 'No such file or directory')"
+  },
+  "ev-t1r-S0-uns-0p6B-s1-spot200-cap2048-l40s": {
+   "rc": 0,
+   "s": 47.0,
+   "out_dir": "/vol/eval/ev-t1r-S0-uns-0p6B-s1-spot200-cap2048-l40s",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 120,
+     "mean_pass1": 0.40208,
+     "maj@4": 0.45833,
+     "greedy_acc": 0.39167,
+     "truncation_rate_sampled": 0.00417,
+     "truncation_rate_greedy": 0.01667,
+     "repetition_loop_rate": 0.005,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 127.93833
+    },
+    "math_algprealg": {
+     "n_items": 80,
+     "mean_pass1": 0.17813,
+     "maj@4": 0.2875,
+     "greedy_acc": 0.2,
+     "truncation_rate_sampled": 0.09688,
+     "truncation_rate_greedy": 0.2125,
+     "repetition_loop_rate": 0.0825,
+     "no_answer_rate": 0.005,
+     "tokens_mean": 407.945
+    }
+   },
+   "throughput": {
+    "vi_primary_spot200": {
+     "gen_tokens": 239941,
+     "s": 45.8,
+     "gen_tok_per_s": 5241.7
+    }
+   }
+  },
+  "ev-t1r-S0-uns-0p6B-s2-primary-l40s": {
+   "rc": 0,
+   "s": 109.6,
+   "out_dir": "/vol/eval/ev-t1r-S0-uns-0p6B-s2-primary-l40s",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.43125,
+     "maj@4": 0.525,
+     "greedy_acc": 0.48167,
+     "truncation_rate_sampled": 0.00625,
+     "truncation_rate_greedy": 0.015,
+     "repetition_loop_rate": 0.00467,
+     "no_answer_rate": 0.0,
+     "tokens_mean": 119.73767
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.2375,
+     "maj@4": 0.325,
+     "greedy_acc": 0.27,
+     "truncation_rate_sampled": 0.08063,
+     "truncation_rate_greedy": 0.195,
+     "repetition_loop_rate": 0.071,
+     "no_answer_rate": 0.0055,
+     "tokens_mean": 253.167
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 865547,
+     "s": 108.3,
+     "gen_tok_per_s": 7991.9
+    }
+   }
+  },
+  "ev-t1r-S0-uns-0p6B-s2-devv1-l40s": {
+   "rc": "error",
+   "error": "FileNotFoundError(2, 'No such file or directory')"
+  }
+ },
+ "wall_s": 581.8
+}

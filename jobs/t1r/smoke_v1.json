@@ -1,0 +1,217 @@
+{
+ "tasks": [
+  {
+   "config": {
+    "kind": "sft",
+    "run_id": "smoke-hf",
+    "arm": "S0",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "engine": "hf",
+    "out_dir": "{vol}/smoke/smoke-hf",
+    "budget": {
+     "n_train": 256,
+     "epochs": 1,
+     "max_steps": 6
+    },
+    "data": {
+     "train": "{vol}/data/s0_train.jsonl"
+    },
+    "sft": {
+     "lr": 0.0002,
+     "micro_batch": 8,
+     "max_length": 1024,
+     "packing": false,
+     "dev_path": "{vol}/data/dev300.jsonl",
+     "dev_max_items": 32,
+     "dev_every_steps": 3,
+     "act_monitor_every": 2,
+     "ckpt_every_min": 0
+    }
+   },
+   "budget_s": 1200
+  },
+  {
+   "config": {
+    "kind": "sft",
+    "run_id": "smoke-uns-pack",
+    "arm": "S0",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "engine": "unsloth",
+    "out_dir": "{vol}/smoke/smoke-uns-pack",
+    "budget": {
+     "n_train": 256,
+     "epochs": 1,
+     "max_steps": 6
+    },
+    "data": {
+     "train": "{vol}/data/s0_train.jsonl"
+    },
+    "sft": {
+     "lr": 0.0002,
+     "micro_batch": 8,
+     "max_length": 1024,
+     "packing": true,
+     "dev_path": "{vol}/data/dev300.jsonl",
+     "dev_max_items": 32,
+     "dev_every_steps": 3,
+     "act_monitor_every": 2,
+     "ckpt_every_min": 0
+    }
+   },
+   "budget_s": 1200
+  },
+  {
+   "config": {
+    "kind": "sft",
+    "run_id": "smoke-uns-pad",
+    "arm": "S0",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "engine": "unsloth",
+    "out_dir": "{vol}/smoke/smoke-uns-pad",
+    "budget": {
+     "n_train": 256,
+     "epochs": 1,
+     "max_steps": 4
+    },
+    "data": {
+     "train": "{vol}/data/s0_train.jsonl"
+    },
+    "sft": {
+     "lr": 0.0002,
+     "micro_batch": 8,
+     "max_length": 1024,
+     "packing": false,
+     "dev_path": "{vol}/data/dev300.jsonl",
+     "dev_max_items": 32,
+     "dev_every_steps": 3,
+     "act_monitor_every": 2,
+     "ckpt_every_min": 0
+    }
+   },
+   "budget_s": 1200
+  },
+  {
+   "config": {
+    "kind": "sft",
+    "run_id": "smoke-lfm-hf",
+    "arm": "S0",
+    "model": "LiquidAI/LFM2.5-2.6B-Base",
+    "size": "2.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "engine": "hf",
+    "out_dir": "{vol}/smoke/smoke-lfm-hf",
+    "budget": {
+     "n_train": 128,
+     "epochs": 1,
+     "max_steps": 3
+    },
+    "data": {
+     "train": "{vol}/data/s0_train.jsonl"
+    },
+    "sft": {
+     "lr": 0.0002,
+     "micro_batch": 8,
+     "max_length": 1024,
+     "packing": false,
+     "dev_path": "{vol}/data/dev300.jsonl",
+     "dev_max_items": 32,
+     "dev_every_steps": 3,
+     "act_monitor_every": 2,
+     "ckpt_every_min": 0
+    }
+   },
+   "budget_s": 1200
+  }
+ ],
+ "eval": {
+  "base": "Qwen/Qwen3-0.6B-Base",
+  "tag": "smoke",
+  "configs": [
+   {
+    "kind": "eval",
+    "run_id": "smoke-ev-base",
+    "arm": "base",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "out_dir": "{vol}/smoke/eval/smoke-ev-base",
+    "eval": {
+     "source_run_id": "smoke-ev-base",
+     "adapter_path": null,
+     "shots": 4,
+     "max_new_tokens": 256,
+     "max_items": 16,
+     "sets": [
+      {
+       "name": "dev300",
+       "path": "{vol}/data/dev300.jsonl",
+       "lang": "vi"
+      }
+     ]
+    },
+    "template": {
+     "fewshot_path": "{vol}/data/fewshot4_vi.jsonl"
+    }
+   },
+   {
+    "kind": "eval",
+    "run_id": "smoke-ev-hf",
+    "arm": "S0",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "out_dir": "{vol}/smoke/eval/smoke-ev-hf",
+    "eval": {
+     "source_run_id": "smoke-ev-hf",
+     "adapter_path": "{vol}/smoke/smoke-hf/adapters/step6",
+     "shots": 0,
+     "max_new_tokens": 256,
+     "max_items": 16,
+     "sets": [
+      {
+       "name": "dev300",
+       "path": "{vol}/data/dev300.jsonl",
+       "lang": "vi"
+      }
+     ]
+    }
+   },
+   {
+    "kind": "eval",
+    "run_id": "smoke-ev-uns",
+    "arm": "S0",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "size": "0.6B",
+    "seed": 1,
+    "precision": "fp16",
+    "out_dir": "{vol}/smoke/eval/smoke-ev-uns",
+    "eval": {
+     "source_run_id": "smoke-ev-uns",
+     "adapter_path": "{vol}/smoke/smoke-uns-pack/adapters/step6",
+     "shots": 0,
+     "max_new_tokens": 256,
+     "max_items": 16,
+     "sets": [
+      {
+       "name": "dev300",
+       "path": "{vol}/data/dev300.jsonl",
+       "lang": "vi"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

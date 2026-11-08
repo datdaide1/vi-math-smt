@@ -1,0 +1,4 @@
+/kaggle/src/script.py:953: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  out["peft_lora_fp16_smoke"] = {"ok": True, "loss": float(loss),
+ENVCHECK True

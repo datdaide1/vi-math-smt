@@ -1,0 +1,21 @@
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files:  67%|██████▋   | 2/3 [00:30<00:15, 15.08s/it]
+Fetching 3 files: 100%|██████████| 3/3 [00:36<00:00, 11.46s/it]
+Fetching 3 files: 100%|██████████| 3/3 [00:36<00:00, 12.18s/it]
+
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 398/398 [00:00<00:00, 5710.62it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+SFT Qwen3-4B-Base padded step 0 loss 0.6476 gn 0.317 3.05s amax 5184.0
+SFT Qwen3-4B-Base padded step 10 loss 0.4863 gn 0.218 0.95s amax None
+SFT Qwen3-4B-Base padded step 20 loss 0.4242 gn 0.172 1.50s amax 5536.0
+SFT Qwen3-4B-Base padded step 30 loss 0.4452 gn 0.149 1.18s amax None
+SFT Qwen3-4B-Base padded step 40 loss 0.3550 gn 0.147 2.25s amax 4832.0
+SFT Qwen3-4B-Base padded step 50 loss 0.3811 gn 0.147 0.99s amax None
+SFT Qwen3-4B-Base padded step 60 loss 0.3733 gn 0.156 1.13s amax 4864.0
+SFT Qwen3-4B-Base padded step 70 loss 0.3865 gn 0.153 1.12s amax None
+SFT Qwen3-4B-Base padded step 80 loss 0.3825 gn 0.155 1.21s amax 4768.0
+SFT Qwen3-4B-Base padded step 90 loss 0.3844 gn 0.146 1.06s amax None
+SFT Qwen3-4B-Base padded step 99 loss 0.3830 gn 0.188 1.01s amax None
+SFT_DONE Qwen/Qwen3-4B-Base padded_length_grouped 5856.4 0.5536 0.4003 0 7104.0

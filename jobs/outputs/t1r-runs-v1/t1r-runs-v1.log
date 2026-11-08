@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":313.062226781,"data":"ENVCHECK {\"ok\": true, \"violations\": [], \"gpus\": [\"0, Tesla T4, 580.178.04, 15360 MiB\", \"1, Tesla T4, 580.178.04, 15360 MiB\"], \"python\": \"3.13.16\"}\n"}
+,{"stream_name":"stdout","time":907.165023217,"data":"[lane 0] sft t1r-gate-uns-0p6B-s1 -\u003e COMPLETE (592.2 s)\n"}
+,{"stream_name":"stdout","time":1719.979020486,"data":"[lane 0] sft t1r-S0-uns-0p6B-s1 -\u003e COMPLETE (812.8 s)\n"}
+,{"stream_name":"stdout","time":2425.034841176,"data":"[lane 1] sft t1r-gate-hf-0p6B-s1 -\u003e NEEDS_RESUME (2110.1 s)\n"}
+,{"stream_name":"stdout","time":2635.986775059,"data":"[lane 0] sft t1r-lfm2.5-2.6B-smoke -\u003e COMPLETE (916.0 s)\n"}
+,{"stream_name":"stdout","time":3241.864720266,"data":"[lane 1] sft t1r-S0-uns-0p6B-s2 -\u003e COMPLETE (816.8 s)\n"}
+,{"stream_name":"stdout","time":3241.865698152,"data":"ALL DONE 3241.2\n"}
+,{"stream_name":"stderr","time":3243.857792044,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3243.857817342,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3244.036407299,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3244.036447005,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3244.925598407,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3245.507641554,"data":"[NbConvertApp] Writing 354924 bytes to __results__.html\n"}
+]

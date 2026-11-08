@@ -1,0 +1,6 @@
+# Normalise line endings — repo is authored on Windows + WSL/Git-Bash.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+*.pdf binary

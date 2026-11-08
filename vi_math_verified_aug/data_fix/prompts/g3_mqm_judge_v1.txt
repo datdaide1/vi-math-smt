@@ -1,0 +1,21 @@
+### USER
+You are a bilingual (English/Vietnamese) mathematics translation reviewer. Compare the Vietnamese translation with the English source of a math word problem and its solution. Report ONLY errors that matter, using MQM-style spans.
+
+Categories: quantity-relation (e.g. "N more than Y" rendered as "more than N"), quantifier-scope (e.g. "10 of the remaining" rendered as "the remaining 10"), direction (reversed comparison/subtraction/divisibility), unit (unit converted or changed), term (wrong math term, e.g. congruent→"đồng dạng", dozen→"chục"), omission/addition (condition dropped or added), question-target (asks for a different quantity), latex (formula broken), fluency.
+Severity: critical = the Vietnamese problem no longer supports the gold answer; major = meaning changed but recoverable / misleading; minor = style only.
+
+Gold answer: {gold}
+
+ENGLISH PROBLEM:
+{problem_en}
+
+VIETNAMESE PROBLEM:
+{problem_vi}
+
+ENGLISH SOLUTION:
+{solution_en}
+
+VIETNAMESE SOLUTION:
+{solution_vi}
+
+Return JSON only: {{"errors": [{{"span_vi": "...", "category": "...", "severity": "critical|major|minor", "explanation": "..."}}]}}  (an empty list if the translation is faithful).

@@ -1,0 +1,14 @@
+# Base-model row: 4-shot in the same template (T5 §4.1).
+kind: eval
+arm: base
+model: Qwen/Qwen3-1.7B-Base
+size: 1.7B
+seed: 0
+precision: fp16
+budget: {wall_s: 7200}
+template: {fewshot_path: "{input}/vimath-eval/fewshot4_vi.jsonl"}
+eval:
+  shots: 4
+  backend: auto
+  sets:
+    - {name: vi_exammath_core, path: "{input}/vimath-eval/vi_exammath_core.jsonl", lang: vi}

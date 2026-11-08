@@ -1,0 +1,14 @@
+{
+ "plan": "tput_h100_4b",
+ "gpu": "NVIDIA H100 80GB HBM3, 610.57.04, 81559 MiB",
+ "dtype": "bf16",
+ "tasks": [
+  {
+   "task": "sft",
+   "model": "Qwen/Qwen3-4B-Base",
+   "rc": 0,
+   "s": 178.6
+  }
+ ],
+ "wall_s": 180.3
+}

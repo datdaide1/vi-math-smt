@@ -1,0 +1,17 @@
+{
+  "id": "datuni/d5-r1-lme4",
+  "title": "d5-r1-lme4",
+  "code_file": "glmm.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "datuni/d5-r1-glmm"
+  ],
+  "kernel_sources": [],
+  "model_sources": [],
+  "competition_sources": []
+}

@@ -1,0 +1,69 @@
+{
+ "gpu": "NVIDIA L40S, 46068 MiB",
+ "engine_load_s": 131.9,
+ "env": null,
+ "runs": {
+  "ev-base-qwen3-0.6b-0shot-vi-primary": {
+   "rc": 0,
+   "s": 164.8,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-0shot-vi-primary",
+   "metrics": {
+    "gsm8k_platinum": {
+     "n_items": 600,
+     "mean_pass1": 0.30292,
+     "maj@4": 0.34833,
+     "greedy_acc": 0.345,
+     "truncation_rate_sampled": 0.06375,
+     "truncation_rate_greedy": 0.075,
+     "repetition_loop_rate": 0.05467,
+     "no_answer_rate": 0.003,
+     "tokens_mean": 242.92267
+    },
+    "math_algprealg": {
+     "n_items": 400,
+     "mean_pass1": 0.26813,
+     "maj@4": 0.31,
+     "greedy_acc": 0.3475,
+     "truncation_rate_sampled": 0.15812,
+     "truncation_rate_greedy": 0.19,
+     "repetition_loop_rate": 0.1115,
+     "no_answer_rate": 0.0025,
+     "tokens_mean": 352.6935
+    }
+   },
+   "throughput": {
+    "vi_primary_1000": {
+     "gen_tokens": 1434155,
+     "s": 163.4,
+     "gen_tok_per_s": 8777.8
+    }
+   }
+  },
+  "ev-base-qwen3-0.6b-0shot-vi-exam-greedy": {
+   "rc": 0,
+   "s": 146.3,
+   "out_dir": "/vol/eval/ev-base-qwen3-0.6b-0shot-vi-exam-greedy",
+   "metrics": {
+    "vi_exam_core_verified": {
+     "n_items": 1367,
+     "mean_pass1": null,
+     "maj@0": null,
+     "greedy_acc": 0.18069,
+     "truncation_rate_sampled": null,
+     "truncation_rate_greedy": 0.56767,
+     "repetition_loop_rate": 0.44989,
+     "no_answer_rate": 0.0117,
+     "tokens_mean": 721.93782
+    }
+   },
+   "throughput": {
+    "vi_exam_core_verified": {
+     "gen_tokens": 986889,
+     "s": 145.4,
+     "gen_tok_per_s": 6786.7
+    }
+   }
+  }
+ },
+ "wall_s": 444.9
+}

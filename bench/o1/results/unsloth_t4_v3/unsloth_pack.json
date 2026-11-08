@@ -1,0 +1,85 @@
+{
+ "variant": "unsloth_pack",
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "dtype": "fp16",
+ "gpu": "Tesla T4",
+ "libs": {
+  "torch": "2.14.1+cu130",
+  "transformers": "5.17.0",
+  "peft": "0.21.2",
+  "unsloth": "2026.11.3"
+ },
+ "data": {
+  "n": 2027,
+  "mean_len": 275.1,
+  "p50": 232,
+  "p99": 887,
+  "max": 1022
+ },
+ "attn": "sdpa",
+ "grad_ckpt": true,
+ "micro_batch": 8,
+ "packed": true,
+ "length_group": true,
+ "load_s": 10.0,
+ "logit_check": [
+  {
+   "len": 350,
+   "max_abs": 0.1035,
+   "mean_abs": 0.00705,
+   "nll_sep": 0.95516,
+   "nll_packed": 0.9547,
+   "argmax_agree": 1.0
+  },
+  {
+   "len": 208,
+   "max_abs": 0.2109,
+   "mean_abs": 0.00743,
+   "nll_sep": 0.65002,
+   "nll_packed": 0.65067,
+   "argmax_agree": 1.0
+  },
+  {
+   "len": 295,
+   "max_abs": 0.2031,
+   "mean_abs": 0.00668,
+   "nll_sep": 0.71746,
+   "nll_packed": 0.7173,
+   "argmax_agree": 1.0
+  },
+  {
+   "len": 227,
+   "max_abs": 0.2109,
+   "mean_abs": 0.00649,
+   "nll_sep": 0.84074,
+   "nll_packed": 0.84018,
+   "argmax_agree": 1.0
+  }
+ ],
+ "logit_check_max_nll_diff": 0.0006499999999999284,
+ "packing_correct": true,
+ "progress_steps": 7,
+ "step_s": [
+  5.55,
+  4.97,
+  4.22,
+  4.52,
+  5.1,
+  5.04,
+  3.93
+ ],
+ "tok_per_s": 1865.2,
+ "pad_frac": 0.0,
+ "losses": [
+  0.5583,
+  0.7366,
+  0.6347,
+  0.513,
+  0.7588,
+  0.5403,
+  0.5699
+ ],
+ "peak_mem_gb": 5.41,
+ "s_per_step": 4.63,
+ "ok": true
+}

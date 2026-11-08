@@ -1,0 +1,34 @@
+[{"stream_name":"stdout","time":272.760478445,"data":"[lane 0] +4.5m check envcheck rc=0 25s\n"}
+,{"stream_name":"stderr","time":275.350406797,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":304.830119754,"data":"[lane 0] +5.1m Qwen3-0.6B-Base packcheck rc=0 29s\n"}
+,{"stream_name":"stdout","time":369.431938091,"data":"[lane 1] +6.1m gemma-4-E2B eval_vllm rc=3 94s\n"}
+,{"stream_name":"stdout","time":1071.037718238,"data":"[lane 1] +17.8m gemma-4-E2B eval_hf rc=0 702s\n"}
+,{"stream_name":"stdout","time":1219.399299734,"data":"[lane 0] +20.3m Qwen3-0.6B-Base sft rc=0 915s\n"}
+,{"stream_name":"stdout","time":1709.600499101,"data":"[lane 0] +28.5m Qwen3-0.6B-Base sft_packed_hf pos_ids_no_cache rc=0 490s\n"}
+,{"stream_name":"stdout","time":2213.447748633,"data":"[lane 0] +36.9m Qwen3-1.7B-Base sft rc=0 504s\n"}
+,{"stream_name":"stdout","time":2280.13722245,"data":"[lane 0] +38.0m Qwen3-0.6B-Base unsloth rc=0 67s\n"}
+,{"stream_name":"stdout","time":2567.598543966,"data":"[lane 1] +42.8m gemma-4-E2B sft rc=0 1497s\n"}
+,{"stream_name":"stdout","time":2678.710461243,"data":"[lane 0] +44.6m Qwen3-4B-Base eval_vllm rc=0 398s\n"}
+,{"stream_name":"stdout","time":2856.61688436,"data":"[lane 1] +47.6m SmolLM3-3B-Base eval_vllm rc=0 289s\n"}
+,{"stream_name":"stdout","time":3840.087525935,"data":"[lane 1] +64.0m SmolLM3-3B-Base sft rc=0 983s\n"}
+,{"stream_name":"stdout","time":3840.212366305,"data":"SKIP Llama-3.2-1B eval: no HF access: GatedRepoError: 401 Client Error. (Request ID: Root=1-6aef0225-15504f5e4f3833fe1b69d478;aadf3a37-d3b9-404e-90ce-fcacc47b7be1)\n"}
+,{"stream_name":"stdout","time":3840.21239619,"data":"\n"}
+,{"stream_name":"stdout","time":3840.212401463,"data":"Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.\n"}
+,{"stream_name":"stdout","time":3840.212407095,"data":"Access to model meta-llama/Llama-3.2-1B is restricted. You must have access to it and be authenticated to access it. Please log in.\n"}
+,{"stream_name":"stdout","time":3840.212512639,"data":"SKIP Llama-3.2-1B sft: no HF access: GatedRepoError: 401 Client Error. (Request ID: Root=1-6aef0225-15504f5e4f3833fe1b69d478;aadf3a37-d3b9-404e-90ce-fcacc47b7be1)\n"}
+,{"stream_name":"stdout","time":3840.212520054,"data":"\n"}
+,{"stream_name":"stdout","time":3840.212524366,"data":"Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.\n"}
+,{"stream_name":"stdout","time":3840.212529047,"data":"Access to model meta-llama/Llama-3.2-1B is restricted. You must have access to it and be authenticated to access it. Please log in.\n"}
+,{"stream_name":"stdout","time":4068.737832116,"data":"[lane 1] +67.8m LFM2.5-2.6B-Base eval_vllm rc=0 228s\n"}
+,{"stream_name":"stdout","time":4211.703678523,"data":"[lane 0] +70.2m Qwen3-4B-Base sft rc=0 1533s\n"}
+,{"stream_name":"stdout","time":4385.041096293,"data":"[lane 0] +73.1m LFM2.5-1.2B-Base eval_vllm rc=0 173s\n"}
+,{"stream_name":"stdout","time":4845.088736751,"data":"[lane 0] +80.7m LFM2.5-1.2B-Base sft rc=0 460s\n"}
+,{"stream_name":"stdout","time":4936.212418611,"data":"[lane 1] +82.3m LFM2.5-2.6B-Base sft rc=0 867s\n"}
+,{"stream_name":"stdout","time":4936.216230325,"data":"ALL DONE 4935.5\n"}
+,{"stream_name":"stderr","time":4938.231018898,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4938.231050453,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4938.434483919,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4938.434527648,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4939.340569437,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4940.389821103,"data":"[NbConvertApp] Writing 565700 bytes to __results__.html\n"}
+]
