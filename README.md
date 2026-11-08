@@ -1,399 +1,199 @@
 # Vi-Math-SMT
 
-> A formally verified data pipeline for Vietnamese mathematical reasoning,
-> combining SMT-LIB generation, Z3/CVC5 validation, symbolic augmentation,
-> supervised fine-tuning, and online preference optimization.
+> Symbolic vs. directly generated training data for Vietnamese mathematical
+> reasoning: a typed quantity-graph augmentation pipeline, a controlled
+> comparison with verification and an English mirror, and the Vi-ExamMath
+> benchmark of Vietnamese Grade-10 entrance exams.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![SMT-LIB](https://img.shields.io/badge/Formalization-SMT--LIB-5B4B8A)](https://smt-lib.org/)
-[![Solvers](https://img.shields.io/badge/Validation-Z3%20%7C%20CVC5-2F855A)](https://github.com/Z3Prover/z3)
 [![License](https://img.shields.io/badge/Code%20License-MIT-2563EB)](LICENSE)
-[![Research](https://img.shields.io/badge/Status-Research%20Code-D97706)](#project-status)
+[![Status](https://img.shields.io/badge/Status-Research%20Code-D97706)](#project-status)
 
-Vi-Math-SMT builds Vietnamese mathematical reasoning data from GSM8K and
-MATH while preserving a machine-checkable representation of each problem.
-The project formalizes English source problems as SMT-LIB, validates them with
-SMT solvers, translates the natural-language content into Vietnamese, and
-merges both branches into a unified training corpus. A four-phase augmentation
-pipeline then generates new verified problems through symbolic mutation and
-LLM-based informalization.
-
-The repository also contains the complete experiment workflow for training and
-evaluating Vietnamese math language models with SFT and online DPO.
+Small language models need Vietnamese math data, and the two main ways to
+synthesize it compete: **symbolic** augmentation (formalize a problem as a
+program, mutate the program, recompute the answer exactly, re-express it in
+text) and **direct generation** by a large language model. This repository
+contains the full pipeline we use to build both kinds of data under a
+controlled design, the Vi-ExamMath benchmark, training and evaluation code,
+the statistical analysis, and all reports.
 
 ## Highlights
 
-- **Formally verified reasoning data** - generated SMT-LIB is checked against
-  the reference answer with Z3, with CVC5 support in the MATH workflow.
-- **Parallel construction pipeline** - formalization and Vietnamese
-  translation run independently before being joined by sample index.
-- **Solver-guided augmentation** - symbolic mutations are validated before an
-  LLM converts them back into natural Vietnamese problems and solutions.
-- **Consistency filtering** - informalized answers are compared with solver
-  outputs before augmented samples enter the final corpus.
-- **End-to-end experiments** - numbered notebooks cover preparation, SFT,
-  online DPO, inference, in-distribution evaluation, and OOD evaluation.
-- **Reproducible intermediate evidence** - selected `*.outputs.md` files retain
-  captured execution output for inspection alongside the corresponding code.
+- **Typed quantity DAG.** Each seed problem becomes a graph of typed quantities
+  (*Count, Money, Measure, Rate, Percent, Ratio, Age, Time*) with exact rational
+  values; type propagation rules out invalid intermediates such as "0.5 candies".
+- **Five constrained operators** (value resampling, inversion, step insertion,
+  relation change, query shift) with plausible value ranges, story-role checks
+  and an **answer-tail rule** that rejects mutations which only bolt arithmetic
+  onto the old answer.
+- **Rendering from the IR** with plausibility-aware localization (Vietnamese
+  names, đồng amounts, units), followed by a blind **cross-family cycle check**.
+- **Controlled comparison.** Symbolic (`Y`) vs. direct generation (`N`), each
+  with and without verification (`±`), sharing one solution writer, one quality
+  screen, one seed set and one data size, in Vietnamese and an English mirror.
+- **Vi-ExamMath.** 1,545 items from 270 exams (58 provinces, 2017–2026); 1,367
+  with verified keys; audited label-error rate 1.3% [0.16, 4.7].
+- **Pre-registered statistics.** Binomial GLMM (lme4) with crossed item × run
+  effects, two-way cluster bootstrap, Holm, TOST equivalence and BH.
 
-## Verified Data-Construction Results
+## Results
 
-The following figures describe the data pipeline, not model fine-tuning or
-model quality. They are taken from the recorded execution outputs committed
-with the corresponding processing code.
+Qwen3-0.6B-Base, LoRA r = 32, n = 1,808 training items per arm, 4 training
+seeds (Vietnamese). Accuracy in %: pass@1 over 4 samples for GSM8K-Platinum and
+MATH; greedy for Vi-ExamMath. Mean (SD across seeds).
 
-| Data-processing result | Verified value | Evidence |
-| --- | ---: | --- |
-| GSM8K records formalized and accepted | 7,473 / 7,473 (100.0%) | [`gsm8k_formalize_evaluate.outputs.md`](src/formalize/gsm8k/gsm8k_formalize_evaluate.outputs.md) |
-| MATH records retained after formalization and filtering | 7,397 / 7,500 (98.63%) | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) and the 7,500-record source definition in [`download_datasets.py`](src/convert/download_datasets.py) |
-| Verified Vietnamese base corpus | 14,870 records | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
-| Base-corpus composition | 7,473 GSM8K + 7,397 MATH | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
-| Base records containing verified SMT-LIB | 14,870 / 14,870 (100.0%) | [`merge_all.outputs.md`](src/merge/merge_all.outputs.md) |
-| Augmented candidates evaluated | 27,024 records | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
-| Consistent augmented records accepted | 19,750 / 27,024 (73.1%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
-| Augmented candidates rejected | 7,274 / 27,024 (26.9%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
-| Initially failed candidates rescued during cleanup | 255 records | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
-| Source problems with at least one accepted mutation | 5,670 / 6,817 (83.2%) | [`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md) |
-| Final base-plus-augmentation training corpus | 34,620 records | Derived from 14,870 verified base records + 19,750 accepted augmented records |
+| Arm | GSM8K-Platinum (VI) | MATH alg/prealg (VI) | Vi-ExamMath |
+|---|---:|---:|---:|
+| S0 (original seeds) | 38.6 (0.5) | 26.3 (1.7) | 24.2 (1.9) |
+| Y+ symbolic, verified | 45.1 (0.5) | 36.4 (1.7) | 30.3 (1.3) |
+| Y− symbolic, unverified | 44.7 (1.1) | 36.9 (0.8) | 30.8 (0.9) |
+| N+ direct, verified | **48.1** (1.0) | **37.5** (1.1) | 30.5 (0.5) |
+| N− direct, unverified | 46.6 (0.6) | 37.3 (1.0) | **30.9** (1.4) |
 
-### Augmentation validation breakdown
+- Every generated-data arm beats S0 on every set (+6.1 to +9.5 on GSM8K-Platinum,
+  +10.2 to +11.2 on MATH, +6.1 to +6.7 on Vi-ExamMath; q < 0.001).
+- On Vi-ExamMath, symbolic vs. direct (H2) and verified vs. unverified (H3) are
+  **equivalent within ±3 points** (TOST; MDE80 2.3 points).
+- The symbolic certificate secures the answer (98% faithful after the cycle
+  check) but not the text: 12% of Y+ items are judged absurd vs. 5% for N+.
+- Language × verification (H1) is provisional (one English training seed);
+  the certifiable-item contrast (H4) is underpowered.
 
-| Validation view | Recorded result |
-| --- | --- |
-| Rescue methods | 148 numeric matches, 83 normalized string matches, 24 symbolic SymPy matches |
-| Consistency by subject | 63.3% to 79.5% across the seven MATH subjects |
-| Consistency by difficulty | Level 1: 70.3%; Level 2: 72.5%; Level 3: 73.2%; Level 4: 74.5%; Level 5: 73.0% |
-| Consistency by mutation strategy | M0: 73.0%; M1: 72.6%; M2: 73.0%; M3: 73.2%; M4: 73.9% |
-| Accepted mutations per covered source | 593 sources produced 1; 1,306 produced 2; 795 produced 3; 720 produced 4; 2,256 produced 5 |
-| Final-corpus composition | 42.95% verified base records and 57.05% accepted augmented records |
-| Accepted problem length | Mean 343 characters; median 291; range 21 to 3,143 |
-| Accepted solution length | Mean 904 characters; median 808; range 156 to 6,005 |
-
-Subject-level consistency was 67.9% for algebra, 63.3% for counting and
-probability, 73.9% for geometry, 76.6% for intermediate algebra, 74.2% for
-number theory, 79.5% for prealgebra, and 76.6% for precalculus. All values in
-this breakdown come from
-[`phase3_analyze.outputs.md`](src/mutation_informalize/analysis/phase3_analyze.outputs.md).
-
-These results establish record counts, solver coverage, and augmentation
-consistency only. Fine-tuning and model-evaluation results are intentionally not
-reported in this README.
-
-## System Architecture
-
-```mermaid
-flowchart TD
-    A["English GSM8K and MATH"] --> B["Dataset preparation"]
-    B --> C["SMT-LIB formalization"]
-    B --> D["Vietnamese translation"]
-    C --> E["Z3 and CVC5 verification"]
-    E --> F["Verified symbolic records"]
-    D --> G["Vietnamese problems and solutions"]
-    F --> H["Base dataset assembly"]
-    G --> H
-    H --> I["Verified Vietnamese base corpus"]
-    I --> J["Phase 1 - Validate and classify"]
-    J --> K["Phase 2 - Symbolic mutation"]
-    K --> L["Phase 3 - Informalize and check consistency"]
-    L --> M["Phase 4 - Merge and balance"]
-    M --> N["Augmented training corpus"]
-    I --> O["Base SFT"]
-    N --> P["Augmented SFT and online DPO"]
-    O --> Q["Inference and evaluation"]
-    P --> Q
-    Q --> R["In-distribution and OOD reports"]
-```
-
-The formalization and translation branches intentionally originate from the
-same source records. Formalization is performed on English text to reduce
-language-induced ambiguity in symbolic generation; verified SMT-LIB is joined
-with the Vietnamese translation only after both branches complete.
+Full results, decision rules and caveats:
+[`docs/research_2026-11/exec/R1_results.md`](docs/research_2026-11/exec/R1_results.md).
+Paper (Vietnamese and English LaTeX) is maintained separately.
 
 ## Pipeline
 
-| Stage | Purpose | Main implementation |
-| --- | --- | --- |
-| 1. Acquire and normalize | Download benchmark data and standardize source formats | `src/convert/`, `src/analysis/` |
-| 2. Formalize | Generate SMT-LIB and run generate–verify–repair loops | `src/formalize/gsm8k/`, `src/formalize/math/` |
-| 3. Translate | Translate problems and solutions while preserving math and LaTeX | `src/translate/gsm8k/`, `src/translate/math/` |
-| 4. Assemble | Join verified symbolic data with Vietnamese records and normalize the schema | `src/merge/` |
-| 5. Augment | Validate, mutate, informalize, verify, merge, and balance MATH-derived samples | `src/mutation_informalize/` |
-| 6. Train | Prepare data, run base/augmented SFT, then online DPO | `notebooks/00_*.py` to `notebooks/03_*.py` |
-| 7. Evaluate | Run inference, in-distribution analysis, OOD tests, and final aggregation | `notebooks/04_*.py` to `notebooks/06_*.py`, `src/evaluate/` |
+```mermaid
+flowchart TD
+    A["Vietnamese GSM8K + MATH (alg/prealg) translations"] --> B["Clean, repair (MTA-vi), typed gold, decontaminate"]
+    B --> C["Seed pool: 9,649 seeds + 512 dev seeds"]
+    C --> Y1["Formalize to typed quantity DAG"]
+    Y1 --> Y2["Operators M1-M5 + answer-tail rule"]
+    Y2 --> Y3["Render from IR + localization"]
+    Y3 --> Y4["Cross-family cycle check"]
+    C --> N1["Direct LLM generation"]
+    N1 --> N2["Answer agreement"]
+    Y4 --> S["Shared solution writer + common screen"]
+    N2 --> S
+    S --> P["Matched selection S+/S-: n = 1,808 per arm x language"]
+    P --> T["LoRA SFT on Modal L40S"]
+    T --> E["vLLM eval: GSM8K-Platinum, MATH, Vi-ExamMath"]
+    E --> G["GLMM + bootstrap + TOST"]
+    X["270 Grade-10 exams"] --> XB["Vi-ExamMath: segment, multi-key QA, audit"]
+    XB --> E
+```
 
-### Formalization strategies
+| Stage | What it does | Module | Report |
+|---|---|---|---|
+| Seeds | clean, repair translations, typed gold, decontaminate, split dev | `vi_math_verified_aug/seeds/` | [S3](docs/research_2026-11/exec/S3_seed_pool.md) |
+| Benchmark | crawl, segment, multi-key answer QA, audit → `core_v1.1` | `vi_exam/`, `vi_exam_qa/` | [X2](docs/research_2026-11/exec/X2_benchmark.md), [Q1](docs/research_2026-11/exec/Q1_benchmark_qa.md) |
+| Eval sets | frozen VI/EN primary sets (GSM8K-Platinum + MATH) | `eval_sets/` | [X3](docs/research_2026-11/exec/X3_eval_sets.md) |
+| Grader | typed, locale-aware answer checking | `eval/math_verify.py` | [X1](docs/research_2026-11/exec/X1_grader.md) |
+| Symbolic library | typed IR, operators, answer-tail rule | `symbolic/` | [X4](docs/research_2026-11/exec/X4_symbolic.md) |
+| Arm Y | formalize, mutate, render, cycle check, export (VI + EN from one IR) | `arm_y/` | [G4](docs/research_2026-11/exec/G4_symbolic_v2.md), [G5](docs/research_2026-11/exec/G5_Y_scale.md) |
+| Arm N | direct generation, shared solution writer, common screen | `scale_gen/` | [D1](docs/research_2026-11/exec/D1_N_scale.md) |
+| Selection | matched S+/S− sets, strata, diversity | `analysis/select_v1.py` | [D5 selection](docs/research_2026-11/exec/D5_selection.md) |
+| Training | LoRA SFT, GRPO, fail-fast guards, launcher | `train/`, `evalrun/` | [T2](docs/research_2026-11/exec/T2_training_tranche.md) |
+| Analysis | GLMM export, bootstrap, Holm/BH/TOST, error attribution, gate audit | `analysis/` | [R1](docs/research_2026-11/exec/R1_results.md), [C3](docs/research_2026-11/exec/C3_attribution.md), [audit](docs/research_2026-11/exec/D5_gate_audit.md) |
 
-- **GSM8K:** a LangGraph-based agent generates SMT-LIB, validates it with Z3,
-  and retries with solver feedback when parsing, satisfiability, or answer
-  checks fail.
-- **MATH:** a sequential repair loop normalizes symbolic answers, generates
-  SMT-LIB, and validates difficult mathematical expressions with Z3/CVC5-aware
-  checks.
-
-### Four-phase augmentation
-
-1. **Validate and classify** the base SMT records and select eligible sources.
-2. **Mutate symbolically** using constant, structural, expression, constraint,
-   and difficulty transformations; validate every candidate with Z3.
-3. **Informalize** each accepted symbolic variant into a Vietnamese problem and
-   solution, then compare the generated answer with the solver result.
-4. **Merge and balance** consistent augmented records with the original corpus.
-
-Augmentation is focused on MATH because its richer algebraic and symbolic
-structures provide more useful mutation space than the predominantly linear
-arithmetic problems in GSM8K.
+Exact commands for every stage: [`handoff/README.md`](handoff/README.md) §4.
+Operating the training queue: [`handoff/RUNBOOK.md`](handoff/RUNBOOK.md).
 
 ## Repository Layout
 
 ```text
 vi-math-smt/
-├── notebooks/                     # Ordered training and evaluation workflow
-│   ├── 00_prepare_data.py
-│   ├── 01_sft_train_base.py
-│   ├── 02_sft_train_augmented.py
-│   ├── 03_dpo_train_augmented.py
-│   ├── 04_inference_base.py
-│   ├── 05_inference_augmented.py
-│   └── 06_final_evaluation.py
-├── src/
-│   ├── analysis/                  # Source-data normalization utilities
-│   ├── convert/                   # Dataset download and format conversion
-│   ├── formalize/
-│   │   ├── gsm8k/                 # Agentic GSM8K formalization
-│   │   └── math/                  # MATH formalization and repair
-│   ├── translate/
-│   │   ├── gsm8k/                 # GSM8K Vietnamese translation
-│   │   ├── math/                  # MATH Vietnamese translation
-│   │   └── test_dataset/          # SVAMP/ASDiv OOD preparation
-│   ├── merge/                     # Base-corpus assembly and statistics
-│   ├── mutation_informalize/      # Four-phase augmentation pipeline
-│   │   ├── analysis/              # Augmentation-quality analysis
-│   │   ├── reference/             # Prompt-development references
-│   │   └── tools/                 # QC and one-off repair utilities
-│   └── evaluate/                  # Base, augmented, OOD, and baseline analysis
-├── data/                          # Local datasets/artifacts; not tracked by Git
-├── .env.example                   # Required environment variables
-├── requirements.txt               # Core pipeline dependencies
-└── README.md
+├── vi_math_verified_aug/      # the pipeline (see the table above)
+│   ├── common/                # LLM client, batching, API ledger, rate limits, prompt registry
+│   ├── seeds/  symbolic/  arm_y/  scale_gen/
+│   ├── vi_exam/  vi_exam_qa/  eval/  eval_sets/
+│   ├── train/  evalrun/  analysis/  qa/  infra/
+├── prompts/                   # versioned prompts (catalog: handoff/PROMPTS.md)
+├── tests/                     # unit tests
+├── jobs/                      # kernel specs, launcher queue, run manifests and metrics
+├── docs/research_2026-11/     # design, technical notes, per-workstream reports (exec/)
+├── handoff/                   # datasheets, model cards, runbook, ledger, bundle manifest
+├── bench/                     # throughput and GPU benchmarks
+├── src/, notebooks/           # SMT-LIB formalization and translation utilities (not used by the pipeline above)
+└── data/                      # git-ignored; delivered as a separate bundle
 ```
 
 ## Quick Start
 
-### 1. Clone and create an environment
-
 ```bash
 git clone https://github.com/datdaide1/vi-math-smt.git
 cd vi-math-smt
-
-python -m venv .venv
-source .venv/bin/activate        # Linux/macOS
-# .venv\Scripts\activate         # Windows PowerShell
-
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+uv sync                      # or: pip install -r requirements.lock.txt
+cp .env.example .env         # fill in the API keys you need
+python -m pytest tests -q    # light unit tests
 ```
 
-The training notebooks install their heavier ML stack separately because the
-exact versions depend on the Kaggle/CUDA runtime. See the installation cell at
-the top of each notebook source before running it.
+Environment details (local, Kaggle and Modal images): [`handoff/ENV.md`](handoff/ENV.md).
 
-### 2. Configure credentials
+## Data and Artifacts
 
-```bash
-cp .env.example .env
-```
+Datasets, evaluation predictions and the 25 trained LoRA adapters are not stored
+in Git. They are distributed as a bundle described in
+[`handoff/BUNDLE.md`](handoff/BUNDLE.md), with a SHA-256 manifest. Each dataset
+has a datasheet in [`handoff/DATASHEETS/`](handoff/DATASHEETS/), and each
+adapter a model card in [`handoff/MODEL_CARDS/`](handoff/MODEL_CARDS/).
 
-On Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Populate only the services required by the stages you plan to run:
-
-| Variable | Used for |
-| --- | --- |
-| `HF_TOKEN` | Hugging Face dataset/model access |
-| `GEMINI_API_KEY` | Vietnamese translation with Gemini |
-| `NVIDIA_API_KEY` | Single-key NVIDIA NIM access |
-| `NVIDIA_API_KEYS` | Comma-separated key rotation for concurrent generation |
-| `BEEKNOEE_API_KEY` | Optional compatibility with legacy proxy-based scripts |
-
-Never commit `.env` or any file containing real credentials.
-
-API keys are access credentials, not redistributable project assets. Every user
-must provide their own keys and plan for the relevant provider's rate limits and
-billing. Prompts and dataset records sent to an external API leave the local
-environment; do not send restricted or confidential data to an external API.
-Use least-privilege tokens where supported, rotate any exposed key
-immediately, and keep production credentials out of notebooks and captured
-output files.
-
-### 3. Populate local data
-
-Run each script from its own directory. The codebase uses relative paths that
-resolve back to the repository-level `data/` directory.
-
-```bash
-cd src/convert
-python download_datasets.py
-python preprocess_gsm8k.py
-```
-
-## Running the Core Pipeline
-
-The following commands show the intended execution order. Formalization and
-translation can run in parallel once source preparation is complete.
-
-```bash
-# From the repository root
-
-# A. Formalize GSM8K
-cd src/formalize/gsm8k
-python formalize_gsm8k_nvidia_langgraph.py
-
-# B. Formalize MATH
-cd ../math
-python formalize_math_nvidia.py
-
-# C. Translate GSM8K
-cd ../../translate/gsm8k
-python translate_gsm8k.py
-
-# D. Translate MATH
-cd ../math
-python translate_math.py
-
-# E. Assemble the verified Vietnamese base corpus
-cd ../../merge/gsm8k
-python gsm8k_complete.py
-cd ../math
-python math_complete.py
-cd ..
-python merge_all.py
-
-# F. Run the four-phase augmentation workflow
-cd ../mutation_informalize
-python run_pipeline.py
-```
-
-Each stage supports partial reruns when its expected input files already exist.
-Several long-running scripts also use append-only output or checkpoint files to
-resume interrupted generation.
-
-## Training and Evaluation
-
-The files under `notebooks/` are Python exports of ordered Kaggle notebook
-cells. Run them in numerical order:
-
-| Order | Experiment |
-| --- | --- |
-| `00` | Clean and validate the final training records |
-| `01` | Train the base SFT model |
-| `02` | Train the augmented SFT model |
-| `03` | Apply online DPO with a rule-based mathematical judge |
-| `04` | Run base-model inference |
-| `05` | Run augmented-model inference, including OOD inputs |
-| `06` | Aggregate metrics, analyses, plots, and final reports |
-
-The DPO judge ranks candidate solutions by mathematical correctness first,
-format compliance second, and concision third. Evaluation utilities cover final
-answer accuracy, formatting behavior, reasoning similarity, performance by
-subject and difficulty, and OOD generalization on Vietnamese SVAMP and ASDiv.
-
-## Data and Artifact Policy
-
-The `data/` directory is intentionally excluded from Git because it contains
-large, generated, or externally sourced datasets, predictions, plots, and model
-artifacts. This repository publishes the pipeline and research implementation,
-not a duplicate distribution of those assets.
-
-Expected local data categories include:
-
-```text
-data/
-├── raw/                 # Downloaded source datasets
-├── generate/            # Normalized GSM8K/MATH inputs
-├── translation/         # Vietnamese training translations
-├── formalize_output/    # Verified SMT-LIB records
-├── finetune/            # Base and augmented training corpora
-├── result/              # Model predictions
-└── evaluate/            # Metrics, reports, and visualizations
-```
-
-Paths may be created incrementally as the relevant scripts run. Review the
-configuration block at the top of a script before launching an expensive API or
-GPU job.
+The generated training sets were written by LLMs (generator, renderer, solution
+writer and screen); the model ids, prompt versions and call logs for every
+stage are recorded in the datasheets.
 
 ## Dataset Sources and Licensing
 
-This project uses four externally published benchmarks. Their licenses apply to
-the original records and to translated or otherwise adapted versions; they are
-not replaced by any license chosen for this repository's source code.
+| Source | Use | License |
+|---|---|---|
+| GSM8K (Cobbe et al., 2021) | seeds (train), evaluation via GSM8K-Platinum | MIT |
+| MATH (Hendrycks et al., 2021) | seeds (algebra, prealgebra train), evaluation | MIT |
+| GSM8K-Platinum (Vendrow et al., 2025) | evaluation | see upstream |
+| Vietnamese Grade-10 entrance exams | Vi-ExamMath | public exam papers; see the datasheet |
 
-| Dataset | Source used by the downloader | Upstream license | Required handling |
-| --- | --- | --- | --- |
-| GSM8K | [`openai/gsm8k`](https://huggingface.co/datasets/openai/gsm8k) | MIT | Preserve the upstream notice and cite Cobbe et al. (2021). |
-| MATH | [`hendrycks/competition_math`](https://huggingface.co/datasets/hendrycks/competition_math) | MIT | Preserve the upstream notice and cite Hendrycks et al. (2021). |
-| SVAMP | [`ChilleD/SVAMP`](https://huggingface.co/datasets/ChilleD/SVAMP) | MIT | Cite Patel et al. (2021); prefer the official repository for provenance. |
-| ASDiv | [`EleutherAI/asdiv`](https://huggingface.co/datasets/EleutherAI/asdiv) | CC BY-NC 4.0 | Attribution is required; reuse and derived translations must remain non-commercial. |
+Details and citations: [`DATA_SOURCES.md`](DATA_SOURCES.md).
 
-See [`DATA_SOURCES.md`](DATA_SOURCES.md) for official project links, paper
-citations, license links, and redistribution guidance.
+## Reproducibility
 
-Because ASDiv is licensed under CC BY-NC 4.0, a combined release containing
-ASDiv-derived records must not be labeled as wholly MIT or presented as
-commercially reusable. If processed datasets are published on Hugging Face,
-identify the source of each subset, describe translation and filtering as
-modifications, retain all attribution notices, and expose the applicable
-per-source license restrictions in the dataset card. This repository currently
-does not redistribute the source or derived datasets through Git.
-
-## Reproducibility Notes
-
-- Scripts in `src/` generally expect to run from the directory containing the
-  script because their data paths are relative.
-- The modules in `src/mutation_informalize/` intentionally remain at the same
-  directory level because they use same-directory imports such as
-  `from config import ...`.
-- `*.outputs.md` files are execution records, not executable source files.
-- Stochastic LLM generation and symbolic mutation may produce different
-  candidates across runs; solver checks and consistency filters define the
-  acceptance criteria.
-- API usage can incur cost. Start with a small input subset and verify the
-  resulting schema before launching a full run.
+- All evaluation runs use vLLM in batch-invariant mode; repeated runs of the
+  same adapter give identical outputs.
+- All arms of a (model size, language, seed) cell are trained on the same GPU
+  type and precision.
+- Every training run records its git commit, data SHA-256 and config hash in
+  its manifest.
+- The analysis design (hypotheses, decision rule, equivalence margin) was fixed
+  before arm results were seen.
 
 ## Project Status
 
-This is research code organized around an experimental thesis pipeline. It is
-provided for inspection, reproduction, and further experimentation rather than
-as a production service or a packaged Python library. Model checkpoints and
-generated datasets are not bundled with the repository.
+Research code. The 0.6B tranche (Vietnamese seeds 0–3, English seed 0) is
+complete. The prioritized queue of remaining runs (more English seeds, 4-shot
+evaluation of the adapters, length-matched training sets, 1.7B and a second
+model family, RLVR) with per-run costs is in
+[`handoff/RUNBOOK.md`](handoff/RUNBOOK.md) §5 and
+[`handoff/KNOWN_ISSUES.md`](handoff/KNOWN_ISSUES.md).
 
 ## License
 
-Original source code and documentation in this repository are available under
-the [MIT License](LICENSE), unless a file states otherwise. This license does
-not relicense or override third-party datasets, model weights, generated records
-derived from those datasets, or external API services.
+Source code and documentation are released under the [MIT License](LICENSE),
+unless a file states otherwise. The license does not override the terms of
+third-party datasets or model weights; see [`DATA_SOURCES.md`](DATA_SOURCES.md).
 
-In particular, ASDiv and ASDiv-derived records remain subject to CC BY-NC 4.0
-and its non-commercial restriction. See [`DATA_SOURCES.md`](DATA_SOURCES.md)
-before redistributing any dataset artifact.
+## Citation
 
-## Contributing
-
-Contributions that improve validation, portability, documentation, or
-reproducibility are welcome. Before opening a pull request:
-
-1. Keep credentials and generated data outside Git.
-2. Preserve the expected input/output schema of the affected pipeline stage.
-3. Run `python -m compileall -q src notebooks`.
-4. Document new environment variables and generated artifact paths.
-5. Include a focused description of the change and how it was validated.
+```bibtex
+@misc{tran2026vimath,
+  title  = {Symbolic or Directly Generated Data for Vietnamese Math Reasoning?
+            Typed Quantity Graphs, Controlled Verification, and a Vietnamese Exam Benchmark},
+  author = {Tran, Hoang Dat and Ha, My Linh},
+  year   = {2026},
+  note   = {VNU University of Science, Vietnam National University, Hanoi}
+}
+```
 
 ## Acknowledgements
 
-This project builds on GSM8K, MATH, SVAMP, ASDiv, SMT-LIB, Z3, CVC5,
-LangGraph, Gemini, NVIDIA NIM, Hugging Face, Unsloth, and the broader open-source
-mathematical reasoning ecosystem.
+This work builds on GSM8K, MATH, GSM8K-Platinum, Qwen3, LoRA, Unsloth, vLLM,
+bge-m3, SymPy, lme4 and the broader open-source mathematical reasoning ecosystem.
